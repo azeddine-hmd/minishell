@@ -5,39 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/03/28 11:25:43 by ahamdaou          #+#    #+#              #
-#    Updated: 2021/03/28 11:38:59 by ahamdaou         ###   ########.fr        #
+#    Created: 2019/10/27 14:49:07 by ahamdaou          #+#    #+#              #
+#    Updated: 2021/03/30 17:34:55 by ahamdaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libdlinkedlist.a
-
-CFLAGS = -Wall -Wextra -Werror \
-		 -g \
-		 -fsanitize=address \
+NAME = liblinkedlist.a
 
 CC = gcc
 
-LIBS = ../libft/libft.a
+CFLAGS = -Wall -Werror -Wextra \
 
-SRC = dlinkedlist.c \
+SRC = linkedlist.c \
+	  linkedlist_utils.c \
+	  allocation.c \
+	  error.c \
+	  swap.c \
+	  utils.c \
+	  xsubstr.c \
 
 OBJ = ${SRC:.c=.o}
-
-MAKE = make -C
 
 all: $(NAME)
 
 $(NAME):
-	@$(MAKE) ../libft
-	@$(CC) $(CFLAGS) $(SRC) $(LIBS) -o $(NAME)
+	@ $(CC) $(CFLAGS) -c $(SRC)
+	@ ar rc $(NAME) $(OBJ)
 
 clean:
-	@$(MAKE) ../libft clean
-	@rm -rf $(OBJ)
+	@ rm -f $(OBJ)
 
-fclean:
-	@$(MAKE) ../libft fclean
-	@rm -rf $(NAME) cub3D.dSYM #remove it later
+fclean: clean
+	@ rm -f $(NAME)
 
-.PHONY: clean fclean
+re:	fclean all

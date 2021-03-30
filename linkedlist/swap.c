@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlinkedlist.h                                      :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/28 11:45:41 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/03/28 14:04:11 by ahamdaou         ###   ########.fr       */
+/*   Created: 2020/11/14 14:19:06 by ahamdaou          #+#    #+#             */
+/*   Updated: 2020/12/16 03:15:53 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DLINKEDLIST_H
-# define DLINKEDLIST_H
+#include "linkedlist.h"
 
-typedef struct	s_dll
+void	swap(t_data *this, t_data *other)
 {
-	int				is_piped;
-	int				fd;
-	char			*args;
-	char			*command;
-	char			redirection;
-	struct s_dll	*next;
-	struct s_dll	*previous;
-}				t_dll;
+	void	*tmp;
 
-t_dll	*parse_line(const char *s);
-
-#endif
+	tmp = this->data;
+	this->data = other->data;
+	other->data = tmp;
+}

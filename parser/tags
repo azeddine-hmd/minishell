@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror \\$/;"	m
+FALSE	parse.h	/^# define FALSE /;"	d
+LIBS	Makefile	/^LIBS = ..\/libft\/libft.a \\$/;"	m
+MAKE	Makefile	/^MAKE = make -C$/;"	m
+NAME	Makefile	/^NAME = libparser.a$/;"	m
+OBJ	Makefile	/^OBJ = ${SRC:.c=.o}$/;"	m
+PARSE_H	parse.h	/^# define PARSE_H$/;"	d
+SRC	Makefile	/^SRC = parse.c \\$/;"	m
+TRUE	parse.h	/^# define TRUE /;"	d
+args	parse.h	/^	char			**args;$/;"	m	struct:s_dll
+cmd_node_init	parse.c	/^void	cmd_node_init(t_dll *cmd_node, char **args, int is_piped)$/;"	f
+command	parse.h	/^	char			*command;$/;"	m	struct:s_dll
+fd	parse.h	/^	int				fd;$/;"	m	struct:s_dll
+get_cmd_node	parse.c	/^t_dll	*get_cmd_node(const char *cmd, int is_piped)$/;"	f
+is_piped	parse.h	/^	int				is_piped;$/;"	m	struct:s_dll
+next	parse.h	/^	struct s_dll	*next;$/;"	m	struct:s_dll	typeref:struct:s_dll::s_dll
+parse	parse.c	/^t_dll	*parse(const char *cmd_line)$/;"	f
+previous	parse.h	/^	struct s_dll	*previous;$/;"	m	struct:s_dll	typeref:struct:s_dll::s_dll
+print_all_dll_nodes	parse_debugger.c	/^void	print_all_dll_nodes(t_dll *head)$/;"	f
+print_dll_node	parse_debugger.c	/^void	print_dll_node(t_dll *dll_node)$/;"	f
+redirection	parse.h	/^	char			redirection;$/;"	m	struct:s_dll
+s_dll	parse.h	/^typedef struct	s_dll$/;"	s
+t_dll	parse.h	/^}				t_dll;$/;"	t	typeref:struct:s_dll
