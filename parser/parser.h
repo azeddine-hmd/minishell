@@ -8,21 +8,21 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef struct	s_dll
+typedef struct	s_cmd
 {
 	int				is_piped;
 	int				fd;
 	char			**args;
 	char			*command;
 	char			redirection;
-	struct s_dll	*next;
-	struct s_dll	*previous;
-}				t_dll;
+	struct s_cmd	*next;
+	struct s_cmd	*previous;
+}				t_cmd;
 
-t_dll	*parse(const char *cmd_line);
+t_cmd	*parse(const char *cmd_line);
 
 // debugging prototype
-void	print_dll_node(t_dll *dll_node);
-void	print_all_dll_nodes(t_dll *head);
+void	print_cmd_node(t_cmd *dll_node);
+void	print_all_cmd_nodes(t_cmd *head);
 
 #endif

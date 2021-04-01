@@ -1,6 +1,6 @@
 #include "parser.h"
 
-void	print_dll_node(t_dll *dll_node)
+void	print_cmd_node(t_cmd *dll_node)
 {
 	printf("-----NODE ADDRESS: %p-----\n", &dll_node);
 	printf("command: \"%s\"\n", dll_node->command);
@@ -13,11 +13,11 @@ void	print_dll_node(t_dll *dll_node)
 	printf("\n");
 }
 
-void	print_all_dll_nodes(t_dll *head)
+void	print_all_cmd_nodes(t_cmd *head)
 {
 	while (head)
 	{
-		print_dll_node(head);
+		print_cmd_node(head);
 		head = head->next;
 	}
 }
