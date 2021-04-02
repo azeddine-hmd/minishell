@@ -11,7 +11,7 @@ CC	parser/Makefile	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror \\$/;"	m
 CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	linkedlist/Makefile	/^CFLAGS = -Wall -Werror -Wextra \\$/;"	m
-CFLAGS	parser/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	parser/Makefile	/^CFLAGS = -Wall -Wextra -Werror \\$/;"	m
 FALSE	libft/libft.h	/^# define FALSE /;"	d
 FALSE	parser/parser.h	/^# define FALSE /;"	d
 LIBFT_H	libft/libft.h	/^# define LIBFT_H$/;"	d
@@ -37,6 +37,7 @@ TRUE	libft/libft.h	/^# define TRUE /;"	d
 TRUE	parser/parser.h	/^# define TRUE /;"	d
 add	linkedlist/linkedlist_utils.c	/^void	add(t_data **head, void *data)$/;"	f
 add_double_pointer	linkedlist/linkedlist_utils.c	/^void	add_double_pointer(char **ptr)$/;"	f
+add_node	parser/parse.c	/^void	add_node(t_cmd **head_addr, t_cmd *node)$/;"	f
 args	parser/parser.h	/^	char			**args;$/;"	m	struct:s_cmd
 check_equality	libft/ft_strnstr.c	/^static int	check_equality(const char *h, const char *n, int i)$/;"	f	file:
 check_equality	libft/ft_strstr.c	/^static int	check_equality(const char *h, const char *n, int i)$/;"	f	file:
@@ -95,6 +96,7 @@ ft_tolower	libft/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
 ft_toupper	libft/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
 get_cmd_node	parser/parse.c	/^t_cmd	*get_cmd_node(const char *cmd, int is_piped)$/;"	f
 get_head_node	linkedlist/allocation.c	/^t_data		**get_head_node(void)$/;"	f
+get_last_node	parser/parse.c	/^t_cmd	*get_last_node(t_cmd *head)$/;"	f
 get_length	libft/ft_split.c	/^static	int		get_length(char const *s, int c, int start)$/;"	f	file:
 hexer	libft/ft_dec2hex.c	/^static char	*hexer(int l)$/;"	f	file:
 integer_length	libft/ft_putnbr_fd.c	/^static int	integer_length(int nb)$/;"	f	file:

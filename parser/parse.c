@@ -1,5 +1,29 @@
 #include "parser.h"
 
+t_cmd	*get_last_node(t_cmd *head)
+{
+	while (head->next == NULL)
+	{
+		head = head->next;
+	}
+	return (head);
+}
+
+void	add_node(t_cmd **head_addr, t_cmd *node)
+{
+	t_cmd	*last_node;
+
+	if (*head_addr == NULL)
+	{
+		*head_addr = node;
+	}
+	else
+	{
+		last_node = get_last_node(*head_addr);
+		last_node->next = node;
+	}
+}
+
 void	cmd_node_init(t_cmd *cmd_node, char **args, int is_piped)
 {
 	cmd_node->command = args[0];
@@ -24,20 +48,21 @@ t_cmd	*parse(const char *cmd_line)
 	t_cmd	*head;
 	size_t	i;
 	size_t	start;
+	int		is_next_pipe;
 
-	// head is null for now
 	head = NULL;
-
 	start = 0;
+	is_next_pipe = 0;
 	i = -1;
 	while (cmd_line[++i])
 	{
 		if (cmd_line[i] == ';')
-			get_cmd_node(xsubstr(cmd_line, start, i - start + 1), FALSE);
+			add_node(&head, get_cmd_node(xsubstr(cmd_line, start, i - start + 1), FALSE));
 		else if (cmd_line[i] == '|')
-			get_cmd_node(xsubstr(cmd_line, start, i - start + 1), TRUE);
+			add_node(&head, get_cmd_node(xsubstr(cmd_line, start, i - start + 1), TRUE));
 		start = i + 1;
 	}
+	add_node(&head, get_cmd_node(xsubstr(cmd_line, start, ft_strlen(cmd_line)), FALSE));
 
 	return (head);
 }

@@ -21,17 +21,20 @@ all: $(NAME)
 $(NAME):
 	@$(MAKE) libft
 	@$(MAKE) linkedlist
+	@$(MAKE) parser
 	@$(CC) $(CFLAGS) $(SRC) $(LIBS) -o $(NAME)
 
 clean:
 	@$(MAKE) libft clean
 	@$(MAKE) linkedlist clean
+	@$(MAKE) parser clean
 	@rm -rf $(OBJ)
 
 fclean:
 	@$(MAKE) libft fclean
 	@$(MAKE) linkedlist fclean
-	@rm -rf $(NAME) cub3D.dSYM #remove it later
+	@$(MAKE) parser clean fclean
+	@rm -rf $(NAME)
 
 re: fclean all
 

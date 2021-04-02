@@ -1,6 +1,8 @@
 NAME = libparser.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror \
+		 -g \
+		 -fsanitize=address \
 
 CC = gcc
 
