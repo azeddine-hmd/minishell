@@ -1,8 +1,6 @@
 NAME = libparser.a
 
 CFLAGS = -Wall -Wextra -Werror \
-		 -g \
-		 -fsanitize=address \
 
 CC = gcc
 
@@ -16,8 +14,8 @@ MAKE = make -C
 all: $(NAME)
 
 $(NAME):
-	@ $(CC) $(CFLAGS) $(LIBS) -c $(SRC)
-	@ ar rc $(NAME) $(OBJ)
+	@$(CC) $(CFLAGS) -c $(SRC)
+	@ar rc $(NAME) $(OBJ)
 
 clean:
 	@rm -rf $(OBJ)

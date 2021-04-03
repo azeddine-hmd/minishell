@@ -6,10 +6,10 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		exit(1);
-	cmd_list = parse(argv[1]);
+	parse(argv[1], &cmd_list);
 	if (cmd_list == NULL)
 		printf("cmd_list is NULL\n");
-	print_all_cmd_nodes(cmd_list);
+	print_all_cmds(cmd_list);
 
 	return (0);
 }

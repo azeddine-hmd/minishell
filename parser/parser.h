@@ -1,12 +1,8 @@
 #ifndef PARSER_H
 # define PARSER_H
-
 # include "../libft/libft.h"
 # include "../linkedlist/linkedlist.h"
 # include <stdio.h>
-
-# define TRUE 1
-# define FALSE 0
 
 typedef struct	s_cmd
 {
@@ -19,10 +15,10 @@ typedef struct	s_cmd
 	struct s_cmd	*previous;
 }				t_cmd;
 
-t_cmd	*parse(const char *cmd_line);
+void	parse(const char *cmd_line, t_cmd **head_addr);
 
-// debugging prototype
-void	print_cmd_node(t_cmd *dll_node);
-void	print_all_cmd_nodes(t_cmd *head);
+// only for debugging
+void	print_cmd(t_cmd *cmd);
+void	print_all_cmds(t_cmd *head);
 
 #endif

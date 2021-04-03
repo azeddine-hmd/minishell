@@ -1,8 +1,6 @@
 NAME = minishell
 
 CFLAGS = -Wall -Wextra -Werror \
-		 -g \
-		 -fsanitize=address \
 
 CC = gcc
 
@@ -10,11 +8,11 @@ LIBS = libft/libft.a \
 	   linkedlist/liblinkedlist.a \
 	   parser/libparser.a \
 
-SRC = main.c
+SRC = minishell.c \
 
 OBJ = ${SRC:.c=.o}
 
-MAKE = make -C
+MAKE = make --no-print-directory -C
 
 all: $(NAME)
 
@@ -33,7 +31,7 @@ clean:
 fclean:
 	@$(MAKE) libft fclean
 	@$(MAKE) linkedlist fclean
-	@$(MAKE) parser clean fclean
+	@$(MAKE) parser fclean
 	@rm -rf $(NAME)
 
 re: fclean all
