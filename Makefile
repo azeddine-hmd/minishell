@@ -1,6 +1,8 @@
 NAME = minishell
 
 CFLAGS = -Wall -Wextra -Werror \
+		 -g \
+		 -fsanitize=address \
 
 CC = gcc
 
