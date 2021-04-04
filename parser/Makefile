@@ -1,6 +1,7 @@
 NAME = libparser.a
 
 CFLAGS = -Wall -Wextra -Werror \
+		 -std=c99 \
 		 -g \
 
 CC = gcc

@@ -53,6 +53,7 @@ void	parse(const char *cmd_line, t_cmd **head_addr)
 	start = 0;
 	is_next_pipe = FALSE;
 	i = -1;
+	reformat_variables()
 	while (cmd_line[++i])
 	{
 		if (cmd_line[i] != ';' || cmd_line[i] != '|')
