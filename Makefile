@@ -1,6 +1,7 @@
 NAME = minishell
 
 CFLAGS = -Wall -Wextra -Werror \
+		 -ltermcap \
 		 -g \
 		 -fsanitize=address \
 
@@ -8,10 +9,11 @@ CC = gcc
 
 LIBS = libft/libft.a \
 	   linkedlist/liblinkedlist.a \
-	   stack/libstack.a \
 	   parser/libparser.a \
+	   get_next_line/libget_next_line.a \
 
 SRC = minishell.c \
+	  errors.c \
 
 OBJ = ${SRC:.c=.o}
 
@@ -23,21 +25,21 @@ $(NAME):
 	@$(MAKE) libft
 	@$(MAKE) linkedlist
 	@$(MAKE) parser
-	@$(MAKE) stack
+	@$(MAKE) get_next_line
 	@$(CC) $(CFLAGS) $(SRC) $(LIBS) -o $(NAME)
 
 clean:
 	@$(MAKE) libft clean
 	@$(MAKE) linkedlist clean
 	@$(MAKE) parser clean
-	@$(MAKE) stack clean
+	@$(MAKE) get_next_line clean
 	@rm -rf $(OBJ)
 
 fclean:
 	@$(MAKE) libft fclean
 	@$(MAKE) linkedlist fclean
 	@$(MAKE) parser fclean
-	@$(MAKE) stack fclean
+	@$(MAKE) get_next_line fclean
 	@rm -rf $(NAME)
 
 re: fclean all

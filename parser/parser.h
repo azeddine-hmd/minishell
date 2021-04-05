@@ -11,7 +11,7 @@ typedef struct	s_cmd
 	char			**args;
 	char			*command;
 	char			redirection;
-	char			*error
+	char			*error;
 	struct s_cmd	*next;
 	struct s_cmd	*previous;
 }				t_cmd;

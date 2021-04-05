@@ -1,27 +1,37 @@
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
-!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
-!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
-!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
-!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
-!_TAG_PROC_CWD	/home/azeddine/Documents/42/minishell/	//
-!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
-!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
-!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
-!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210110.0/
-$(NAME)	Makefile	/^$(NAME):$/;"	t
-$(NAME)	libft/Makefile	/^$(NAME):$/;"	t
-$(NAME)	linkedlist/Makefile	/^$(NAME):$/;"	t
-$(NAME)	parser/Makefile	/^$(NAME):$/;"	t
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BUFFER_SIZE	get_next_line/get_next_line.h	/^# define BUFFER_SIZE /;"	d
 CC	Makefile	/^CC = gcc$/;"	m
+CC	get_next_line/Makefile	/^CC = gcc$/;"	m
 CC	libft/Makefile	/^CC = gcc$/;"	m
 CC	linkedlist/Makefile	/^CC = gcc$/;"	m
 CC	parser/Makefile	/^CC = gcc$/;"	m
+CC	stack/Makefile	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror \\$/;"	m
+CFLAGS	get_next_line/Makefile	/^CFLAGS = -Wall -Wextra -Werror \\$/;"	m
 CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	linkedlist/Makefile	/^CFLAGS = -Wall -Werror -Wextra \\$/;"	m
 CFLAGS	parser/Makefile	/^CFLAGS = -Wall -Wextra -Werror \\$/;"	m
+CFLAGS	stack/Makefile	/^CFLAGS = -Wall -Werror -Wextra \\$/;"	m
+COLOR_BLACK	errors.h	/^# define COLOR_BLACK /;"	d
+COLOR_BLUE	errors.h	/^# define COLOR_BLUE /;"	d
+COLOR_CYAN	errors.h	/^# define COLOR_CYAN /;"	d
+COLOR_DEFAULT	errors.h	/^# define COLOR_DEFAULT /;"	d
+COLOR_GREEN	errors.h	/^# define COLOR_GREEN /;"	d
+COLOR_PURPLE	errors.h	/^# define COLOR_PURPLE /;"	d
+COLOR_RED	errors.h	/^# define COLOR_RED /;"	d
+COLOR_WHITE	errors.h	/^# define COLOR_WHITE /;"	d
+COLOR_YELLOW	errors.h	/^# define COLOR_YELLOW /;"	d
+ERRORS_H	errors.h	/^# define ERRORS_H$/;"	d
+ERR_TERMACCESS	errors.h	/^# define ERR_TERMACCESS /;"	d
+ERR_TERMNOTDEFINED	errors.h	/^# define ERR_TERMNOTDEFINED /;"	d
+ERR_TERMTYPE	errors.h	/^# define ERR_TERMTYPE /;"	d
 FALSE	libft/libft.h	/^# define FALSE /;"	d
+GET_NEXT_LINE_H	get_next_line/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
 LIBFT_H	libft/libft.h	/^# define LIBFT_H$/;"	d
 LIBS	Makefile	/^LIBS = libft\/libft.a \\$/;"	m
 LINKEDLIST_H	linkedlist/linkedlist.h	/^# define LINKEDLIST_H$/;"	d
@@ -29,134 +39,147 @@ MAKE	Makefile	/^MAKE = make --no-print-directory -C$/;"	m
 MAKE	parser/Makefile	/^MAKE = make -C$/;"	m
 MINISHELL_H	minishell.h	/^# define MINISHELL_H$/;"	d
 NAME	Makefile	/^NAME = minishell$/;"	m
+NAME	get_next_line/Makefile	/^NAME = libget_next_line.a$/;"	m
 NAME	libft/Makefile	/^NAME = libft.a$/;"	m
 NAME	linkedlist/Makefile	/^NAME = liblinkedlist.a$/;"	m
 NAME	parser/Makefile	/^NAME = libparser.a$/;"	m
+NAME	stack/Makefile	/^NAME = libstack.a$/;"	m
 OBJ	Makefile	/^OBJ = ${SRC:.c=.o}$/;"	m
+OBJ	get_next_line/Makefile	/^OBJ = ${SRC:.c=.o}$/;"	m
 OBJ	libft/Makefile	/^OBJ = ${SRC:.c=.o}$/;"	m
 OBJ	linkedlist/Makefile	/^OBJ = ${SRC:.c=.o}$/;"	m
 OBJ	parser/Makefile	/^OBJ = ${SRC:.c=.o}$/;"	m
+OBJ	stack/Makefile	/^OBJ = ${SRC:.c=.o}$/;"	m
 PARSER_H	parser/parser.h	/^# define PARSER_H$/;"	d
-SRC	Makefile	/^SRC = main.c$/;"	m
+SRC	Makefile	/^SRC = minishell.c \\$/;"	m
+SRC	get_next_line/Makefile	/^SRC = get_next_line.c \\$/;"	m
 SRC	libft/Makefile	/^SRC = ft_atoi.c \\$/;"	m
 SRC	linkedlist/Makefile	/^SRC = linkedlist.c \\$/;"	m
 SRC	parser/Makefile	/^SRC = parse.c \\$/;"	m
+SRC	stack/Makefile	/^SRC = stack.c \\$/;"	m
+STACK_H	stack/stack.h	/^# define STACK_H$/;"	d
 TRUE	libft/libft.h	/^# define TRUE /;"	d
-add	linkedlist/linkedlist_utils.c	/^void	add(t_data **head, void *data)$/;"	f	typeref:typename:void
-add_cmd	parser/parse.c	/^void	add_cmd(t_cmd **head_addr, t_cmd *cmd)$/;"	f	typeref:typename:void
-add_double_pointer	linkedlist/linkedlist_utils.c	/^void	add_double_pointer(char **ptr)$/;"	f	typeref:typename:void
-all	Makefile	/^all: $(NAME)$/;"	t
-all	libft/Makefile	/^all: $(NAME)$/;"	t
-all	linkedlist/Makefile	/^all: $(NAME)$/;"	t
-all	parser/Makefile	/^all: $(NAME)$/;"	t
-args	parser/parser.h	/^	char			**args;$/;"	m	struct:s_cmd	typeref:typename:char **
-check_equality	libft/ft_strnstr.c	/^static int	check_equality(const char *h, const char *n, int i)$/;"	f	typeref:typename:int	file:
-check_equality	libft/ft_strstr.c	/^static int	check_equality(const char *h, const char *n, int i)$/;"	f	typeref:typename:int	file:
-clean	Makefile	/^clean:$/;"	t
-clean	libft/Makefile	/^clean:$/;"	t
-clean	linkedlist/Makefile	/^clean:$/;"	t
-clean	parser/Makefile	/^clean:$/;"	t
-cmd_init	parser/parse.c	/^void	cmd_init(t_cmd *cmd, char **args, int is_piped)$/;"	f	typeref:typename:void
-command	parser/parser.h	/^	char			*command;$/;"	m	struct:s_cmd	typeref:typename:char *
-count_char	libft/count_char.c	/^int		count_char(const char *s, char c)$/;"	f	typeref:typename:int
-count_words	libft/ft_split.c	/^static	int		count_words(char const *s, char c)$/;"	f	typeref:typename:int	file:
-data	linkedlist/linkedlist.h	/^	void			*data;$/;"	m	struct:s_data	typeref:typename:void *
-error	linkedlist/error.c	/^void	error(void)$/;"	f	typeref:typename:void
-error_file	linkedlist/error.c	/^void	error_file(const char *file_name, const char *message)$/;"	f	typeref:typename:void
-error_line	linkedlist/error.c	/^void	error_line(int line, const char *message)$/;"	f	typeref:typename:void
-error_message	linkedlist/error.c	/^void	error_message(const char *message)$/;"	f	typeref:typename:void
-fclean	Makefile	/^fclean:$/;"	t
-fclean	libft/Makefile	/^fclean: clean$/;"	t
-fclean	linkedlist/Makefile	/^fclean: clean$/;"	t
-fclean	parser/Makefile	/^fclean:$/;"	t
-fd	parser/parser.h	/^	int				fd;$/;"	m	struct:s_cmd	typeref:typename:int
-free_double_pointer	libft/free_double_pointer.c	/^void	free_double_pointer(char **ptr)$/;"	f	typeref:typename:void
-free_node	linkedlist/linkedlist.c	/^void	free_node(t_data *node)$/;"	f	typeref:typename:void
-ft_atoi	libft/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f	typeref:typename:int
-ft_bzero	libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void
-ft_calloc	libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
-ft_dec2hex	libft/ft_dec2hex.c	/^char		*ft_dec2hex(size_t decimal)$/;"	f	typeref:typename:char *
-ft_isalnum	libft/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f	typeref:typename:int
-ft_isalpha	libft/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f	typeref:typename:int
-ft_isascii	libft/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f	typeref:typename:int
-ft_isdigit	libft/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f	typeref:typename:int
-ft_isprint	libft/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f	typeref:typename:int
-ft_itoa	libft/ft_itoa.c	/^char		*ft_itoa(long n)$/;"	f	typeref:typename:char *
-ft_memccpy	libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f	typeref:typename:void *
-ft_memchr	libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f	typeref:typename:void *
-ft_memcmp	libft/ft_memcmp.c	/^int		ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f	typeref:typename:int
-ft_memcpy	libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f	typeref:typename:void *
-ft_memmove	libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f	typeref:typename:void *
-ft_memset	libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f	typeref:typename:void *
-ft_putchar_fd	libft/ft_putchar_fd.c	/^void	ft_putchar_fd(const char c, int fd)$/;"	f	typeref:typename:void
-ft_putendl_fd	libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f	typeref:typename:void
-ft_putnbr_fd	libft/ft_putnbr_fd.c	/^void		ft_putnbr_fd(int n, int fd)$/;"	f	typeref:typename:void
-ft_putstr	libft/ft_putstr.c	/^void	ft_putstr(const char *s)$/;"	f	typeref:typename:void
-ft_putstr_fd	libft/ft_putstr_fd.c	/^void	ft_putstr_fd(const char *s, int fd)$/;"	f	typeref:typename:void
-ft_split	libft/ft_split.c	/^char			**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
-ft_strchr	libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f	typeref:typename:char *
-ft_strcmp	libft/ft_strcmp.c	/^int		ft_strcmp(const char *s1, const char *s2)$/;"	f	typeref:typename:int
-ft_strdup	libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f	typeref:typename:char *
-ft_strjoin	libft/ft_strjoin.c	/^char		*ft_strjoin(char const *s1, char const *s2)$/;"	f	typeref:typename:char *
-ft_strlcat	libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f	typeref:typename:size_t
-ft_strlcpy	libft/ft_strlcpy.c	/^size_t		ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f	typeref:typename:size_t
-ft_strlen	libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f	typeref:typename:size_t
-ft_strmapi	libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))$/;"	f	typeref:typename:char *
-ft_strncmp	libft/ft_strncmp.c	/^int		ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f	typeref:typename:int
-ft_strnstr	libft/ft_strnstr.c	/^char		*ft_strnstr(const char *h, const char *n, size_t len)$/;"	f	typeref:typename:char *
-ft_strrchr	libft/ft_strrchr.c	/^char		*ft_strrchr(const char *s, int c)$/;"	f	typeref:typename:char *
-ft_strrev	libft/ft_dec2hex.c	/^static void	ft_strrev(char *str)$/;"	f	typeref:typename:void	file:
-ft_strstr	libft/ft_strstr.c	/^char		*ft_strstr(const char *h, const char *n)$/;"	f	typeref:typename:char *
-ft_strtoupper	libft/ft_strtoupper.c	/^char		*ft_strtoupper(char *s)$/;"	f	typeref:typename:char *
-ft_strtrim	libft/ft_strtrim.c	/^char		*ft_strtrim(char const *s1, char const *set)$/;"	f	typeref:typename:char *
-ft_strtrim_helper	libft/ft_strtrim.c	/^static char	*ft_strtrim_helper(char const *s1, int start, int end)$/;"	f	typeref:typename:char *	file:
-ft_substr	libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:char *
-ft_tolower	libft/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f	typeref:typename:int
-ft_toupper	libft/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f	typeref:typename:int
-get_cmd	parser/parse.c	/^t_cmd	*get_cmd(const char *cmd_string, int is_piped)$/;"	f	typeref:typename:t_cmd *
-get_head_node	linkedlist/allocation.c	/^t_data		**get_head_node(void)$/;"	f	typeref:typename:t_data **
-get_last	parser/parse.c	/^t_cmd	*get_last(t_cmd *head)$/;"	f	typeref:typename:t_cmd *
-get_length	libft/ft_split.c	/^static	int		get_length(char const *s, int c, int start)$/;"	f	typeref:typename:int	file:
-hexer	libft/ft_dec2hex.c	/^static char	*hexer(int l)$/;"	f	typeref:typename:char *	file:
-integer_length	libft/ft_putnbr_fd.c	/^static int	integer_length(int nb)$/;"	f	typeref:typename:int	file:
-is_piped	parser/parser.h	/^	int				is_piped;$/;"	m	struct:s_cmd	typeref:typename:int
-is_set	libft/ft_strtrim.c	/^static int	is_set(char const *set, char c)$/;"	f	typeref:typename:int	file:
-is_str_digit	libft/is_str_digit.c	/^int		is_str_digit(const char *s)$/;"	f	typeref:typename:int
-length	libft/length.c	/^int		length(char **array)$/;"	f	typeref:typename:int
-lst_add_back	linkedlist/linkedlist.c	/^void	lst_add_back(t_data **head, t_data *node)$/;"	f	typeref:typename:void
-lst_add_front	linkedlist/linkedlist.c	/^void	lst_add_front(t_data **head, t_data *node)$/;"	f	typeref:typename:void
-lst_clear	linkedlist/linkedlist.c	/^void	lst_clear(t_data *head)$/;"	f	typeref:typename:void
-lst_last	linkedlist/linkedlist.c	/^t_data	*lst_last(t_data *node)$/;"	f	typeref:typename:t_data *
-lst_size	linkedlist/linkedlist_utils.c	/^int		lst_size(t_data *head)$/;"	f	typeref:typename:int
-main	main.c	/^int		main(int argc, char **argv)$/;"	f	typeref:typename:int
-negative_condition	libft/ft_itoa.c	/^static char	*negative_condition(long n)$/;"	f	typeref:typename:char *	file:
-new_node	linkedlist/linkedlist_utils.c	/^t_data	*new_node(void *data)$/;"	f	typeref:typename:t_data *
-next	linkedlist/linkedlist.h	/^	struct s_data	*next;$/;"	m	struct:s_data	typeref:struct:s_data *
-next	parser/parser.h	/^	struct s_cmd	*next;$/;"	m	struct:s_cmd	typeref:struct:s_cmd *
-norminette_helper	libft/ft_split.c	/^static	char	**norminette_helper(char const *s, char c, char **str, int j)$/;"	f	typeref:typename:char **	file:
-numlen	libft/ft_itoa.c	/^static long	numlen(long n)$/;"	f	typeref:typename:long	file:
-parse	parser/parse.c	/^void	parse(const char *cmd_line, t_cmd **head_addr)$/;"	f	typeref:typename:void
-power_ten	libft/ft_putnbr_fd.c	/^static int	power_ten(int power)$/;"	f	typeref:typename:int	file:
-previous	parser/parser.h	/^	struct s_cmd	*previous;$/;"	m	struct:s_cmd	typeref:struct:s_cmd *
-print_all_cmds	parser/parse_debugger.c	/^void	print_all_cmds(t_cmd *head)$/;"	f	typeref:typename:void
-print_cmd	parser/parse_debugger.c	/^void	print_cmd(t_cmd *cmd)$/;"	f	typeref:typename:void
-re	Makefile	/^re: fclean all$/;"	t
-re	libft/Makefile	/^re:	fclean all$/;"	t
-re	linkedlist/Makefile	/^re:	fclean all$/;"	t
-re	parser/Makefile	/^re: fclean all$/;"	t
-redirection	parser/parser.h	/^	char			redirection;$/;"	m	struct:s_cmd	typeref:typename:char
+add	linkedlist/linkedlist_utils.c	/^void	add(t_data **head, void *data)$/;"	f
+add_cmd	parser/parse.c	/^static void	add_cmd(t_cmd **head_addr, t_cmd *cmd)$/;"	f	file:
+add_double_pointer	linkedlist/linkedlist_utils.c	/^void	add_double_pointer(char **ptr)$/;"	f
+allocate_line	get_next_line/get_next_line_utils.c	/^int			allocate_line(char **line, char **buffer)$/;"	f
+args	parser/parser.h	/^	char			**args;$/;"	m	struct:s_cmd
+buffer	get_next_line/get_next_line.h	/^	char			*buffer;$/;"	m	struct:s_list
+check_equality	libft/ft_strnstr.c	/^static int	check_equality(const char *h, const char *n, int i)$/;"	f	file:
+check_equality	libft/ft_strstr.c	/^static int	check_equality(const char *h, const char *n, int i)$/;"	f	file:
+cmd_init	parser/parse.c	/^static void	cmd_init(t_cmd *cmd, char **args, int is_piped)$/;"	f	file:
+command	parser/parser.h	/^	char			*command;$/;"	m	struct:s_cmd
+count_char	libft/count_char.c	/^int		count_char(const char *s, char c)$/;"	f
+count_words	libft/ft_split.c	/^static	int		count_words(char const *s, char c)$/;"	f	file:
+data	linkedlist/linkedlist.h	/^	void			*data;$/;"	m	struct:s_data
+err	errors.c	/^void	err(const char *message)$/;"	f
+error	linkedlist/error.c	/^void	error(void)$/;"	f
+error	parser/parser.h	/^	char			*error;$/;"	m	struct:s_cmd
+error_file	linkedlist/error.c	/^void	error_file(const char *file_name, const char *message)$/;"	f
+error_line	linkedlist/error.c	/^void	error_line(int line, const char *message)$/;"	f
+error_message	linkedlist/error.c	/^void	error_message(const char *message)$/;"	f
+fd	get_next_line/get_next_line.h	/^	int				fd;$/;"	m	struct:s_list
+fd	parser/parser.h	/^	int				fd;$/;"	m	struct:s_cmd
+ferr	errors.c	/^void	ferr(const char *message, const char *arg)$/;"	f
+free_double_pointer	libft/free_double_pointer.c	/^void	free_double_pointer(char **ptr)$/;"	f
+free_node	linkedlist/linkedlist.c	/^void	free_node(t_data *node)$/;"	f
+ft_atoi	libft/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
+ft_bzero	libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_calloc	libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_dec2hex	libft/ft_dec2hex.c	/^char		*ft_dec2hex(size_t decimal)$/;"	f
+ft_isalnum	libft/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
+ft_isalpha	libft/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
+ft_isascii	libft/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
+ft_isdigit	libft/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f
+ft_isprint	libft/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f
+ft_itoa	libft/ft_itoa.c	/^char		*ft_itoa(long n)$/;"	f
+ft_memccpy	libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memchr	libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memcmp	libft/ft_memcmp.c	/^int		ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcpy	libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memmove	libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memset	libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_putchar_fd	libft/ft_putchar_fd.c	/^void	ft_putchar_fd(const char c, int fd)$/;"	f
+ft_putendl_fd	libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putnbr_fd	libft/ft_putnbr_fd.c	/^void		ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putstr	libft/ft_putstr.c	/^void	ft_putstr(const char *s)$/;"	f
+ft_putstr_fd	libft/ft_putstr_fd.c	/^void	ft_putstr_fd(const char *s, int fd)$/;"	f
+ft_split	libft/ft_split.c	/^char			**ft_split(char const *s, char c)$/;"	f
+ft_strchr	libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strcmp	libft/ft_strcmp.c	/^int		ft_strcmp(const char *s1, const char *s2)$/;"	f
+ft_strdup	libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strjoin	libft/ft_strjoin.c	/^char		*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strlcat	libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
+ft_strlcpy	libft/ft_strlcpy.c	/^size_t		ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f
+ft_strlen	libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f
+ft_strmapi	libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))$/;"	f
+ft_strncmp	libft/ft_strncmp.c	/^int		ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strnstr	libft/ft_strnstr.c	/^char		*ft_strnstr(const char *h, const char *n, size_t len)$/;"	f
+ft_strrchr	libft/ft_strrchr.c	/^char		*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrev	libft/ft_dec2hex.c	/^static void	ft_strrev(char *str)$/;"	f	file:
+ft_strstr	libft/ft_strstr.c	/^char		*ft_strstr(const char *h, const char *n)$/;"	f
+ft_strtoupper	libft/ft_strtoupper.c	/^char		*ft_strtoupper(char *s)$/;"	f
+ft_strtrim	libft/ft_strtrim.c	/^char		*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim_helper	libft/ft_strtrim.c	/^static char	*ft_strtrim_helper(char const *s1, int start, int end)$/;"	f	file:
+ft_substr	libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_tolower	libft/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
+ft_toupper	libft/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
+get_cmd	parser/parse.c	/^static t_cmd	*get_cmd(const char *cmd_string, int is_piped)$/;"	f	file:
+get_fd_buffer	get_next_line/get_next_line.c	/^static char		**get_fd_buffer(int fd, t_list **buffers)$/;"	f	file:
+get_file_name	parser/input_redirection.c	/^char	*get_file_name(const char *s)$/;"	f
+get_head_node	linkedlist/allocation.c	/^t_data		**get_head_node(void)$/;"	f
+get_last_cmd	parser/parse.c	/^static t_cmd	*get_last_cmd(t_cmd *head)$/;"	f	file:
+get_length	libft/ft_split.c	/^static	int		get_length(char const *s, int c, int start)$/;"	f	file:
+get_next_input_redirection	parser/input_redirection.c	/^char	*get_next_input_redirection(const char *cmd_line, int occur)$/;"	f
+get_next_line	get_next_line/get_next_line.c	/^int				get_next_line(int fd, char **line)$/;"	f
+have_a_newline	get_next_line/get_next_line_utils.c	/^int			have_a_newline(char *str)$/;"	f
+hexer	libft/ft_dec2hex.c	/^static char	*hexer(int l)$/;"	f	file:
+init_terminal_data	minishell.c	/^void	init_terminal_data(void)$/;"	f
+integer_length	libft/ft_putnbr_fd.c	/^static int	integer_length(int nb)$/;"	f	file:
+is_piped	parser/parser.h	/^	int				is_piped;$/;"	m	struct:s_cmd
+is_set	libft/ft_strtrim.c	/^static int	is_set(char const *set, char c)$/;"	f	file:
+is_str_digit	libft/is_str_digit.c	/^int		is_str_digit(const char *s)$/;"	f
+l_lstnew	get_next_line/get_next_line_utils.c	/^t_list		*l_lstnew(int fd)$/;"	f
+l_lstremove	get_next_line/get_next_line.c	/^static void		l_lstremove(int fd, t_list **buffers)$/;"	f	file:
+l_lstremove_afterhead	get_next_line/get_next_line.c	/^static void		l_lstremove_afterhead(int fd, t_list *node)$/;"	f	file:
+length	libft/length.c	/^int		length(char **array)$/;"	f
+line_allocation	get_next_line/get_next_line.c	/^static int		line_allocation(t_list **bs, char **li, char **buf, int fd)$/;"	f	file:
+lst_add_back	linkedlist/linkedlist.c	/^void	lst_add_back(t_data **head, t_data *node)$/;"	f
+lst_add_front	linkedlist/linkedlist.c	/^void	lst_add_front(t_data **head, t_data *node)$/;"	f
+lst_clear	linkedlist/linkedlist.c	/^void	lst_clear(t_data *head)$/;"	f
+lst_last	linkedlist/linkedlist.c	/^t_data	*lst_last(t_data *node)$/;"	f
+lst_size	linkedlist/linkedlist_utils.c	/^int		lst_size(t_data *head)$/;"	f
+main	minishell.c	/^int		main(void)$/;"	f
+main	stack/main.c	/^int		main(void)$/;"	f
+negative_condition	libft/ft_itoa.c	/^static char	*negative_condition(long n)$/;"	f	file:
+new_node	linkedlist/linkedlist_utils.c	/^t_data	*new_node(void *data)$/;"	f
+next	get_next_line/get_next_line.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	linkedlist/linkedlist.h	/^	struct s_data	*next;$/;"	m	struct:s_data	typeref:struct:s_data::s_data
+next	parser/parser.h	/^	struct s_cmd	*next;$/;"	m	struct:s_cmd	typeref:struct:s_cmd::s_cmd
+norminette_helper	libft/ft_split.c	/^static	char	**norminette_helper(char const *s, char c, char **str, int j)$/;"	f	file:
+numlen	libft/ft_itoa.c	/^static long	numlen(long n)$/;"	f	file:
+parse	parser/parse.c	/^void	parse(const char *cmd_line, t_cmd **head_addr)$/;"	f
+power_ten	libft/ft_putnbr_fd.c	/^static int	power_ten(int power)$/;"	f	file:
+previous	parser/parser.h	/^	struct s_cmd	*previous;$/;"	m	struct:s_cmd	typeref:struct:s_cmd::s_cmd
+print_all_cmds	parser/parse_debugger.c	/^void	print_all_cmds(t_cmd *head)$/;"	f
+print_cmd	parser/parse_debugger.c	/^void	print_cmd(t_cmd *cmd)$/;"	f
+redirection	parser/parser.h	/^	char			redirection;$/;"	m	struct:s_cmd
 s_cmd	parser/parser.h	/^typedef struct	s_cmd$/;"	s
 s_data	linkedlist/linkedlist.h	/^typedef struct	s_data$/;"	s
-str_allocation	libft/ft_split.c	/^static	char	*str_allocation(char const *s, char c, int start)$/;"	f	typeref:typename:char *	file:
-swap	linkedlist/swap.c	/^void	swap(t_data *this, t_data *other)$/;"	f	typeref:typename:void
+s_list	get_next_line/get_next_line.h	/^typedef	struct	s_list$/;"	s
+str_allocation	libft/ft_split.c	/^static	char	*str_allocation(char const *s, char c, int start)$/;"	f	file:
+str_join	get_next_line/get_next_line_utils.c	/^char		*str_join(char *buffer, char *tmp, int read_return, int i)$/;"	f
+sub_str	get_next_line/get_next_line_utils.c	/^char		*sub_str(char const *s, unsigned int start)$/;"	f
+swap	linkedlist/swap.c	/^void	swap(t_data *this, t_data *other)$/;"	f
 t_cmd	parser/parser.h	/^}				t_cmd;$/;"	t	typeref:struct:s_cmd
 t_data	linkedlist/linkedlist.h	/^}				t_data;$/;"	t	typeref:struct:s_data
-xfree	linkedlist/allocation.c	/^void		xfree(void *data)$/;"	f	typeref:typename:void
-xfree_after_head	linkedlist/allocation.c	/^static int	xfree_after_head(t_data *node, void *data)$/;"	f	typeref:typename:int	file:
-xfree_double_pointer	linkedlist/linkedlist_utils.c	/^void	xfree_double_pointer(char **ptr)$/;"	f	typeref:typename:void
-xmalloc	linkedlist/allocation.c	/^void		*xmalloc(size_t size)$/;"	f	typeref:typename:void *
-xstrdup	linkedlist/utils.c	/^char		*xstrdup(const char *s)$/;"	f	typeref:typename:char *
-xstrjoin	linkedlist/utils.c	/^char		*xstrjoin(const char *s1, const char *s2)$/;"	f	typeref:typename:char *
-xstrjoin_arr	linkedlist/utils.c	/^char		*xstrjoin_arr(const char **arglst, size_t n)$/;"	f	typeref:typename:char *
-xsubstr	linkedlist/xsubstr.c	/^char	*xsubstr(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:char *
-zero_condition	libft/ft_itoa.c	/^static char	*zero_condition(void)$/;"	f	typeref:typename:char *	file:
+t_list	get_next_line/get_next_line.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+xfree	linkedlist/allocation.c	/^void		xfree(void *data)$/;"	f
+xfree_after_head	linkedlist/allocation.c	/^static int	xfree_after_head(t_data *node, void *data)$/;"	f	file:
+xfree_double_pointer	linkedlist/linkedlist_utils.c	/^void	xfree_double_pointer(char **ptr)$/;"	f
+xmalloc	linkedlist/allocation.c	/^void		*xmalloc(size_t size)$/;"	f
+xstrdup	linkedlist/utils.c	/^char		*xstrdup(const char *s)$/;"	f
+xstrjoin	linkedlist/utils.c	/^char		*xstrjoin(const char *s1, const char *s2)$/;"	f
+xstrjoin_arr	linkedlist/utils.c	/^char		*xstrjoin_arr(const char **arglst, size_t n)$/;"	f
+xsubstr	linkedlist/xsubstr.c	/^char	*xsubstr(char const *s, unsigned int start, size_t len)$/;"	f
+zero_condition	libft/ft_itoa.c	/^static char	*zero_condition(void)$/;"	f	file:

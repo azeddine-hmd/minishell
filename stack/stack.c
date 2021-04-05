@@ -1,3 +1,3 @@
 #include "stack.h"
 
-void	stac
+//TODO: add all stack functions
