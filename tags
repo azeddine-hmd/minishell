@@ -17,27 +17,30 @@ CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	linkedlist/Makefile	/^CFLAGS = -Wall -Werror -Wextra \\$/;"	m
 CFLAGS	parser/Makefile	/^CFLAGS = -Wall -Wextra -Werror \\$/;"	m
 CFLAGS	stack/Makefile	/^CFLAGS = -Wall -Werror -Wextra \\$/;"	m
-COLOR_BLACK	errors.h	/^# define COLOR_BLACK /;"	d
-COLOR_BLUE	errors.h	/^# define COLOR_BLUE /;"	d
-COLOR_CYAN	errors.h	/^# define COLOR_CYAN /;"	d
-COLOR_DEFAULT	errors.h	/^# define COLOR_DEFAULT /;"	d
-COLOR_GREEN	errors.h	/^# define COLOR_GREEN /;"	d
-COLOR_PURPLE	errors.h	/^# define COLOR_PURPLE /;"	d
-COLOR_RED	errors.h	/^# define COLOR_RED /;"	d
-COLOR_WHITE	errors.h	/^# define COLOR_WHITE /;"	d
-COLOR_YELLOW	errors.h	/^# define COLOR_YELLOW /;"	d
+COLORS_BLACK	errors.h	/^# define COLORS_BLACK /;"	d
+COLORS_BLUE	errors.h	/^# define COLORS_BLUE /;"	d
+COLORS_CYAN	errors.h	/^# define COLORS_CYAN /;"	d
+COLORS_DEFAULT	errors.h	/^# define COLORS_DEFAULT /;"	d
+COLORS_GREEN	errors.h	/^# define COLORS_GREEN /;"	d
+COLORS_PURPLE	errors.h	/^# define COLORS_PURPLE /;"	d
+COLORS_RED	errors.h	/^# define COLORS_RED /;"	d
+COLORS_WHITE	errors.h	/^# define COLORS_WHITE /;"	d
+COLORS_YELLOW	errors.h	/^# define COLORS_YELLOW /;"	d
 ERRORS_H	errors.h	/^# define ERRORS_H$/;"	d
 ERR_TERMACCESS	errors.h	/^# define ERR_TERMACCESS /;"	d
 ERR_TERMNOTDEFINED	errors.h	/^# define ERR_TERMNOTDEFINED /;"	d
 ERR_TERMTYPE	errors.h	/^# define ERR_TERMTYPE /;"	d
 FALSE	libft/libft.h	/^# define FALSE /;"	d
 GET_NEXT_LINE_H	get_next_line/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+KS_BS	minishell.c	/^# define KS_BS /;"	d	file:
+KS_CR	minishell.c	/^# define KS_CR /;"	d	file:
 LIBFT_H	libft/libft.h	/^# define LIBFT_H$/;"	d
 LIBS	Makefile	/^LIBS = libft\/libft.a \\$/;"	m
 LINKEDLIST_H	linkedlist/linkedlist.h	/^# define LINKEDLIST_H$/;"	d
 MAKE	Makefile	/^MAKE = make --no-print-directory -C$/;"	m
 MAKE	parser/Makefile	/^MAKE = make -C$/;"	m
 MINISHELL_H	minishell.h	/^# define MINISHELL_H$/;"	d
+MS_BUFFER_SIZE	minishell.c	/^# define MS_BUFFER_SIZE /;"	d	file:
 NAME	Makefile	/^NAME = minishell$/;"	m
 NAME	get_next_line/Makefile	/^NAME = libget_next_line.a$/;"	m
 NAME	libft/Makefile	/^NAME = libft.a$/;"	m
@@ -59,6 +62,7 @@ SRC	parser/Makefile	/^SRC = parse.c \\$/;"	m
 SRC	stack/Makefile	/^SRC = stack.c \\$/;"	m
 STACK_H	stack/stack.h	/^# define STACK_H$/;"	d
 TRUE	libft/libft.h	/^# define TRUE /;"	d
+_putc	minishell.c	/^int	_putc(int c)$/;"	f
 add	linkedlist/linkedlist_utils.c	/^void	add(t_data **head, void *data)$/;"	f
 add_cmd	parser/parse.c	/^static void	add_cmd(t_cmd **head_addr, t_cmd *cmd)$/;"	f	file:
 add_double_pointer	linkedlist/linkedlist_utils.c	/^void	add_double_pointer(char **ptr)$/;"	f
@@ -72,7 +76,8 @@ command	parser/parser.h	/^	char			*command;$/;"	m	struct:s_cmd
 count_char	libft/count_char.c	/^int		count_char(const char *s, char c)$/;"	f
 count_words	libft/ft_split.c	/^static	int		count_words(char const *s, char c)$/;"	f	file:
 data	linkedlist/linkedlist.h	/^	void			*data;$/;"	m	struct:s_data
-err	errors.c	/^void	err(const char *message)$/;"	f
+enable_raw_mode	minishell.c	/^void	enable_raw_mode(void)$/;"	f
+err	errors.c	/^void	err(const char *error)$/;"	f
 error	linkedlist/error.c	/^void	error(void)$/;"	f
 error	parser/parser.h	/^	char			*error;$/;"	m	struct:s_cmd
 error_file	linkedlist/error.c	/^void	error_file(const char *file_name, const char *message)$/;"	f
@@ -80,7 +85,7 @@ error_line	linkedlist/error.c	/^void	error_line(int line, const char *message)$/
 error_message	linkedlist/error.c	/^void	error_message(const char *message)$/;"	f
 fd	get_next_line/get_next_line.h	/^	int				fd;$/;"	m	struct:s_list
 fd	parser/parser.h	/^	int				fd;$/;"	m	struct:s_cmd
-ferr	errors.c	/^void	ferr(const char *message, const char *arg)$/;"	f
+ferr	errors.c	/^void	ferr(const char *err_format, const char *arg)$/;"	f
 free_double_pointer	libft/free_double_pointer.c	/^void	free_double_pointer(char **ptr)$/;"	f
 free_node	linkedlist/linkedlist.c	/^void	free_node(t_data *node)$/;"	f
 ft_atoi	libft/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
@@ -151,6 +156,7 @@ lst_last	linkedlist/linkedlist.c	/^t_data	*lst_last(t_data *node)$/;"	f
 lst_size	linkedlist/linkedlist_utils.c	/^int		lst_size(t_data *head)$/;"	f
 main	minishell.c	/^int		main(void)$/;"	f
 main	stack/main.c	/^int		main(void)$/;"	f
+ms_clear_screen	minishell.c	/^void	ms_clear_screen(char buf[], int *i)$/;"	f
 negative_condition	libft/ft_itoa.c	/^static char	*negative_condition(long n)$/;"	f	file:
 new_node	linkedlist/linkedlist_utils.c	/^t_data	*new_node(void *data)$/;"	f
 next	get_next_line/get_next_line.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
@@ -158,7 +164,7 @@ next	linkedlist/linkedlist.h	/^	struct s_data	*next;$/;"	m	struct:s_data	typeref
 next	parser/parser.h	/^	struct s_cmd	*next;$/;"	m	struct:s_cmd	typeref:struct:s_cmd::s_cmd
 norminette_helper	libft/ft_split.c	/^static	char	**norminette_helper(char const *s, char c, char **str, int j)$/;"	f	file:
 numlen	libft/ft_itoa.c	/^static long	numlen(long n)$/;"	f	file:
-parse	parser/parse.c	/^void	parse(const char *cmd_line, t_cmd **head_addr)$/;"	f
+parse	parser/parse.c	/^void	parse(const char *cmd_line, t_cmd **head_addr, char **syntax_err)$/;"	f
 power_ten	libft/ft_putnbr_fd.c	/^static int	power_ten(int power)$/;"	f	file:
 previous	parser/parser.h	/^	struct s_cmd	*previous;$/;"	m	struct:s_cmd	typeref:struct:s_cmd::s_cmd
 print_all_cmds	parser/parse_debugger.c	/^void	print_all_cmds(t_cmd *head)$/;"	f

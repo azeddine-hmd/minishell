@@ -5,9 +5,11 @@
 # include "linkedlist/linkedlist.h"
 # include "parser/parser.h"
 # include "get_next_line/get_next_line.h"
-# include "errors.h"
 # include <termcap.h>
 # include <curses.h>
+# include <termios.h>
+# include <unistd.h>
 # include <term.h>
+# include "errors.h"
 
 #endif

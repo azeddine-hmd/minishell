@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 16:05:23 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/03 16:29:53 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/06 10:25:23 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	print_cmd(t_cmd *cmd)
 		printf("redirection: '\\0'\n");
 	else
 		printf("redirection: '%c'\n", cmd->redirection);
+	printf("error: \"%s\"\n", cmd->error);
 	printf("\n");
 }
 

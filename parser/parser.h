@@ -16,7 +16,7 @@ typedef struct	s_cmd
 	struct s_cmd	*previous;
 }				t_cmd;
 
-void	parse(const char *cmd_line, t_cmd **head_addr);
+void	parse(const char *cmd_line, t_cmd **head_addr, char **syntax_err);
 
 // only for debugging
 void	print_cmd(t_cmd *cmd);

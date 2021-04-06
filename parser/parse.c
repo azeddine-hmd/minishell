@@ -2,10 +2,8 @@
 
 static t_cmd	*get_last_cmd(t_cmd *head)
 {
-	while (head->next == NULL)
-	{
+	while (head->next != NULL)
 		head = head->next;
-	}
 	return (head);
 }
 
@@ -41,7 +39,7 @@ static t_cmd	*get_cmd(const char *cmd_string, int is_piped)
 	return (cmd);
 }
 
-void	parse(const char *cmd_line, t_cmd **head_addr)
+void	parse(const char *cmd_line, t_cmd **head_addr, char **syntax_err)
 {
 	t_cmd	*cmd;
 	size_t	i;
@@ -49,15 +47,18 @@ void	parse(const char *cmd_line, t_cmd **head_addr)
 	int		is_next_pipe;
 	char	*cmd_string;
 
+	if (cmd_line == NULL || *cmd_line == 0)
+		return ;
+	*syntax_err = NULL;
 	*head_addr = NULL;
 	start = 0;
 	is_next_pipe = FALSE;
 	i = -1;
 	while (cmd_line[++i])
 	{
-		if (cmd_line[i] != ';' || cmd_line[i] != '|')
+		if (cmd_line[i] != ';' && cmd_line[i] != '|')
 			continue ;
-		cmd_string = xsubstr(cmd_line, start, i - start + 1);
+		cmd_string = xsubstr(cmd_line, start, i - start);
 		cmd = get_cmd(cmd_string, is_next_pipe);
 		add_cmd(head_addr, cmd);
 		is_next_pipe = (cmd_line[i] == '|') ? TRUE : FALSE;

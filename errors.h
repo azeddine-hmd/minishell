@@ -4,7 +4,7 @@
 # include <stdlib.h>
 
 /*
-** errors
+** terminal error
 */
 
 # define ERR_TERMTYPE "Specify a terminal type with `setenv TERM <yourtype>.`"
@@ -12,18 +12,24 @@
 # define ERR_TERMNOTDEFINED "Terminal type `%s` is not defined."
 
 /*
+** syntax errors
+*/
+
+//TODO: print parse errors
+
+/*
 ** colors
 */
 
-# define COLOR_DEFAULT "\033[0;31m"
-# define COLOR_BLACK "\033[0;30m"
-# define COLOR_RED "\033[031m"
-# define COLOR_GREEN "\033[0;32m"
-# define COLOR_YELLOW "\033[0;33m"
-# define COLOR_BLUE "\033[0;34m"
-# define COLOR_PURPLE "\033[0;35m"
-# define COLOR_CYAN "\033[0;36m"
-# define COLOR_WHITE "\033[0;36m"
+# define COLORS_DEFAULT "\033[0;0m"
+# define COLORS_BLACK "\033[0;30m"
+# define COLORS_RED "\033[031m"
+# define COLORS_GREEN "\033[0;32m"
+# define COLORS_YELLOW "\033[0;33m"
+# define COLORS_BLUE "\033[0;34m"
+# define COLORS_PURPLE "\033[0;35m"
+# define COLORS_CYAN "\033[0;36m"
+# define COLORS_WHITE "\033[0;36m"
 
 /*
 ** functions prototypes

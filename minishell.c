@@ -1,15 +1,42 @@
 #include "minishell.h"
+# define MS_BUFFER_SIZE 300000
+
+int	_putc(int c)
+{
+	write (1, &c, 1);
+	return (0);
+}
+
+void	ms_clear_screen(char buf[], int *i)
+{
+	//TODO: clear screen then print login prompt
+	char *value = tgetstr("cl", NULL);
+	tputs(value, 1, &_putc);
+	printf(COLORS_BLUE);
+	printf("minishell > ");
+	printf(COLORS_DEFAULT);
+	ft_bzero(buf, MS_BUFFER_SIZE);
+	*i = 0;
+}
+
+void	enable_raw_mode(void)
+{
+	struct termios raw;
+
+	tcgetattr(STDIN_FILENO, &raw);
+	raw.c_lflag &= ~(ECHO | ISIG | ICANON);
+	tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
+}
 
 void	init_terminal_data(void)
 {
 	char 	*termtype;
-	char	term_buffer[2048];
 	int		success;
 
 	termtype = getenv("TERM");
 	if (termtype == NULL)
 		err(ERR_TERMTYPE);
-	success = tgetent(term_buffer, termtype);
+	success = tgetent(NULL, termtype);
 	if (success < 0)
 		err(ERR_TERMACCESS);
 	if (success == 0)
@@ -19,17 +46,61 @@ void	init_terminal_data(void)
 int		main(void)
 {
 	t_cmd	*cmd_list;
-	char	*line;
+	char	*syntax_err;
+
+	char 	c;
+	char	buf[BUFFER_SIZE];
+	int	i;
 
 	setbuf(stdout, NULL);
 	init_terminal_data();
-	while (true)
+	enable_raw_mode();
+	printf(COLORS_BLUE);
+	printf("minishell > ");
+	printf(COLORS_DEFAULT);
+	ft_bzero(buf, sizeof(buf));
+	i = 0;
+	while (read(STDIN_FILENO, &c, 1) == 1)
 	{
-		printf("minishell > ");
-		get_next_line(STDIN_FILENO, &line);
-		parse(line, &cmd_list);
-		print_all_cmds(cmd_list);
-		free(line);
+# define KS_BS 127
+		if (c == KS_BS)
+		{
+			if (ft_strlen(buf) == 1)
+				continue ;
+			char *value = tgetstr("le", NULL);
+			tputs(value, 1, &_putc);
+			value = tgetstr("dc", NULL);
+			tputs(value, 1, &_putc);
+			buf[i] = 0;
+			i--;
+			continue ;
+		}
+# define KS_CR 10
+		if (c == KS_CR)
+		{
+			printf("%c", c);
+			// handle commands in background
+			if (!ft_strncmp(buf, "clear", 5))
+			{
+				ms_clear_screen(buf, &i);
+				continue ;
+			}
+			parse(buf, &cmd_list, &syntax_err);
+			print_all_cmds(cmd_list);
+			printf(COLORS_BLUE);
+			printf("minishell > ");
+			printf(COLORS_DEFAULT);
+			ft_bzero(buf, sizeof(buf));
+			i = 0;
+			continue ;
+		}
+		printf("%c", c);
+		buf[i] = c;
+		i++;
+
+		//parse(line, &cmd_list, &syntax_err);
+		//print_all_cmds(cmd_list);
+		//free(line);
 	}
 	return (0);
 }
