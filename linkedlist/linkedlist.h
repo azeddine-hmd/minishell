@@ -32,5 +32,6 @@ char			*xstrdup(const char *s);
 char			*xstrjoin(const char *s1, const char *s2);
 char			*xstrjoin_arr(const char **arglst, size_t n);
 char			*xsubstr(char const *s, unsigned int start, size_t len);
+void			*xrealloc(void *ptr, size_t old_size, size_t new_size);
 
 #endif
