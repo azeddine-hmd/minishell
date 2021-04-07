@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 07:37:21 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/07 07:54:55 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/07 09:47:18 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	 *xrealloc(void *ptr, size_t old_size, size_t new_size)
 	}
 	else
 	{
-		if (ptr && new_size > old_size)
-			error_message("memory allocation failed");
+		if (!(ptr && new_size > old_size))
+			error();
 		ptr_new = xmalloc(new_size);
 		if (ptr_new)
 		{

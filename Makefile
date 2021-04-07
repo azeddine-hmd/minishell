@@ -13,6 +13,10 @@ LIBS = libft/libft.a \
 
 SRC = minishell.c \
 	  errors.c \
+	  terminal.c \
+	  cursor.c \
+	  window.c \
+	  buffer.c \
 
 OBJ = ${SRC:.c=.o}
 

@@ -4,7 +4,7 @@
 # include <stdlib.h>
 
 /*
-** terminal error
+** terminal errors
 */
 
 # define ERR_TERMTYPE "Specify a terminal type with `setenv TERM <yourtype>.`"
@@ -30,10 +30,6 @@
 # define COLORS_PURPLE "\033[0;35m"
 # define COLORS_CYAN "\033[0;36m"
 # define COLORS_WHITE "\033[0;36m"
-
-/*
-** functions prototypes
-*/
 
 void	err(const char *error);
 void	ferr(const char *err_format, const char *arg);

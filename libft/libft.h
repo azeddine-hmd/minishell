@@ -6,7 +6,7 @@
 /*   By: ahamdaou <ahamdaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:38:41 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/07 07:46:07 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/07 08:05:41 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void			ft_putstr(const char *s);
 int				count_char(const char *s, char c);
 int				length(char **array);
 void			free_double_pointer(char **ptr);
+int				ft_putc(int c);
 
 #endif
