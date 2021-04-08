@@ -1,4 +1,5 @@
 minishell
-*.o
+**/*.o
+**/*.a
 **/tags
-*.dSYM
+**/*.dSYM
