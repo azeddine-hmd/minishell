@@ -1,0 +1,16 @@
+minishell.c:			(input->pos)++;
+buffer.c:	if (input->pos == 0)
+buffer.c:		(input->pos)--;
+buffer.c:		input->buf[input->pos] = 0;
+buffer.c:		fprintf(ms_log, "buf: '%s'\n", input->buf);
+buffer.c:		fprintf(ms_log, "pos: '%zu'\n\n", input->pos);
+buffer.c:	if (input->pos == input->size - 1)
+buffer.c:		input->buf = xrealloc(input->buf, input->size, input->size * 2);
+buffer.c:		input->size = input->size * 2;
+buffer.c:	input->buf[input->pos] = c;
+buffer.c:	(input->pos)++;
+buffer.c:	fprintf(ms_log, "buf: '%s'\n", input->buf);
+buffer.c:	fprintf(ms_log, "pos: '%zu'\n\n", input->pos);
+buffer.c:	input->buf = (char*)xmalloc(MS_BUFFER_SIZE);
+buffer.c:	input->size = MS_BUFFER_SIZE;
+buffer.c:	input->pos = 0;

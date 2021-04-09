@@ -7,15 +7,15 @@ static t_cmd	*get_last_cmd(t_cmd *head)
 	return (head);
 }
 
-static void	add_cmd(t_cmd **head_addr, t_cmd *cmd)
+static void	add_cmd(t_cmd **a_head, t_cmd *cmd)
 {
 	t_cmd	*last_cmd;
 
-	if (*head_addr == NULL)
-		*head_addr = cmd;
+	if (*a_head == NULL)
+		*a_head = cmd;
 	else
 	{
-		last_cmd = get_last_cmd(*head_addr);
+		last_cmd = get_last_cmd(*a_head);
 		last_cmd->next = cmd;
 	}
 }
@@ -39,7 +39,7 @@ static t_cmd	*get_cmd(const char *cmd_string, int is_piped)
 	return (cmd);
 }
 
-void	parse(const char *cmd_line, t_cmd **head_addr, char **syntax_err)
+void	parse(const char *cmdli, t_cmd **a_head, char **synerr)
 {
 	t_cmd	*cmd;
 	size_t	i;
@@ -47,24 +47,24 @@ void	parse(const char *cmd_line, t_cmd **head_addr, char **syntax_err)
 	int		is_next_pipe;
 	char	*cmd_string;
 
-	if (cmd_line == NULL || *cmd_line == 0)
+	if (cmdli == NULL || *cmdli == 0)
 		return ;
-	*syntax_err = NULL;
-	*head_addr = NULL;
+	*synerr = NULL;
+	*a_head = NULL;
 	start = 0;
 	is_next_pipe = FALSE;
 	i = -1;
-	while (cmd_line[++i])
+	while (cmdli[++i])
 	{
-		if (cmd_line[i] != ';' && cmd_line[i] != '|')
+		if (cmdli[i] != ';' && cmdli[i] != '|')
 			continue ;
-		cmd_string = xsubstr(cmd_line, start, i - start);
+		cmd_string = xsubstr(cmdli, start, i - start);
 		cmd = get_cmd(cmd_string, is_next_pipe);
-		add_cmd(head_addr, cmd);
-		is_next_pipe = (cmd_line[i] == '|') ? TRUE : FALSE;
+		add_cmd(a_head, cmd);
+		is_next_pipe = (cmdli[i] == '|') ? TRUE : FALSE;
 		start = i + 1;
 	}
-	cmd_string = xsubstr(cmd_line, start, ft_strlen(cmd_line));
+	cmd_string = xsubstr(cmdli, start, ft_strlen(cmdli));
 	cmd = get_cmd(cmd_string, is_next_pipe);
-	add_cmd(head_addr, cmd);
+	add_cmd(a_head, cmd);
 }

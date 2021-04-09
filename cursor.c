@@ -6,32 +6,18 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 10:33:25 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/07 10:53:12 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/09 12:57:32 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-** move cursor left
+** move cursor left and delete character inside cursor
 */
 
-void	ms_curlef(void)
+void	ms_chrdel(t_cap cap)
 {
-	char *value;
-
-	value = tgetstr("le", NULL);
-	tputs(value, 1, &ft_putc);
-}
-
-/*
-** delete character inside cursor
-*/
-
-void	ms_curdel(void)
-{
-	char *value;
-
-	value = tgetstr("dc", NULL);
-	tputs(value, 1, &ft_putc);
+	tputs(cap.le, 1, &ft_putc);
+	tputs(cap.dc, 1, &ft_putc);
 }
