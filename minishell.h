@@ -65,7 +65,7 @@ FILE *ms_buflog;
 
 
 void		ms_bufinit(t_buf **a_buf);
-void		ms_bufdel(t_buf *buf, t_cap cap);
+void		ms_bufdel(t_buf *buf, t_cap *cap);
 void		ms_bufadd(t_buf *buf, char out);
 void		ms_bufrst(t_buf *buf);
 
@@ -75,8 +75,8 @@ void		ms_bufrst(t_buf *buf);
 
 void		ms_prompt(void);
 void		ms_scrclr(void);
-void		ms_chrdel(t_cap cap);
-void		ms_setup(t_cap *cap, t_buf **a_buf);
+void		ms_chrdel(t_cap *cap);
+void		ms_setup(t_cap **cap, t_buf **a_buf);
 
 
 #endif

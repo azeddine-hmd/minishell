@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:09:23 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/09 13:23:30 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/09 14:35:27 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ void		ms_prompt(void)
 ** initializing all terminal capabilities
 */
 
-static void	ms_capinit(t_cap cap)
+static void	ms_capinit(t_cap **cap)
 {
-	cap.le = xstrdup(tgetstr("le", NULL));
-	cap.dc = xstrdup(tgetstr("dc", NULL));
+	*cap = (t_cap*)xmalloc(sizeof(t_cap));
+	(*cap)->le = xstrdup(tgetstr("le", NULL));
+	(*cap)->dc = xstrdup(tgetstr("dc", NULL));
 }
 
 static void	enable_raw_mode(void)
@@ -61,10 +62,10 @@ static void	ms_init_terminal_data(void)
 		ferr(ERR_TERMNOTDEFINED, termtype);
 }
 
-void		ms_setup(t_cap *cap, t_buf **a_input)
+void		ms_setup(t_cap **cap, t_buf **a_input)
 {
 	ms_init_terminal_data();
 	enable_raw_mode();
-	ms_capinit(*cap);
+	ms_capinit(cap);
 	ms_bufinit(a_input);
 }

@@ -28378,3 +28378,2790 @@ pos: '14'
 buf: 'echo something'
 pos: '15'
 
+buf: 'd'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: 'l'
+pos: '1'
+
+buf: 'le'
+pos: '2'
+
+buf: 'let'
+pos: '3'
+
+buf: 'let''
+pos: '4'
+
+buf: 'let's'
+pos: '5'
+
+buf: 'let's '
+pos: '6'
+
+buf: 'let's s'
+pos: '7'
+
+buf: 'let's se'
+pos: '8'
+
+buf: 'let's see'
+pos: '9'
+
+buf: 'let's see '
+pos: '10'
+
+buf: 'let's see w'
+pos: '11'
+
+buf: 'let's see wh'
+pos: '12'
+
+buf: 'let's see wha'
+pos: '13'
+
+buf: 'let's see what'
+pos: '14'
+
+buf: 'let's see what '
+pos: '15'
+
+buf: 'let's see what w'
+pos: '16'
+
+buf: 'let's see what we'
+pos: '17'
+
+buf: 'let's see what we '
+pos: '18'
+
+buf: 'let's see what we h'
+pos: '19'
+
+buf: 'let's see what we ha'
+pos: '20'
+
+buf: 'let's see what we hav'
+pos: '21'
+
+buf: 'let's see what we have'
+pos: '22'
+
+buf: 'let's see what we have '
+pos: '23'
+
+buf: 'let's see what we have h'
+pos: '24'
+
+buf: 'let's see what we have he'
+pos: '25'
+
+buf: 'let's see what we have her'
+pos: '26'
+
+buf: 'let's see what we have here'
+pos: '27'
+
+buf: 'let's see what we have here '
+pos: '28'
+
+buf: 'let's see what we have here'
+pos: '27'
+
+buf: 'let's see what we have her'
+pos: '26'
+
+buf: 'let's see what we have he'
+pos: '25'
+
+buf: 'let's see what we have h'
+pos: '24'
+
+buf: 'let's see what we have '
+pos: '23'
+
+buf: 'let's see what we have'
+pos: '22'
+
+buf: 'let's see what we hav'
+pos: '21'
+
+buf: 'let's see what we ha'
+pos: '20'
+
+buf: 'let's see what we h'
+pos: '19'
+
+buf: 'let's see what we '
+pos: '18'
+
+buf: 'let's see what we'
+pos: '17'
+
+buf: 'let's see what w'
+pos: '16'
+
+buf: 'let's see what '
+pos: '15'
+
+buf: 'let's see what'
+pos: '14'
+
+buf: 'let's see wha'
+pos: '13'
+
+buf: 'let's see wh'
+pos: '12'
+
+buf: 'let's see w'
+pos: '11'
+
+buf: 'let's see '
+pos: '10'
+
+buf: 'let's see'
+pos: '9'
+
+buf: 'let's se'
+pos: '8'
+
+buf: 'let's s'
+pos: '7'
+
+buf: 'let's '
+pos: '6'
+
+buf: 'let's'
+pos: '5'
+
+buf: 'let''
+pos: '4'
+
+buf: 'let'
+pos: '3'
+
+buf: 'le'
+pos: '2'
+
+buf: 'l'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'd'
+pos: '1'
+
+buf: 'df'
+pos: '2'
+
+buf: 'dfw'
+pos: '3'
+
+buf: 'dfwi'
+pos: '4'
+
+buf: 'dfwie'
+pos: '5'
+
+buf: 'dfwieo'
+pos: '6'
+
+buf: 'dfwieoj'
+pos: '7'
+
+buf: 'dfwieojf'
+pos: '8'
+
+buf: 'dfwieojfw'
+pos: '9'
+
+buf: 'dfwieojfwo'
+pos: '10'
+
+buf: 'dfwieojfwoi'
+pos: '11'
+
+buf: 'dfwieojfwoie'
+pos: '12'
+
+buf: 'dfwieojfwoie '
+pos: '13'
+
+buf: 'dfwieojfwoie j'
+pos: '14'
+
+buf: 'dfwieojfwoie jf'
+pos: '15'
+
+buf: 'dfwieojfwoie jfw'
+pos: '16'
+
+buf: 'dfwieojfwoie jfwe'
+pos: '17'
+
+buf: 'dfwieojfwoie jfwef'
+pos: '18'
+
+buf: 'dfwieojfwoie jfwefw'
+pos: '19'
+
+buf: 'dfwieojfwoie jfwefwe'
+pos: '20'
+
+buf: 'dfwieojfwoie jfwefw'
+pos: '19'
+
+buf: 'dfwieojfwoie jfwef'
+pos: '18'
+
+buf: 'dfwieojfwoie jfwe'
+pos: '17'
+
+buf: 'dfwieojfwoie jfw'
+pos: '16'
+
+buf: 'dfwieojfwoie jf'
+pos: '15'
+
+buf: 'dfwieojfwoie j'
+pos: '14'
+
+buf: 'dfwieojfwoie '
+pos: '13'
+
+buf: 'dfwieojfwoie'
+pos: '12'
+
+buf: 'dfwieojfwoi'
+pos: '11'
+
+buf: 'dfwieojfwo'
+pos: '10'
+
+buf: 'dfwieojfw'
+pos: '9'
+
+buf: 'dfwieojf'
+pos: '8'
+
+buf: 'dfwieoj'
+pos: '7'
+
+buf: 'dfwieo'
+pos: '6'
+
+buf: 'dfwie'
+pos: '5'
+
+buf: 'dfwi'
+pos: '4'
+
+buf: 'dfw'
+pos: '3'
+
+buf: 'df'
+pos: '2'
+
+buf: 'd'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'e'
+pos: '1'
+
+buf: 'ee'
+pos: '2'
+
+buf: 'eee'
+pos: '3'
+
+buf: 'eeee'
+pos: '4'
+
+buf: 'eeeee'
+pos: '5'
+
+buf: 'eeeeee'
+pos: '6'
+
+buf: 'eeeeeee'
+pos: '7'
+
+buf: 'eeeeeeee'
+pos: '8'
+
+buf: 'eeeeeeeee'
+pos: '9'
+
+buf: 'eeeeeeeeee'
+pos: '10'
+
+buf: 'eeeeeeeeeee'
+pos: '11'
+
+buf: 'eeeeeeeeeeee'
+pos: '12'
+
+buf: 'eeeeeeeeeeeee'
+pos: '13'
+
+buf: 'eeeeeeeeeeeeee'
+pos: '14'
+
+buf: 'eeeeeeeeeeeeeee'
+pos: '15'
+
+buf: 'eeeeeeeeeeeeeeee'
+pos: '16'
+
+buf: 'eeeeeeeeeeeeeeeee'
+pos: '17'
+
+buf: 'eeeeeeeeeeeeeeeeee'
+pos: '18'
+
+buf: 'eeeeeeeeeeeeeeeeeee'
+pos: '19'
+
+buf: 'eeeeeeeeeeeeeeeeeeee'
+pos: '20'
+
+buf: 'eeeeeeeeeeeeeeeeeeeee'
+pos: '21'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeee'
+pos: '22'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeee'
+pos: '23'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeee'
+pos: '24'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '25'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '26'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '27'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '28'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '29'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '30'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '31'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '32'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '33'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '34'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '35'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '36'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '37'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '38'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '39'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '40'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '41'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '42'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '43'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '44'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '45'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '46'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '47'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '48'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '49'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '50'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '51'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '52'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '53'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '54'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '55'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '56'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '57'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '56'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '55'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '54'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '53'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '52'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '51'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '50'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '49'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '48'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '47'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '46'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '45'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '44'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '43'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '42'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '41'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '40'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '39'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '38'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '37'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '36'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '35'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '34'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '33'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '32'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '31'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '30'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '29'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '28'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '27'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '26'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeeee'
+pos: '25'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeeee'
+pos: '24'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeeee'
+pos: '23'
+
+buf: 'eeeeeeeeeeeeeeeeeeeeee'
+pos: '22'
+
+buf: 'eeeeeeeeeeeeeeeeeeeee'
+pos: '21'
+
+buf: 'eeeeeeeeeeeeeeeeeeee'
+pos: '20'
+
+buf: 'eeeeeeeeeeeeeeeeeee'
+pos: '19'
+
+buf: 'eeeeeeeeeeeeeeeeee'
+pos: '18'
+
+buf: 'eeeeeeeeeeeeeeeee'
+pos: '17'
+
+buf: 'eeeeeeeeeeeeeeee'
+pos: '16'
+
+buf: 'eeeeeeeeeeeeeee'
+pos: '15'
+
+buf: 'eeeeeeeeeeeeee'
+pos: '14'
+
+buf: 'eeeeeeeeeeeee'
+pos: '13'
+
+buf: 'eeeeeeeeeeee'
+pos: '12'
+
+buf: 'eeeeeeeeeee'
+pos: '11'
+
+buf: 'eeeeeeeeee'
+pos: '10'
+
+buf: 'eeeeeeeee'
+pos: '9'
+
+buf: 'eeeeeeee'
+pos: '8'
+
+buf: 'eeeeeee'
+pos: '7'
+
+buf: 'eeeeee'
+pos: '6'
+
+buf: 'eeeee'
+pos: '5'
+
+buf: 'eeee'
+pos: '4'
+
+buf: 'eee'
+pos: '3'
+
+buf: 'ee'
+pos: '2'
+
+buf: 'e'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'f'
+pos: '1'
+
+buf: 'ff'
+pos: '2'
+
+buf: 'fff'
+pos: '3'
+
+buf: 'ffff'
+pos: '4'
+
+buf: 'fffff'
+pos: '5'
+
+buf: 'ffffff'
+pos: '6'
+
+buf: 'fffffff'
+pos: '7'
+
+buf: 'ffffffff'
+pos: '8'
+
+buf: 'fffffffff'
+pos: '9'
+
+buf: 'ffffffffff'
+pos: '10'
+
+buf: 'fffffffffff'
+pos: '11'
+
+buf: 'ffffffffffff'
+pos: '12'
+
+buf: 'fffffffffffff'
+pos: '13'
+
+buf: 'ffffffffffffff'
+pos: '14'
+
+buf: 'fffffffffffffff'
+pos: '15'
+
+buf: 'ffffffffffffffff'
+pos: '16'
+
+buf: 'fffffffffffffffff'
+pos: '17'
+
+buf: 'ffffffffffffffffff'
+pos: '18'
+
+buf: 'fffffffffffffffffff'
+pos: '19'
+
+buf: 'ffffffffffffffffffff'
+pos: '20'
+
+buf: 'fffffffffffffffffffff'
+pos: '21'
+
+buf: 'ffffffffffffffffffffff'
+pos: '22'
+
+buf: 'fffffffffffffffffffffff'
+pos: '23'
+
+buf: 'ffffffffffffffffffffffff'
+pos: '24'
+
+buf: 'fffffffffffffffffffffffff'
+pos: '25'
+
+buf: 'ffffffffffffffffffffffffff'
+pos: '26'
+
+buf: 'fffffffffffffffffffffffffff'
+pos: '27'
+
+buf: 'ffffffffffffffffffffffffffff'
+pos: '28'
+
+buf: 'fffffffffffffffffffffffffffff'
+pos: '29'
+
+buf: 'ffffffffffffffffffffffffffffff'
+pos: '30'
+
+buf: 'fffffffffffffffffffffffffffffff'
+pos: '31'
+
+buf: 'ffffffffffffffffffffffffffffffff'
+pos: '32'
+
+buf: 'fffffffffffffffffffffffffffffffff'
+pos: '33'
+
+buf: 'ffffffffffffffffffffffffffffffffff'
+pos: '34'
+
+buf: 'fffffffffffffffffffffffffffffffffff'
+pos: '35'
+
+buf: 'ffffffffffffffffffffffffffffffffffff'
+pos: '36'
+
+buf: 'fffffffffffffffffffffffffffffffffffff'
+pos: '37'
+
+buf: 'ffffffffffffffffffffffffffffffffffffff'
+pos: '38'
+
+buf: 'fffffffffffffffffffffffffffffffffffffff'
+pos: '39'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffff'
+pos: '40'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffff'
+pos: '41'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffffff'
+pos: '42'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffffff'
+pos: '43'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffffffff'
+pos: '44'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffffffff'
+pos: '45'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '46'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '47'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '48'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '49'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '50'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '51'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '50'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '49'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '48'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '47'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffffffffff'
+pos: '46'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffffffff'
+pos: '45'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffffffff'
+pos: '44'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffffff'
+pos: '43'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffffff'
+pos: '42'
+
+buf: 'fffffffffffffffffffffffffffffffffffffffff'
+pos: '41'
+
+buf: 'ffffffffffffffffffffffffffffffffffffffff'
+pos: '40'
+
+buf: 'fffffffffffffffffffffffffffffffffffffff'
+pos: '39'
+
+buf: 'ffffffffffffffffffffffffffffffffffffff'
+pos: '38'
+
+buf: 'fffffffffffffffffffffffffffffffffffff'
+pos: '37'
+
+buf: 'ffffffffffffffffffffffffffffffffffff'
+pos: '36'
+
+buf: 'fffffffffffffffffffffffffffffffffff'
+pos: '35'
+
+buf: 'ffffffffffffffffffffffffffffffffff'
+pos: '34'
+
+buf: 'fffffffffffffffffffffffffffffffff'
+pos: '33'
+
+buf: 'ffffffffffffffffffffffffffffffff'
+pos: '32'
+
+buf: 'fffffffffffffffffffffffffffffff'
+pos: '31'
+
+buf: 'ffffffffffffffffffffffffffffff'
+pos: '30'
+
+buf: 'fffffffffffffffffffffffffffff'
+pos: '29'
+
+buf: 'ffffffffffffffffffffffffffff'
+pos: '28'
+
+buf: 'fffffffffffffffffffffffffff'
+pos: '27'
+
+buf: 'ffffffffffffffffffffffffff'
+pos: '26'
+
+buf: 'fffffffffffffffffffffffff'
+pos: '25'
+
+buf: 'ffffffffffffffffffffffff'
+pos: '24'
+
+buf: 'fffffffffffffffffffffff'
+pos: '23'
+
+buf: 'ffffffffffffffffffffff'
+pos: '22'
+
+buf: 'fffffffffffffffffffff'
+pos: '21'
+
+buf: 'ffffffffffffffffffff'
+pos: '20'
+
+buf: 'fffffffffffffffffff'
+pos: '19'
+
+buf: 'ffffffffffffffffff'
+pos: '18'
+
+buf: 'fffffffffffffffff'
+pos: '17'
+
+buf: 'ffffffffffffffff'
+pos: '16'
+
+buf: 'fffffffffffffff'
+pos: '15'
+
+buf: 'ffffffffffffff'
+pos: '14'
+
+buf: 'fffffffffffff'
+pos: '13'
+
+buf: 'ffffffffffff'
+pos: '12'
+
+buf: 'fffffffffff'
+pos: '11'
+
+buf: 'ffffffffff'
+pos: '10'
+
+buf: 'fffffffff'
+pos: '9'
+
+buf: 'ffffffff'
+pos: '8'
+
+buf: 'fffffff'
+pos: '7'
+
+buf: 'ffffff'
+pos: '6'
+
+buf: 'fffff'
+pos: '5'
+
+buf: 'ffff'
+pos: '4'
+
+buf: 'fff'
+pos: '3'
+
+buf: 'ff'
+pos: '2'
+
+buf: 'f'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'd'
+pos: '1'
+
+buf: 'dd'
+pos: '2'
+
+buf: 'ddd'
+pos: '3'
+
+buf: 'dddd'
+pos: '4'
+
+buf: 'ddddd'
+pos: '5'
+
+buf: 'dddddd'
+pos: '6'
+
+buf: 'ddddddd'
+pos: '7'
+
+buf: 'dddddddd'
+pos: '8'
+
+buf: 'ddddddddd'
+pos: '9'
+
+buf: 'dddddddddd'
+pos: '10'
+
+buf: 'ddddddddddd'
+pos: '11'
+
+buf: 'dddddddddddd'
+pos: '12'
+
+buf: 'ddddddddddddd'
+pos: '13'
+
+buf: 'dddddddddddddd'
+pos: '14'
+
+buf: 'ddddddddddddddd'
+pos: '15'
+
+buf: 'dddddddddddddddd'
+pos: '16'
+
+buf: 'ddddddddddddddddd'
+pos: '17'
+
+buf: 'dddddddddddddddddd'
+pos: '18'
+
+buf: 'ddddddddddddddddddd'
+pos: '19'
+
+buf: 'dddddddddddddddddddd'
+pos: '20'
+
+buf: 'ddddddddddddddddddddd'
+pos: '21'
+
+buf: 'dddddddddddddddddddddd'
+pos: '22'
+
+buf: 'ddddddddddddddddddddddd'
+pos: '23'
+
+buf: 'dddddddddddddddddddddddd'
+pos: '24'
+
+buf: 'ddddddddddddddddddddddddd'
+pos: '25'
+
+buf: 'dddddddddddddddddddddddddd'
+pos: '26'
+
+buf: 'ddddddddddddddddddddddddddd'
+pos: '27'
+
+buf: 'dddddddddddddddddddddddddddd'
+pos: '28'
+
+buf: 'ddddddddddddddddddddddddddddd'
+pos: '29'
+
+buf: 'dddddddddddddddddddddddddddddd'
+pos: '30'
+
+buf: 'ddddddddddddddddddddddddddddddd'
+pos: '31'
+
+buf: 'dddddddddddddddddddddddddddddddd'
+pos: '32'
+
+buf: 'ddddddddddddddddddddddddddddddddd'
+pos: '33'
+
+buf: 'dddddddddddddddddddddddddddddddddd'
+pos: '34'
+
+buf: 'ddddddddddddddddddddddddddddddddddd'
+pos: '35'
+
+buf: 'dddddddddddddddddddddddddddddddddddd'
+pos: '36'
+
+buf: 'ddddddddddddddddddddddddddddddddddddd'
+pos: '37'
+
+buf: 'dddddddddddddddddddddddddddddddddddddd'
+pos: '38'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddd'
+pos: '39'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddd'
+pos: '40'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddd'
+pos: '41'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddd'
+pos: '42'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddd'
+pos: '43'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddd'
+pos: '44'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '45'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '46'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '47'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '48'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '49'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '50'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '51'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '52'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '53'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '54'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '55'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '56'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '57'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '58'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '59'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '60'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '61'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '60'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '59'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '58'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '57'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '56'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '55'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '54'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '53'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '52'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '51'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '50'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '49'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '48'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '47'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '46'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '45'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddd'
+pos: '44'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddd'
+pos: '43'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddd'
+pos: '42'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddd'
+pos: '41'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddd'
+pos: '40'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddd'
+pos: '39'
+
+buf: 'dddddddddddddddddddddddddddddddddddddd'
+pos: '38'
+
+buf: 'ddddddddddddddddddddddddddddddddddddd'
+pos: '37'
+
+buf: 'dddddddddddddddddddddddddddddddddddd'
+pos: '36'
+
+buf: 'ddddddddddddddddddddddddddddddddddd'
+pos: '35'
+
+buf: 'dddddddddddddddddddddddddddddddddd'
+pos: '34'
+
+buf: 'ddddddddddddddddddddddddddddddddd'
+pos: '33'
+
+buf: 'dddddddddddddddddddddddddddddddd'
+pos: '32'
+
+buf: 'ddddddddddddddddddddddddddddddd'
+pos: '31'
+
+buf: 'dddddddddddddddddddddddddddddd'
+pos: '30'
+
+buf: 'ddddddddddddddddddddddddddddd'
+pos: '29'
+
+buf: 'dddddddddddddddddddddddddddd'
+pos: '28'
+
+buf: 'ddddddddddddddddddddddddddd'
+pos: '27'
+
+buf: 'dddddddddddddddddddddddddd'
+pos: '26'
+
+buf: 'ddddddddddddddddddddddddd'
+pos: '25'
+
+buf: 'dddddddddddddddddddddddd'
+pos: '24'
+
+buf: 'ddddddddddddddddddddddd'
+pos: '23'
+
+buf: 'dddddddddddddddddddddd'
+pos: '22'
+
+buf: 'ddddddddddddddddddddd'
+pos: '21'
+
+buf: 'dddddddddddddddddddd'
+pos: '20'
+
+buf: 'ddddddddddddddddddd'
+pos: '19'
+
+buf: 'dddddddddddddddddd'
+pos: '18'
+
+buf: 'ddddddddddddddddd'
+pos: '17'
+
+buf: 'dddddddddddddddd'
+pos: '16'
+
+buf: 'ddddddddddddddd'
+pos: '15'
+
+buf: 'dddddddddddddd'
+pos: '14'
+
+buf: 'ddddddddddddd'
+pos: '13'
+
+buf: 'dddddddddddd'
+pos: '12'
+
+buf: 'ddddddddddd'
+pos: '11'
+
+buf: 'dddddddddd'
+pos: '10'
+
+buf: 'ddddddddd'
+pos: '9'
+
+buf: 'dddddddd'
+pos: '8'
+
+buf: 'ddddddd'
+pos: '7'
+
+buf: 'dddddd'
+pos: '6'
+
+buf: 'ddddd'
+pos: '5'
+
+buf: 'dddd'
+pos: '4'
+
+buf: 'ddd'
+pos: '3'
+
+buf: 'dd'
+pos: '2'
+
+buf: 'd'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'd'
+pos: '1'
+
+buf: 'dd'
+pos: '2'
+
+buf: 'ddd'
+pos: '3'
+
+buf: 'dddd'
+pos: '4'
+
+buf: 'ddddd'
+pos: '5'
+
+buf: 'dddddd'
+pos: '6'
+
+buf: 'ddddddd'
+pos: '7'
+
+buf: 'dddddddd'
+pos: '8'
+
+buf: 'ddddddddd'
+pos: '9'
+
+buf: 'dddddddddd'
+pos: '10'
+
+buf: 'ddddddddddd'
+pos: '11'
+
+buf: 'dddddddddddd'
+pos: '12'
+
+buf: 'ddddddddddddd'
+pos: '13'
+
+buf: 'dddddddddddddd'
+pos: '14'
+
+buf: 'ddddddddddddddd'
+pos: '15'
+
+buf: 'dddddddddddddddd'
+pos: '16'
+
+buf: 'ddddddddddddddddd'
+pos: '17'
+
+buf: 'dddddddddddddddddd'
+pos: '18'
+
+buf: 'ddddddddddddddddddd'
+pos: '19'
+
+buf: 'dddddddddddddddddddd'
+pos: '20'
+
+buf: 'ddddddddddddddddddddd'
+pos: '21'
+
+buf: 'dddddddddddddddddddddd'
+pos: '22'
+
+buf: 'ddddddddddddddddddddddd'
+pos: '23'
+
+buf: 'dddddddddddddddddddddddd'
+pos: '24'
+
+buf: 'ddddddddddddddddddddddddd'
+pos: '25'
+
+buf: 'dddddddddddddddddddddddddd'
+pos: '26'
+
+buf: 'ddddddddddddddddddddddddddd'
+pos: '27'
+
+buf: 'dddddddddddddddddddddddddddd'
+pos: '28'
+
+buf: 'ddddddddddddddddddddddddddddd'
+pos: '29'
+
+buf: 'dddddddddddddddddddddddddddddd'
+pos: '30'
+
+buf: 'ddddddddddddddddddddddddddddddd'
+pos: '31'
+
+buf: 'dddddddddddddddddddddddddddddddd'
+pos: '32'
+
+buf: 'ddddddddddddddddddddddddddddddddd'
+pos: '33'
+
+buf: 'dddddddddddddddddddddddddddddddddd'
+pos: '34'
+
+buf: 'ddddddddddddddddddddddddddddddddddd'
+pos: '35'
+
+buf: 'dddddddddddddddddddddddddddddddddddd'
+pos: '36'
+
+buf: 'ddddddddddddddddddddddddddddddddddddd'
+pos: '37'
+
+buf: 'dddddddddddddddddddddddddddddddddddddd'
+pos: '38'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddd'
+pos: '39'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddd'
+pos: '40'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddd'
+pos: '41'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddd'
+pos: '42'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddd'
+pos: '43'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddd'
+pos: '44'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '45'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '46'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '47'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '48'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '47'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '46'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddddd'
+pos: '45'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddddd'
+pos: '44'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddddd'
+pos: '43'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddddd'
+pos: '42'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddddd'
+pos: '41'
+
+buf: 'dddddddddddddddddddddddddddddddddddddddd'
+pos: '40'
+
+buf: 'ddddddddddddddddddddddddddddddddddddddd'
+pos: '39'
+
+buf: 'dddddddddddddddddddddddddddddddddddddd'
+pos: '38'
+
+buf: 'ddddddddddddddddddddddddddddddddddddd'
+pos: '37'
+
+buf: 'dddddddddddddddddddddddddddddddddddd'
+pos: '36'
+
+buf: 'ddddddddddddddddddddddddddddddddddd'
+pos: '35'
+
+buf: 'dddddddddddddddddddddddddddddddddd'
+pos: '34'
+
+buf: 'ddddddddddddddddddddddddddddddddd'
+pos: '33'
+
+buf: 'dddddddddddddddddddddddddddddddd'
+pos: '32'
+
+buf: 'ddddddddddddddddddddddddddddddd'
+pos: '31'
+
+buf: 'dddddddddddddddddddddddddddddd'
+pos: '30'
+
+buf: 'ddddddddddddddddddddddddddddd'
+pos: '29'
+
+buf: 'dddddddddddddddddddddddddddd'
+pos: '28'
+
+buf: 'ddddddddddddddddddddddddddd'
+pos: '27'
+
+buf: 'dddddddddddddddddddddddddd'
+pos: '26'
+
+buf: 'ddddddddddddddddddddddddd'
+pos: '25'
+
+buf: 'dddddddddddddddddddddddd'
+pos: '24'
+
+buf: 'ddddddddddddddddddddddd'
+pos: '23'
+
+buf: 'dddddddddddddddddddddd'
+pos: '22'
+
+buf: 'ddddddddddddddddddddd'
+pos: '21'
+
+buf: 'dddddddddddddddddddd'
+pos: '20'
+
+buf: 'ddddddddddddddddddd'
+pos: '19'
+
+buf: 'dddddddddddddddddd'
+pos: '18'
+
+buf: 'ddddddddddddddddd'
+pos: '17'
+
+buf: 'dddddddddddddddd'
+pos: '16'
+
+buf: 'ddddddddddddddd'
+pos: '15'
+
+buf: 'dddddddddddddd'
+pos: '14'
+
+buf: 'ddddddddddddd'
+pos: '13'
+
+buf: 'dddddddddddd'
+pos: '12'
+
+buf: 'ddddddddddd'
+pos: '11'
+
+buf: 'dddddddddd'
+pos: '10'
+
+buf: 'ddddddddd'
+pos: '9'
+
+buf: 'dddddddd'
+pos: '8'
+
+buf: 'ddddddd'
+pos: '7'
+
+buf: 'dddddd'
+pos: '6'
+
+buf: 'ddddd'
+pos: '5'
+
+buf: 'dddd'
+pos: '4'
+
+buf: 'ddd'
+pos: '3'
+
+buf: 'dd'
+pos: '2'
+
+buf: 'd'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'w'
+pos: '1'
+
+buf: 'we'
+pos: '2'
+
+buf: 'wew'
+pos: '3'
+
+buf: 'wewe'
+pos: '4'
+
+buf: 'wewer'
+pos: '5'
+
+buf: 'wewerw'
+pos: '6'
+
+buf: 'wewerwe'
+pos: '7'
+
+buf: 'wewerw'
+pos: '6'
+
+buf: 'wewer'
+pos: '5'
+
+buf: 'wewe'
+pos: '4'
+
+buf: 'wew'
+pos: '3'
+
+buf: 'we'
+pos: '2'
+
+buf: 'w'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ':'
+pos: '1'
+
+buf: ':'
+pos: '2'
+
+buf: ':'
+pos: '3'
+
+buf: ':'
+pos: '4'
+
+buf: ':'
+pos: '5'
+
+buf: 'w'
+pos: '1'
+
+buf: 'we'
+pos: '2'
+
+buf: 'wee'
+pos: '3'
+
+buf: 'weer'
+pos: '4'
+
+buf: 'weerw'
+pos: '5'
+
+buf: 'weerwe'
+pos: '6'
+
+buf: 'weerw'
+pos: '5'
+
+buf: 'weer'
+pos: '4'
+
+buf: 'wee'
+pos: '3'
+
+buf: 'we'
+pos: '2'
+
+buf: 'w'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '1'
+
+buf: 'w'
+pos: '1'
+
+buf: 'we'
+pos: '2'
+
+buf: 'wel'
+pos: '3'
+
+buf: 'welc'
+pos: '4'
+
+buf: 'welco'
+pos: '5'
+
+buf: 'welcom'
+pos: '6'
+
+buf: 'welcome'
+pos: '7'
+
+buf: 'welcom'
+pos: '6'
+
+buf: 'welco'
+pos: '5'
+
+buf: 'welc'
+pos: '4'
+
+buf: 'wel'
+pos: '3'
+
+buf: 'we'
+pos: '2'
+
+buf: 'w'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'd'
+pos: '1'
+
+buf: 'df'
+pos: '2'
+
+buf: 'dfw'
+pos: '3'
+
+buf: 'dfwe'
+pos: '4'
+
+buf: 'dfwee'
+pos: '5'
+
+buf: 'dfweee'
+pos: '6'
+
+buf: 'dfweeee'
+pos: '7'
+
+buf: 'dfweeeee'
+pos: '8'
+
+buf: 'dfweeeeee'
+pos: '9'
+
+buf: 'dfweeeeeee'
+pos: '10'
+
+buf: 'dfweeeeeeee'
+pos: '11'
+
+buf: 'dfweeeeeeeee'
+pos: '12'
+
+buf: 'dfweeeeeeeeee'
+pos: '13'
+
+buf: 'dfweeeeeeeeeee'
+pos: '14'
+
+buf: 'dfweeeeeeeeeeee'
+pos: '15'
+
+buf: 'dfweeeeeeeeeeeee'
+pos: '16'
+
+buf: 'dfweeeeeeeeeeeeee'
+pos: '17'
+
+buf: 'dfweeeeeeeeeeeeeee'
+pos: '18'
+
+buf: 'dfweeeeeeeeeeeeeeee'
+pos: '19'
+
+buf: 'dfweeeeeeeeeeeeeeeee'
+pos: '20'
+
+buf: 'dfweeeeeeeeeeeeeeeeee'
+pos: '21'
+
+buf: 'dfweeeeeeeeeeeeeeeeeee'
+pos: '22'
+
+buf: 'dfweeeeeeeeeeeeeeeeeeee'
+pos: '23'
+
+buf: 'dfweeeeeeeeeeeeeeeeeeeee'
+pos: '24'
+
+buf: 'dfweeeeeeeeeeeeeeeeeeee'
+pos: '23'
+
+buf: 'dfweeeeeeeeeeeeeeeeeee'
+pos: '22'
+
+buf: 'dfweeeeeeeeeeeeeeeeee'
+pos: '21'
+
+buf: 'dfweeeeeeeeeeeeeeeee'
+pos: '20'
+
+buf: 'dfweeeeeeeeeeeeeeee'
+pos: '19'
+
+buf: 'dfweeeeeeeeeeeeeee'
+pos: '18'
+
+buf: 'dfweeeeeeeeeeeeee'
+pos: '17'
+
+buf: 'dfweeeeeeeeeeeee'
+pos: '16'
+
+buf: 'dfweeeeeeeeeeee'
+pos: '15'
+
+buf: 'dfweeeeeeeeeee'
+pos: '14'
+
+buf: 'dfweeeeeeeeee'
+pos: '13'
+
+buf: 'dfweeeeeeeee'
+pos: '12'
+
+buf: 'dfweeeeeeee'
+pos: '11'
+
+buf: 'dfweeeeeee'
+pos: '10'
+
+buf: 'dfweeeeee'
+pos: '9'
+
+buf: 'dfweeeee'
+pos: '8'
+
+buf: 'dfweeee'
+pos: '7'
+
+buf: 'dfweee'
+pos: '6'
+
+buf: 'dfwee'
+pos: '5'
+
+buf: 'dfwe'
+pos: '4'
+
+buf: 'dfw'
+pos: '3'
+
+buf: 'df'
+pos: '2'
+
+buf: 'd'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'e'
+pos: '1'
+
+buf: 'ee'
+pos: '2'
+
+buf: 'eee'
+pos: '3'
+
+buf: 'eeee'
+pos: '4'
+
+buf: 'eeeee'
+pos: '5'
+
+buf: 'eeeeee'
+pos: '6'
+
+buf: 'eeeeeee'
+pos: '7'
+
+buf: 'eeeeeeee'
+pos: '8'
+
+buf: 'eeeeeeeee'
+pos: '9'
+
+buf: 'eeeeeeeeee'
+pos: '10'
+
+buf: 'eeeeeeeeeee'
+pos: '11'
+
+buf: 'eeeeeeeeeeee'
+pos: '12'
+
+buf: 'eeeeeeeeeeeee'
+pos: '13'
+
+buf: 'eeeeeeeeeeeeee'
+pos: '14'
+
+buf: 'eeeeeeeeeeeeeee'
+pos: '15'
+
+buf: 'eeeeeeeeeeeeeeee'
+pos: '16'
+
+buf: 'eeeeeeeeeeeeeee'
+pos: '15'
+
+buf: 'eeeeeeeeeeeeee'
+pos: '14'
+
+buf: 'eeeeeeeeeeeee'
+pos: '13'
+
+buf: 'eeeeeeeeeeee'
+pos: '12'
+
+buf: 'eeeeeeeeeee'
+pos: '11'
+
+buf: 'eeeeeeeeee'
+pos: '10'
+
+buf: 'eeeeeeeee'
+pos: '9'
+
+buf: 'eeeeeeee'
+pos: '8'
+
+buf: 'eeeeeee'
+pos: '7'
+
+buf: 'eeeeee'
+pos: '6'
+
+buf: 'eeeee'
+pos: '5'
+
+buf: 'eeee'
+pos: '4'
+
+buf: 'eee'
+pos: '3'
+
+buf: 'ee'
+pos: '2'
+
+buf: 'e'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'w'
+pos: '1'
+
+buf: 'we'
+pos: '2'
+
+buf: 'wel'
+pos: '3'
+
+buf: 'welc'
+pos: '4'
+
+buf: 'welco'
+pos: '5'
+
+buf: 'welcom'
+pos: '6'
+
+buf: 'welcome'
+pos: '7'
+
+buf: 'welcom'
+pos: '6'
+
+buf: 'welco'
+pos: '5'
+
+buf: 'welc'
+pos: '4'
+
+buf: 'wel'
+pos: '3'
+
+buf: 'we'
+pos: '2'
+
+buf: 'w'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'w'
+pos: '1'
+
+buf: 'we'
+pos: '2'
+
+buf: 'wej'
+pos: '3'
+
+buf: 'wejf'
+pos: '4'
+
+buf: 'wejfi'
+pos: '5'
+
+buf: 'wejfio'
+pos: '6'
+
+buf: 'wejfiow'
+pos: '7'
+
+buf: 'wejfiowe'
+pos: '8'
+
+buf: 'wejfiowej'
+pos: '9'
+
+buf: 'wejfiowejf'
+pos: '10'
+
+buf: 'wejfiowejfi'
+pos: '11'
+
+buf: 'wejfiowejfio'
+pos: '12'
+
+buf: 'wejfiowejfiow'
+pos: '13'
+
+buf: 'wejfiowejfiowe'
+pos: '14'
+
+buf: 'wejfiowejfiow'
+pos: '13'
+
+buf: 'wejfiowejfio'
+pos: '12'
+
+buf: 'wejfiowejfi'
+pos: '11'
+
+buf: 'wejfiowejf'
+pos: '10'
+
+buf: 'wejfiowej'
+pos: '9'
+
+buf: 'wejfiowe'
+pos: '8'
+
+buf: 'wejfiow'
+pos: '7'
+
+buf: 'wejfio'
+pos: '6'
+
+buf: 'wejfi'
+pos: '5'
+
+buf: 'wejf'
+pos: '4'
+
+buf: 'wej'
+pos: '3'
+
+buf: 'we'
+pos: '2'
+
+buf: 'w'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'w'
+pos: '1'
+
+buf: 'we'
+pos: '2'
+
+buf: 'wef'
+pos: '3'
+
+buf: 'wefi'
+pos: '4'
+
+buf: 'e'
+pos: '1'
+
+buf: 'ec'
+pos: '2'
+
+buf: 'ech'
+pos: '3'
+
+buf: 'echo'
+pos: '4'
+
+buf: 'echo '
+pos: '5'
+
+buf: 'echo'
+pos: '4'
+
+buf: 'ech'
+pos: '3'
+
+buf: 'ec'
+pos: '2'
+
+buf: 'e'
+pos: '1'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '0'
+
+buf: 'e'
+pos: '1'
+
+buf: 'ec'
+pos: '2'
+
+buf: 'ech'
+pos: '3'
+
+buf: 'echo'
+pos: '4'
+
+buf: 'echo '
+pos: '5'
+
+buf: 'echo e'
+pos: '6'
+
+buf: 'echo '
+pos: '5'
+
+buf: 'echo w'
+pos: '6'
+
+buf: 'echo we'
+pos: '7'
+
+buf: 'echo wel'
+pos: '8'
+
+buf: 'echo welc'
+pos: '9'
+
+buf: 'echo welco'
+pos: '10'
+
+buf: 'echo welcom'
+pos: '11'
+
+buf: 'echo welcome'
+pos: '12'
+
+buf: 'echo welcome '
+pos: '13'
+
+buf: 'echo welcome |'
+pos: '14'
+
+buf: 'echo welcome | '
+pos: '15'
+
+buf: 'echo welcome | e'
+pos: '16'
+
+buf: 'echo welcome | ec'
+pos: '17'
+
+buf: 'echo welcome | ech'
+pos: '18'
+
+buf: 'echo welcome | echo'
+pos: '19'
+
+buf: 'echo welcome | echo '
+pos: '20'
+
+buf: 'echo welcome | echo z'
+pos: '21'
+
+buf: 'echo welcome | echo zz'
+pos: '22'
+
+buf: 'echo welcome | echo zzz'
+pos: '23'
+
+buf: 'echo welcome | echo zzzz'
+pos: '24'
+
+buf: 'echo welcome | echo zzzzz'
+pos: '25'
+
+buf: 'echo welcome | echo zzzzzz'
+pos: '26'
+
+buf: 'echo welcome | echo zzzzzzz'
+pos: '27'
+
+buf: 'echo welcome | echo zzzzzzzz'
+pos: '28'
+
+buf: 'echo welcome | echo zzzzzzzzz'
+pos: '29'
+
+buf: 'echo welcome | echo zzzzzzzzzz'
+pos: '30'
+
+buf: 'f'
+pos: '1'
+
+buf: 'fi'
+pos: '2'
+
+buf: 'fio'
+pos: '3'
+
+buf: 'fiow'
+pos: '4'
+
+buf: 'fiowe'
+pos: '5'
+
+buf: 'w'
+pos: '1'
+
+buf: 'we'
+pos: '2'
+
+buf: 'wef'
+pos: '3'
+
+buf: 'f'
+pos: '1'
+
+buf: 'fw'
+pos: '2'
+
+buf: 'fwe'
+pos: '3'
+
+buf: 'fwef'
+pos: '4'
+
+buf: 'fwefw'
+pos: '5'
+
+buf: 'fwefwe'
+pos: '6'
+
+buf: 'fwefwef'
+pos: '7'
+
+buf: ''
+pos: '0'
+
+buf: 'w'
+pos: '1'
+
+buf: 'wi'
+pos: '2'
+
+buf: 'wie'
+pos: '3'
+
+buf: 'wieo'
+pos: '4'
+
+buf: 'wieoj'
+pos: '5'
+
+buf: 'wieojf'
+pos: '6'
+
+buf: 'wieojfe'
+pos: '7'
+
+buf: 'wieojfei'
+pos: '8'
+
+buf: 'wieojfeio'
+pos: '9'
+
+buf: 'wieojfeiow'
+pos: '10'
+
+buf: 'wieojfeiowj'
+pos: '11'
+
+buf: 'wieojfeiowjf'
+pos: '12'
+
+buf: 'wieojfeiowjfo'
+pos: '13'
+
+buf: 'wieojfeiowjfoi'
+pos: '14'
+
+buf: 'wieojfeiowjfoiw'
+pos: '15'
+
+buf: 'wieojfeiowjfoiwe'
+pos: '16'
+
+buf: 'wieojfeiowjfoiwej'
+pos: '17'
+
+buf: 'wieojfeiowjfoiwejf'
+pos: '18'
+
+buf: ''
+pos: '0'
+
+buf: ''
+pos: '1'
+

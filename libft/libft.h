@@ -6,7 +6,7 @@
 /*   By: ahamdaou <ahamdaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:38:41 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/07 08:05:41 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/10 18:16:10 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
-# define TRUE 1
-# define FALSE 0
+# undef false
+# undef true
+
+typedef enum e_bool {
+	false,
+	true
+}t_bool;
 
 void			ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t count, size_t size);

@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:55:42 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/09 13:23:39 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/09 14:35:48 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ms_bufrst(t_buf *buf)
 ** nothing will happen if buffer is empty or param is NULL
 */
 
-void	ms_bufdel(t_buf *buf, t_cap cap)
+void	ms_bufdel(t_buf *buf, t_cap *cap)
 {
 	if (!buf || buf->pos == 0)
 	{

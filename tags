@@ -62,7 +62,7 @@ SRC	linkedlist/Makefile	/^SRC = linkedlist.c \\$/;"	m
 SRC	parser/Makefile	/^SRC = parse.c \\$/;"	m
 TRUE	libft/libft.h	/^# define TRUE /;"	d
 add	linkedlist/linkedlist_utils.c	/^void	add(t_data **head, void *data)$/;"	f
-add_cmd	parser/parse.c	/^static void	add_cmd(t_cmd **head_addr, t_cmd *cmd)$/;"	f	file:
+add_cmd	parser/parse.c	/^static void	add_cmd(t_cmd **a_head, t_cmd *cmd)$/;"	f	file:
 add_double_pointer	linkedlist/linkedlist_utils.c	/^void	add_double_pointer(char **ptr)$/;"	f
 args	parser/parser.h	/^	char			**args;$/;"	m	struct:s_cmd
 buf	minishell.h	/^	char	*buf;$/;"	m	struct:s_buf
@@ -146,26 +146,26 @@ lst_clear	linkedlist/linkedlist.c	/^void	lst_clear(t_data *head)$/;"	f
 lst_last	linkedlist/linkedlist.c	/^t_data	*lst_last(t_data *node)$/;"	f
 lst_size	linkedlist/linkedlist_utils.c	/^int		lst_size(t_data *head)$/;"	f
 main	minishell.c	/^int		main(void)$/;"	f
-minishell	minishell.c	/^static void	minishell(t_cmd **cmd_lst, t_cap cap, t_buf *buf, char out)$/;"	f	file:
+minishell	minishell.c	/^static void	minishell(t_cmd **cmd_lst, t_cap *cap, t_buf *buf)$/;"	f	file:
 ms_bufadd	buffer.c	/^void	ms_bufadd(t_buf *buf, char out)$/;"	f
-ms_bufdel	buffer.c	/^void	ms_bufdel(t_buf *buf, t_cap cap)$/;"	f
+ms_bufdel	buffer.c	/^void	ms_bufdel(t_buf *buf, t_cap *cap)$/;"	f
 ms_bufinit	buffer.c	/^void	ms_bufinit(t_buf **a_buf)$/;"	f
 ms_buflog	minishell.h	/^FILE *ms_buflog;$/;"	v
 ms_bufrst	buffer.c	/^void	ms_bufrst(t_buf *buf)$/;"	f
-ms_capinit	terminal.c	/^static void	ms_capinit(t_cap cap)$/;"	f	file:
-ms_chrdel	cursor.c	/^void	ms_chrdel(t_cap cap)$/;"	f
+ms_capinit	terminal.c	/^static void	ms_capinit(t_cap **cap)$/;"	f	file:
+ms_chrdel	cursor.c	/^void	ms_chrdel(t_cap *cap)$/;"	f
 ms_init_terminal_data	terminal.c	/^static void	ms_init_terminal_data(void)$/;"	f	file:
 ms_log	minishell.h	/^FILE *ms_log;$/;"	v
 ms_prompt	terminal.c	/^void		ms_prompt(void)$/;"	f
 ms_scrclr	window.c	/^void	ms_scrclr(void)$/;"	f
-ms_setup	terminal.c	/^void		ms_setup(t_cap *cap, t_buf **a_input)$/;"	f
+ms_setup	terminal.c	/^void		ms_setup(t_cap **cap, t_buf **a_input)$/;"	f
 negative_condition	libft/ft_itoa.c	/^static char	*negative_condition(long n)$/;"	f	file:
 new_node	linkedlist/linkedlist_utils.c	/^t_data	*new_node(void *data)$/;"	f
 next	linkedlist/linkedlist.h	/^	struct s_data	*next;$/;"	m	struct:s_data	typeref:struct:s_data::s_data
 next	parser/parser.h	/^	struct s_cmd	*next;$/;"	m	struct:s_cmd	typeref:struct:s_cmd::s_cmd
 norminette_helper	libft/ft_split.c	/^static	char	**norminette_helper(char const *s, char c, char **str, int j)$/;"	f	file:
 numlen	libft/ft_itoa.c	/^static long	numlen(long n)$/;"	f	file:
-parse	parser/parse.c	/^void	parse(const char *cmd_line, t_cmd **head_addr, char **syntax_err)$/;"	f
+parse	parser/parse.c	/^void	parse(const char *cmdli, t_cmd **a_head, char **synerr)$/;"	f
 pos	minishell.h	/^	size_t	pos;$/;"	m	struct:s_buf
 power_ten	libft/ft_putnbr_fd.c	/^static int	power_ten(int power)$/;"	f	file:
 previous	parser/parser.h	/^	struct s_cmd	*previous;$/;"	m	struct:s_cmd	typeref:struct:s_cmd::s_cmd

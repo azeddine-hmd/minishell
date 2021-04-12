@@ -44,15 +44,15 @@ void	parse(const char *cmdli, t_cmd **a_head, char **synerr)
 	t_cmd	*cmd;
 	size_t	i;
 	size_t	start;
-	int		is_next_pipe;
+	t_bool	is_next_pipe;
 	char	*cmd_string;
 
-	if (cmdli == NULL || *cmdli == 0)
+	if (cmdli == NULL || !a_head || ft_strlen(cmdli) == 0)
 		return ;
 	*synerr = NULL;
 	*a_head = NULL;
 	start = 0;
-	is_next_pipe = FALSE;
+	is_next_pipe = false;
 	i = -1;
 	while (cmdli[++i])
 	{
@@ -61,7 +61,10 @@ void	parse(const char *cmdli, t_cmd **a_head, char **synerr)
 		cmd_string = xsubstr(cmdli, start, i - start);
 		cmd = get_cmd(cmd_string, is_next_pipe);
 		add_cmd(a_head, cmd);
-		is_next_pipe = (cmdli[i] == '|') ? TRUE : FALSE;
+		if (cmdli[i] == '|')
+			is_next_pipe = true;
+		else
+			is_next_pipe = false;
 		start = i + 1;
 	}
 	cmd_string = xsubstr(cmdli, start, ft_strlen(cmdli));
