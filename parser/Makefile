@@ -1,12 +1,24 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/04/13 15:13:20 by ahamdaou          #+#    #+#              #
+#    Updated: 2021/04/13 15:13:26 by ahamdaou         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libparser.a
 
 CFLAGS = -Wall -Wextra -Werror \
-		 -std=c99 \
 		 -g \
 
 CC = gcc
 
 SRC = parse.c \
+	  cmds.c \
 	  parse_debugger.c \
 
 OBJ = ${SRC:.c=.o}
@@ -22,9 +34,9 @@ $(NAME):
 clean:
 	@rm -rf $(OBJ)
 
-fclean:
+fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean
+.PHONY: clean fclean re

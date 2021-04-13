@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:03:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/10 19:00:00 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/13 15:35:43 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,32 +44,6 @@ static void	minishell(t_cmdslst *cmdslst, t_cap *cap, t_buf *buf)
 	}
 }
 
-void	ms_cmdsadd(t_cmdslst *cmdslst, t_cmd * cmd)
-{
-	if (cmdslst == NULL)
-	{
-		//TODO
-	}
-}
-
-void	ms_cmdsget(void)
-{
-	t_cmdslst *cmdslst;
-
-	cmdslst = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
-	cmdslst->cmds =
-}
-
-void	fake_cmdslst(t_cmdslst **cmdslst)
-{
-	t_cmd *cmd;
-
-	for (int i = 0; i < 10; i++) {
-		cmd = ms_cmdsget();
-		ms_cmdsadd(cmd);
-	}
-}
-
 int		main(void)
 {
 	t_cmdslst	*cmdslst;
@@ -83,8 +57,6 @@ int		main(void)
 	// debugging (initializing log files)
 	ms_log = fopen("/Users/ahamdaou/development/42cursus/github/minishell/log", "a");
 	ms_buflog = fopen("/Users/ahamdaou/development/42cursus/github/minishell/buflog", "a");
-	cmdslst = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
-	fake_cmdslst(&cmdslst);
 
 	setbuf(stdout, NULL);
 	ms_setup(&cap, &buf);
