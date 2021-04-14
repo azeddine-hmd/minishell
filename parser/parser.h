@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:30:22 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/14 15:10:56 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/14 16:00:57 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_cmdlst
 }t_cmdslst;
 
 // debugging
+void		fake_cmdslst(t_cmdslst **a_head);
+void		print_all_cmdslst(t_cmdslst *head);
 void		print_cmd(t_cmd *cmd);
 void		print_all_cmds(t_cmd *head);
 
@@ -50,6 +52,6 @@ t_cmd		*get_last_cmd(t_cmd *head);
 // cmdslst.c
 t_cmdslst	*get_last_cmdslst(t_cmdslst *head);
 void		add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst);
-t_cmdslst	*get_cmdslst(t_cmd *cmd, const char cmds_str);
+t_cmdslst	*get_cmdslst(t_cmd *cmd, char *cmds_str);
 
 #endif

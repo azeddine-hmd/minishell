@@ -6,12 +6,51 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 16:05:23 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/13 15:15:01 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/14 16:01:31 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include <stdio.h>
+
+static t_cmd	*get_fake_cmd(char **s)
+{
+	static int	i = 0;
+	t_cmd		*cmd;
+
+	i++;
+	*s = xstrjoin("command number ", ft_itoa(i));
+	cmd = get_cmd(*s, false);
+	return (cmd);
+}
+
+static t_cmdslst	*get_fake_cmdslst(void)
+{
+	t_cmdslst	*fake_cmdslst;
+	t_cmd		*fake_cmd;
+	char		*buf;
+
+	fake_cmd = get_fake_cmd(&buf);
+	fake_cmdslst = get_cmdslst(fake_cmd, buf);
+	return (fake_cmdslst);
+}
+
+void	fake_cmdslst(t_cmdslst **a_head)
+{
+	int i;
+
+	i = 0;
+	while (i < 10)
+	{
+		add_cmdslst(a_head, get_fake_cmdslst());
+		i++;
+	}
+}
+
+void	print_all_cmdslst(t_cmdslst *head)
+{
+
+}
 
 void	print_cmd(t_cmd *cmd)
 {

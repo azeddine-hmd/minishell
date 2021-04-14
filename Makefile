@@ -1,7 +1,7 @@
 NAME = minishell
 
-CFLAGS = -Wall -Wextra -Werror \
-		 -ltermcap \
+CFLAGS =  \
+		 -ltermcap
 		 -g \
 		 -fsanitize=address \
 

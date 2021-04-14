@@ -8,7 +8,7 @@ CC	Makefile	/^CC = gcc$/;"	m
 CC	libft/Makefile	/^CC = gcc$/;"	m
 CC	linkedlist/Makefile	/^CC = gcc$/;"	m
 CC	parser/Makefile	/^CC = gcc$/;"	m
-CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror \\$/;"	m
+CFLAGS	Makefile	/^CFLAGS =  \\$/;"	m
 CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	linkedlist/Makefile	/^CFLAGS = -Wall -Werror -Wextra \\$/;"	m
 CFLAGS	parser/Makefile	/^CFLAGS = -Wall -Wextra -Werror \\$/;"	m
@@ -60,15 +60,16 @@ SRC	libft/Makefile	/^SRC = ft_atoi.c \\$/;"	m
 SRC	linkedlist/Makefile	/^SRC = linkedlist.c \\$/;"	m
 SRC	parser/Makefile	/^SRC = parse.c \\$/;"	m
 add	linkedlist/linkedlist_utils.c	/^void	add(t_data **head, void *data)$/;"	f
-add_cmd	parser/parse.c	/^static void	add_cmd(t_cmd **a_head, t_cmd *cmd)$/;"	f	file:
+add_cmd	parser/cmds.c	/^void	add_cmd(t_cmd **a_head, t_cmd *cmd)$/;"	f
+add_cmdslst	parser/cmdslst.c	/^void	add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst)$/;"	f
 add_double_pointer	linkedlist/linkedlist_utils.c	/^void	add_double_pointer(char **ptr)$/;"	f
 args	parser/parser.h	/^	char			**args;$/;"	m	struct:s_cmd
 buf	minishell.h	/^	char	*buf;$/;"	m	struct:s_buf
 check_equality	libft/ft_strnstr.c	/^static int	check_equality(const char *h, const char *n, int i)$/;"	f	file:
 check_equality	libft/ft_strstr.c	/^static int	check_equality(const char *h, const char *n, int i)$/;"	f	file:
-cmd_init	parser/parse.c	/^static void	cmd_init(t_cmd *cmd, char **args, int is_piped)$/;"	f	file:
-cmds	parser/parser.h	/^	t_cmd	*cmds;$/;"	m	struct:s_cmdlst
-command	parser/parser.h	/^	char			*command;$/;"	m	struct:s_cmd
+cmd_init	parser/cmds.c	/^void	cmd_init(t_cmd *cmd, char **args, t_bool is_piped)$/;"	f
+cmds	parser/parser.h	/^	t_cmd			*cmds;$/;"	m	struct:s_cmdlst
+cmds_str	parser/parser.h	/^	char			*cmds_str;$/;"	m	struct:s_cmdlst
 count_char	libft/count_char.c	/^int		count_char(const char *s, char c)$/;"	f
 count_words	libft/ft_split.c	/^static	int		count_words(char const *s, char c)$/;"	f	file:
 data	linkedlist/linkedlist.h	/^	void			*data;$/;"	m	struct:s_data
@@ -77,17 +78,17 @@ e_bool	libft/libft.h	/^typedef enum e_bool {$/;"	g
 enable_raw_mode	terminal.c	/^static void	enable_raw_mode(void)$/;"	f	file:
 err	errors.c	/^void	err(const char *error)$/;"	f
 error	linkedlist/error.c	/^void	error(void)$/;"	f
-error	parser/parser.h	/^	char			*error;$/;"	m	struct:s_cmd
 error_file	linkedlist/error.c	/^void	error_file(const char *file_name, const char *message)$/;"	f
 error_line	linkedlist/error.c	/^void	error_line(int line, const char *message)$/;"	f
 error_message	linkedlist/error.c	/^void	error_message(const char *message)$/;"	f
-fake_cmdslst	minishell.c	/^void	fake_cmdslst(t_cmdslst **cmdslst)$/;"	f
+fake_cmdslst	parser/parse_debugger.c	/^void	fake_cmdslst(t_cmdslst **a_head)$/;"	f
 false	libft/libft.h	/^	false,$/;"	e	enum:e_bool
 false	libft/libft.h	/^# undef false$/;"	d
 fd	parser/parser.h	/^	char			*fd;$/;"	m	struct:s_cmd
 ferr	errors.c	/^void	ferr(const char *err_format, const char *arg)$/;"	f
 free_double_pointer	libft/free_double_pointer.c	/^void	free_double_pointer(char **ptr)$/;"	f
 free_node	linkedlist/linkedlist.c	/^void	free_node(t_data *node)$/;"	f
+fsanitize	Makefile	/^		 -fsanitize=address \\$/;"	m
 ft_atoi	libft/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
 ft_bzero	libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
 ft_calloc	libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
@@ -130,10 +131,14 @@ ft_strtrim_helper	libft/ft_strtrim.c	/^static char	*ft_strtrim_helper(char const
 ft_substr	libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
 ft_tolower	libft/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
 ft_toupper	libft/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
-get_cmd	parser/parse.c	/^static t_cmd	*get_cmd(const char *cmd_string, int is_piped)$/;"	f	file:
+get_cmd	parser/cmds.c	/^t_cmd	*get_cmd(const char *cmd_string, t_bool is_piped)$/;"	f
+get_cmdslst	parser/cmdslst.c	/^t_cmdslst	*get_cmdslst(t_cmd *cmds, char *cmds_str)$/;"	f
+get_fake_cmd	parser/parse_debugger.c	/^static t_cmd	*get_fake_cmd(char **s)$/;"	f	file:
+get_fake_cmdslst	parser/parse_debugger.c	/^static t_cmdslst	*get_fake_cmdslst(void)$/;"	f	file:
 get_file_name	parser/input_redirection.c	/^char	*get_file_name(const char *s)$/;"	f
 get_head_node	linkedlist/allocation.c	/^t_data		**get_head_node(void)$/;"	f
-get_last_cmd	parser/parse.c	/^static t_cmd	*get_last_cmd(t_cmd *head)$/;"	f	file:
+get_last_cmd	parser/cmds.c	/^t_cmd	*get_last_cmd(t_cmd *head)$/;"	f
+get_last_cmdslst	parser/cmdslst.c	/^t_cmdslst	*get_last_cmdslst(t_cmdslst *head)$/;"	f
 get_length	libft/ft_split.c	/^static	int		get_length(char const *s, int c, int start)$/;"	f	file:
 get_next_input_redirection	parser/input_redirection.c	/^char	*get_next_input_redirection(const char *cmd_line, int occur)$/;"	f
 hexer	libft/ft_dec2hex.c	/^static char	*hexer(int l)$/;"	f	file:
@@ -157,8 +162,6 @@ ms_buflog	minishell.h	/^FILE *ms_buflog;$/;"	v
 ms_bufrst	buffer.c	/^void	ms_bufrst(t_buf *buf)$/;"	f
 ms_capinit	terminal.c	/^static void	ms_capinit(t_cap **cap)$/;"	f	file:
 ms_chrdel	cursor.c	/^void	ms_chrdel(t_cap *cap)$/;"	f
-ms_cmdsadd	minishell.c	/^void	ms_cmdsadd(t_cmdslst *cmdslst, t_cmd * cmd)$/;"	f
-ms_cmdsget	minishell.c	/^void	ms_cmdsget(void)$/;"	f
 ms_init_terminal_data	terminal.c	/^static void	ms_init_terminal_data(void)$/;"	f	file:
 ms_log	minishell.h	/^FILE *ms_log;$/;"	v
 ms_prompt	terminal.c	/^void		ms_prompt(void)$/;"	f
@@ -168,14 +171,14 @@ negative_condition	libft/ft_itoa.c	/^static char	*negative_condition(long n)$/;"
 new_node	linkedlist/linkedlist_utils.c	/^t_data	*new_node(void *data)$/;"	f
 next	linkedlist/linkedlist.h	/^	struct s_data	*next;$/;"	m	struct:s_data	typeref:struct:s_data::s_data
 next	parser/parser.h	/^	struct s_cmd	*next;$/;"	m	struct:s_cmd	typeref:struct:s_cmd::s_cmd
-next	parser/parser.h	/^	t_cmd	*next;$/;"	m	struct:s_cmdlst
+next	parser/parser.h	/^	struct s_cmdlst	*next;$/;"	m	struct:s_cmdlst	typeref:struct:s_cmdlst::s_cmdlst
 norminette_helper	libft/ft_split.c	/^static	char	**norminette_helper(char const *s, char c, char **str, int j)$/;"	f	file:
 numlen	libft/ft_itoa.c	/^static long	numlen(long n)$/;"	f	file:
-parse	parser/parse.c	/^void	parse(const char *cmdli, t_cmd **a_head, char **synerr)$/;"	f
+parse	parser/parse.c	/^void	parse(const char *cmdln, t_cmd **a_head, char **synerr)$/;"	f
 pos	minishell.h	/^	size_t	pos;$/;"	m	struct:s_buf
 power_ten	libft/ft_putnbr_fd.c	/^static int	power_ten(int power)$/;"	f	file:
 previous	parser/parser.h	/^	struct s_cmd	*previous;$/;"	m	struct:s_cmd	typeref:struct:s_cmd::s_cmd
-previous	parser/parser.h	/^	t_cmd	*previous;$/;"	m	struct:s_cmdlst
+previous	parser/parser.h	/^	struct s_cmdlst	*previous;$/;"	m	struct:s_cmdlst	typeref:struct:s_cmdlst::s_cmdlst
 print_all_cmds	parser/parse_debugger.c	/^void	print_all_cmds(t_cmd *head)$/;"	f
 print_cmd	parser/parse_debugger.c	/^void	print_cmd(t_cmd *cmd)$/;"	f
 redirection	parser/parser.h	/^	char			*redirection;$/;"	m	struct:s_cmd

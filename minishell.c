@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:03:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/13 15:35:43 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/14 15:41:36 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	minishell(t_cmdslst *cmdslst, t_cap *cap, t_buf *buf)
 			fprintf(ms_log, "key: ENTER\n");
 			fflush(ms_log);
 			ft_putc(out);
-			parse(buf->buf, &(cmdslst->cmds), &synerr);
+			//parse(buf->buf, &(cmdslst->cmds), &synerr);
+			synerr++; // supress unused variable error
 			ms_bufrst(buf);
 			ms_prompt();
 		}
@@ -60,6 +61,8 @@ int		main(void)
 
 	setbuf(stdout, NULL);
 	ms_setup(&cap, &buf);
+	fake_cmdslst(&cmdslst);
+	print_all_cmds(cmdslst->cmds);
 	minishell(cmdslst, cap, buf);
 	lst_clear(*get_head_node());
 	return (0);
