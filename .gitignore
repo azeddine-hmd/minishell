@@ -3,3 +3,5 @@ minishell
 **/*.a
 **/tags
 **/*.dSYM
+buflog
+log

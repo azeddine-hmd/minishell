@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:30:22 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/13 16:11:28 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/14 15:10:56 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void		add_cmd(t_cmd **a_head, t_cmd *cmd);
 t_cmd		*get_last_cmd(t_cmd *head);
 
 // cmdslst.c
+t_cmdslst	*get_last_cmdslst(t_cmdslst *head);
+void		add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst);
 t_cmdslst	*get_cmdslst(t_cmd *cmd, const char cmds_str);
 
 #endif
