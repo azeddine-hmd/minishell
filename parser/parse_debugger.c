@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 16:05:23 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/14 16:01:31 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/16 17:17:47 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ void	fake_cmdslst(t_cmdslst **a_head)
 
 void	print_all_cmdslst(t_cmdslst *head)
 {
-
+	while (head)
+	{
+		print_all_cmds(head->cmds);
+		head = head->next;
+	}
 }
 
 void	print_cmd(t_cmd *cmd)
