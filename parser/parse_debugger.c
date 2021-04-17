@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 16:05:23 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/16 17:17:47 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/17 15:12:13 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	print_cmd(t_cmd *cmd)
 		printf("args[%d]: \"%s\"\n", i, (cmd->args)[i]);
 	}
 	printf("is_piped: %d\n", cmd->is_piped);
-	printf("fd: %s\n", cmd->fd);
+	printf("fd: '%s'\n", cmd->fd);
 	printf("redirection: '%s'\n", cmd->redirection);
 	printf("\n");
 }

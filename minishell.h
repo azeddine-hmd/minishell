@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/17 14:09:16 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/04/17 14:58:37 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -12,25 +24,12 @@
 # include "errors.h"
 
 /*
- ** colors
- */
-
-# define COLORS_DEFAULT "\033[0;0m"
-# define COLORS_BLACK "\033[0;30m"
-# define COLORS_RED "\033[031m"
-# define COLORS_GREEN "\033[0;32m"
-# define COLORS_YELLOW "\033[0;33m"
-# define COLORS_BLUE "\033[0;34m"
-# define COLORS_PURPLE "\033[0;35m"
-# define COLORS_CYAN "\033[0;36m"
-# define COLORS_WHITE "\033[0;36m"
-
-/*
  ** keys
  */
 
 # define K_BS 127
 # define K_CR 10
+# define K_CTRL_D 4
 
 /*
  ** others
@@ -74,7 +73,6 @@ void		ms_bufrst(t_buf *buf);
  */
 
 void		ms_prompt(void);
-void		ms_scrclr(void);
 void		ms_chrdel(t_cap *cap);
 void		ms_setup(t_cap **cap, t_buf **a_buf);
 

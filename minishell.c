@@ -6,43 +6,79 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:03:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/16 17:23:15 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/17 17:22:10 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	minishell(t_cmdslst *cmdslst, t_cap *cap, t_buf *buf)
+static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 {
-	char	out;
-	char	*synerr;
+	t_cmdslst	*current;
+	char		input;
+	char		*synerr;
+	char		tmp[3];
+	int			pos;
 
+	// debugging
+	fake_cmdslst(cmdslst);
 	ms_prompt();
-	while (read(STDIN_FILENO, &out, 1) == 1)
+	pos = 0;
+	while (read(STDIN_FILENO, &input, 1) == 1)
 	{
-		if (out == K_BS)
+		if (input == K_BS)
 		{
 			fprintf(ms_log, "key: BACKSPACE\n");
 			fflush(ms_log);
 			ms_bufdel(buf, cap);
 		}
-		else if (out == K_CR)
+		else if (input == K_CR)
 		{
 			fprintf(ms_log, "key: ENTER\n");
 			fflush(ms_log);
-			ft_putc(out);
-
-			//parse(buf->buf, &(cmdslst->cmds), &synerr);
-			//synerr++; // supress unused variable error
-
+			ft_putc(input);
+			if (ft_strlen(buf->buf) == 0)
+			{
+				ms_prompt();
+				continue ;
+			}
+			current = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
+			parse(buf->buf, &(current->cmds), &synerr);
+			synerr++; // supress unused variable error
+			print_all_cmds(current->cmds);
+			current->cmds_str = xstrdup(buf->buf);
+			add_cmdslst(cmdslst, current);
 			ms_bufrst(buf);
 			ms_prompt();
 		}
+		else if (input == 27)
+		{
+			tmp[0] = input;
+			pos++;
+		}
+		else if (pos == 1 && input == 91)
+		{
+			tmp[1] = input;
+			pos++;
+		}
+		else if (pos == 2 && input == 65)
+		{
+			tmp[2] = input;
+			fprintf(ms_log, "key: UP_ARROW\n");
+			fflush(ms_log);
+			pos = 0;
+		}
+		else if (input == K_CTRL_D)
+		{
+			if (ft_strlen(buf->buf) == 0)
+				break ;
+		}
 		else
 		{
-			fprintf(ms_log, "key: %c\n", out);
+			fprintf(ms_log, "key: %d\n", input);
 			fflush(ms_log);
-			ms_bufadd(buf, out);
+			ms_bufadd(buf, input);
+			pos = 0;
 		}
 	}
 }
@@ -63,12 +99,7 @@ int		main(void)
 
 	setbuf(stdout, NULL);
 	ms_setup(&cap, &buf);
-
-	// debugging
-	fake_cmdslst(&cmdslst);
-	//print_all_cmdslst(cmdslst);
-
-	minishell(cmdslst, cap, buf);
+	minishell(&cmdslst, cap, buf);
 	lst_clear(*get_head_node());
 	return (0);
 }

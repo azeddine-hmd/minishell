@@ -1,7 +1,7 @@
 NAME = minishell
 
 CFLAGS =  \
-		 -ltermcap
+		 -ltermcap \
 		 -g \
 		 -fsanitize=address \
 
@@ -15,7 +15,6 @@ SRC = minishell.c \
 	  errors.c \
 	  terminal.c \
 	  cursor.c \
-	  window.c \
 	  buffer.c \
 
 OBJ = ${SRC:.c=.o}
