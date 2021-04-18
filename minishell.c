@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:03:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/17 17:22:10 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/18 17:32:37 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 	t_cmdslst	*current;
 	char		input;
 	char		*synerr;
-	char		tmp[3];
 	int			pos;
 
 	// debugging
@@ -53,18 +52,21 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		}
 		else if (input == 27)
 		{
-			tmp[0] = input;
 			pos++;
 		}
-		else if (pos == 1 && input == 91)
+		else if (pos == 1 && input == K_OSB)
 		{
-			tmp[1] = input;
 			pos++;
 		}
-		else if (pos == 2 && input == 65)
+		else if (pos == 2 && input == K_A)
 		{
-			tmp[2] = input;
 			fprintf(ms_log, "key: UP_ARROW\n");
+			fflush(ms_log);
+			pos = 0;
+		}
+		else if (pos == 2 && input == K_B)
+		{
+			fprintf(ms_log, "key: DOWN_ARROW\n");
 			fflush(ms_log);
 			pos = 0;
 		}
