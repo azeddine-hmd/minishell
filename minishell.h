@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:09:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/18 17:30:18 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:24:11 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@
 # define MS_PROMPT "minishell > "
 # define MS_BUFFER_SIZE 2048
 
-
-typedef struct	s_buf
+typedef struct s_buf
 {
 	char	*buf;
 	size_t	size;
@@ -55,29 +54,28 @@ typedef struct	s_buf
  ** terminal capability
  */
 
-typedef struct	s_cap
+typedef struct s_cap
 {
 	char	*le;
 	char	*dc;
+	char	*dc_r;
 }				t_cap;
 
 // debugging
-FILE *ms_log;
-FILE *ms_buflog;
+FILE	*ms_log;
+FILE	*ms_buflog;
 
-
+// buffer
 void		ms_bufinit(t_buf **a_buf);
 void		ms_bufdel(t_buf *buf, t_cap *cap);
 void		ms_bufadd(t_buf *buf, char out);
 void		ms_bufrst(t_buf *buf);
+void		ms_bufrpc(t_buf *buf, const char *s);
 
-/*
- ** termcap functions
- */
-
+// termcap
+void		ms_setup(t_cap **cap, t_buf **a_buf);
 void		ms_prompt(void);
 void		ms_chrdel(t_cap *cap);
-void		ms_setup(t_cap **cap, t_buf **a_buf);
-
+void		ms_lndel(t_cap *cap, int count);
 
 #endif

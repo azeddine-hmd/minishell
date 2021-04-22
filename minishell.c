@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:03:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/18 17:32:37 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:24:16 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 {
 	t_cmdslst	*current;
+	t_cmdslst	*new;
 	char		input;
 	char		*synerr;
 	int			pos;
@@ -22,6 +23,7 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 	// debugging
 	fake_cmdslst(cmdslst);
 	ms_prompt();
+	current = *cmdslst;
 	pos = 0;
 	while (read(STDIN_FILENO, &input, 1) == 1)
 	{
@@ -41,12 +43,13 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 				ms_prompt();
 				continue ;
 			}
-			current = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
-			parse(buf->buf, &(current->cmds), &synerr);
+			new = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
+			parse(buf->buf, &(new->cmds), &synerr);
 			synerr++; // supress unused variable error
-			print_all_cmds(current->cmds);
-			current->cmds_str = xstrdup(buf->buf);
-			add_cmdslst(cmdslst, current);
+			print_all_cmds(new->cmds);
+			new->cmds_str = xstrdup(buf->buf);
+			add_cmdslst(cmdslst, new);
+			current = new;
 			ms_bufrst(buf);
 			ms_prompt();
 		}
@@ -62,12 +65,28 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		{
 			fprintf(ms_log, "key: UP_ARROW\n");
 			fflush(ms_log);
+			if (current != NULL && current->previous != NULL)
+			{
+				current = current->previous;
+				ms_lndel(cap, buf->pos);
+				ms_bufrst(buf);
+				ms_bufrpc(buf, current->cmds_str);
+				printf("%s", current->cmds_str);
+			}
 			pos = 0;
 		}
 		else if (pos == 2 && input == K_B)
 		{
 			fprintf(ms_log, "key: DOWN_ARROW\n");
 			fflush(ms_log);
+			if (current != NULL && current->next != NULL)
+			{
+				current = current->next;
+				ms_lndel(cap, buf->pos);
+				ms_bufrst(buf);
+				ms_bufrpc(buf, current->cmds_str);
+				printf("%s", current->cmds_str);
+			}
 			pos = 0;
 		}
 		else if (input == K_CTRL_D)
@@ -77,7 +96,7 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		}
 		else
 		{
-			fprintf(ms_log, "key: %d\n", input);
+			fprintf(ms_log, "key: %c\n", input);
 			fflush(ms_log);
 			ms_bufadd(buf, input);
 			pos = 0;

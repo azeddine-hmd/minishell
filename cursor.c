@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 10:33:25 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/09 14:37:01 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/20 16:57:10 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,19 @@ void	ms_chrdel(t_cap *cap)
 {
 	tputs(cap->le, 1, &ft_putc);
 	tputs(cap->dc, 1, &ft_putc);
+}
+
+/*
+** delete current line
+*/
+
+void	ms_lndel(t_cap *cap, int count)
+{
+	size_t	i;
+
+	i = -1;
+	while (++i < count)
+	{
+		ms_chrdel(cap);
+	}
 }

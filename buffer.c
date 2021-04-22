@@ -6,14 +6,29 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:55:42 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/09 14:35:48 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/20 17:19:20 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-** reset buffer
+** buffer replace with string
+*/
+
+void	ms_bufrpc(t_buf *buf, const char *s)
+{
+	size_t	new_size;
+
+	new_size = ft_strlen(s) * 2 + 1;
+	buf->buf = xrealloc(buf->buf, buf->size, new_size);
+	ft_memmove(buf->buf, s, ft_strlen(s));
+	buf->size = new_size;
+	buf->pos = ft_strlen(s);
+}
+
+/*
+** buffer reset
 */
 
 void	ms_bufrst(t_buf *buf)
