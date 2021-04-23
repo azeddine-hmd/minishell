@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 07:37:21 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/07 09:47:18 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:55:00 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	 *xrealloc(void *ptr, size_t old_size, size_t new_size)
 		if (ptr_new)
 		{
 			ft_memcpy(ptr_new, ptr, old_size);
-			free(ptr);
+			xfree(ptr);
 		}
 		return (ptr_new);
 	}

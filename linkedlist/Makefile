@@ -6,7 +6,7 @@
 #    By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/27 14:49:07 by ahamdaou          #+#    #+#              #
-#    Updated: 2021/04/07 07:38:33 by ahamdaou         ###   ########.fr        #
+#    Updated: 2021/04/22 17:28:13 by ahamdaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = liblinkedlist.a
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra \
+		 -g \
 
 SRC = linkedlist.c \
 	  linkedlist_utils.c \

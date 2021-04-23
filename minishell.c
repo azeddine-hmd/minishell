@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:03:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/22 17:24:16 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:41:57 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 	int			pos;
 
 	// debugging
-	fake_cmdslst(cmdslst);
+	//fake_cmdslst(cmdslst);
 	ms_prompt();
-	current = *cmdslst;
+	current = NULL;
 	pos = 0;
 	while (read(STDIN_FILENO, &input, 1) == 1)
 	{
@@ -65,14 +65,17 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		{
 			fprintf(ms_log, "key: UP_ARROW\n");
 			fflush(ms_log);
-			if (current != NULL && current->previous != NULL)
+			if (current == NULL && *cmdslst)
+			{
+				current = *cmdslst;
+			}
+			else
 			{
 				current = current->previous;
-				ms_lndel(cap, buf->pos);
-				ms_bufrst(buf);
-				ms_bufrpc(buf, current->cmds_str);
-				printf("%s", current->cmds_str);
 			}
+			ms_lndel(cap, buf->pos);
+			ms_bufrpc(buf, current->cmds_str);
+			printf("%s", current->cmds_str);
 			pos = 0;
 		}
 		else if (pos == 2 && input == K_B)
@@ -83,7 +86,6 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 			{
 				current = current->next;
 				ms_lndel(cap, buf->pos);
-				ms_bufrst(buf);
 				ms_bufrpc(buf, current->cmds_str);
 				printf("%s", current->cmds_str);
 			}

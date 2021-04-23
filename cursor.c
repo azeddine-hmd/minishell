@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 10:33:25 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/20 16:57:10 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:36:53 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ms_chrdel(t_cap *cap)
 
 void	ms_lndel(t_cap *cap, int count)
 {
-	size_t	i;
+	int	i;
 
 	i = -1;
 	while (++i < count)

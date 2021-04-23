@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:09:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/22 17:24:11 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:15:13 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void		ms_bufrpc(t_buf *buf, const char *s);
 // termcap
 void		ms_setup(t_cap **cap, t_buf **a_buf);
 void		ms_prompt(void);
+
 void		ms_chrdel(t_cap *cap);
 void		ms_lndel(t_cap *cap, int count);
 
