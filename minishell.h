@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:09:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/23 17:15:13 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/03 16:40:52 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
  */
 
 # define K_BS 127
-# define K_CR 10
+# define K_ENTER 10
 # define K_CTRL_D 4
 # define K_A 65
 # define K_B 66

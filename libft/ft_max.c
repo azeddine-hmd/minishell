@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/01 02:12:01 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/27 15:41:41 by ahamdaou         ###   ########.fr       */
+/*   Created: 2021/04/27 15:38:06 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/04/27 15:39:54 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+size_t	ft_max(size_t m1, size_t m2)
 {
-	return (ft_strncmp(s1, s2, ft_max(ft_strlen(s1), ft_strlen(s2))));
+	if (m1 > m2)
+		return (m1);
+	else
+		return (m2);
 }

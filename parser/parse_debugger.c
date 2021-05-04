@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 16:05:23 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/17 15:12:13 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/04 17:23:10 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,20 @@ void	print_all_cmdslst(t_cmdslst *head)
 
 void	print_cmd(t_cmd *cmd)
 {
-	printf("-----NODE ADDRESS: [%p]-----\n", &cmd);
+	printf("-----COMMAND[%s]-----\n", cmd->args[0]);
 	for (int i = 0; i < length(cmd->args); i++) {
 		printf("args[%d]: \"%s\"\n", i, (cmd->args)[i]);
 	}
-	printf("is_piped: %d\n", cmd->is_piped);
-	printf("fd: '%s'\n", cmd->fd);
-	printf("redirection: '%s'\n", cmd->redirection);
+	if (cmd->is_piped)
+	{
+		printf("is_piped: true\n");
+	}
+	else
+	{
+		printf("is_piped: false\n");
+	}
+	printf("fdin: '%s'\n", cmd->fdin);
+	printf("fdout: '%s'\n", cmd->fdout);
 	printf("\n");
 }
 

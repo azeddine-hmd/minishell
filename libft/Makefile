@@ -6,7 +6,7 @@
 #    By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/27 14:49:07 by ahamdaou          #+#    #+#              #
-#    Updated: 2021/04/22 17:28:47 by ahamdaou         ###   ########.fr        #
+#    Updated: 2021/04/27 15:40:10 by ahamdaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRC = ft_atoi.c \
 	  length.c \
 	  free_double_pointer.c \
 	  ft_putc.c \
+	  ft_max.c \
 
 OBJ = ${SRC:.c=.o}
 

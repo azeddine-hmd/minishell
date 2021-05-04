@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:30:22 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/17 12:29:46 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/04 17:16:47 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 typedef struct s_cmd
 {
 	t_bool			is_piped;
-	char			*fd;
-	char			*redirection;
+	char			*fdin;
+	char			*fdout;
 	char			**args;
 	struct s_cmd	*next;
 	struct s_cmd	*previous;
@@ -52,6 +52,7 @@ t_cmd		*get_last_cmd(t_cmd *head);
 // cmdslst.c
 t_cmdslst	*get_last_cmdslst(t_cmdslst *head);
 void		add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst);
+void		delete_cmdslst(t_cmdslst **a_head, t_cmdslst *target);
 t_cmdslst	*get_cmdslst(t_cmd *cmd, char *cmds_str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:03:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/23 17:41:57 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/04 14:49:08 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,77 @@
 static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 {
 	t_cmdslst	*current;
-	t_cmdslst	*new;
 	char		input;
 	char		*synerr;
 	int			pos;
 
-	// debugging
-	//fake_cmdslst(cmdslst);
+	// a fake list for debugging
+	/*fake_cmdslst(cmdslst);*/
+
 	ms_prompt();
-	current = NULL;
+
+	// point current to the last element in the list
+	/*current = get_last_cmdslst(*cmdslst);*/
+
+	// point current to the first element in the list
+	/*current = *cmdslst;*/
+
+	current = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
+	add_cmdslst(cmdslst, current);
 	pos = 0;
+
+	// valid while loop
 	while (read(STDIN_FILENO, &input, 1) == 1)
+
+	// simulating input with sequence of characters
+	/*char	*inputs = "echo first\necho second\ntest \e\[A \e\[A \e\[B \e\[B";
+	int i = -1;
+	while ((input = inputs[++i]))*/
+
 	{
 		if (input == K_BS)
 		{
+
 			fprintf(ms_log, "key: BACKSPACE\n");
 			fflush(ms_log);
+
 			ms_bufdel(buf, cap);
+
 		}
-		else if (input == K_CR)
+		else if (input == K_ENTER)
 		{
+
 			fprintf(ms_log, "key: ENTER\n");
 			fflush(ms_log);
+
 			ft_putc(input);
+
 			if (ft_strlen(buf->buf) == 0)
 			{
+				//TODO: call delete_cmdslst and delete current
 				ms_prompt();
 				continue ;
 			}
-			new = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
-			parse(buf->buf, &(new->cmds), &synerr);
-			synerr++; // supress unused variable error
-			print_all_cmds(new->cmds);
-			new->cmds_str = xstrdup(buf->buf);
-			add_cmdslst(cmdslst, new);
-			current = new;
+
+			if (current->cmds_str == NULL)
+			{
+				current->cmds_str = xstrdup(buf->buf);
+			}
+
+
+			if (current->cmds == NULL)
+			{
+				parse(buf->buf, &(current->cmds), &synerr);
+			}
+
+			print_all_cmds(current->cmds);
+
+			current = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
+			add_cmdslst(cmdslst, current);
+
 			ms_bufrst(buf);
 			ms_prompt();
+
 		}
 		else if (input == 27)
 		{
@@ -63,45 +97,83 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		}
 		else if (pos == 2 && input == K_A)
 		{
+
 			fprintf(ms_log, "key: UP_ARROW\n");
 			fflush(ms_log);
-			if (current == NULL && *cmdslst)
+
+			pos = 0;
+
+			if (current->cmds_str == NULL)
 			{
-				current = *cmdslst;
+				current->cmds_str = xstrdup(buf->buf);
+			}
+
+			if (*cmdslst == NULL)
+			{
+				continue ;
+			}
+			else if (current->previous == NULL)
+			{
+				continue ;
 			}
 			else
 			{
 				current = current->previous;
+				ms_lndel(cap, buf->pos);
+				ms_bufrpc(buf, current->cmds_str);
+				printf("%s", current->cmds_str);
 			}
-			ms_lndel(cap, buf->pos);
-			ms_bufrpc(buf, current->cmds_str);
-			printf("%s", current->cmds_str);
-			pos = 0;
+
 		}
 		else if (pos == 2 && input == K_B)
 		{
+
 			fprintf(ms_log, "key: DOWN_ARROW\n");
 			fflush(ms_log);
-			if (current != NULL && current->next != NULL)
+
+			pos = 0;
+
+			if (current->cmds_str == NULL)
+			{
+				current->cmds_str = xstrdup(buf->buf);
+			}
+
+			if (*cmdslst == NULL)
+			{
+				continue ;
+			}
+			else if (current->next == NULL)
+			{
+				//ms_lndel(cap, buf->pos);
+				//ms_bufrpc(buf, current->cmds_str);
+				continue ;
+			}
+			else
 			{
 				current = current->next;
 				ms_lndel(cap, buf->pos);
 				ms_bufrpc(buf, current->cmds_str);
 				printf("%s", current->cmds_str);
 			}
-			pos = 0;
+
 		}
 		else if (input == K_CTRL_D)
 		{
+
 			if (ft_strlen(buf->buf) == 0)
+			{
 				break ;
+			}
+
 		}
 		else
 		{
+
 			fprintf(ms_log, "key: %c\n", input);
 			fflush(ms_log);
 			ms_bufadd(buf, input);
 			pos = 0;
+
 		}
 	}
 }
