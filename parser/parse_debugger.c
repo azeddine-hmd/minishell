@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 16:05:23 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/04 17:23:10 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/08 17:45:26 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	print_all_cmdslst(t_cmdslst *head)
 {
 	while (head)
 	{
+		printf("cmdline: '%s'\n", head->cmds_str);
 		print_all_cmds(head->cmds);
 		head = head->next;
 	}

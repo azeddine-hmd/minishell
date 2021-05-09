@@ -6,7 +6,7 @@
 /*   By: ahamdaou <ahamdaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:38:41 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/27 15:39:52 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/05 17:32:54 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef enum e_bool {
 	false,
-	true
+	true,
 }t_bool;
 
 void			ft_bzero(void *s, size_t n);

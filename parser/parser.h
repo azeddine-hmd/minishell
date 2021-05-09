@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:30:22 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/04 17:16:47 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/05 16:19:03 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 typedef struct s_cmd
 {
-	t_bool			is_piped;
-	char			*fdin;
-	char			*fdout;
-	char			**args;
+	t_bool			is_piped;   // 'true' or 'false'
+	char			*fdin;      // "15:16:20"
+	char			*fdout;     // "r15:a16"
+	char			**args;     // array of arguments
 	struct s_cmd	*next;
 	struct s_cmd	*previous;
 }t_cmd;

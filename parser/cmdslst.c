@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:27:35 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/04 17:20:53 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/05 14:35:00 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,22 @@ void	add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst)
 
 static void xfree_cmds(t_cmd *cmds)
 {
-	//TODO: free cmds(s_cmd struct)
-	cmds++;
+	if (cmds->fdin)
+		xfree(cmds->fdin);
+	if (cmds->fdout)
+		xfree(cmds->fdout);
+	//TODO: change free_double_pointer to xfree_double_pointer
+	free_double_pointer(cmds->args);
+	xfree(cmds);
 }
 
 static void	xfree_cmdslst(t_cmdslst *cmdslst)
 {
-	//TODO: free cmdslst(s_cmdslst struct)
-	xfree_cmds(cmdslst->cmds);
+	if (cmdslst->cmds)
+		xfree_cmds(cmdslst->cmds);
+	if (cmdslst->cmds_str)
+		xfree(cmdslst->cmds_str);
+	xfree(cmdslst);
 }
 
 static void xfree_after_head(t_cmdslst *node, t_cmdslst *target)
