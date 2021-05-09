@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:55:42 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/04/23 15:57:50 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/09 17:14:37 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ void	ms_bufrpc(t_buf *buf, const char *s)
 
 	new_size = ft_strlen(s) * 2 + 1;
 	buf->buf = xrealloc(buf->buf, buf->size, new_size);
-	ft_memmove(buf->buf, s, ft_strlen(s));
 	buf->size = new_size;
 	buf->pos = ft_strlen(s);
+	ft_bzero(buf->buf, buf->size);
+	ft_memmove(buf->buf, s, ft_strlen(s));
+	fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
+	fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
+	fflush(ms_buflog);
 }
 
 /*
