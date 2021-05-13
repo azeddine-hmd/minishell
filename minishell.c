@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:03:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/09 17:10:48 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/13 17:59:29 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 	pos = 0;
 
 	// valid while loop
-	/*while (read(STDIN_FILENO, &input, 1) == 1)*/
+	while (read(STDIN_FILENO, &input, 1) == 1)
 
 	// simulating input with sequence of characters
-	char inputs[30000];
+	/*char inputs[30000];
 	ft_bzero(inputs, 30000);
-	sprintf(inputs, "echo first\necho secondddddddd\ntest%c%c%c%c%c%c", 27, K_OSB, K_A, 27, K_OSB, K_A);
+	sprintf(inputs, "echo first\necho second\ntest%c%c%c%c%c%cddddddddddddd%c%c%c%c%c%c", 27, K_OSB, K_A, 27, K_OSB, K_A, 27, K_OSB, K_B, 27, K_OSB, K_A);
 	int i = -1;
-	while ((input = inputs[++i]))
+	while ((input = inputs[++i]))*/
 
 	{
 		if (input == K_BS)
@@ -64,8 +64,6 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 
 			if (ft_strlen(buf->buf) == 0)
 			{
-				//delete_cmdslst(cmdslst, current);
-				//current = NULL;
 				ms_prompt();
 				continue ;
 			}
@@ -111,6 +109,15 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 			{
 				current->cmds_str = xstrdup(buf->buf);
 			}
+			else if (current->cmds_str != NULL)
+			{
+				if (ft_strlen(buf->buf) != 0)
+				{
+					char *tmp = current->cmds_str;
+					current->cmds_str = xstrdup(buf->buf);
+					xfree(tmp);
+				}
+			}
 
 			if (*cmdslst == NULL)
 			{
@@ -137,9 +144,27 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 
 			pos = 0;
 
+			// have not been debugged
+			if (strlen(cmds_str) > 0)
+			{
+				if (buf->buf != current->cmds_str)
+				{
+					current->original = xstrdup(buf->buf);
+				}
+			}
+
 			if (current->cmds_str == NULL)
 			{
 				current->cmds_str = xstrdup(buf->buf);
+			}
+			else if (current->cmds_str != NULL)
+			{
+				if (ft_strlen(buf->buf) != 0)
+				{
+					char *tmp = current->cmds_str;
+					current->cmds_str = xstrdup(buf->buf);
+					xfree(tmp);
+				}
 			}
 
 			if (*cmdslst == NULL)
@@ -154,6 +179,8 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 			else
 			{
 				current = current->next;
+
+
 				ms_lndel(cap, buf->pos);
 				ms_bufrpc(buf, current->cmds_str);
 				printf("%s", current->cmds_str);

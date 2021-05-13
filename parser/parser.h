@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:30:22 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/05 16:19:03 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:14:19 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_cmdlst
 {
 	t_cmd			*cmds;
 	char			*cmds_str;
+	char			*original; // the previous cmds_str
 	struct s_cmdlst	*next;
 	struct s_cmdlst	*previous;
 }t_cmdslst;
