@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:03:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/13 17:59:29 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/17 18:59:56 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 {
 	t_cmdslst	*current;
 	char		input;
-	char		*synerr;
 	int			pos;
 
 	// a fake list for debugging
@@ -34,13 +33,13 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 	add_cmdslst(cmdslst, current);
 	pos = 0;
 
-	// valid while loop
+	// primary while loop
 	while (read(STDIN_FILENO, &input, 1) == 1)
 
 	// simulating input with sequence of characters
 	/*char inputs[30000];
 	ft_bzero(inputs, 30000);
-	sprintf(inputs, "echo first\necho second\ntest%c%c%c%c%c%cddddddddddddd%c%c%c%c%c%c", 27, K_OSB, K_A, 27, K_OSB, K_A, 27, K_OSB, K_B, 27, K_OSB, K_A);
+	sprintf(inputs, "echo 1\nholder%c%c%c%c%c%c<appended>\n", K_UP_ARROW, K_DOWN_ARROW);
 	int i = -1;
 	while ((input = inputs[++i]))*/
 
@@ -62,32 +61,66 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 
 			ft_putc(input);
 
+			// pre-conditions
 			if (ft_strlen(buf->buf) == 0)
 			{
 				ms_prompt();
 				continue ;
 			}
-
-			if (current->cmds_str == NULL)
+			if (current->cmds_str == NULL || current->cmds_str[0] == '\0')
 			{
+				current->cmds_str = xstrdup(buf->buf);
+				fprintf(ms_log, "buf: %s", buf->buf);
+				fflush(ms_log);
+			}
+			// override cmds_str and assign original
+			// ignore tmp cmdslst
+			if (current->cmds != NULL && ft_strlen(buf->buf) != 0 && ft_strcmp(buf->buf, current->cmds_str) != 0)
+			{
+				if (current->original == NULL)
+					current->original = current->cmds_str;
+				current->cmds_str = xstrdup(buf->buf);
+			}
+			if (current->cmds == NULL && ft_strlen(buf->buf) != 0 && ft_strcmp(buf->buf, current->cmds_str) != 0)
+			{
+				//TODO: please insert sommething here
 				current->cmds_str = xstrdup(buf->buf);
 			}
 
+			// have not been debugged yet
+			if (current->original)
+			{
+				t_cmdslst *tmp;
+
+				tmp = get_last_cmdslst(*cmdslst);
+				if (tmp->cmds == NULL)
+				{
+					if (tmp->cmds_str)
+						xfree(tmp->cmds_str);
+					tmp->cmds_str = current->cmds_str;
+					current->cmds_str = current->original;
+					current->original = NULL;
+					current = tmp;
+				}
+				else
+				{
+					fprintf(ms_log, "Note: there is no temporary node");
+					fflush(ms_log);
+				}
+
+			}
 
 			if (current->cmds == NULL)
 			{
-				parse(buf->buf, &(current->cmds), &synerr);
+				parse(buf->buf, &(current->cmds));
 			}
 
-			//print_all_cmds(current->cmds);
-			print_all_cmdslst(*cmdslst);
+			execute(current->cmds);
 
 			current = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
 			add_cmdslst(cmdslst, current);
-
 			ms_bufrst(buf);
 			ms_prompt();
-
 		}
 		else if (input == 27)
 		{
@@ -99,42 +132,37 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		}
 		else if (pos == 2 && input == K_A)
 		{
-
 			fprintf(ms_log, "key: UP_ARROW\n");
 			fflush(ms_log);
 
 			pos = 0;
 
-			if (current->cmds_str == NULL)
-			{
-				current->cmds_str = xstrdup(buf->buf);
-			}
-			else if (current->cmds_str != NULL)
-			{
-				if (ft_strlen(buf->buf) != 0)
-				{
-					char *tmp = current->cmds_str;
-					current->cmds_str = xstrdup(buf->buf);
-					xfree(tmp);
-				}
-			}
-
+			// pre-conditions
 			if (*cmdslst == NULL)
 			{
 				continue ;
 			}
-			else if (current->previous == NULL)
+			if (current->previous == NULL)
 			{
 				continue ;
 			}
-			else
+			if (current->cmds_str == NULL)
 			{
-				current = current->previous;
-				ms_lndel(cap, buf->pos);
-				ms_bufrpc(buf, current->cmds_str);
-				printf("%s", current->cmds_str);
+				current->cmds_str = xstrdup(buf->buf);
 			}
 
+			// override cmds_str and assign original
+			if (ft_strlen(buf->buf) != 0 && ft_strcmp(buf->buf, current->cmds_str))
+			{
+				if (current->original == NULL)
+					current->original = current->cmds_str;
+				current->cmds_str = xstrdup(buf->buf);
+			}
+
+			current = current->previous;
+			ms_lndel(cap, buf->pos);
+			ms_bufrpc(buf, current->cmds_str);
+			printf("%s", current->cmds_str);
 		}
 		else if (pos == 2 && input == K_B)
 		{
@@ -144,48 +172,34 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 
 			pos = 0;
 
-			// have not been debugged
-			if (strlen(cmds_str) > 0)
-			{
-				if (buf->buf != current->cmds_str)
-				{
-					current->original = xstrdup(buf->buf);
-				}
-			}
 
-			if (current->cmds_str == NULL)
-			{
-				current->cmds_str = xstrdup(buf->buf);
-			}
-			else if (current->cmds_str != NULL)
-			{
-				if (ft_strlen(buf->buf) != 0)
-				{
-					char *tmp = current->cmds_str;
-					current->cmds_str = xstrdup(buf->buf);
-					xfree(tmp);
-				}
-			}
-
+			// pre-conditions
 			if (*cmdslst == NULL)
 			{
 				continue ;
 			}
-			else if (current->next == NULL)
+			if (current->next == NULL)
 			{
 				// ignore
 				continue ;
 			}
-			else
+			if (current->cmds_str == NULL)
 			{
-				current = current->next;
-
-
-				ms_lndel(cap, buf->pos);
-				ms_bufrpc(buf, current->cmds_str);
-				printf("%s", current->cmds_str);
+				current->cmds_str = xstrdup(buf->buf);
 			}
 
+			// override cmds_str and assign original
+			if (ft_strlen(buf->buf) != 0 && ft_strcmp(buf->buf, current->cmds_str))
+			{
+				if (current->original == NULL)
+					current->original = current->cmds_str;
+				current->cmds_str = xstrdup(buf->buf);
+			}
+
+			current = current->next;
+			ms_lndel(cap, buf->pos);
+			ms_bufrpc(buf, current->cmds_str);
+			printf("%s", current->cmds_str);
 		}
 		else if (input == K_CTRL_D)
 		{

@@ -6,13 +6,13 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:09:58 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/04 17:19:11 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/17 19:00:51 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void	parse(const char *cmdln, t_cmd **a_head, char **synerr)
+void	parse(const char *cmdln, t_cmd **a_head)
 {
 	t_cmd	*cmd;
 	size_t	i;
@@ -22,7 +22,6 @@ void	parse(const char *cmdln, t_cmd **a_head, char **synerr)
 
 	if (cmdln == NULL || !a_head || ft_strlen(cmdln) == 0)
 		return ;
-	*synerr = NULL;
 	*a_head = NULL;
 	start = 0;
 	is_next_pipe = false;

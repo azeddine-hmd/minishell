@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:09:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/13 18:00:04 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/17 18:59:21 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "libft/libft.h"
 # include "linkedlist/linkedlist.h"
 # include "parser/parser.h"
+# include "execution/execution.h"
 # include "errors.h"
 
 /*
@@ -38,11 +39,14 @@
 # define K_CTRL_H 8
 # define K_CTRL_K 11
 
+// debugging
+# define K_UP_ARROW 27, K_OSB, K_A
+# define K_DOWN_ARROW 27, K_OSB, K_B
+
 /*
  ** others
  */
 
-# define DEBUG TRUE
 # define MS_PROMPT_COLOR COLORS_BLUE
 # define MS_PROMPT "minishell > "
 # define MS_BUFFER_SIZE 2048

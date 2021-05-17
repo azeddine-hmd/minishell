@@ -12,12 +12,6 @@
 # define ERR_TERMNOTDEFINED "Terminal type `%s` is not defined."
 
 /*
-** syntax errors
-*/
-
-//TODO: print parse errors
-
-/*
 ** colors
 */
 

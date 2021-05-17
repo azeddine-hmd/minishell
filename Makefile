@@ -10,6 +10,7 @@ CC = gcc
 LIBS = libft/libft.a \
 	   linkedlist/liblinkedlist.a \
 	   parser/libparser.a \
+	   execution/libexecution.a \
 
 SRC = minishell.c \
 	  errors.c \
@@ -27,18 +28,21 @@ $(NAME):
 	@$(MAKE) libft
 	@$(MAKE) linkedlist
 	@$(MAKE) parser
+	@$(MAKE) execution
 	@$(CC) $(CFLAGS) $(SRC) $(LIBS) -o $(NAME)
 
 clean:
 	@$(MAKE) libft clean
 	@$(MAKE) linkedlist clean
 	@$(MAKE) parser clean
+	@$(MAKE) execution clean
 	@rm -rf $(OBJ)
 
 fclean:
 	@$(MAKE) libft fclean
 	@$(MAKE) linkedlist fclean
 	@$(MAKE) parser fclean
+	@$(MAKE) execution fclean
 	@rm -rf $(NAME)
 
 re: fclean all

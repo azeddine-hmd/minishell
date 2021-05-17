@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:30:22 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/12 17:14:19 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/05/17 19:04:51 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		print_cmd(t_cmd *cmd);
 void		print_all_cmds(t_cmd *head);
 
 // parse.c
-void		parse(const char *cmdln, t_cmd **a_head, char **synerr);
+void		parse(const char *cmdln, t_cmd **a_head);
 
 // cmds.c
 void		cmd_init(t_cmd *cmd, char **args, t_bool is_piped);

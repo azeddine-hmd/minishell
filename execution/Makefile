@@ -5,22 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/13 15:13:20 by ahamdaou          #+#    #+#              #
-#    Updated: 2021/05/17 19:04:50 by ahamdaou         ###   ########.fr        #
+#    Created: 2021/05/16 18:54:00 by ahamdaou          #+#    #+#              #
+#    Updated: 2021/05/17 19:04:56 by ahamdaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libparser.a
+NAME = libexecution.a
 
 CFLAGS = -Wall -Wextra -Werror \
 		 -g \
 
 CC = gcc
 
-SRC = parse.c \
-	  cmds.c \
-	  cmdslst.c \
-	  parse_debugger.c \
+SRC = execute.c \
 
 OBJ = ${SRC:.c=.o}
 

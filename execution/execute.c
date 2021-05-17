@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/01 02:12:01 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/15 10:39:37 by ahamdaou         ###   ########.fr       */
+/*   Created: 2021/05/16 19:03:13 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/05/17 19:07:20 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "execution.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+void	execute(t_cmd *cmds)
 {
-	return (ft_strncmp(s1, s2, ft_max(ft_strlen(s1), ft_strlen(s2))));
+	//TODO: handle and execute commands
+	print_all_cmds(cmds);
 }
