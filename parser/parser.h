@@ -6,7 +6,7 @@
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:30:22 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/17 19:04:51 by ahamdaou         ###   ########.fr       */
+/*   Updated: 2021/06/24 19:18:20 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,21 @@
 # include "../linkedlist/linkedlist.h"
 # include <stdio.h>
 
+/*
+** example: echo < text1.txt << text2.txt <<< y "Hello There"  > out1.txt >> out2.txt
+** result:
+** 		is_piped = false
+**		fdin = "r:text1.txt;r:text2.txt;d:y"
+**		fdout = "w:out1.txt;a:out2.txt"
+**		args = { "echo", "Hello There", NULL }
+*/
+
 typedef struct s_cmd
 {
-	t_bool			is_piped;   // 'true' or 'false'
-	char			*fdin;      // "15:16:20"
-	char			*fdout;     // "r15:a16"
-	char			**args;     // array of arguments
+	t_bool			is_piped;
+	char			*fdin;
+	char			*fdout;
+	char			**args;
 	struct s_cmd	*next;
 	struct s_cmd	*previous;
 }t_cmd;
