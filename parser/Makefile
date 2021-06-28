@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/13 15:13:20 by ahamdaou          #+#    #+#              #
-#    Updated: 2021/05/17 19:04:50 by ahamdaou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libparser.a
 
 CFLAGS = -Wall -Wextra -Werror \
@@ -21,6 +9,8 @@ SRC = parse.c \
 	  cmds.c \
 	  cmdslst.c \
 	  parse_debugger.c \
+	  check_syntax_error.c \
+	  is_pipe_not_valid.c \
 
 OBJ = ${SRC:.c=.o}
 

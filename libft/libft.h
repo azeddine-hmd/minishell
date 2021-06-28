@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ahamdaou <ahamdaou@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 22:38:41 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/05 17:32:54 by ahamdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
@@ -67,5 +55,7 @@ int				length(char **array);
 void			free_double_pointer(char **ptr);
 int				ft_putc(int c);
 size_t			ft_max(size_t m1, size_t m2);
+t_bool			is_null(void *ptr);
+t_bool			is_not_null(void *ptr);
 
 #endif

@@ -2,6 +2,7 @@
 # define ERRORS_H
 # include <stdio.h>
 # include <stdlib.h>
+# include "linkedlist/linkedlist.h"
 
 /*
 ** terminal errors
@@ -25,7 +26,14 @@
 # define COLORS_CYAN "\033[0;36m"
 # define COLORS_WHITE "\033[0;36m"
 
+/*
+** syntax errors
+*/
+# define ERR_PIPE "syntax error near unexpected token '|'"
+
+
 void	err(const char *error);
 void	ferr(const char *err_format, const char *arg);
+void	print_syntax_error(const char *error);
 
 #endif

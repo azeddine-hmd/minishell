@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 14:09:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/17 18:59:21 by ahamdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -23,6 +11,7 @@
 # include "parser/parser.h"
 # include "execution/execution.h"
 # include "errors.h"
+# include <stdlib.h>
 
 /*
  ** keys
@@ -83,7 +72,6 @@ void		ms_bufrpc(t_buf *buf, const char *s);
 // termcap
 void		ms_setup(t_cap **cap, t_buf **a_buf);
 void		ms_prompt(void);
-
 void		ms_chrdel(t_cap *cap);
 void		ms_lndel(t_cap *cap, int count);
 

@@ -1,19 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 15:30:22 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/06/24 19:18:20 by ahamdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PARSER_H
 # define PARSER_H
 # include "../libft/libft.h"
 # include "../linkedlist/linkedlist.h"
+# include "../errors.h"
 # include <stdio.h>
 
 /*
@@ -51,7 +40,9 @@ void		print_cmd(t_cmd *cmd);
 void		print_all_cmds(t_cmd *head);
 
 // parse.c
-void		parse(const char *cmdln, t_cmd **a_head);
+char		*parse(const char *cmdln, t_cmd **head);
+char		*check_syntax_error(const char *cmdln);
+t_bool		is_pipe_not_valid(const char *cmdln);
 
 // cmds.c
 void		cmd_init(t_cmd *cmd, char **args, t_bool is_piped);

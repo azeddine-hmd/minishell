@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   allocation.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 02:51:33 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/04 16:32:42 by ahamdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "linkedlist.h"
 
 /*
@@ -40,9 +28,9 @@ void		*xmalloc(size_t size)
 	void	*data;
 
 	data = malloc(size);
-	ft_bzero(data, size);
 	if (data == NULL)
 		error();
+	ft_bzero(data, size);
 	add(get_head_node(), data);
 	return (data);
 }

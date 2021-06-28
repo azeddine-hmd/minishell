@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/07 08:03:16 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/05/17 18:59:56 by ahamdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
@@ -55,7 +43,9 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		}
 		else if (input == K_ENTER)
 		{
+			char *syntax_error;
 
+			syntax_error = NULL;
 			fprintf(ms_log, "key: ENTER\n");
 			fflush(ms_log);
 
@@ -112,10 +102,16 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 
 			if (current->cmds == NULL)
 			{
-				parse(buf->buf, &(current->cmds));
+				syntax_error = parse(buf->buf, &(current->cmds));
 			}
-
-			execute(current->cmds);
+			if (is_null(syntax_error))
+			{
+				execute(current->cmds);
+			}
+			else
+			{
+				print_syntax_error(syntax_error);
+			}
 
 			current = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
 			add_cmdslst(cmdslst, current);
