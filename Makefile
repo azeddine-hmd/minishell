@@ -22,8 +22,6 @@ OBJ = ${SRC:.c=.o}
 
 MAKE = make --no-print-directory -C
 
-NOSENSE = $(cat nosense)
-
 all: $(NAME)
 
 $(NAME):
