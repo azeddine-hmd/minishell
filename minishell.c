@@ -100,18 +100,11 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 
 			}
 
-			if (current->cmds == NULL)
-			{
-				syntax_error = parse(buf->buf, &(current->cmds));
-			}
+			syntax_error = parse(buf->buf, &(current->cmds));
 			if (is_null(syntax_error))
-			{
 				execute(current->cmds);
-			}
 			else
-			{
 				print_syntax_error(syntax_error);
-			}
 
 			current = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
 			add_cmdslst(cmdslst, current);

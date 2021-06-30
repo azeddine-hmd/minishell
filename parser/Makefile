@@ -14,6 +14,7 @@ SRC = parse.c \
 	  create_cmds.c \
 	  get_quotes_range.c \
 	  range.c \
+	  quotes.c \
 
 OBJ = ${SRC:.c=.o}
 

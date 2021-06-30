@@ -8,9 +8,10 @@ char	*parse(const char *cmdln, t_cmd **head)
 	if (cmdln == NULL || !head || ft_strlen(cmdln) == 0)
 		return (NO_SYNTAX_ERROR);
 	quotes_range = get_quotes_range(cmdln);
-	syntax_error = check_syntax_error(cmdln);
+	syntax_error = check_syntax_error(cmdln, quotes_range);
 	if (is_not_null(syntax_error))
 		return (syntax_error);
-	create_cmds(cmdln, head);
+	else
+		create_cmds(cmdln, head);
 	return (NO_SYNTAX_ERROR);
 }
