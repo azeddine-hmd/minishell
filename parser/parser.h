@@ -1,9 +1,15 @@
 #ifndef PARSER_H
 # define PARSER_H
 # include "../libft/libft.h"
+# include "../libx/libx.h"
 # include "../linkedlist/linkedlist.h"
 # include "../errors.h"
 # include <stdio.h>
+
+# define NO_SYNTAX_ERROR NULL
+# define QUOTES "'\""
+# define PAIR_NOT_FOUND -1
+# define QUOTE_ADDRESS_NOT_FOUND -1
 
 /*
 ** example: echo < text1.txt << text2.txt <<< y "Hello There"  > out1.txt >> out2.txt
@@ -43,6 +49,12 @@ void		print_all_cmds(t_cmd *head);
 char		*parse(const char *cmdln, t_cmd **head);
 char		*check_syntax_error(const char *cmdln);
 t_bool		is_pipe_not_valid(const char *cmdln);
+void		create_cmds(const char *cmdln, t_cmd **head);
+t_list		*get_quotes_range(const char *s);
+
+// range
+void		range_del(void *content);
+t_range		*get_range(int from, int to, char type);
 
 // cmds.c
 void		cmd_init(t_cmd *cmd, char **args, t_bool is_piped);

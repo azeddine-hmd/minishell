@@ -1,4 +1,4 @@
-#include "linkedlist.h"
+#include "libx.h"
 
 char	*xsubstr(char const *s, unsigned int start, size_t len)
 {

@@ -2,7 +2,7 @@
 # define ERRORS_H
 # include <stdio.h>
 # include <stdlib.h>
-# include "linkedlist/linkedlist.h"
+# include "libx/libx.h"
 
 /*
 ** terminal errors

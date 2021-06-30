@@ -8,6 +8,7 @@ CFLAGS = -Wall -Werror -Wextra \
 CC = gcc
 
 LIBS = libft/libft.a \
+	   libx/libx.a \
 	   linkedlist/liblinkedlist.a \
 	   parser/libparser.a \
 	   execution/libexecution.a \
@@ -26,6 +27,7 @@ all: $(NAME)
 
 $(NAME):
 	@$(MAKE) libft
+	@$(MAKE) libx
 	@$(MAKE) linkedlist
 	@$(MAKE) parser
 	@$(MAKE) execution
@@ -33,6 +35,7 @@ $(NAME):
 
 clean:
 	@$(MAKE) libft clean
+	@$(MAKE) libx clean
 	@$(MAKE) linkedlist clean
 	@$(MAKE) parser clean
 	@$(MAKE) execution clean
@@ -40,6 +43,7 @@ clean:
 
 fclean:
 	@$(MAKE) libft fclean
+	@$(MAKE) libx fclean
 	@$(MAKE) linkedlist fclean
 	@$(MAKE) parser fclean
 	@$(MAKE) execution fclean
@@ -47,4 +51,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: clean fclean
+.PHONY: clean fclean re

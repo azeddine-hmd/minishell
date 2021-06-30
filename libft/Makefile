@@ -35,7 +35,6 @@ SRC = ft_atoi.c \
 	  ft_isascii.c \
 	  ft_memcpy.c \
 	  ft_split.c \
-	  ft_strmapi.c \
 	  ft_toupper.c \
 	  ft_isdigit.c \
 	  ft_memmove.c \

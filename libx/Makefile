@@ -1,15 +1,18 @@
-NAME = liblinkedlist.a
+NAME = libx.a
 
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra \
 		 -g \
 
-SRC = setters.c \
-	  getters.c \
-	  del.c \
-	  iterator.c \
-	  is_empty.c \
+SRC = libx.c \
+	  libx_utils.c \
+	  allocation.c \
+	  error.c \
+	  swap.c \
+	  utils.c \
+	  xsubstr.c \
+	  xrealloc.c \
 
 OBJ = ${SRC:.c=.o}
 
@@ -26,5 +29,3 @@ fclean: clean
 	@ rm -f $(NAME)
 
 re:	fclean all
-
-.PHONY: clean fclean re

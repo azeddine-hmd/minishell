@@ -11,6 +11,9 @@ SRC = parse.c \
 	  parse_debugger.c \
 	  check_syntax_error.c \
 	  is_pipe_not_valid.c \
+	  create_cmds.c \
+	  get_quotes_range.c \
+	  range.c \
 
 OBJ = ${SRC:.c=.o}
 
