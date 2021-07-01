@@ -1,7 +1,9 @@
 #include "execution.h"
 
-void	execute(t_cmd *cmds)
+int	execute(t_cmd *cmds)
 {
-	//TODO: handle and execute commands
-	print_all_cmds(cmds);
+	//TODO: execute commands
+	//
+	(void)cmds; // suppress unused variable error
+	return (EXIT_SUCCESS);
 }

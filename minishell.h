@@ -13,6 +13,11 @@
 # include "errors.h"
 # include <stdlib.h>
 
+# define MS_PROMPT_COLOR COLORS_BLUE
+# define MS_PROMPT "minishell > "
+# define MS_BUFFER_SIZE 2048
+# define MS_INITIAL_RETURN EXIT_SUCCESS
+
 /*
  ** keys
  */
@@ -29,16 +34,10 @@
 # define K_CTRL_K 11
 
 // debugging
+# define DEBUG_LOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/log"
+# define DEBUG_BUFLOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/buflog"
 # define K_UP_ARROW 27, K_OSB, K_A
 # define K_DOWN_ARROW 27, K_OSB, K_B
-
-/*
- ** others
- */
-
-# define MS_PROMPT_COLOR COLORS_BLUE
-# define MS_PROMPT "minishell > "
-# define MS_BUFFER_SIZE 2048
 
 typedef struct s_buf
 {

@@ -100,9 +100,13 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 
 			}
 
-			syntax_error = parse(buf->buf, &(current->cmds));
+			if (has_previous(current))
+				syntax_error = parse(buf->buf, &(current->cmds), current->previous->ret);
+			else
+				syntax_error = parse(buf->buf, &(current->cmds), EXIT_SUCCESS);
+
 			if (is_null(syntax_error))
-				execute(current->cmds);
+				current->ret = execute(current->cmds);
 			else
 				print_syntax_error(syntax_error);
 
@@ -228,9 +232,9 @@ int		main(void)
 	cap = NULL;
 	buf = NULL;
 
-	// debugging (initializing log files)
-	ms_log = fopen("/Users/ahamdaou/development/42cursus/github/minishell/log", "a");
-	ms_buflog = fopen("/Users/ahamdaou/development/42cursus/github/minishell/buflog", "a");
+	// debugging
+	ms_log = fopen(DEBUG_LOG_PATH, "a");
+	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
 
 	setbuf(stdout, NULL);
 	ms_setup(&cap, &buf);

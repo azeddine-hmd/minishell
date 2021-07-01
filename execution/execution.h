@@ -4,6 +4,6 @@
 # include "../libx/libx.h"
 # include "../parser/parser.h"
 
-void	execute(t_cmd *cmds);
+int	execute(t_cmd *cmds);
 
 #endif

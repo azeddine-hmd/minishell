@@ -26,6 +26,7 @@ typedef struct s_cmd
 	char			*fdin;
 	char			*fdout;
 	char			**args;
+	int				ret;
 	struct s_cmd	*next;
 	struct s_cmd	*previous;
 }t_cmd;
@@ -35,6 +36,7 @@ typedef struct s_cmdlst
 	t_cmd			*cmds;
 	char			*cmds_str;
 	char			*original;
+	int				ret;
 	struct s_cmdlst	*next;
 	struct s_cmdlst	*previous;
 }t_cmdslst;
@@ -46,7 +48,7 @@ void		print_cmd(t_cmd *cmd);
 void		print_all_cmds(t_cmd *head);
 
 // parse.c
-char		*parse(const char *cmdln, t_cmd **head);
+char		*parse(const char *cmdln, t_cmd **head, int prev_ret);
 char		*check_syntax_error(const char *cmdln, t_list *quotes_range);
 t_bool		is_pipe_not_valid(const char *cmdln, t_list *quotes_range);
 void		create_cmds(const char *cmdln, t_cmd **head);
@@ -65,6 +67,7 @@ void		add_cmd(t_cmd **a_head, t_cmd *cmd);
 t_cmd		*get_last_cmd(t_cmd *head);
 
 // cmdslst.c
+t_bool		has_previous(t_cmdslst *cmdslst);
 t_cmdslst	*get_last_cmdslst(t_cmdslst *head);
 void		add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst);
 void		delete_cmdslst(t_cmdslst **a_head, t_cmdslst *target);

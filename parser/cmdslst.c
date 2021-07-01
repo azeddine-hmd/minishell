@@ -1,5 +1,13 @@
 #include "parser.h"
 
+t_bool	has_previous(t_cmdslst *cmdslst)
+{
+	if (is_null(cmdslst->previous))
+		return (false);
+	else
+		return (true);
+}
+
 t_cmdslst	*get_last_cmdslst(t_cmdslst *head)
 {
 	while (head->next != NULL)
