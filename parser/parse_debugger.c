@@ -1,5 +1,4 @@
 #include "parser.h"
-#include <stdio.h>
 
 static t_cmd	*get_fake_cmd(char **s)
 {

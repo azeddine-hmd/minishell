@@ -1,8 +1,8 @@
 #ifndef ERRORS_H
 # define ERRORS_H
-# include <stdio.h>
 # include <stdlib.h>
 # include "libx/libx.h"
+# include <stdio.h>
 
 /*
 ** terminal errors

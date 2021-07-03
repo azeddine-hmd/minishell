@@ -17,8 +17,8 @@ static t_list	*get_partial_cmds(const char *cmdln)
 	int			i;
 
 	self_init(&head, &is_piped, &start, &i);
-	i = 0;
-	while (cmdln[i])
+	i = -1;
+	while (cmdln[++i])
 	{
 		if (cmdln[i] != '|')
 			continue ;
@@ -28,7 +28,6 @@ static t_list	*get_partial_cmds(const char *cmdln)
 		push_partial(&head, cmd_str, is_piped);
 		is_piped = true;
 		start = i + 1;
-		i++;
 	}
 	cmd_str = ft_substr(cmdln, start, ft_strlen(cmdln));
 	push_partial(&head, cmd_str, is_piped);

@@ -1,6 +1,8 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <stdlib.h>
+# include <stdio.h>
 # include <termcap.h>
 # include <curses.h>
 # include <termios.h>
@@ -11,7 +13,6 @@
 # include "parser/parser.h"
 # include "execution/execution.h"
 # include "errors.h"
-# include <stdlib.h>
 
 # define MS_PROMPT_COLOR COLORS_BLUE
 # define MS_PROMPT "minishell > "

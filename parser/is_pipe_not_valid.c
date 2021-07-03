@@ -39,17 +39,13 @@ static t_bool	pipe_clash(const char *cmdln, t_list *quotes_range)
 t_bool	is_pipe_not_valid(const char *cmdln, t_list *quotes_range)
 {
 	char	*cmdln_trimmed;
-	size_t	first_index;
-	size_t	last_index;
 	t_bool	result;
 
 	cmdln_trimmed = ft_strtrim(cmdln, " ");
 	result = false;
-	first_index = 0;
-	last_index = ft_strlen(cmdln_trimmed) - 1;
-	if (cmdln[first_index] == '|')
+	if (cmdln_trimmed[0] == '|')
 		result = true;
-	else if (cmdln[last_index] == '|')
+	else if (cmdln_trimmed[ft_strlen(cmdln_trimmed) - 1] == '|')
 		result = true;
 	else if (pipe_clash(cmdln_trimmed, quotes_range))
 		result = true;
