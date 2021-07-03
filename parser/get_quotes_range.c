@@ -1,28 +1,28 @@
 #include "parser.h"
 
-static int	quote_address_to_index(const char *cmdln, char *quote_address)
+static int	quote_address_to_index(const char *s, char *quote_address)
 {
 	int	i;
 
 	i = 0;
-	while (cmdln[i])
+	while (s[i])
 	{
-		if (&(cmdln[i]) == quote_address)
+		if (&(s[i]) == quote_address)
 			return (i);
 		i++;
 	}
 	return (QUOTE_ADDRESS_NOT_FOUND);
 }
 
-static int	get_quote_pair_index(const char *cmdln, char quote, int start_index)
+static int	get_quote_pair_index(const char *s, char quote, int start_index)
 {
 	char	*quote_address;
 	int		index;
 
-	quote_address = ft_strchr(cmdln + start_index, quote);
+	quote_address = ft_strchr(s + start_index, quote);
 	if (is_null(quote_address))
 		return (PAIR_NOT_FOUND);
-	index = quote_address_to_index(cmdln, quote_address);
+	index = quote_address_to_index(s, quote_address);
 	return (index);
 }
 
@@ -46,7 +46,7 @@ static void	create_and_add_range(t_list **head, int from, int to, char type)
 	ft_lstadd_back(head, new);
 }
 
-t_list	*get_quotes_range(const char *cmdln)
+t_list	*get_quotes_range(const char *s)
 {
 	t_list	*head;
 	int		pair_index;
@@ -54,14 +54,14 @@ t_list	*get_quotes_range(const char *cmdln)
 
 	head = NULL;
 	i = 0;
-	while (cmdln[i])
+	while (s[i])
 	{
-		if (ft_strchr(QUOTES, cmdln[i]))
+		if (ft_strchr(QUOTES, s[i]))
 		{
-			pair_index = get_quote_pair_index(cmdln, cmdln[i], i + 1);
+			pair_index = get_quote_pair_index(s, s[i], i + 1);
 			if (pair_index == PAIR_NOT_FOUND)
 				break ;
-			create_and_add_range(&head, i, pair_index, cmdln[i]);
+			create_and_add_range(&head, i, pair_index, s[i]);
 			i = pair_index + 1;
 		}
 		else

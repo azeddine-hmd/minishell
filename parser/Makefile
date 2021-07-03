@@ -9,12 +9,14 @@ SRC = parse.c \
 	  cmds.c \
 	  cmdslst.c \
 	  parse_debugger.c \
+	  parse_debugger_2.c \
 	  check_syntax_error.c \
 	  is_pipe_not_valid.c \
 	  create_cmds.c \
 	  get_quotes_range.c \
 	  range.c \
 	  quotes.c \
+	  partial.c \
 
 OBJ = ${SRC:.c=.o}
 

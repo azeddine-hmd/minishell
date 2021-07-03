@@ -100,15 +100,26 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 
 			}
 
+			// parsing
 			if (has_previous(current))
 				syntax_error = parse(buf->buf, &(current->cmds), current->previous->ret);
 			else
 				syntax_error = parse(buf->buf, &(current->cmds), EXIT_SUCCESS);
 
+			// execution
 			if (is_null(syntax_error))
+			{
 				current->ret = execute(current->cmds);
+			}
 			else
+			{
 				print_syntax_error(syntax_error);
+			}
+
+			// leaks debugging
+			//printf("\n=======leaks=======\n");
+			//system("leaks minishell | grep 'leaked bytes'");
+			//printf("===================\n\n");
 
 			current = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
 			add_cmdslst(cmdslst, current);

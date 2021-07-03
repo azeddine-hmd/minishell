@@ -11,6 +11,7 @@ char	*parse(const char *cmdln, t_cmd **head, int prev_ret)
 		return (NO_SYNTAX_ERROR);
 	quotes_range = get_quotes_range(cmdln);
 	syntax_error = check_syntax_error(cmdln, quotes_range);
+	ft_lstclear(&quotes_range, range_del);
 	if (is_not_null(syntax_error))
 	{
 		return (syntax_error);

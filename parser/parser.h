@@ -41,32 +41,48 @@ typedef struct s_cmdlst
 	struct s_cmdlst	*previous;
 }t_cmdslst;
 
+typedef struct s_partial
+{
+	char	*cmd_str;
+	t_bool	is_piped;
+}t_partial;
+
 // debugging
+void		print_all_partial(t_list *head);
 void		fake_cmdslst(t_cmdslst **a_head);
 void		print_all_cmdslst(t_cmdslst *head);
 void		print_cmd(t_cmd *cmd);
 void		print_all_cmds(t_cmd *head);
 
-// parse.c
+// parse
 char		*parse(const char *cmdln, t_cmd **head, int prev_ret);
+void		create_cmds(const char *cmdln, t_cmd **head);
+
+// syntax error
 char		*check_syntax_error(const char *cmdln, t_list *quotes_range);
 t_bool		is_pipe_not_valid(const char *cmdln, t_list *quotes_range);
-void		create_cmds(const char *cmdln, t_cmd **head);
-t_list		*get_quotes_range(const char *s);
+
+// quotes
 t_bool		inside_quotes(t_list *range, int from, int to, const char *types);
+t_list		*get_quotes_range(const char *s);
 
 // range
 void		range_del(void *content);
 t_range		*get_range(int from, int to, char type);
 t_bool		inside_range(t_range *range, int from, int to, char type);
 
-// cmds.c
+// partial
+void		partial_del(void *content);
+t_partial	*get_partial(char *cmd_str, t_bool is_piped);
+void		push_partial(t_list **head, char *cmd_str, t_bool is_piped);
+
+// cmds
 void		cmd_init(t_cmd *cmd, char **args, t_bool is_piped);
 t_cmd		*get_cmd(const char *cmd_string, t_bool is_piped);
 void		add_cmd(t_cmd **a_head, t_cmd *cmd);
 t_cmd		*get_last_cmd(t_cmd *head);
 
-// cmdslst.c
+// cmdslst
 t_bool		has_previous(t_cmdslst *cmdslst);
 t_cmdslst	*get_last_cmdslst(t_cmdslst *head);
 void		add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst);

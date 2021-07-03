@@ -31,23 +31,28 @@ static t_bool	pipe_clash(const char *cmdln, t_list *quotes_range)
 
 /*
 ** return true if below cases valid:
-** 	pipe at the beginning of string
+** 	pipe at the beginning of string (ignore spaces)
 **	pipe at the end of string
 **	pipe next to another pipe or separated only by spaces
 */
 
 t_bool	is_pipe_not_valid(const char *cmdln, t_list *quotes_range)
 {
+	char	*cmdln_trimmed;
 	size_t	first_index;
 	size_t	last_index;
+	t_bool	result;
 
+	cmdln_trimmed = ft_strtrim(cmdln, " ");
+	result = false;
 	first_index = 0;
-	last_index = ft_strlen(cmdln) - 1;
+	last_index = ft_strlen(cmdln_trimmed) - 1;
 	if (cmdln[first_index] == '|')
-		return (true);
+		result = true;
 	else if (cmdln[last_index] == '|')
-		return (true);
-	else if (pipe_clash(cmdln, quotes_range))
-		return (true);
-	return (false);
+		result = true;
+	else if (pipe_clash(cmdln_trimmed, quotes_range))
+		result = true;
+	free(cmdln_trimmed);
+	return (result);
 }
