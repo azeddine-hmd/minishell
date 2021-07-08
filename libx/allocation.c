@@ -76,15 +76,9 @@ void		xfree(void *data)
 {
 	t_data	*tmp;
 	t_data	**head;
-	char	*tester;
-	char	test;
 
 	if (!data)
-	{
-		tester = (char*)data;
-		test = *tester;
-		test++;
-	}
+		return ;
 	head = (t_data**)get_head_node();
 	if ((*head)->data == data)
 	{

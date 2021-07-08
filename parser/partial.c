@@ -35,6 +35,7 @@ void	push_partial(t_list **head, char *cmd_str, t_bool is_piped)
 	new = ft_lstnew(partial);
 	if (is_null(new))
 	{
+		free(partial);
 		ft_lstclear(head, partial_del);
 		error();
 	}

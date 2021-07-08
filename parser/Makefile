@@ -17,6 +17,8 @@ SRC = parse.c \
 	  range.c \
 	  quotes.c \
 	  partial.c \
+	  token.c \
+	  split_except_quotes.c \
 
 OBJ = ${SRC:.c=.o}
 

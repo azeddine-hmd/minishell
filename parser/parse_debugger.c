@@ -59,8 +59,8 @@ void	print_cmd(t_cmd *cmd)
 	{
 		printf("is_piped: false\n");
 	}
-	printf("fdin: '%s'\n", cmd->fdin);
-	printf("fdout: '%s'\n", cmd->fdout);
+	print_all_tokens(cmd->in_token);
+	print_all_tokens(cmd->out_token);
 	printf("\n");
 }
 

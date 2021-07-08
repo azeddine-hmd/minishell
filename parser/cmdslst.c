@@ -35,10 +35,8 @@ void	add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst)
 
 static void xfree_cmds(t_cmd *cmds)
 {
-	if (cmds->fdin)
-		xfree(cmds->fdin);
-	if (cmds->fdout)
-		xfree(cmds->fdout);
+	ft_lstclear(&(cmds->in_token), token_del);
+	ft_lstclear(&(cmds->out_token), token_del);
 	//TODO: change free_double_pointer to xfree_double_pointer
 	free_double_pointer(cmds->args);
 	xfree(cmds);

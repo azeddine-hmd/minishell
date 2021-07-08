@@ -6,25 +6,24 @@
 # include "../errors.h"
 # include <stdio.h>
 
-# define NO_SYNTAX_ERROR NULL
+# define TOKENS "> >> < << |"
 # define QUOTES "'\""
+# define NO_SYNTAX_ERROR NULL
 # define PAIR_NOT_FOUND -1
 # define QUOTE_ADDRESS_NOT_FOUND -1
+# define CHAR_PLACEHOLDER -128
 
-/*
-** example: echo < text1.txt "Hello There"  > out1.txt >> out2.txt
-** result:
-** 		is_piped = false
-**		fdin = "r:text1.txt"
-**		fdout = "w:out1.txt;a:out2.txt"
-**		args = { "echo", "Hello There", NULL }
-*/
+typedef struct s_token
+{
+	char			type;
+	char			*value;
+}t_token;
 
 typedef struct s_cmd
 {
 	t_bool			is_piped;
-	char			*fdin;
-	char			*fdout;
+	t_list			*in_token;
+	t_list			*out_token;
 	char			**args;
 	int				ret;
 	struct s_cmd	*next;
@@ -48,18 +47,22 @@ typedef struct s_partial
 }t_partial;
 
 // debugging
-void		print_all_partial(t_list *head);
 void		fake_cmdslst(t_cmdslst **a_head);
 void		print_all_cmdslst(t_cmdslst *head);
 void		print_cmd(t_cmd *cmd);
 void		print_all_cmds(t_cmd *head);
+void		print_all_range(t_list *head);
+void		print_all_partial(t_list *head);
+void		print_all_tokens(t_list *head);
+void		print_arr(char **arr);
 
 // parse
 char		*parse(const char *cmdln, t_cmd **head, int prev_ret);
 void		create_cmds(const char *cmdln, t_cmd **head);
+char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 
 // syntax error
-char		*check_syntax_error(const char *cmdln, t_list *quotes_range);
+char		*check_syntax_error(char **arr);
 t_bool		is_pipe_not_valid(const char *cmdln, t_list *quotes_range);
 
 // quotes
@@ -75,6 +78,9 @@ t_bool		inside_range(t_range *range, int from, int to, char type);
 void		partial_del(void *content);
 t_partial	*get_partial(char *cmd_str, t_bool is_piped);
 void		push_partial(t_list **head, char *cmd_str, t_bool is_piped);
+
+// token
+void		token_del(void *content);
 
 // cmds
 void		cmd_init(t_cmd *cmd, char **args, t_bool is_piped);

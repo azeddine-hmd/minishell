@@ -26,7 +26,7 @@ static int	get_quote_pair_index(const char *s, char quote, int start_index)
 	return (index);
 }
 
-static void	create_and_add_range(t_list **head, int from, int to, char type)
+static void	push_range(t_list **head, int from, int to, char type)
 {
 	t_list	*new;
 	t_range	*range;
@@ -40,6 +40,7 @@ static void	create_and_add_range(t_list **head, int from, int to, char type)
 	new = ft_lstnew(range);
 	if (is_null(new))
 	{
+		free(range);
 		ft_lstclear(head, range_del);
 		error();
 	}
@@ -61,7 +62,7 @@ t_list	*get_quotes_range(const char *s)
 			pair_index = get_quote_pair_index(s, s[i], i + 1);
 			if (pair_index == PAIR_NOT_FOUND)
 				break ;
-			create_and_add_range(&head, i, pair_index, s[i]);
+			push_range(&head, i, pair_index, s[i]);
 			i = pair_index + 1;
 		}
 		else
