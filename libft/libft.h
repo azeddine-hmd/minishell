@@ -58,7 +58,7 @@ int				is_str_digit(const char *s);
 void			ft_putstr(const char *s);
 int				count_char(const char *s, char c);
 int				length(char **array);
-void			free_double_pointer(char **ptr);
+void			free_str_array(char **str_arr);
 int				ft_putc(int c);
 size_t			ft_max(size_t m1, size_t m2);
 t_bool			is_null(void *ptr);

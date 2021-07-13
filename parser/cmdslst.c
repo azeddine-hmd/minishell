@@ -38,7 +38,7 @@ static void xfree_cmds(t_cmd *cmds)
 	ft_lstclear(&(cmds->in_token), token_del);
 	ft_lstclear(&(cmds->out_token), token_del);
 	//TODO: change free_double_pointer to xfree_double_pointer
-	free_double_pointer(cmds->args);
+	free_str_array(cmds->args);
 	xfree(cmds);
 }
 

@@ -1,15 +1,30 @@
 #include "parser.h"
 
-void	print_arr(char **arr)
+void	print_str_lst(t_list *str_lst)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	while (str_lst)
+	{
+		str = (char*)str_lst->content;
+		printf("str_lst[%d]=%s\n", i, str);
+		str_lst = str_lst->next;
+		i++;
+	}
+}
+
+void	print_str_arr(char **str_arr)
 {
 	int	arr_len;
 	int	i;
 
-	arr_len = length(arr);
+	arr_len = length(str_arr);
 	i = 0;
 	while (i < arr_len)
 	{
-		printf("arr[%d] = %s\n", i, arr[i]);
+		printf("str_arr[%d] = %s\n", i, str_arr[i]);
 		i++;
 	}
 }

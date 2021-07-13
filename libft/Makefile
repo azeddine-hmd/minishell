@@ -46,7 +46,7 @@ SRC = ft_atoi.c \
 	  is_str_digit.c \
 	  count_char.c \
 	  length.c \
-	  free_double_pointer.c \
+	  free_str_array.c \
 	  ft_putc.c \
 	  ft_max.c \
 	  is_null.c \

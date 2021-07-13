@@ -2,6 +2,7 @@
 # define LINKEDLIST_H
 # include <stdlib.h>
 # include <unistd.h>
+# include "../libft/libft.h"
 
 typedef struct s_list
 {
@@ -19,5 +20,8 @@ void	ft_lstclear(t_list **lst, void (*del) (void*));
 void	ft_lstiter(t_list *lst, void (*f) (void*));
 t_list	*ft_lstmap(t_list *lst, void *(*f) (void*), void (*del) (void*));
 int		is_empty(t_list *lst);
+t_list	*string_array_to_string_list(char **arr);
+void	str_del(void *content);
+char	**string_list_to_string_array(t_list *lst);
 
 #endif

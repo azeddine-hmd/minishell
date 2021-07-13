@@ -117,9 +117,9 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 			}
 
 			// leaks debugging
-			//printf("\n=======leaks=======\n");
-			//system("leaks minishell | grep 'leaked bytes'");
-			//printf("===================\n\n");
+			printf("\n=======leaks=======\n");
+			system("leaks minishell | grep 'leaked bytes'");
+			printf("===================\n\n");
 
 			current = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
 			add_cmdslst(cmdslst, current);

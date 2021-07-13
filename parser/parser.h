@@ -54,7 +54,8 @@ void		print_all_cmds(t_cmd *head);
 void		print_all_range(t_list *head);
 void		print_all_partial(t_list *head);
 void		print_all_tokens(t_list *head);
-void		print_arr(char **arr);
+void		print_str_arr(char **str_arr);
+void		print_str_lst(t_list *str_lst);
 
 // parse
 char		*parse(const char *cmdln, t_cmd **head, int prev_ret);
@@ -62,8 +63,8 @@ void		create_cmds(const char *cmdln, t_cmd **head);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 
 // syntax error
-char		*check_syntax_error(char **arr);
-t_bool		is_pipe_not_valid(const char *cmdln, t_list *quotes_range);
+char		*check_syntax_err(const char *cmdln, t_list *quotes_range);
+t_bool		is_pipe_not_valid(const char *cmdln, t_list *quotes);
 
 // quotes
 t_bool		inside_quotes(t_list *range, int from, int to, const char *types);
