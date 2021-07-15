@@ -13,6 +13,7 @@ SRC = setters.c \
 	  string_array_to_string_list.c \
 	  string_list_to_string_array.c \
 	  finish.c \
+	  replace_node_intolist.c \
 
 OBJ = ${SRC:.c=.o}
 

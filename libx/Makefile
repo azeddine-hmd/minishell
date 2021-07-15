@@ -14,6 +14,7 @@ SRC = libx.c \
 	  xsubstr.c \
 	  xrealloc.c \
 	  xsplit.c \
+	  xfree_str_array.c \
 
 OBJ = ${SRC:.c=.o}
 

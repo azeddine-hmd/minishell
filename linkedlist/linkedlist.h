@@ -25,5 +25,6 @@ t_list	*string_array_to_string_list(char **arr);
 void	str_del(void *content);
 char	**string_list_to_string_array(t_list *lst);
 void	clean(void);
+void	replace_node_intolist(t_list **head, t_list *this, t_list *new_lst);
 
 #endif
