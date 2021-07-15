@@ -12,6 +12,7 @@ SRC = setters.c \
 	  is_empty.c \
 	  string_array_to_string_list.c \
 	  string_list_to_string_array.c \
+	  finish.c \
 
 OBJ = ${SRC:.c=.o}
 

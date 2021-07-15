@@ -33,9 +33,9 @@ void	add(t_data **head, void *data)
 	t_data	*node;
 
 	if (!data || !head)
-		error();
+		alloc_fail();
 	if (!(node = new_node(data)))
-		error();
+		alloc_fail();
 	lst_add_back(head, node);
 }
 
@@ -50,8 +50,8 @@ void	add_double_pointer(char **ptr)
 
 	i = -1;
 	while (ptr[++i])
-		add(get_head_node(), ptr[i]);
-	add(get_head_node(), ptr);
+		add(xmalloc_head(), ptr[i]);
+	add(xmalloc_head(), ptr);
 }
 
 /*
@@ -81,8 +81,6 @@ int		lst_size(t_data *head)
 {
 	int	size;
 
-	if (!head)
-		error_message("lst_size: list head is NULL");
 	size = 0;
 	while (head)
 	{

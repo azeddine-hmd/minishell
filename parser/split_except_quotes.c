@@ -6,7 +6,7 @@ char	**split_except_quotes(const char *s, char c, t_list *quotes_range)
 	char	*processed;
 	int		i;
 
-	processed = ft_strdup(s);
+	processed = xstrdup(s);
 	i = -1;
 	while (processed[++i])
 	{
@@ -14,7 +14,6 @@ char	**split_except_quotes(const char *s, char c, t_list *quotes_range)
 			processed[i] = CHAR_PLACEHOLDER;
 	}
 	arr = ft_split(processed, CHAR_PLACEHOLDER);
-	free(processed);
+	xfree(processed);
 	return (arr);
-
 }

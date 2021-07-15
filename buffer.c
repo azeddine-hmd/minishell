@@ -87,8 +87,6 @@ void	ms_bufinit(t_buf **a_buf)
 {
 	t_buf *buf;
 
-	if (!a_buf)
-		error();
 	*a_buf = (t_buf*)xmalloc(sizeof(t_buf));
 	buf = *a_buf;
 	buf->buf = (char*)xmalloc(MS_BUFFER_SIZE);

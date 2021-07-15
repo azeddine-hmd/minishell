@@ -8,7 +8,7 @@
 ** void** (static): the list's head;
 */
 
-t_data		**get_head_node(void)
+t_data		**xmalloc_head(void)
 {
 	static t_data	*head;
 
@@ -29,9 +29,9 @@ void		*xmalloc(size_t size)
 
 	data = malloc(size);
 	if (data == NULL)
-		error();
+		alloc_fail();
 	ft_bzero(data, size);
-	add(get_head_node(), data);
+	add(xmalloc_head(), data);
 	return (data);
 }
 
@@ -79,7 +79,7 @@ void		xfree(void *data)
 
 	if (!data)
 		return ;
-	head = (t_data**)get_head_node();
+	head = (t_data**)xmalloc_head();
 	if ((*head)->data == data)
 	{
 		tmp = (*head);

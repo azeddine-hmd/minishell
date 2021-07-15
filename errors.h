@@ -2,6 +2,7 @@
 # define ERRORS_H
 # include <stdlib.h>
 # include "libx/libx.h"
+# include "linkedlist/linkedlist.h"
 # include <stdio.h>
 
 /*
@@ -29,11 +30,13 @@
 /*
 ** syntax errors
 */
+
+# define ERR_SHELL_NAME "minishell: "
 # define ERR_PIPE "syntax error near unexpected token '|'"
 
 
 void	err(const char *error);
 void	ferr(const char *err_format, const char *arg);
-void	print_syntax_error(const char *error);
+void	shell_err(const char *error);
 
 #endif

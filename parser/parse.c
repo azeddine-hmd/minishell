@@ -2,24 +2,13 @@
 
 char	*parse(const char *cmdln, t_cmd **head, int prev_ret)
 {
-	char	*syntax_error;
-	t_list	*quotes_range;
+	t_list	*cmdln_lst;
 
-	// supress unused variables
-	(void)prev_ret;
 	if (cmdln == NULL || !head || ft_strlen(cmdln) == 0)
 		return (NO_SYNTAX_ERROR);
-	quotes_range = get_quotes_range(cmdln);
-	syntax_error = check_syntax_err(cmdln, quotes_range);
-	ft_lstclear(&quotes_range, range_del);
-	if (is_not_null(syntax_error))
-		return (syntax_error);
-	else
-	{
-		create_cmds(cmdln, head);
-
-		// debugging
-		//system(cmdln);
-	}
+	cmdln_lst = get_simplified_cmdln(cmdln, prev_ret);
+	//TODO: check syntax error
+	//
+	create_cmds(head, cmdln_lst);
 	return (NO_SYNTAX_ERROR);
 }

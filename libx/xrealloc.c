@@ -25,7 +25,7 @@ void	 *xrealloc(void *ptr, size_t old_size, size_t new_size)
 	else
 	{
 		if (!(ptr && new_size > old_size))
-			error();
+			alloc_fail();
 		ptr_new = xmalloc(new_size);
 		if (ptr_new)
 		{

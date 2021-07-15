@@ -113,13 +113,13 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 			}
 			else
 			{
-				print_syntax_error(syntax_error);
+				shell_err(syntax_error);
 			}
 
 			// leaks debugging
-			printf("\n=======leaks=======\n");
-			system("leaks minishell | grep 'leaked bytes'");
-			printf("===================\n\n");
+			//printf("\n=======leaks=======\n");
+			//system("leaks minishell | grep 'leaked bytes'");
+			//printf("===================\n\n");
 
 			current = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
 			add_cmdslst(cmdslst, current);
@@ -250,6 +250,6 @@ int		main(void)
 	setbuf(stdout, NULL);
 	ms_setup(&cap, &buf);
 	minishell(&cmdslst, cap, buf);
-	lst_clear(*get_head_node());
+	clean();
 	return (0);
 }

@@ -40,30 +40,24 @@ typedef struct s_cmdlst
 	struct s_cmdlst	*previous;
 }t_cmdslst;
 
-typedef struct s_partial
-{
-	char	*cmd_str;
-	t_bool	is_piped;
-}t_partial;
-
 // debugging
 void		fake_cmdslst(t_cmdslst **a_head);
 void		print_all_cmdslst(t_cmdslst *head);
 void		print_cmd(t_cmd *cmd);
 void		print_all_cmds(t_cmd *head);
 void		print_all_range(t_list *head);
-void		print_all_partial(t_list *head);
 void		print_all_tokens(t_list *head);
 void		print_str_arr(char **str_arr);
 void		print_str_lst(t_list *str_lst);
 
 // parse
 char		*parse(const char *cmdln, t_cmd **head, int prev_ret);
-void		create_cmds(const char *cmdln, t_cmd **head);
+void		create_cmds(t_cmd **head, t_list *cmdln_lst);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
+t_list		*get_simplified_cmdln(const char *cmdln, int prev_ret);
 
 // syntax error
-char		*check_syntax_err(const char *cmdln, t_list *quotes_range);
+char		*check_syntax_err(const char *cmdln, t_list *quotes_range); // refactor it later
 t_bool		is_pipe_not_valid(const char *cmdln, t_list *quotes);
 
 // quotes
@@ -74,11 +68,6 @@ t_list		*get_quotes_range(const char *s);
 void		range_del(void *content);
 t_range		*get_range(int from, int to, char type);
 t_bool		inside_range(t_range *range, int from, int to, char type);
-
-// partial
-void		partial_del(void *content);
-t_partial	*get_partial(char *cmd_str, t_bool is_piped);
-void		push_partial(t_list **head, char *cmd_str, t_bool is_piped);
 
 // token
 void		token_del(void *content);

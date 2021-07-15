@@ -8,11 +8,12 @@ CFLAGS = -Wall -Werror -Wextra \
 SRC = libx.c \
 	  libx_utils.c \
 	  allocation.c \
-	  error.c \
+	  alloc_fail.c \
 	  swap.c \
 	  utils.c \
 	  xsubstr.c \
 	  xrealloc.c \
+	  xsplit.c \
 
 OBJ = ${SRC:.c=.o}
 

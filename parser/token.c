@@ -13,7 +13,7 @@ t_token	*get_token(char type, char *value)
 {
 	t_token	*token;
 
-	token = (t_token *)malloc(sizeof(t_token));
+	token = (t_token *)xmalloc(sizeof(t_token));
 	if (is_null(token))
 		return (NULL);
 	token->type = type;
@@ -24,19 +24,7 @@ t_token	*get_token(char type, char *value)
 void	push_token(t_list **head, char type, char *value)
 {
 	t_token *token;
-	t_list	*new;
 
 	token = get_token(type, value);
-	if (is_null(token))
-	{
-		ft_lstclear(head, token_del);
-		error();
-	}
-	new = ft_lstnew(token);
-	if (is_null(new))
-	{
-		free(token);
-		ft_lstclear(head, token_del);
-		error();
-	}
+	ft_lstadd_back(head, ft_lstnew(token));
 }
