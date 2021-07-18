@@ -11,6 +11,13 @@ typedef struct s_list
 	struct s_list	*next;
 }t_list;
 
+typedef struct s_replace
+{
+	t_list			**head;
+	t_list			*target;
+	t_list			*new_lst;
+}t_replace;
+
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -25,6 +32,7 @@ t_list	*string_array_to_string_list(char **arr);
 void	str_del(void *content);
 char	**string_list_to_string_array(t_list *lst);
 void	clean(void);
-void	replace_node_intolist(t_list **head, t_list *this, t_list *new_lst);
+void	replace_node_intolist(t_replace *replace, void (*del) (void*));
+int		is_not_empty(t_list *lst);
 
 #endif

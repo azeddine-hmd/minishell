@@ -14,6 +14,7 @@ SRC = setters.c \
 	  string_list_to_string_array.c \
 	  finish.c \
 	  replace_node_intolist.c \
+	  is_not_empty.c \
 
 OBJ = ${SRC:.c=.o}
 

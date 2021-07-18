@@ -3,37 +3,39 @@
 /*
 ** replace single node in list A into list B
 ** if list A is empty operation aborts
+** Note: for now this function expect list content to be string
 */
 
-void	replace_node_intolist(t_list **head, t_list *this, t_list *new_lst)
+void	replace_node_intolist(t_replace *replace, void (*del) (void*))
 {
 	t_list	*left;
 	t_list	*right;
-	t_list	iterator;
+	t_list	*iterator;
 	t_list	*last;
 
-	if (is_null(this))
+	if (is_null(replace->target))
 		return ;
-	else if (*head == this)
+	else if (*(replace->head) == replace->target)
 	{
-		last = ft_lstlast(*head);
-		last->next = *head;
-		*head = new_lst;
+		last = ft_lstlast(*(replace->head));
+		last->next = *(replace->head);
+		*(replace->head) = replace->new_lst;
 	}
 	else
 	{
-		iterator = *head;
+		iterator = *(replace->head);
 		while (iterator)
 		{
-			if (iterator->next == this)
+			if (iterator->next == replace->target)
 			{
 				left = iterator;
 				right = iterator->next->next;
 			}
 			iterator = iterator->next;
 		}
-		left->next = new_lst;
-		last = ft_lstlast(new_lst);
+		left->next = replace->new_lst;
+		last = ft_lstlast(replace->new_lst);
 		last->next = right;
 	}
+	ft_lstdelone(replace->target, del);
 }

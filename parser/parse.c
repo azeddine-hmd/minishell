@@ -10,5 +10,6 @@ char	*parse(const char *cmdln, t_cmd **head, int prev_ret)
 	//TODO: check syntax error
 	//
 	create_cmds(head, cmdln_lst);
+	ft_lstclear(&cmdln_lst, str_del);
 	return (NO_SYNTAX_ERROR);
 }

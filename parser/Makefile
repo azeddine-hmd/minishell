@@ -19,6 +19,7 @@ SRC = parse.c \
 	  token.c \
 	  split_except_quotes.c \
 	  get_simplified_cmdln.c \
+	  separate_quotes.c \
 
 OBJ = ${SRC:.c=.o}
 

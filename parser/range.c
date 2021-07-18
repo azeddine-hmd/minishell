@@ -1,5 +1,10 @@
 #include "parser.h"
 
+int		get_range_len(t_range *range)
+{
+	return (range->to - range->from + 1);
+}
+
 t_bool	inside_range(t_range *range, int from, int to, char type)
 {
 	if (type != range->type)

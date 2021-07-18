@@ -55,6 +55,7 @@ char		*parse(const char *cmdln, t_cmd **head, int prev_ret);
 void		create_cmds(t_cmd **head, t_list *cmdln_lst);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 t_list		*get_simplified_cmdln(const char *cmdln, int prev_ret);
+void		separate_quotes(t_list *cmdln_lst);
 
 // syntax error
 char		*check_syntax_err(const char *cmdln, t_list *quotes_range); // refactor it later
@@ -68,6 +69,7 @@ t_list		*get_quotes_range(const char *s);
 void		range_del(void *content);
 t_range		*get_range(int from, int to, char type);
 t_bool		inside_range(t_range *range, int from, int to, char type);
+int			get_range_len(t_range *range);
 
 // token
 void		token_del(void *content);

@@ -47,8 +47,8 @@ fclean:
 	@$(MAKE) linkedlist fclean
 	@$(MAKE) parser fclean
 	@$(MAKE) execution fclean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(NAME).dSYM #TODO: remove .dSYM
 
 re: fclean all
 
-.PHONY: clean fclean re clean # delete fclean at the end
+.PHONY: clean fclean re
