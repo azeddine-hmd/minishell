@@ -2,6 +2,9 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+
+# define INDEX_NOT_FOUND -1
+# define NO_RANGE_TYPE 0
 # undef false
 # undef true
 
@@ -63,5 +66,6 @@ int				ft_putc(int c);
 size_t			ft_max(size_t m1, size_t m2);
 t_bool			is_null(void *ptr);
 t_bool			is_not_null(void *ptr);
+int				address_to_index(const char *s, char *address);
 
 #endif

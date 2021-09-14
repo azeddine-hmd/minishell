@@ -1,6 +1,6 @@
 #include "linkedlist.h"
 
-int	is_empty(t_list *lst)
+int	is_lst_empty(t_list *lst)
 {
 	if (lst == NULL)
 		return (1);

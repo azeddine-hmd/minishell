@@ -51,6 +51,7 @@ SRC = ft_atoi.c \
 	  ft_max.c \
 	  is_null.c \
 	  is_not_null.c \
+	  address_to_index.c \
 
 OBJ = ${SRC:.c=.o}
 

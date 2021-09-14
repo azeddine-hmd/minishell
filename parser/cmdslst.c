@@ -33,6 +33,7 @@ void	add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst)
 	}
 }
 
+//TODO: this should be changed to better
 static void xfree_cmds(t_cmd *cmds)
 {
 	ft_lstclear(&(cmds->in_token), token_del);

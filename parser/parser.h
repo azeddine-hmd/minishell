@@ -6,7 +6,8 @@
 # include "../errors.h"
 # include <stdio.h>
 
-# define TOKENS "> >> < << |"
+// tokens symbols order is important
+# define TOKENS "<< >> > < |"
 # define QUOTES "'\""
 # define NO_SYNTAX_ERROR NULL
 # define PAIR_NOT_FOUND -1
@@ -30,15 +31,21 @@ typedef struct s_cmd
 	struct s_cmd	*previous;
 }t_cmd;
 
-typedef struct s_cmdlst
+typedef struct s_cmdslst
 {
 	t_cmd			*cmds;
 	char			*cmds_str;
 	char			*original;
 	int				ret;
-	struct s_cmdlst	*next;
-	struct s_cmdlst	*previous;
+	struct s_cmdslst	*next;
+	struct s_cmdslst	*previous;
 }t_cmdslst;
+
+typedef struct s_tkindx
+{
+	int				index;
+	char			*token;
+}t_tkindx;
 
 // debugging
 void		fake_cmdslst(t_cmdslst **a_head);
@@ -56,9 +63,11 @@ void		create_cmds(t_cmd **head, t_list *cmdln_lst);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 t_list		*get_simplified_cmdln(const char *cmdln, int prev_ret);
 void		separate_quotes(t_list *cmdln_lst);
+void		separate_tokens(t_list *cmdln_lst);
 
 // syntax error
-char		*check_syntax_err(const char *cmdln, t_list *quotes_range); // refactor it later
+//TODO: refactor it later
+char		*check_syntax_err(const char *cmdln, t_list *quotes_range);
 t_bool		is_pipe_not_valid(const char *cmdln, t_list *quotes);
 
 // quotes
@@ -73,6 +82,12 @@ int			get_range_len(t_range *range);
 
 // token
 void		token_del(void *content);
+t_bool		have_token(const char *str);
+t_tkindx	*get_token_index(const char *str, int start);
+t_list		*get_tokens_range(const char *str);
+
+// tkindx
+void		tkindx_del(void *content);
 
 // cmds
 void		cmd_init(t_cmd *cmd, char **args, t_bool is_piped);

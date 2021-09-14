@@ -20,6 +20,9 @@ SRC = parse.c \
 	  split_except_quotes.c \
 	  get_simplified_cmdln.c \
 	  separate_quotes.c \
+	  separate_tokens.c \
+	  tkindx_del.c \
+	  get_tokens_range.c \
 
 OBJ = ${SRC:.c=.o}
 

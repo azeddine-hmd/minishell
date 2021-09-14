@@ -12,7 +12,10 @@ t_list	*get_simplified_cmdln(const char *cmdln, int prev_ret)
 	ft_lstclear(&quotes_range, range_del);
 	cmdln_lst = string_array_to_string_list(cmdln_arr);
 	xfree_str_array(cmdln_arr);
-	separate_quotes(cmdln_lst);
-	separate_tokens();
+	//separate_quotes(cmdln_lst);
+	//separate_tokens(cmdln_lst);
+	// Test
+	t_list *tokens_range = get_tokens_range((const char *)cmdln_lst->content);
+	print_all_range(tokens_range);
 	return (cmdln_lst);
 }
