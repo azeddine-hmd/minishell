@@ -73,7 +73,7 @@ static void	separate(t_list **new_lst, const char *str, t_list *quotes_range)
 	end(new_lst, str, quotes_range);
 }
 
-void	separate_quotes(t_list *cmdln_lst)
+void	separate_quotes(t_list **cmdln_lst)
 {
 	t_list		*iterator;
 	t_list		*new_lst;
@@ -81,7 +81,7 @@ void	separate_quotes(t_list *cmdln_lst)
 	t_replace	replace;
 	char		*str;
 
-	iterator = cmdln_lst;
+	iterator = *cmdln_lst;
 	while (iterator)
 	{
 		str = (char *)iterator->content;
@@ -89,7 +89,7 @@ void	separate_quotes(t_list *cmdln_lst)
 		if (is_not_empty(quotes_range))
 		{
 			separate(&new_lst, str, quotes_range);
-			replace.head = &cmdln_lst;
+			replace.head = cmdln_lst;
 			replace.target = iterator;
 			replace.new_lst = new_lst;
 			replace_node_intolist(&replace, str_del);

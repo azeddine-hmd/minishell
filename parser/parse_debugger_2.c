@@ -49,9 +49,9 @@ void		print_all_range(t_list *head)
 	while (is_not_null(head))
 	{
 		range = (t_range *)head->content;
-		printf("range->from = %d\n", range->from);
-		printf("range->to = %d\n", range->to);
-		printf("range->type = %c\n", range->type);
+		printf("range->from: %d\n", range->from);
+		printf("range->to: %d\n", range->to);
+		printf("range->type: %c\n", range->type);
 		head = head->next;
 	}
 }
