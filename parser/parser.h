@@ -61,13 +61,13 @@ void		print_str_lst(t_list *str_lst);
 char		*parse(const char *cmdln, t_cmd **head, int prev_ret);
 void		create_cmds(t_cmd **head, t_list *cmdln_lst);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
-t_list		*get_simplified_cmdln(const char *cmdln, int prev_ret);
+t_list		*get_simplified_cmdln(const char *cmdln);
 void		separate_quotes(t_list **cmdln_lst);
 void		separate_tokens(t_list **cmdln_lst);
 
 // syntax error
-//TODO: refactor it later
-char		*check_syntax_err(const char *cmdln, t_list *quotes_range);
+char		*check_syntax_err(t_list *cmdln_lst);
+// old code function
 t_bool		is_pipe_not_valid(const char *cmdln, t_list *quotes);
 
 // quotes
@@ -87,6 +87,7 @@ void		token_del(void *content);
 t_bool		have_token(const char *str);
 t_tkindx	*get_token_index(const char *str, int start);
 t_list		*get_tokens_range(const char *str);
+t_bool		is_token(const char *s);
 
 // tkindx
 void		tkindx_del(void *content);

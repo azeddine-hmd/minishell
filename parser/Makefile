@@ -23,6 +23,7 @@ SRC = parse.c \
 	  separate_tokens.c \
 	  tkindx_del.c \
 	  get_tokens_range.c \
+	  is_token.c \
 
 OBJ = ${SRC:.c=.o}
 

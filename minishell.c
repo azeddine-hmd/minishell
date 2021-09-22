@@ -107,13 +107,14 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 				syntax_error = parse(buf->buf, &(current->cmds), EXIT_SUCCESS);
 
 			// execution
-			if (is_null(syntax_error))
+			if (syntax_error == NO_SYNTAX_ERROR)
 			{
 				current->ret = execute(current->cmds);
 			}
 			else
 			{
 				shell_err(syntax_error);
+				xfree(syntax_error);
 			}
 
 			// leaks debugging

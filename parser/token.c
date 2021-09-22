@@ -44,7 +44,10 @@ t_bool	have_token(const char *str)
 	{
 		sub_token = ft_strstr(str, tokens[i]);
 		if (is_not_null(sub_token))
+		{
+			xfree_str_array(tokens);
 			return (true);
+		}
 		i++;
 	}
 	xfree_str_array(tokens);

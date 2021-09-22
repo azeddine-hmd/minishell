@@ -156,10 +156,11 @@ void	separate_tokens(t_list **cmdln_lst)
 	while (iterator)
 	{
 		str = (char *)iterator->content;
-		tokens_range = get_tokens_range(str);
-		if (is_not_empty(tokens_range))
+		if (is_not_empty(tokens_range) && have_token(str))
 		{
+			tokens_range = get_tokens_range(str);
 			separate(&new_lst, str, tokens_range);
+			ft_lstclear(&tokens_range, range_del);
 			replace.head = cmdln_lst;
 			replace.target = iterator;
 			replace.new_lst = new_lst;

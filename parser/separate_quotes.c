@@ -85,10 +85,11 @@ void	separate_quotes(t_list **cmdln_lst)
 	while (iterator)
 	{
 		str = (char *)iterator->content;
-		quotes_range = get_quotes_range(str);
 		if (is_not_empty(quotes_range))
 		{
+			quotes_range = get_quotes_range(str);
 			separate(&new_lst, str, quotes_range);
+			ft_lstclear(&quotes_range, range_del);
 			replace.head = cmdln_lst;
 			replace.target = iterator;
 			replace.new_lst = new_lst;
