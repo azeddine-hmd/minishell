@@ -8,7 +8,6 @@ t_bool	tokens_errors(t_list *cmdln_lst, char **syntax_error)
 	iterator = cmdln_lst;
 	while (iterator)
 	{
-		//TODO: create function is_token to check whether the provided string considered a token
 		if (is_token(iterator->content))
 		{
 			//TODO: token error logic

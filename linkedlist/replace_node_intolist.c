@@ -17,7 +17,7 @@ void	replace_node_intolist(t_replace *replace, void (*del) (void*))
 		return ;
 	else if (*(replace->head) == replace->target)
 	{
-		last = ft_lstlast(*(replace->head));
+		last = ft_lstlast(replace->new_lst);
 		last->next = (*(replace->head))->next;
 		*(replace->head) = replace->new_lst;
 	}

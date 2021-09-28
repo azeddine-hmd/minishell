@@ -1,7 +1,6 @@
 NAME = minishell
 
 CFLAGS = -Wall -Werror -Wextra \
-		 -ltermcap \
 		 -g \
 		 -fsanitize=address \
 
@@ -19,11 +18,27 @@ SRC = minishell.c \
 	  cursor.c \
 	  buffer.c \
 
+UNAME := $(shell uname -s)
+
+ifeq ($(UNAME),Linux)
+	LDFLAGS += -lncurses
+endif
+
+ifeq ($(UNAME),Darwin)
+	LDFLAGS += -ltermcap
+endif
+
 OBJ = ${SRC:.c=.o}
 
 MAKE = make --no-print-directory -C
 
-all: $(NAME)
+all: options $(NAME)
+
+options:
+	@echo ${NAME} build options:
+	@echo "CFLAGS   = ${CFLAGS}"
+	@echo "LDFLAGS  = ${LDFLAGS}"
+	@echo "CC       = ${CC}"
 
 $(NAME):
 	@$(MAKE) libft
@@ -31,7 +46,7 @@ $(NAME):
 	@$(MAKE) linkedlist
 	@$(MAKE) parser
 	@$(MAKE) execution
-	@$(CC) $(CFLAGS) $(SRC) $(LIBS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(LDFLAGS) $(SRC) $(LIBS) -o $(NAME)
 
 clean:
 	@$(MAKE) libft clean
