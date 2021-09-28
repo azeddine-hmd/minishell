@@ -59,8 +59,8 @@ typedef struct s_cap
 }				t_cap;
 
 // debugging
-FILE	*ms_log;
-FILE	*ms_buflog;
+//FILE	*ms_log;
+//FILE	*ms_buflog;
 
 // buffer
 void		ms_bufinit(t_buf **a_buf);

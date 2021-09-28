@@ -14,9 +14,9 @@ void	ms_bufrpc(t_buf *buf, const char *s)
 	buf->pos = ft_strlen(s);
 	ft_bzero(buf->buf, buf->size);
 	ft_memmove(buf->buf, s, ft_strlen(s));
-	fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
-	fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
-	fflush(ms_buflog);
+	//fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
+	//fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
+	//fflush(ms_buflog);
 }
 
 /*
@@ -29,9 +29,9 @@ void	ms_bufrst(t_buf *buf)
 	buf->size = MS_BUFFER_SIZE;
 	ft_bzero(buf->buf, buf->size);
 	buf->pos = 0;
-	fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
-	fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
-	fflush(ms_buflog);
+	//fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
+	//fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
+	//fflush(ms_buflog);
 }
 
 /*
@@ -44,9 +44,9 @@ void	ms_bufdel(t_buf *buf, t_cap *cap)
 {
 	if (!buf || buf->pos == 0)
 	{
-		fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
-		fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
-		fflush(ms_buflog);
+		//fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
+		//fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
+		//fflush(ms_buflog);
 		return ;
 	}
 	else
@@ -54,9 +54,9 @@ void	ms_bufdel(t_buf *buf, t_cap *cap)
 		(buf->pos)--;
 		buf->buf[buf->pos] = 0;
 		ms_chrdel(cap);
-		fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
-		fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
-		fflush(ms_buflog);
+		//fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
+		//fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
+		//fflush(ms_buflog);
 	}
 }
 
@@ -74,9 +74,9 @@ void	ms_bufadd(t_buf *buf, char out)
 	buf->buf[buf->pos] = out;
 	(buf->pos)++;
 	ft_putc(out);
-	fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
-	fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
-	fflush(ms_buflog);
+	//fprintf(ms_buflog, "buf: '%s'\n", buf->buf);
+	//fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
+	//fflush(ms_buflog);
 }
 
 /*

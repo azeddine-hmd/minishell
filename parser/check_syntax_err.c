@@ -11,7 +11,7 @@ t_bool	tokens_errors(t_list *cmdln_lst, char **syntax_error)
 		if (is_token(iterator->content))
 		{
 			//TODO: token error logic
-			printf("iterator->content: %s\n", iterator->content);
+			printf("iterator->content: %s\n", (char*)iterator->content);
 		}
 		iterator = iterator->next;
 	}

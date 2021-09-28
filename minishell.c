@@ -35,8 +35,8 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		if (input == K_BS)
 		{
 
-			fprintf(ms_log, "key: BACKSPACE\n");
-			fflush(ms_log);
+			//fprintf(ms_log, "key: BACKSPACE\n");
+			//fflush(ms_log);
 
 			ms_bufdel(buf, cap);
 
@@ -46,8 +46,8 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 			char *syntax_error;
 
 			syntax_error = NULL;
-			fprintf(ms_log, "key: ENTER\n");
-			fflush(ms_log);
+			//fprintf(ms_log, "key: ENTER\n");
+			//fflush(ms_log);
 
 			ft_putc(input);
 
@@ -60,8 +60,8 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 			if (current->cmds_str == NULL || current->cmds_str[0] == '\0')
 			{
 				current->cmds_str = xstrdup(buf->buf);
-				fprintf(ms_log, "buf: %s", buf->buf);
-				fflush(ms_log);
+				//fprintf(ms_log, "buf: %s", buf->buf);
+				//fflush(ms_log);
 			}
 			// override cmds_str and assign original
 			// ignore tmp cmdslst
@@ -94,8 +94,8 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 				}
 				else
 				{
-					fprintf(ms_log, "Note: there is no temporary node");
-					fflush(ms_log);
+					//fprintf(ms_log, "Note: there is no temporary node");
+					//fflush(ms_log);
 				}
 
 			}
@@ -137,8 +137,8 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		}
 		else if (pos == 2 && input == K_A)
 		{
-			fprintf(ms_log, "key: UP_ARROW\n");
-			fflush(ms_log);
+			//fprintf(ms_log, "key: UP_ARROW\n");
+			//fflush(ms_log);
 
 			pos = 0;
 
@@ -172,8 +172,8 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		else if (pos == 2 && input == K_B)
 		{
 
-			fprintf(ms_log, "key: DOWN_ARROW\n");
-			fflush(ms_log);
+			//fprintf(ms_log, "key: DOWN_ARROW\n");
+			//fflush(ms_log);
 
 			pos = 0;
 
@@ -225,8 +225,8 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 		else
 		{
 
-			fprintf(ms_log, "key: %d\n", input);
-			fflush(ms_log);
+			//fprintf(ms_log, "key: %d\n", input);
+			//fflush(ms_log);
 			ms_bufadd(buf, input);
 			pos = 0;
 
@@ -245,8 +245,8 @@ int		main(void)
 	buf = NULL;
 
 	// debugging
-	ms_log = fopen(DEBUG_LOG_PATH, "a");
-	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
+	//ms_log = fopen(DEBUG_LOG_PATH, "a");
+	//ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
 
 	setbuf(stdout, NULL);
 	ms_setup(&cap, &buf);
