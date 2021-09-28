@@ -46,7 +46,8 @@ $(NAME):
 	@$(MAKE) linkedlist
 	@$(MAKE) parser
 	@$(MAKE) execution
-	@$(CC) $(CFLAGS) $(LDFLAGS) $(SRC) $(LIBS) -o $(NAME)
+	@$(CC) $(CFLAGS) -c $(SRC)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME) $(LDFLAGS)
 
 clean:
 	@$(MAKE) libft clean
