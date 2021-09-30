@@ -1,13 +1,10 @@
 #ifndef PARSER_H
 # define PARSER_H
-# include "../libft/libft.h"
 # include "../libx/libx.h"
-# include "../linkedlist/linkedlist.h"
 # include "../errors.h"
 # include <stdio.h>
 
-// tokens symbols order is important
-# define TOKENS "<< >> > < |"
+# define TOKENS "<< >> > < |" // tokens symbols order is important
 # define QUOTES "'\""
 # define NO_SYNTAX_ERROR NULL
 # define PAIR_NOT_FOUND -1

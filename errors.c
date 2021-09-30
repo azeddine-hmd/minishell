@@ -14,7 +14,7 @@ void	err(const char *error)
 	printf("Error: ");
 	printf("%s\n", error);
 	printf(COLORS_DEFAULT);
-	clean();
+	deallocate();
 	exit(1);
 }
 
@@ -24,6 +24,6 @@ void	ferr(const char *err_format, const char *arg)
 	printf("Error: ");
 	printf(err_format, arg);
 	printf(COLORS_DEFAULT);
-	clean();
+	deallocate();
 	exit(1);
 }

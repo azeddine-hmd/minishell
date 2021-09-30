@@ -6,17 +6,18 @@ CFLAGS = -Wall -Werror -Wextra \
 
 CC = gcc
 
-LIBS = libft/libft.a \
+LIBS = parser/libparser.a \execution/libexecution.a \
 	   libx/libx.a \
-	   linkedlist/liblinkedlist.a \
-	   parser/libparser.a \
-	   execution/libexecution.a \
 
 SRC = minishell.c \
+	  buffer.c \
 	  errors.c \
 	  terminal.c \
 	  cursor.c \
-	  buffer.c \
+
+OBJ = ${SRC:.c=.o}
+
+MAKE = make --no-print-directory -C
 
 UNAME := $(shell uname -s)
 
@@ -28,10 +29,6 @@ ifeq ($(UNAME),Darwin)
 	LDFLAGS += -ltermcap
 endif
 
-OBJ = ${SRC:.c=.o}
-
-MAKE = make --no-print-directory -C
-
 all: options $(NAME)
 
 options:
@@ -39,30 +36,25 @@ options:
 	@echo "CFLAGS   = ${CFLAGS}"
 	@echo "LDFLAGS  = ${LDFLAGS}"
 	@echo "CC       = ${CC}"
+	@echo
 
 $(NAME):
-	@$(MAKE) libft
 	@$(MAKE) libx
-	@$(MAKE) linkedlist
 	@$(MAKE) parser
 	@$(MAKE) execution
 	@$(CC) $(CFLAGS) $(SRC) $(LIBS) -o $(NAME) $(LDFLAGS)
 
 clean:
-	@$(MAKE) libft clean
 	@$(MAKE) libx clean
-	@$(MAKE) linkedlist clean
 	@$(MAKE) parser clean
 	@$(MAKE) execution clean
 	@rm -rf $(OBJ)
 
 fclean:
-	@$(MAKE) libft fclean
 	@$(MAKE) libx fclean
-	@$(MAKE) linkedlist fclean
 	@$(MAKE) parser fclean
 	@$(MAKE) execution fclean
-	@rm -rf $(NAME) $(NAME).dSYM #TODO: remove .dSYM
+	@rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all
 

@@ -34,7 +34,8 @@ char	*token_from_range_type(char range_type)
 	else if (!ft_strcmp(range_type_str, "5"))
 		token = "|";
 	else
-		shell_err("token_from_range_type: IllegalState");
+		//shell_err("token_from_range_type: IllegalState");
+		printf("whatever this is\n");
 	xfree(range_type_str);
 	return (token);
 }
@@ -65,7 +66,8 @@ t_list	*get_tokens_range(const char *str)
 		if (token_index->index == INDEX_NOT_FOUND)
 		{
 			tkindx_del(token_index);
-			shell_err("get_tokens_range: IllegalState");
+			//shell_err("get_tokens_range: IllegalState");
+			printf("whatever this is\n");
 			break ;
 		}
 		from = token_index->index;

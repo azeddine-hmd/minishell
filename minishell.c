@@ -109,7 +109,7 @@ static void	minishell(t_cmdslst **cmdslst, t_cap *cap, t_buf *buf)
 			// execution
 			if (syntax_error == NO_SYNTAX_ERROR)
 			{
-				current->ret = execute(current->cmds);
+				current->ret = execute(current->cmds, buf->buf);
 			}
 			else
 			{
@@ -251,6 +251,6 @@ int		main(void)
 	setbuf(stdout, NULL);
 	ms_setup(&cap, &buf);
 	minishell(&cmdslst, cap, buf);
-	clean();
+	deallocate();
 	return (0);
 }

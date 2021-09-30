@@ -29,7 +29,14 @@ OBJ = ${SRC:.c=.o}
 
 MAKE = make -C
 
-all: $(NAME)
+all: options $(NAME)
+
+options:
+	@echo ${NAME} build options:
+	@echo "CFLAGS   = ${CFLAGS}"
+	@echo "LDFLAGS  = ${LDFLAGS}"
+	@echo "CC       = ${CC}"
+	@echo
 
 $(NAME):
 	@$(CC) $(CFLAGS) -c $(SRC)
@@ -39,7 +46,7 @@ clean:
 	@rm -rf $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all
 

@@ -1,14 +1,11 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <stdlib.h>
 # include <stdio.h>
 # include <termcap.h>
 # include <curses.h>
 # include <termios.h>
-# include <unistd.h>
 # include <term.h>
-# include "libft/libft.h"
 # include "libx/libx.h"
 # include "parser/parser.h"
 # include "execution/execution.h"
@@ -33,12 +30,20 @@
 # define K_CTRL_I 9
 # define K_CTRL_H 8
 # define K_CTRL_K 11
-
-// debugging
-# define DEBUG_LOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/log"
-# define DEBUG_BUFLOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/buflog"
 # define K_UP_ARROW 27, K_OSB, K_A
 # define K_DOWN_ARROW 27, K_OSB, K_B
+
+// debugging
+# ifdef __linux__
+	# define DEBUG_LOG_PATH "/home/azeddine/development/42cursus/minishell/log"
+	# define DEBUG_BUFLOG_PATH "/home/azeddine/development/42cursus/minishell/buflog"
+# endif
+# ifdef __APPLE__
+	# define DEBUG_LOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/log"
+	# define DEBUG_BUFLOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/buflog"
+# endif
+//FILE *ms_log;
+//FILE *ms_buflog;
 
 typedef struct s_buf
 {
@@ -57,10 +62,6 @@ typedef struct s_cap
 	char	*dc;
 	char	*dc_r;
 }				t_cap;
-
-// debugging
-//FILE	*ms_log;
-//FILE	*ms_buflog;
 
 // buffer
 void		ms_bufinit(t_buf **a_buf);

@@ -13,7 +13,7 @@ char	**split_except_quotes(const char *s, char c, t_list *quotes_range)
 		if (processed[i] == c && !inside_quotes(quotes_range, i, i, QUOTES))
 			processed[i] = CHAR_PLACEHOLDER;
 	}
-	arr = ft_split(processed, CHAR_PLACEHOLDER);
+	arr = xsplit(processed, CHAR_PLACEHOLDER);
 	xfree(processed);
 	return (arr);
 }
