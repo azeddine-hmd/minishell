@@ -47,10 +47,8 @@
 	# define DEBUG_LOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/log"
 	# define DEBUG_BUFLOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/buflog"
 # endif
-#ifdef DEBUG
-	extern FILE *ms_log;
-	extern FILE *ms_buflog;
-#endif
+extern FILE *ms_log;
+extern FILE *ms_buflog;
 
 typedef struct s_buf
 {

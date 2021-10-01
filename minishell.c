@@ -64,12 +64,11 @@ static void	minishell_loop(t_termarg *targ)
 
 int		main(void)
 {
-#ifdef DEBUG
-	ms_log = fopen(DEBUG_LOG_PATH, "a");
-	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
-#endif
 	t_termarg	targ;
 
+	// debugging
+	ms_log = fopen(DEBUG_LOG_PATH, "a");
+	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
 	//TODO: is setbuf() stdlib function allowed in this project?
 	setbuf(stdout, NULL);
 	ft_bzero(&targ, sizeof(t_termarg));

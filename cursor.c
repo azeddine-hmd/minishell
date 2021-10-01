@@ -19,7 +19,7 @@ void	ms_lndel(t_cap *cap, t_buf *buf)
 	size_t	i;
 
 	i = -1;
-	while (++i < buf->pos)
+	while (++i < buf->last)
 	{
 		ms_chrdel(cap);
 	}
