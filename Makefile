@@ -3,6 +3,7 @@ NAME = minishell
 CFLAGS = -Wall -Werror -Wextra \
 		 -g \
 		 -fsanitize=address \
+		 -DDEBUG \
 
 CC = gcc
 
@@ -14,6 +15,7 @@ SRC = minishell.c \
 	  errors.c \
 	  terminal.c \
 	  cursor.c \
+	  input_key_first.c \
 
 OBJ = ${SRC:.c=.o}
 
@@ -50,11 +52,11 @@ clean:
 	@$(MAKE) execution clean
 	@rm -rf $(OBJ)
 
-fclean:
+fclean: clean
 	@$(MAKE) libx fclean
 	@$(MAKE) parser fclean
 	@$(MAKE) execution fclean
-	@rm -rf $(NAME) $(NAME).dSYM
+	rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all
 

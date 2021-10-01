@@ -24,6 +24,7 @@
 # define K_B 66
 # define K_BS 127
 # define K_ENTER 10
+# define K_ESC 27
 # define K_OSB 91
 # define K_CTRL_D 4
 # define K_CTRL_L 12
@@ -42,12 +43,12 @@
 	# define DEBUG_LOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/log"
 	# define DEBUG_BUFLOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/buflog"
 # endif
-//FILE *ms_log;
-//FILE *ms_buflog;
+extern FILE *ms_log;
+extern FILE *ms_buflog;
 
 typedef struct s_buf
 {
-	char	*buf;
+	char	*str;
 	size_t	size;
 	size_t	pos;
 }				t_buf;
@@ -63,6 +64,16 @@ typedef struct s_cap
 	char	*dc_r;
 }				t_cap;
 
+typedef struct s_termarg
+{
+	t_cmdslst	*head;
+	t_cmdslst	*cur;
+	t_buf		*buf;
+	t_cap		*cap;
+	char		input;
+	int			pos;
+}t_termarg;
+
 // buffer
 void		ms_bufinit(t_buf **a_buf);
 void		ms_bufdel(t_buf *buf, t_cap *cap);
@@ -74,6 +85,13 @@ void		ms_bufrpc(t_buf *buf, const char *s);
 void		ms_setup(t_cap **cap, t_buf **a_buf);
 void		ms_prompt(void);
 void		ms_chrdel(t_cap *cap);
-void		ms_lndel(t_cap *cap, int count);
+void		ms_lndel(t_cap *cap, t_buf *buf);
+
+// keys events
+void		backspace_triggered(t_termarg *targ);
+void		enter_triggered(t_termarg *targ);
+void		up_arrow_triggered(t_termarg *targ);
+void		down_arrow_triggered(t_termarg *targ);
+t_bool		ctrl_d_triggered(t_termarg *targ);
 
 #endif
