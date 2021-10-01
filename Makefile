@@ -16,6 +16,7 @@ SRC = minishell.c \
 	  terminal.c \
 	  cursor.c \
 	  input_key_first.c \
+	  input_key_second.c \
 
 OBJ = ${SRC:.c=.o}
 

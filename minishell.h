@@ -93,5 +93,6 @@ void		enter_triggered(t_termarg *targ);
 void		up_arrow_triggered(t_termarg *targ);
 void		down_arrow_triggered(t_termarg *targ);
 t_bool		ctrl_d_triggered(t_termarg *targ);
+void		ctrl_l_triggered(t_termarg *targ);
 
 #endif

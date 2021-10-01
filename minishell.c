@@ -34,10 +34,14 @@ static void	minishell_loop(t_termarg *targ)
 			if (ctrl_d_triggered(targ))
 				break ;
 		}
+		else if (targ->input == K_CTRL_L)
+			ctrl_l_triggered(targ);
 		else if (
-				targ->input == K_CTRL_L || targ->input == K_CTRL_I ||
-				targ->input == K_CTRL_H || targ->input == K_CTRL_K)
+				targ->input == K_CTRL_I ||
+				targ->input == K_CTRL_H ||
+				targ->input == K_CTRL_K)
 		{
+			// ignore them
 			continue ;
 		}
 		else
