@@ -31,7 +31,7 @@
 */
 
 # define ERR_SHELL_NAME "minishell: "
-# define ERR_PIPE "syntax error near unexpected token '|'"
+# define ERR_PROTOTYPE "syntax error near unexpected token 'x'"
 
 
 void	err(const char *error);

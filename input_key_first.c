@@ -1,15 +1,16 @@
 #include "minishell.h"
 
-void	backspace_triggered(t_termarg *targ)
+t_bool	backspace_triggered(t_termarg *targ)
 {
 #ifdef DEBUG
 	fprintf(ms_log, "key: BACKSPACE\n");
 	fflush(ms_log);
 #endif
 	ms_bufdel(targ->buf, targ->cap);
+	return (false);
 }
 
-void	enter_triggered(t_termarg *targ)
+t_bool	enter_triggered(t_termarg *targ)
 {
 #ifdef DEBUG
 	fprintf(ms_log, "key: ENTER\n");
@@ -22,7 +23,7 @@ void	enter_triggered(t_termarg *targ)
 	if (ft_strlen(targ->buf->str) == 0)
 	{
 		ms_prompt();
-		return ;
+		return (false);
 	}
 	if (targ->cur->cmds_str == NULL || targ->cur->cmds_str[0] == '\0')
 	{
@@ -82,9 +83,10 @@ void	enter_triggered(t_termarg *targ)
 	add_cmdslst(&(targ->head), targ->cur);
 	ms_bufrst(targ->buf);
 	ms_prompt();
+	return (false);
 }
 
-void	up_arrow_triggered(t_termarg *targ)
+t_bool	up_arrow_triggered(t_termarg *targ)
 {
 #ifdef DEBUG
 	fprintf(ms_log, "key: UP_ARROW\n");
@@ -93,9 +95,9 @@ void	up_arrow_triggered(t_termarg *targ)
 
 	targ->pos = 0;
 	if (targ->head == NULL)
-		return ;
+		return (false) ;
 	if (targ->cur->previous == NULL)
-		return ;
+		return (false) ;
 	if (targ->cur->cmds_str == NULL)
 	{
 		targ->cur->cmds_str = xstrdup(targ->buf->str);
@@ -111,9 +113,10 @@ void	up_arrow_triggered(t_termarg *targ)
 	ms_lndel(targ->cap, targ->buf);
 	ms_bufrpc(targ->buf, targ->cur->cmds_str);
 	printf("%s", targ->cur->cmds_str);
+	return (false);
 }
 
-void		down_arrow_triggered(t_termarg *targ)
+t_bool		down_arrow_triggered(t_termarg *targ)
 {
 #ifdef DEBUG
 	fprintf(ms_log, "key: DOWN_ARROW\n");
@@ -121,9 +124,9 @@ void		down_arrow_triggered(t_termarg *targ)
 #endif
 	targ->pos = 0;
 	if (targ->head == NULL)
-		return ;
+		return (false) ;
 	if (targ->cur->next == NULL)
-		return ;
+		return (false);
 	if (targ->cur->cmds_str == NULL)
 		targ->cur->cmds_str = xstrdup(targ->buf->str);
 	if (ft_strlen(targ->buf->str) != 0 && ft_strcmp(targ->buf->str, targ->cur->cmds_str))
@@ -136,6 +139,7 @@ void		down_arrow_triggered(t_termarg *targ)
 	ms_lndel(targ->cap, targ->buf);
 	ms_bufrpc(targ->buf, targ->cur->cmds_str);
 	printf("%s", targ->cur->cmds_str);
+	return (false);
 }
 
 t_bool	ctrl_d_triggered(t_termarg *targ)

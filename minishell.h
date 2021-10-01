@@ -33,8 +33,10 @@
 # define K_CTRL_I 9
 # define K_CTRL_H 8
 # define K_CTRL_K 11
-# define K_UP_ARROW 27, K_OSB, K_A
-# define K_DOWN_ARROW 27, K_OSB, K_B
+# define K_UP_ARROW K_ESC, K_OSB, K_A
+# define K_DOWN_ARROW K_ESC, K_OSB, K_B
+# define K_RIGHT_ARROW K_ESC, K_OSB, K_C
+# define K_LEFT_ARROW K_ESC, K_OSB, K_D
 
 // debugging
 # ifdef __linux__
@@ -45,8 +47,10 @@
 	# define DEBUG_LOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/log"
 	# define DEBUG_BUFLOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/buflog"
 # endif
-extern FILE *ms_log;
-extern FILE *ms_buflog;
+#ifdef DEBUG
+	extern FILE *ms_log;
+	extern FILE *ms_buflog;
+#endif
 
 typedef struct s_buf
 {
@@ -91,13 +95,13 @@ void		ms_chrdel(t_cap *cap);
 void		ms_lndel(t_cap *cap, t_buf *buf);
 
 // keys events
-void		backspace_triggered(t_termarg *targ);
-void		enter_triggered(t_termarg *targ);
-void		up_arrow_triggered(t_termarg *targ);
-void		down_arrow_triggered(t_termarg *targ);
+t_bool		backspace_triggered(t_termarg *targ);
+t_bool		enter_triggered(t_termarg *targ);
+t_bool		up_arrow_triggered(t_termarg *targ);
+t_bool		down_arrow_triggered(t_termarg *targ);
 t_bool		ctrl_d_triggered(t_termarg *targ);
-void		ctrl_l_triggered(t_termarg *targ);
-void		right_arrow_triggered(t_termarg *targ);
-void		left_arrow_triggered(t_termarg *targ);
+t_bool		ctrl_l_triggered(t_termarg *targ);
+t_bool		right_arrow_triggered(t_termarg *targ);
+t_bool		left_arrow_triggered(t_termarg *targ);
 
 #endif

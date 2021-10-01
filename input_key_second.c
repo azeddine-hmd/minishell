@@ -1,7 +1,7 @@
 #include "libx/libx.h"
 #include "minishell.h"
 
-void	ctrl_l_triggered(t_termarg *targ)
+t_bool	ctrl_l_triggered(t_termarg *targ)
 {
 	char	*saved_buf_str;
 
@@ -13,9 +13,10 @@ void	ctrl_l_triggered(t_termarg *targ)
 	ms_bufrpc(targ->buf, saved_buf_str);
 	ft_putstr(targ->buf->str);
 	xfree(saved_buf_str);
+	return (false);
 }
 
-void	right_arrow_triggered(t_termarg *targ)
+t_bool	right_arrow_triggered(t_termarg *targ)
 {
 #ifdef DEBUG
 	fprintf(ms_log, "key: RIGHT_ARROW\n");
@@ -23,9 +24,10 @@ void	right_arrow_triggered(t_termarg *targ)
 #endif
 	targ->pos = 0;
 	//TODO: handle right arrow trigger
+	return (false);
 }
 
-void	left_arrow_triggered(t_termarg *targ)
+t_bool	left_arrow_triggered(t_termarg *targ)
 {
 #ifdef DEBUG
 	fprintf(ms_log, "key: LEFT_ARROW\n");
@@ -33,4 +35,5 @@ void	left_arrow_triggered(t_termarg *targ)
 #endif
 	targ->pos = 0;
 	//TODO: handle left arrow trigger
+	return (false);
 }
