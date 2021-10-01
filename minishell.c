@@ -29,6 +29,12 @@ static void	minishell_loop(t_termarg *targ)
 			up_arrow_triggered(targ);
 		else if (targ->pos == 2 && targ->input == K_B)
 			down_arrow_triggered(targ);
+		else if (targ->pos == 2 && targ->input == K_C)
+			right_arrow_triggered(targ);
+		else if (targ->pos == 2 && targ->input == K_D)
+			left_arrow_triggered(targ);
+		else if (targ->pos == 2)
+			targ->pos = 0;
 		else if (targ->input == K_CTRL_D)
 		{
 			if (ctrl_d_triggered(targ))
@@ -39,10 +45,10 @@ static void	minishell_loop(t_termarg *targ)
 		else if (
 				targ->input == K_CTRL_I ||
 				targ->input == K_CTRL_H ||
-				targ->input == K_CTRL_K)
+				targ->input == K_CTRL_K
+				)
 		{
-			// ignore them
-			continue ;
+			// ignore
 		}
 		else
 		{

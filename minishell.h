@@ -22,6 +22,8 @@
 
 # define K_A 65
 # define K_B 66
+# define K_C 67
+# define K_D 68
 # define K_BS 127
 # define K_ENTER 10
 # define K_ESC 27
@@ -51,6 +53,7 @@ typedef struct s_buf
 	char	*str;
 	size_t	size;
 	size_t	pos;
+	size_t	last;
 }				t_buf;
 
 /*
@@ -94,5 +97,7 @@ void		up_arrow_triggered(t_termarg *targ);
 void		down_arrow_triggered(t_termarg *targ);
 t_bool		ctrl_d_triggered(t_termarg *targ);
 void		ctrl_l_triggered(t_termarg *targ);
+void		right_arrow_triggered(t_termarg *targ);
+void		left_arrow_triggered(t_termarg *targ);
 
 #endif

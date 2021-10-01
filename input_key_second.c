@@ -14,3 +14,23 @@ void	ctrl_l_triggered(t_termarg *targ)
 	ft_putstr(targ->buf->str);
 	xfree(saved_buf_str);
 }
+
+void	right_arrow_triggered(t_termarg *targ)
+{
+#ifdef DEBUG
+	fprintf(ms_log, "key: RIGHT_ARROW\n");
+	fflush(ms_log);
+#endif
+	targ->pos = 0;
+	//TODO: handle right arrow trigger
+}
+
+void	left_arrow_triggered(t_termarg *targ)
+{
+#ifdef DEBUG
+	fprintf(ms_log, "key: LEFT_ARROW\n");
+	fflush(ms_log);
+#endif
+	targ->pos = 0;
+	//TODO: handle left arrow trigger
+}
