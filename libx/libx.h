@@ -131,5 +131,6 @@ char	**string_list_to_string_array(t_list *lst);
 void	deallocate(void);
 void	replace_node_intolist(t_replace *replace, void (*del) (void*));
 int		is_not_empty(t_list *lst);
+t_bool	ft_lsthas_next(t_list *lst);
 
 #endif

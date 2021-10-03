@@ -1,19 +1,42 @@
 #include "parser.h"
 
-t_bool	token_errs(t_list *cmdln_lst, char **syntax_error)
+static void		format_token(const char *token, char **syntax_error)
 {
-	t_list	*iterator;
+	const char	*left = "syntax error near unexpected token `";
+	const char	*right = "'";
+	char		*tmp;
 
-	(void)syntax_error;
-	iterator = cmdln_lst;
-	while (iterator)
+	*syntax_error = xstrjoin(left, token);
+	tmp = *syntax_error;
+	*syntax_error = xstrjoin(*syntax_error, right);
+	xfree(tmp);
+}
+
+static t_bool	token_errs(t_list *cmdln_lst, char **syntax_error)
+{
+	const char *token_newline = "newline";
+
+	if (is_token(cmdln_lst->content))
 	{
-		if (is_token(iterator->content))
+		format_token(cmdln_lst->content, syntax_error);
+		return (true);
+	}
+	while (cmdln_lst)
+	{
+		if (is_token(cmdln_lst->content))
 		{
-			//TODO: rise token conflict error
-			printf("iterator->content: %s\n", (char*)iterator->content);
+			if (ft_lsthas_next(cmdln_lst) && is_token(cmdln_lst->next->content))
+			{
+				format_token(cmdln_lst->next->content, syntax_error);
+				return (true);
+			}
+			if (!ft_lsthas_next(cmdln_lst) && is_token(cmdln_lst->content))
+			{
+				format_token(token_newline, syntax_error);
+				return (true);
+			}
 		}
-		iterator = iterator->next;
+		cmdln_lst = cmdln_lst->next;
 	}
 	return (false);
 }
