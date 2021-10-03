@@ -3,6 +3,6 @@
 # include "../libx/libx.h"
 # include "../parser/parser.h"
 
-int	execute(t_cmd *cmds, const char *cmdln);
+int	execute(t_list *cmds);
 
 #endif

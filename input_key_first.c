@@ -68,7 +68,7 @@ t_bool	enter_triggered(t_termarg *targ)
 	}
 	if (syntax_error == NO_SYNTAX_ERROR)
 	{
-		targ->cur->ret = execute(targ->cur->cmds, targ->buf->str);
+		targ->cur->ret = execute(targ->cur->cmds);
 	}
 	else
 	{

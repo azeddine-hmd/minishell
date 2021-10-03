@@ -1,10 +1,8 @@
 #include "execution.h"
 
-int	execute(t_cmd *cmds, const char *cmdln)
+int	execute(t_list *cmds)
 {
 	(void)cmds;
-	(void)cmdln;
 	//TODO: execute commands
-	//system(cmdln);
 	return (EXIT_SUCCESS);
 }

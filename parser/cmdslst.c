@@ -33,20 +33,10 @@ void	add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst)
 	}
 }
 
-//TODO: this should be changed to better
-static void xfree_cmds(t_cmd *cmds)
-{
-	ft_lstclear(&(cmds->in_token), token_del);
-	ft_lstclear(&(cmds->out_token), token_del);
-	//TODO: change free_double_pointer to xfree_double_pointer
-	free_str_array(cmds->args);
-	xfree(cmds);
-}
-
 static void	xfree_cmdslst(t_cmdslst *cmdslst)
 {
 	if (cmdslst->cmds)
-		xfree_cmds(cmdslst->cmds);
+		ft_lstclear(&(cmdslst->cmds), cmd_del);
 	if (cmdslst->cmds_str)
 		xfree(cmdslst->cmds_str);
 	xfree(cmdslst);
@@ -88,14 +78,4 @@ void	delete_cmdslst(t_cmdslst **a_head, t_cmdslst *target)
 		return ;
 	}
 	xfree_after_head(*a_head, target);
-}
-
-t_cmdslst	*get_cmdslst(t_cmd *cmds, char *cmds_str)
-{
-	t_cmdslst *cmdslst;
-
-	cmdslst = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
-	cmdslst->cmds = cmds;
-	cmdslst->cmds_str = cmds_str;
-	return (cmdslst);
 }

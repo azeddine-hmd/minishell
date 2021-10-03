@@ -1,6 +1,6 @@
 #include "parser.h"
 
-void	create_cmds(t_cmd **head, t_list *cmdln_lst)
+void	create_cmds(t_list **cmds, t_list *cmdln_lst)
 {
 	const char	*pipe = "|";
 	t_cmd		*cmd;
@@ -12,7 +12,6 @@ void	create_cmds(t_cmd **head, t_list *cmdln_lst)
 	is_piped = false;
 	while (iterator)
 	{
-		printf("loop infiny\n");
 		while (iterator && ft_strcmp(iterator->content, pipe))
 		{
 			//TODO: fill commands
@@ -22,7 +21,7 @@ void	create_cmds(t_cmd **head, t_list *cmdln_lst)
 				add_token_to_cmd(cmdln_lst, cmd, iterator);
 				iterator = iterator->next;
 			}
-			//add_cmd(head, cmd);
+			ft_lstadd_back(cmds, ft_lstnew(cmd));
 			iterator = iterator->next;
 			is_piped = true;
 		}

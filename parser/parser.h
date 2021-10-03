@@ -32,7 +32,7 @@ typedef struct s_cmd
 
 typedef struct s_cmdslst
 {
-	t_cmd			*cmds;
+	t_list			*cmds;
 	char			*cmds_str;
 	char			*original;
 	int				ret;
@@ -50,15 +50,15 @@ typedef struct s_tkindx
 void		fake_cmdslst(t_cmdslst **a_head);
 void		print_all_cmdslst(t_cmdslst *head);
 void		print_cmd(t_cmd *cmd);
-void		print_all_cmds(t_cmd *head);
+void		print_all_cmds(t_list *cmds);
 void		print_all_range(t_list *head);
 void		print_all_tokens(t_list *head);
 void		print_str_arr(char **str_arr);
 void		print_str_lst(t_list *str_lst);
 
 // parse
-char		*parse(const char *cmdln, t_cmd **head, int prev_ret);
-void		create_cmds(t_cmd **head, t_list *cmdln_lst);
+char		*parse(const char *cmdln, t_list **cmds, int prev_ret);
+void		create_cmds(t_list **cmds, t_list *cmdln_lst);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 t_list		*get_simplified_cmdln(const char *cmdln);
 void		separate_quotes(t_list **cmdln_lst);
@@ -95,12 +95,13 @@ void		cmd_init(t_cmd *cmd, char **args, t_bool is_piped);
 t_cmd		*get_cmd(const char *cmd_string, t_bool is_piped);
 void		add_cmd(t_cmd **a_head, t_cmd *cmd);
 t_cmd		*get_last_cmd(t_cmd *head);
+// compatibility with libx
+void		cmd_del(void *content);
 
 // cmdslst
 t_bool		has_previous(t_cmdslst *cmdslst);
 t_cmdslst	*get_last_cmdslst(t_cmdslst *head);
 void		add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst);
 void		delete_cmdslst(t_cmdslst **a_head, t_cmdslst *target);
-t_cmdslst	*get_cmdslst(t_cmd *cmd, char *cmds_str);
 
 #endif
