@@ -35,4 +35,6 @@ void	add_token_to_cmd(t_list *cmdln_lst, t_cmd *cmd, t_list *element)
 		ft_lstadd_back(&(cmd->out_token), ft_lstnew(token));
 	//TODO: consume and delete cmdln_lst after filling necessary cmds
 	// call ft_lstrem() on both element and element->next
+	ft_lstrem(&cmdln_lst, element, str_del);
+	ft_lstrem(&cmdln_lst, element->next, str_del);
 }

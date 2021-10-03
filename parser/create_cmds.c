@@ -29,4 +29,7 @@ void	create_cmds(t_list **cmds, t_list *cmdln_lst)
 			break ;
 		iterator = iterator->next;
 	}
+
+	// debugging
+	print_str_lst(cmdln_lst);
 }
