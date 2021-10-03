@@ -132,5 +132,6 @@ void	deallocate(void);
 void	replace_node_intolist(t_replace *replace, void (*del) (void*));
 int		is_not_empty(t_list *lst);
 t_bool	ft_lsthas_next(t_list *lst);
+void	ft_lstrem(t_list **head, t_list *target, void (*del) (void*));
 
 #endif

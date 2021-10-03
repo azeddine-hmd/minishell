@@ -73,6 +73,7 @@ SRC = libx.c \
 	  is_not_empty.c \
 	  deallocate.c \
 	  ft_lsthas_next.c \
+	  ft_lstrem.c \
 
 OBJ = ${SRC:.c=.o}
 
