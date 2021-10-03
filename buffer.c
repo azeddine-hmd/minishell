@@ -11,12 +11,14 @@ void	ms_bufrpc(t_buf *buf, const char *s)
 	new_size = ft_strlen(s) * 2 + 1;
 	buf->str = xrealloc(buf->str, buf->size, new_size);
 	buf->size = new_size;
+	buf->last = ft_strlen(s);
 	buf->pos = ft_strlen(s);
 	ft_bzero(buf->str, buf->size);
 	ft_memmove(buf->str, s, ft_strlen(s));
 #ifdef DEBUG
 	fprintf(ms_buflog, "buf: '%s'\n", buf->str);
 	fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
+	fprintf(ms_buflog, "last: '%zu'\n\n", buf->last);
 	fflush(ms_buflog);
 #endif
 }
@@ -30,10 +32,12 @@ void	ms_bufrst(t_buf *buf)
 	buf->str = xrealloc(buf->str, buf->size, MS_BUFFER_SIZE);
 	buf->size = MS_BUFFER_SIZE;
 	ft_bzero(buf->str, buf->size);
+	buf->last = 0;
 	buf->pos = 0;
 #ifdef DEBUG
 	fprintf(ms_buflog, "buf: '%s'\n", buf->str);
 	fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
+	fprintf(ms_buflog, "pos: '%zu'\n\n", buf->last);
 	fflush(ms_buflog);
 #endif
 }
@@ -61,6 +65,7 @@ void	ms_bufdel(t_buf *buf, t_cap *cap)
 #ifdef DEBUG
 		fprintf(ms_buflog, "buf: '%s'\n", buf->str);
 		fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
+		fprintf(ms_buflog, "last: '%zu'\n\n", buf->last);
 		fflush(ms_buflog);
 #endif
 	}
@@ -80,10 +85,10 @@ void	ms_bufadd(t_buf *buf, char out)
 	buf->str[buf->pos] = out;
 	(buf->pos)++;
 	(buf->last)++;
-	ft_putc(out);
 #ifdef DEBUG
 	fprintf(ms_buflog, "buf: '%s'\n", buf->str);
 	fprintf(ms_buflog, "pos: '%zu'\n\n", buf->pos);
+	fprintf(ms_buflog, "last: '%zu'\n\n", buf->last);
 	fflush(ms_buflog);
 #endif
 }

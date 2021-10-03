@@ -39,14 +39,8 @@
 # define K_LEFT_ARROW K_ESC, K_OSB, K_D
 
 // debugging
-# ifdef __linux__
-	# define DEBUG_LOG_PATH "/home/azeddine/development/42cursus/minishell/log"
-	# define DEBUG_BUFLOG_PATH "/home/azeddine/development/42cursus/minishell/buflog"
-# endif
-# ifdef __APPLE__
-	# define DEBUG_LOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/log"
-	# define DEBUG_BUFLOG_PATH "/Users/ahamdaou/development/42cursus/github/minishell/buflog"
-# endif
+# define DEBUG_LOG_PATH "/tmp/log"
+# define DEBUG_BUFLOG_PATH "/tmp/buflog"
 extern FILE *ms_log;
 extern FILE *ms_buflog;
 
@@ -58,15 +52,13 @@ typedef struct s_buf
 	size_t	last;
 }				t_buf;
 
-/*
- ** terminal capability
- */
-
+// terminal capability
 typedef struct s_cap
 {
 	char	*le;
 	char	*dc;
-	char	*dc_r;
+	char	*nd;
+	char	*ip;
 }				t_cap;
 
 typedef struct s_termarg

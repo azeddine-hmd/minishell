@@ -29,7 +29,7 @@ t_bool	enter_triggered(t_termarg *targ)
 	{
 		targ->cur->cmds_str = xstrdup(targ->buf->str);
 #ifdef DEBUG
-		fprintf(ms_log, "buf: %s", targ->buf->str);
+		fprintf(ms_buflog, "cmdln: %s\n\n", targ->buf->str);
 		fflush(ms_log);
 #endif
 	}

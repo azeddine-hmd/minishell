@@ -54,9 +54,11 @@ static void	minishell_loop(t_termarg *targ)
 		{
 #ifdef DEBUG
 			fprintf(ms_log, "key: %d\n", targ->input);
+			fprintf(ms_log, "cap: %s\n", targ->cap->ip);
 			fflush(ms_log);
 #endif
 			ms_bufadd(targ->buf, targ->input);
+			ft_putc(targ->input);
 			targ->pos = 0;
 		}
 	}

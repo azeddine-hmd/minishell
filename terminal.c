@@ -18,8 +18,10 @@ void		ms_prompt(void)
 static void	ms_capinit(t_cap **cap)
 {
 	*cap = (t_cap*)xmalloc(sizeof(t_cap));
-	(*cap)->le = xstrdup(tgetstr("le", NULL));
 	(*cap)->dc = xstrdup(tgetstr("dc", NULL));
+	(*cap)->le = xstrdup(tgetstr("le", NULL));
+	(*cap)->nd = xstrdup(tgetstr("nd", NULL));
+	(*cap)->ip = xstrdup(tgetstr("ip", NULL));
 }
 
 static void	enable_raw_mode(void)
