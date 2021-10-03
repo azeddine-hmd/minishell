@@ -1,7 +1,6 @@
 #include "libx.h"
 
 /*
-** [Description]
 ** duplicate string in heap with xmalloc.
 */
 
@@ -21,7 +20,6 @@ char		*xstrdup(const char *s)
 }
 
 /*
-** [Description]
 ** join two strings and make a new one with xmalloc.
 */
 
@@ -47,7 +45,6 @@ char		*xstrjoin(const char *s1, const char *s2)
 }
 
 /*
-** [Description]
 ** join list strings with xmalloc.
 */
 

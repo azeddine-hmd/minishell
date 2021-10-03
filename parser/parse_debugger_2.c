@@ -36,7 +36,7 @@ void	print_all_tokens(t_list *head)
 	while (head)
 	{
 		token = (t_token *)head->content;
-		printf("token->type = %c\n", token->type);
+		printf("token->type = %s\n", token->type);
 		printf("token->value = %s\n", token->value);
 		head = head->next;
 	}

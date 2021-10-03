@@ -4,7 +4,9 @@
 # include "../errors.h"
 # include <stdio.h>
 
-# define TOKENS "<< >> > < |" // tokens symbols order is important
+# define TOKENS "<< >> > < |"
+# define IN_TYPE_TOKEN "<< <"
+# define OUT_TYPE_TOKEN ">> >"
 # define QUOTES "'\""
 # define NO_SYNTAX_ERROR NULL
 # define PAIR_NOT_FOUND -1
@@ -13,7 +15,7 @@
 
 typedef struct s_token
 {
-	char			type;
+	char			*type;
 	char			*value;
 }t_token;
 
@@ -61,11 +63,10 @@ char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 t_list		*get_simplified_cmdln(const char *cmdln);
 void		separate_quotes(t_list **cmdln_lst);
 void		separate_tokens(t_list **cmdln_lst);
+void		add_token_to_cmd(t_list *cmdln_lst, t_cmd *cmd, t_list *element);
 
 // syntax error
 char		*check_syntax_err(t_list *cmdln_lst);
-// old code function
-t_bool		is_pipe_not_valid(const char *cmdln, t_list *quotes);
 
 // quotes
 t_bool		inside_quotes(t_list *range, int from, int to, const char *types);

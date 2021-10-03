@@ -63,7 +63,7 @@ void	token_del(void *content)
 	xfree(token);
 }
 
-void	push_token(t_list **head, char type, char *value)
+void	push_token(t_list **head, char *type, char *value)
 {
 	t_token	*token;
 

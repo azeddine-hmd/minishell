@@ -11,7 +11,6 @@ SRC = parse.c \
 	  parse_debugger.c \
 	  parse_debugger_2.c \
 	  check_syntax_err.c \
-	  is_pipe_not_valid.c \
 	  create_cmds.c \
 	  get_quotes_range.c \
 	  range.c \
@@ -24,6 +23,7 @@ SRC = parse.c \
 	  tkindx_del.c \
 	  get_tokens_range.c \
 	  is_token.c \
+	  add_token_to_cmd.c \
 
 OBJ = ${SRC:.c=.o}
 
