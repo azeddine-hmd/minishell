@@ -7,6 +7,7 @@
 # define TOKENS "<< >> > < |"
 # define IN_TYPE_TOKEN "<< <"
 # define OUT_TYPE_TOKEN ">> >"
+# define PIPE "|"
 # define QUOTES "'\""
 # define NO_SYNTAX_ERROR NULL
 # define PAIR_NOT_FOUND -1
@@ -63,7 +64,7 @@ char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 t_list		*get_simplified_cmdln(const char *cmdln);
 void		separate_quotes(t_list **cmdln_lst);
 void		separate_tokens(t_list **cmdln_lst);
-void		add_token_to_cmd(t_list *cmdln_lst, t_cmd *cmd, t_list *element);
+t_list		*add_token_to_cmd(t_list *cmdln_lst, t_cmd *cmd, t_list *element);
 
 // syntax error
 char		*check_syntax_err(t_list *cmdln_lst);

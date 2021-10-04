@@ -1,21 +1,23 @@
 #include "libx.h"
+#include <stdio.h>
 
-static void	target_after_head(t_list *curr, t_list *target, void (*del) (void*))
+static void	target_after_head(t_list *rt, t_list *target, void (*del) (void*))
 {
-	t_list	*tmp;
-	t_list	*left;
+	t_list	*current;
+	t_list	*lt;
 
-	while (curr->next)
+	while (rt)
 	{
-		if (curr->next == target)
+		if (rt->next == target)
 		{
-			left = curr;
-			tmp = curr->next;
-			curr = curr->next->next;
-			ft_lstdelone(tmp, del);
-			left->next = curr;
+			lt = rt;
+			current = rt->next;
+			rt = rt->next->next;
+			ft_lstdelone(current, del);
+			lt->next = rt;
 			return ;
 		}
+		rt = rt->next;
 	}
 }
 

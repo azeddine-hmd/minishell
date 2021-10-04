@@ -4,8 +4,8 @@ void	print_all_cmdslst(t_cmdslst *head)
 {
 	while (head)
 	{
-		printf("cmdline: '%s'\n", head->cmds_str);
-		printf("original: '%s'\n", head->original);
+		printf("cmdline: %s\n", head->cmds_str);
+		printf("original: %s\n", head->original);
 		print_all_cmds(head->cmds);
 		head = head->next;
 	}
@@ -15,7 +15,7 @@ void	print_cmd(t_cmd *cmd)
 {
 	printf("-----COMMAND[%s]-----\n", cmd->args[0]);
 	for (int i = 0; i < length(cmd->args); i++) {
-		printf("args[%d]: \"%s\"\n", i, (cmd->args)[i]);
+		printf("args[%d]: %s\n", i, (cmd->args)[i]);
 	}
 	if (cmd->is_piped)
 	{

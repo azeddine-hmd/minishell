@@ -2,34 +2,33 @@
 
 void	create_cmds(t_list **cmds, t_list *cmdln_lst)
 {
-	const char	*pipe = "|";
 	t_cmd		*cmd;
 	t_list		*iterator;
+	t_list		*args_lst;
 	t_bool		is_piped;
 
 	iterator = cmdln_lst;
-	cmd = (t_cmd*)xmalloc(sizeof(t_cmd));
+	args_lst = NULL;
 	is_piped = false;
 	while (iterator)
 	{
-		while (iterator && ft_strcmp(iterator->content, pipe))
+		cmd = (t_cmd*)xmalloc(sizeof(t_cmd));
+		cmd->is_piped = is_piped;
+		while (iterator)
 		{
-			//TODO: fill commands
-			cmd->is_piped = is_piped;
 			if (is_token(iterator->content))
-			{
-				add_token_to_cmd(cmdln_lst, cmd, iterator);
-				iterator = iterator->next;
-			}
-			ft_lstadd_back(cmds, ft_lstnew(cmd));
+				iterator = add_token_to_cmd(cmdln_lst, cmd, iterator);
+			if (!ft_strcmp(iterator->content, PIPE))
+				break ;
+			ft_lstadd_back(&args_lst, ft_lstnew(iterator->content));
 			iterator = iterator->next;
 			is_piped = true;
 		}
+		cmd->args = string_list_to_string_array(args_lst);
+		ft_lstclear(&args_lst, str_del);
+		ft_lstadd_back(cmds, ft_lstnew(cmd));
 		if (is_null(iterator))
 			break ;
 		iterator = iterator->next;
 	}
-
-	// debugging
-	print_str_lst(cmdln_lst);
 }
