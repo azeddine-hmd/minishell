@@ -133,5 +133,7 @@ void	replace_node_intolist(t_replace *replace, void (*del) (void*));
 int		is_not_empty(t_list *lst);
 t_bool	ft_lsthas_next(t_list *lst);
 void	ft_lstrem(t_list **head, t_list *target, void (*del) (void*));
+char	*join_string_array_to_string(char **arr);
+char	*join_string_list_to_string(t_list *lst);
 
 #endif

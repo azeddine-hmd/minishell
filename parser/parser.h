@@ -47,6 +47,12 @@ typedef struct s_tkindx
 	char			*token;
 }t_tkindx;
 
+typedef struct s_envindx
+{
+	t_range	*range;
+	char	*name;
+}t_envindx;
+
 // debugging
 void		fake_cmdslst(t_cmdslst **a_head);
 void		print_all_cmdslst(t_cmdslst *head);
@@ -65,6 +71,7 @@ t_list		*get_simplified_cmdln(const char *cmdln);
 void		separate_quotes(t_list **cmdln_lst);
 void		separate_tokens(t_list **cmdln_lst);
 t_list		*add_token_to_cmd(t_list *cmdln_lst, t_cmd *cmd, t_list *element);
+char		*expand(char *str);
 
 // syntax error
 char		*check_syntax_err(t_list *cmdln_lst);
@@ -104,5 +111,9 @@ t_bool		has_previous(t_cmdslst *cmdslst);
 t_cmdslst	*get_last_cmdslst(t_cmdslst *head);
 void		add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst);
 void		delete_cmdslst(t_cmdslst **a_head, t_cmdslst *target);
+
+// envindx
+void		envindx_del(void *content);
+t_envindx	*get_env_index(const char *str, int start);
 
 #endif

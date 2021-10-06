@@ -20,7 +20,7 @@ void	create_cmds(t_list **cmds, t_list *cmdln_lst)
 				iterator = add_token_to_cmd(cmdln_lst, cmd, iterator);
 			if (!ft_strcmp(iterator->content, PIPE))
 				break ;
-			ft_lstadd_back(&args_lst, ft_lstnew(iterator->content));
+			ft_lstadd_back(&args_lst, ft_lstnew(expand(iterator->content)));
 			iterator = iterator->next;
 			is_piped = true;
 		}

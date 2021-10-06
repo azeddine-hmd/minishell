@@ -5,8 +5,9 @@ t_bool	ctrl_l_triggered(t_termarg *targ)
 {
 	char	*saved_buf_str;
 
-	//TODO: execute shell command without system function
+	// execute shell command without system function
 	system("clear");
+
 	saved_buf_str = xstrdup(targ->buf->str);
 	ms_bufrst(targ->buf);
 	ms_prompt();
@@ -23,7 +24,9 @@ t_bool	right_arrow_triggered(t_termarg *targ)
 	fflush(ms_log);
 #endif
 	targ->pos = 0;
-	//TODO: handle right arrow trigger
+	//ignore
+	targ->buf->pos++;
+	targ->buf->last++;
 	return (false);
 }
 
@@ -34,6 +37,7 @@ t_bool	left_arrow_triggered(t_termarg *targ)
 	fflush(ms_log);
 #endif
 	targ->pos = 0;
-	//TODO: handle left arrow trigger
+	// ignore
+	targ->buf->pos--;
 	return (false);
 }

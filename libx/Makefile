@@ -74,6 +74,8 @@ SRC = libx.c \
 	  deallocate.c \
 	  ft_lsthas_next.c \
 	  ft_lstrem.c \
+	  join_string_array_to_string.c \
+	  join_string_list_to_string.c \
 
 OBJ = ${SRC:.c=.o}
 

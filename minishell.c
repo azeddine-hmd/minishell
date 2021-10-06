@@ -54,7 +54,6 @@ static void	minishell_loop(t_termarg *targ)
 		{
 #ifdef DEBUG
 			fprintf(ms_log, "key: %d\n", targ->input);
-			fprintf(ms_log, "cap: %s\n", targ->cap->ip);
 			fflush(ms_log);
 #endif
 			ms_bufadd(targ->buf, targ->input);
@@ -71,7 +70,7 @@ int		main(void)
 	// debugging
 	ms_log = fopen(DEBUG_LOG_PATH, "a");
 	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
-	//TODO: is setbuf() stdlib function allowed in this project?
+	// is setbuf() stdlib function allowed in this project?
 	setbuf(stdout, NULL);
 	ft_bzero(&targ, sizeof(t_termarg));
 	ms_setup(&(targ.cap), &(targ.buf));

@@ -25,6 +25,8 @@ SRC = parse.c \
 	  is_token.c \
 	  add_token_to_cmd.c \
 	  cmd_del.c \
+	  envindx.c \
+	  expand.c \
 
 OBJ = ${SRC:.c=.o}
 
