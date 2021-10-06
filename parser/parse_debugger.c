@@ -13,7 +13,6 @@ void	print_all_cmdslst(t_cmdslst *head)
 
 void	print_cmd(t_cmd *cmd)
 {
-	printf("-----COMMAND[%s]-----\n", cmd->args[0]);
 	for (int i = 0; i < length(cmd->args); i++) {
 		printf("args[%d]: %s\n", i, (cmd->args)[i]);
 	}

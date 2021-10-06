@@ -12,7 +12,7 @@
 # include "errors.h"
 
 # define MS_PROMPT_COLOR COLORS_BLUE
-# define MS_PROMPT "minishell > "
+# define MS_PROMPT "minishell$ "
 # define MS_BUFFER_SIZE 2048
 # define MS_INITIAL_RETURN EXIT_SUCCESS
 

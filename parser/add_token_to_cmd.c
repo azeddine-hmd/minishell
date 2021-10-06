@@ -30,8 +30,6 @@ t_list	*add_token_to_cmd(t_list *cmdln_lst, t_cmd *cmd, t_list *element)
 	token = (t_token*)xmalloc(sizeof(t_token));
 	token->type = xstrdup(element->content);
 	token->value = xstrdup(element->next->content);
-	printf("token_type %s\n", token->type);
-	printf("token_value %s\n", token->value);
 	if (is_token_type_of(token->type, IN_TYPE_TOKEN))
 		ft_lstadd_back(&(cmd->in_token), ft_lstnew(token));
 	else if (is_token_type_of(token->type, OUT_TYPE_TOKEN))
