@@ -7,7 +7,8 @@ CFLAGS = -Wall -Werror -Wextra \
 
 CC = gcc
 
-LIBS = parser/libparser.a \execution/libexecution.a \
+LIBS = execution/libexecution.a \
+	   parser/libparser.a \
 	   libx/libx.a \
 
 SRC = minishell.c \
