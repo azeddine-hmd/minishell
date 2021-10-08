@@ -5,7 +5,7 @@ t_bool	ctrl_l_triggered(t_termarg *targ)
 {
 	char	*saved_buf_str;
 
-	// execute shell command without system function
+	//TODO: execute shell command without system function
 	system("clear");
 
 	saved_buf_str = xstrdup(targ->buf->str);

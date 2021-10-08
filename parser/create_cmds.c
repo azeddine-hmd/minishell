@@ -16,7 +16,8 @@ void	create_cmds(t_list **cmds, t_list *cmdln_lst)
 		cmd->is_piped = is_piped;
 		while (iterator)
 		{
-			while (is_not_null(iterator) && is_token(iterator->content))
+			while (is_not_null(iterator) && is_token(iterator->content)
+					&& ft_strcmp(iterator->content, PIPE))
 				iterator = add_token_to_cmd(cmdln_lst, cmd, iterator);
 			if (is_null(iterator) || !ft_strcmp(iterator->content, PIPE))
 				break ;
