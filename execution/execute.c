@@ -3,6 +3,6 @@
 int	execute(t_list *cmds)
 {
 	(void)cmds;
-	// execute commands
+	print_all_cmds(cmds);
 	return (EXIT_SUCCESS);
 }

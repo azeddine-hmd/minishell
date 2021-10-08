@@ -14,7 +14,6 @@ char	*parse(const char *cmdln, t_list **cmds, int prev_ret)
 	{
 		create_cmds(cmds, cmdln_lst);
 		ft_lstclear(&cmdln_lst, str_del);
-		print_all_cmds(*cmds);
 		return (NO_SYNTAX_ERROR);
 	}
 	ft_lstclear(&cmdln_lst, str_del);
