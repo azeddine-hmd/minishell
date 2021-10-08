@@ -5,3 +5,5 @@ minishell
 **/*.dSYM
 buflog
 log
+execution/notes
+execution/libft
