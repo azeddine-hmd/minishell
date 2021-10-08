@@ -32,11 +32,13 @@ void	print_cmd(t_cmd *cmd)
 void	print_all_cmds(t_list *cmds)
 {
 	t_cmd	*cmd;
-
+	int		i = 0;
 	while (cmds)
 	{
 		cmd = (t_cmd*)cmds->content;
 		print_cmd(cmd);
 		cmds = cmds->next;
+		i++;
 	}
+	printf("%d\n", i);
 }
