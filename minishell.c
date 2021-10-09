@@ -71,6 +71,7 @@ int		main(void)
 	ms_log = fopen(DEBUG_LOG_PATH, "a");
 	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
 
+	setbuf(stdout, NULL);
 	ft_bzero(&targ, sizeof(t_termarg));
 	ms_setup(&(targ.cap), &(targ.buf));
 	minishell_loop(&targ);
