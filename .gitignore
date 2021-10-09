@@ -4,4 +4,5 @@ minishell
 **/tags
 **/*.dSYM
 execution/libft/*
+.vscode
 execution/notes
