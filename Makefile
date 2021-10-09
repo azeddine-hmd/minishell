@@ -18,6 +18,8 @@ SRC = minishell.c \
 	  cursor.c \
 	  input_key_first.c \
 	  input_key_second.c \
+	  heredoc.c \
+	  heredoc_loop.c \
 
 OBJ = ${SRC:.c=.o}
 
