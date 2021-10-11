@@ -94,4 +94,8 @@ t_bool		ctrl_l_triggered(t_termarg *targ);
 t_bool		right_arrow_triggered(t_termarg *targ);
 t_bool		left_arrow_triggered(t_termarg *targ);
 
+// heredoc
+t_list		*get_heredoc_lst(t_list	*cmds);
+void		heredoc_loop(t_termarg *targ);
+
 #endif

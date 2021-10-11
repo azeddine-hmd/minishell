@@ -25,8 +25,6 @@ t_bool	right_arrow_triggered(t_termarg *targ)
 #endif
 	targ->pos = 0;
 	//ignore
-	targ->buf->pos++;
-	targ->buf->last++;
 	return (false);
 }
 
@@ -38,6 +36,5 @@ t_bool	left_arrow_triggered(t_termarg *targ)
 #endif
 	targ->pos = 0;
 	// ignore
-	targ->buf->pos--;
 	return (false);
 }
