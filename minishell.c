@@ -4,7 +4,7 @@ FILE *ms_log;
 FILE *ms_buflog;
 FILE *pa_log;
 
-static void	minishell_loop(t_termarg *targ, t_list *env)
+static void	minishell_loop(t_termarg *targ, char **env)
 {
 	ms_prompt(EXIT_SUCCESS);
 	targ->cur = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
@@ -14,7 +14,7 @@ static void	minishell_loop(t_termarg *targ, t_list *env)
 		if (targ->input == K_BS)
 			backspace_triggered(targ);
 		else if (targ->input == K_ENTER)
-			enter_triggered(targ, &env);
+			enter_triggered(targ, env);
 		else if (targ->input == K_ESC)
 			targ->pos++;
 		else if (targ->pos == 1 && targ->input == K_OSB)
@@ -74,7 +74,7 @@ int		main(int argc, char **argv, char **env)
 	}
 	ft_bzero(&targ, sizeof(t_termarg));
 	ms_setup(&(targ.cap), &(targ.buf));
-	minishell_loop(&targ, string_array_to_string_list(env));
+	minishell_loop(&targ, env);
 	deallocate();
 	return (0);
 }

@@ -12,7 +12,7 @@ t_bool	backspace_triggered(t_termarg *targ)
 	return (false);
 }
 
-t_bool	enter_triggered(t_termarg *targ, t_list **env)
+t_bool	enter_triggered(t_termarg *targ, char **env)
 {
 #ifdef DEBUG
 	fprintf(ms_log, "key: ENTER\n");
