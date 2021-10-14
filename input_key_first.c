@@ -6,7 +6,9 @@ t_bool	backspace_triggered(t_termarg *targ)
 	fprintf(ms_log, "key: BACKSPACE\n");
 	fflush(ms_log);
 #endif
-	ms_bufdel(targ->buf, targ->cap);
+	ms_bufdel(targ->buf);
+	if (targ->buf->pos > 0)
+		ms_chrdel(targ->cap);
 	return (false);
 }
 
@@ -26,6 +28,8 @@ t_bool	enter_triggered(t_termarg *targ)
 		ms_prompt();
 		return (false);
 	}
+	if (is_not_empty(targ->cur->cmds))
+		ft_lstclear(&(targ->cur->cmds), cmd_del);
 	if (targ->cur->cmds_str == NULL || targ->cur->cmds_str[0] == '\0')
 	{
 		targ->cur->cmds_str = xstrdup(targ->buf->str);

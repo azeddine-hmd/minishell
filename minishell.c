@@ -3,6 +3,7 @@
 
 FILE *ms_log;
 FILE *ms_buflog;
+FILE *pa_log;
 
 static void	minishell_loop(t_termarg *targ)
 {
@@ -53,7 +54,7 @@ static void	minishell_loop(t_termarg *targ)
 		else
 		{
 #ifdef DEBUG
-			fprintf(ms_log, "key: %d\n", targ->input);
+			fprintf(ms_log, "key: %c\n", targ->input);
 			fflush(ms_log);
 #endif
 			ms_bufadd(targ->buf, targ->input);
@@ -70,6 +71,7 @@ int		main(void)
 	// debugging
 	ms_log = fopen(DEBUG_LOG_PATH, "a");
 	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
+	pa_log = fopen(PARSE_DEBUG_LOG_PATH, "a");
 
 	setbuf(stdout, NULL);
 	ft_bzero(&targ, sizeof(t_termarg));

@@ -18,6 +18,10 @@
 # define CHAR_PLACEHOLDER -128
 # define FILE_PREMISSION 0666
 
+// debugging
+# define PARSE_DEBUG_LOG_PATH "/tmp/parse_log"
+extern FILE *pa_log;
+
 typedef struct s_token
 {
 	char			*type;

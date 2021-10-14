@@ -48,21 +48,22 @@ void	ms_bufrst(t_buf *buf)
 ** nothing will happen if buffer is empty or param is NULL
 */
 
-void	ms_bufdel(t_buf *buf, t_cap *cap)
+void	ms_bufdel(t_buf *buf)
 {
 	if (!buf || buf->pos == 0)
 	{
+#ifdef DEBUG
 		fprintf(ms_buflog, "buf: '%s'\n", buf->str);
 		fprintf(ms_buflog, "pos: '%zu'\n", buf->pos);
 		fprintf(ms_buflog, "last: '%zu'\n\n", buf->last);
 		fflush(ms_buflog);
+#endif
 		return ;
 	}
 	else
 	{
 		(buf->pos)--;
 		buf->str[buf->pos] = 0;
-		ms_chrdel(cap);
 #ifdef DEBUG
 		fprintf(ms_buflog, "buf: '%s'\n", buf->str);
 		fprintf(ms_buflog, "pos: '%zu'\n", buf->pos);

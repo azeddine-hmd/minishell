@@ -75,7 +75,7 @@ typedef struct s_termarg
 
 // buffer
 void		ms_bufinit(t_buf **a_buf);
-void		ms_bufdel(t_buf *buf, t_cap *cap);
+void		ms_bufdel(t_buf *buf);
 void		ms_bufadd(t_buf *buf, char out);
 void		ms_bufrst(t_buf *buf);
 void		ms_bufrpc(t_buf *buf, const char *s);
