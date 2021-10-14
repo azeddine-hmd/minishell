@@ -1,23 +1,40 @@
 #include "libx/libx.h"
 #include "minishell.h"
 
-void	hd_prompt(void)
+static void		hd_prompt(void)
 {
 	ft_putstr(MS_HEREDOC_COLOR);
 	ft_putstr(MS_HEREDOC_PROMPT);
 	ft_putstr(COLORS_DEFAULT);
 }
 
-char		*heredoc_loop(t_termarg *targ, const char *delimiter)
+static t_bool	surrounded_by_quotes(const char *s)
+{
+	int last;
+
+	last = ft_strlen(s) - 1;
+	if (
+		s[0] != 0 &&
+		(s[0] == '\'' || s[0] == '"') &&
+		(s[last] == '\'' || s[last] == '"') &&
+		s[0] == s[last]
+		)
+			return (true);
+	return (false);
+}
+
+char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 {
 	t_list	*lines_lst;
 	char	*fcontent;
 	char	*saved_bufstr;
+	t_bool	expand_enabled;
 
 	lines_lst = NULL;
 	saved_bufstr = xstrdup(targ->buf->str);
 	ms_bufrst(targ->buf);
 	hd_prompt();
+	expand_enabled = !surrounded_by_quotes(delimiter);
 	while (read(STDIN_FILENO, &(targ->input), 1) == 1)
 	{
 		if (targ->input == K_BS)
@@ -32,7 +49,10 @@ char		*heredoc_loop(t_termarg *targ, const char *delimiter)
 			else
 			{
 				ft_putc(targ->input);
-				ft_lstadd_back(&lines_lst, ft_lstnew(xstrdup(targ->buf->str)));
+				if (expand_enabled)
+					ft_lstadd_back(&lines_lst, ft_lstnew(expand((targ->buf->str), env)));
+				else
+					ft_lstadd_back(&lines_lst, ft_lstnew(xstrdup(targ->buf->str)));
 				ms_bufrst(targ->buf);
 				hd_prompt();
 			}
@@ -82,7 +102,6 @@ char		*heredoc_loop(t_termarg *targ, const char *delimiter)
 			targ->pos = 0;
 		}
 	}
-	ft_lstadd_back(&lines_lst, ft_lstnew("\n"));
 	ms_bufrpc(targ->buf, saved_bufstr);
 	xfree(saved_bufstr);
 	if (is_not_null(lines_lst))

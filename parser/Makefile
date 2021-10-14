@@ -25,6 +25,7 @@ SRC = parse.c \
 	  cmd_del.c \
 	  envindx.c \
 	  expand.c \
+	  pa_getenv.c \
 
 OBJ = ${SRC:.c=.o}
 

@@ -119,7 +119,7 @@ t_bool		left_arrow_triggered(t_termarg *targ);
 
 // heredoc
 t_list		*get_heredoc_lst(t_list	*cmds);
-void		heredoc_entry(t_termarg *targ, t_list *heredoc_lst);
-char		*heredoc_loop(t_termarg *targ, const char *delimiter);
+void		heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env);
+char		*heredoc_loop(t_termarg *targ, const char *delimiter, char **env);
 
 #endif

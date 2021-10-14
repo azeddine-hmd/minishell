@@ -113,6 +113,7 @@ char			*xsubstr(char const *s, unsigned int start, size_t len);
 void			*xrealloc(void *ptr, size_t old_size, size_t new_size);
 char			**xsplit(char const *s, char c);
 void			xfree_str_array(char **str_arr);
+char			*splitat(const char *s, int index);
 
 // linkedlist
 t_list	*ft_lstnew(void *content);

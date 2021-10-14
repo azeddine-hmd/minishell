@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst)
+void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env)
 {
 	t_list		*fcontent_lst;
 	t_list		*hd_iterator;
@@ -14,7 +14,7 @@ void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst)
 	while (hd_iterator)
 	{
 		hd_token = (t_token*)hd_iterator->content;
-		fcontent = heredoc_loop(targ, hd_token->value);
+		fcontent = heredoc_loop(targ, hd_token->value, env);
 		ft_lstadd_back(&fcontent_lst, ft_lstnew(fcontent));
 		hd_iterator = hd_iterator->next;
 	}
