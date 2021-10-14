@@ -106,7 +106,8 @@ t_bool	ctrl_d_triggered(t_termarg *targ, t_bool on_heredoc)
 	{
 		if (ft_strlen(targ->buf->str) == 0)
 		{
-			shell_err("working on the right error message...");
+			ft_putc('\n');
+			shell_err(HEREDOC_ERR);
 			return (true);
 		}
 	}
