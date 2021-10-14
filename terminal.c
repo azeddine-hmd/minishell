@@ -6,9 +6,9 @@
 
 void		ms_prompt(void)
 {
-	printf(MS_PROMPT_COLOR);
-	printf(MS_PROMPT);
-	printf(COLORS_DEFAULT);
+	ft_putstr(MS_PROMPT_COLOR);
+	ft_putstr(MS_PROMPT);
+	ft_putstr(COLORS_DEFAULT);
 }
 
 /*

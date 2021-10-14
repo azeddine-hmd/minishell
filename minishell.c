@@ -79,7 +79,6 @@ int		main(int argc, char **argv, char **env)
 		usage();
 		return (EXIT_FAILURE);
 	}
-	setbuf(stdout, NULL);
 	ft_bzero(&targ, sizeof(t_termarg));
 	ms_setup(&(targ.cap), &(targ.buf));
 	minishell_loop(&targ, string_array_to_string_list(env));
