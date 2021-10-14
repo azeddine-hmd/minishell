@@ -63,6 +63,7 @@ void	ms_bufdel(t_buf *buf)
 	else
 	{
 		(buf->pos)--;
+		(buf->last)--;
 		buf->str[buf->pos] = 0;
 #ifdef DEBUG
 		fprintf(ms_buflog, "buf: '%s'\n", buf->str);
