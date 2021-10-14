@@ -1,26 +1,20 @@
 #include "minishell.h"
-#include "libx/libx.h"
 
 FILE *ms_log;
 FILE *ms_buflog;
+FILE *pa_log;
 
-static void	minishell_loop(t_termarg *targ)
+static void	minishell_loop(t_termarg *targ, char **env)
 {
-	ms_prompt();
+	ms_prompt(EXIT_SUCCESS);
 	targ->cur = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
 	add_cmdslst(&(targ->head), targ->cur);
 	while (read(STDIN_FILENO, &(targ->input), 1) == 1)
-	// simulating input with sequence of characters
-	/*char inputs[30000];
-	ft_bzero(inputs, 30000);
-	sprintf(inputs, "echo 1\nholder%c%c%c%c%c%c<appended>\n", K_UP_ARROW, K_DOWN_ARROW);
-	int i = -1;
-	while ((input = inputs[++i]))*/
 	{
 		if (targ->input == K_BS)
 			backspace_triggered(targ);
 		else if (targ->input == K_ENTER)
-			enter_triggered(targ);
+			enter_triggered(targ, env);
 		else if (targ->input == K_ESC)
 			targ->pos++;
 		else if (targ->pos == 1 && targ->input == K_OSB)
@@ -37,7 +31,7 @@ static void	minishell_loop(t_termarg *targ)
 			targ->pos = 0;
 		else if (targ->input == K_CTRL_D)
 		{
-			if (ctrl_d_triggered(targ))
+			if (ctrl_d_triggered(targ, false))
 				break ;
 		}
 		else if (targ->input == K_CTRL_L)
@@ -53,7 +47,7 @@ static void	minishell_loop(t_termarg *targ)
 		else
 		{
 #ifdef DEBUG
-			fprintf(ms_log, "key: %d\n", targ->input);
+			fprintf(ms_log, "key: %c\n", targ->input);
 			fflush(ms_log);
 #endif
 			ms_bufadd(targ->buf, targ->input);
@@ -63,18 +57,24 @@ static void	minishell_loop(t_termarg *targ)
 	}
 }
 
-int		main(void)
+int		main(int argc, char **argv, char **env)
 {
 	t_termarg	targ;
 
 	// debugging
 	ms_log = fopen(DEBUG_LOG_PATH, "a");
 	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
+	pa_log = fopen(PARSE_DEBUG_LOG_PATH, "a");
 
-	setbuf(stdout, NULL);
+	(void)argv;
+	if (argc != 1)
+	{
+		usage();
+		return (EXIT_FAILURE);
+	}
 	ft_bzero(&targ, sizeof(t_termarg));
 	ms_setup(&(targ.cap), &(targ.buf));
-	minishell_loop(&targ);
+	minishell_loop(&targ, env);
 	deallocate();
 	return (0);
 }

@@ -2,7 +2,24 @@
 
 t_list	*get_heredoc_lst(t_list	*cmds)
 {
-	//TODO: get hererdoc list
-	(void)cmds;
-	return (NULL);
+	t_list	*heredoc_lst;
+	t_cmd	*cmd;
+	t_list	*in_token;
+	t_token	*token;
+
+	heredoc_lst = NULL;
+	while (cmds)
+	{
+		cmd = (t_cmd*)cmds->content;
+		in_token = cmd->in_token;
+		while (in_token)
+		{
+			token = (t_token*)in_token->content;
+			if (!ft_strcmp(token->type, HEREDOC_TOKEN))
+				ft_lstadd_back(&heredoc_lst, ft_lstnew(token));
+			in_token = in_token->next;
+		}
+		cmds = cmds->next;
+	}
+	return (heredoc_lst);
 }

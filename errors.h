@@ -19,12 +19,15 @@
 # define COLORS_DEFAULT "\033[0;0m"
 # define COLORS_BLACK "\033[0;30m"
 # define COLORS_RED "\033[031m"
+# define COLORS_RED_BOLD "\033[1;031m"
 # define COLORS_GREEN "\033[0;32m"
 # define COLORS_YELLOW "\033[0;33m"
 # define COLORS_BLUE "\033[0;34m"
 # define COLORS_PURPLE "\033[0;35m"
 # define COLORS_CYAN "\033[0;36m"
+# define COLORS_CYAN_BOLD "\033[1;36m"
 # define COLORS_WHITE "\033[0;36m"
+# define COLORS_WHITE_BOLD "\033[1;36m"
 
 /*
 ** syntax errors

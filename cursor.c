@@ -14,12 +14,12 @@ void	ms_chrdel(t_cap *cap)
 ** delete current line
 */
 
-void	ms_lndel(t_cap *cap, t_buf *buf)
+void	ms_lndel(t_cap *cap, size_t n)
 {
 	size_t	i;
 
 	i = -1;
-	while (++i < buf->last)
+	while (++i < n)
 	{
 		ms_chrdel(cap);
 	}
