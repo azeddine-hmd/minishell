@@ -1,6 +1,6 @@
 #include "parser.h"
 
-char	*parse(const char *cmdln, t_list **cmds, t_list **env, int prev_ret)
+char	*parse(const char *cmdln, t_list **cmds, char **env, int prev_ret)
 {
 	t_list	*cmdln_lst;
 	char	*syntax_err;
