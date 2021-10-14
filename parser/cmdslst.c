@@ -35,11 +35,10 @@ void	add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst)
 
 static void	xfree_cmdslst(t_cmdslst *cmdslst)
 {
-	if (cmdslst->cmds)
-		ft_lstclear(&(cmdslst->cmds), cmd_del);
-	if (cmdslst->cmds_str)
-		xfree(cmdslst->cmds_str);
-	xfree(cmdslst);
+
+	xfree(cmdslst->cmdln_str);
+	xfree(cmdslst->next);
+	xfree(cmdslst->previous);
 }
 
 static void xfree_after_head(t_cmdslst *node, t_cmdslst *target)

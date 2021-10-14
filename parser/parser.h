@@ -7,12 +7,21 @@
 # define TOKENS "<< >> > < |"
 # define IN_TYPE_TOKEN "<< <"
 # define OUT_TYPE_TOKEN ">> >"
+# define HEREDOC_TOKEN "<<"
 # define PIPE "|"
 # define QUOTES "'\""
+# define FILE_PREFIX "/tmp/minishell-heredoc-"
+# define HEREDOC_ERR "warning: here-document at line $LINE delimited by end-of-file (wanted `$DELIMETER')"
+
 # define NO_SYNTAX_ERROR NULL
 # define PAIR_NOT_FOUND -1
 # define QUOTE_ADDRESS_NOT_FOUND -1
 # define CHAR_PLACEHOLDER -128
+# define FILE_PREMISSION 0666
+
+// debugging
+# define PARSE_DEBUG_LOG_PATH "/tmp/parse_log"
+extern FILE *pa_log;
 
 typedef struct s_token
 {
@@ -27,15 +36,11 @@ typedef struct s_cmd
 	t_list			*out_token;
 	char			**args;
 	int				ret;
-	struct s_cmd	*next;
-	struct s_cmd	*previous;
 }t_cmd;
 
 typedef struct s_cmdslst
 {
-	t_list			*cmds;
-	char			*cmds_str;
-	char			*original;
+	char			*cmdln_str;
 	int				ret;
 	struct s_cmdslst	*next;
 	struct s_cmdslst	*previous;
@@ -64,7 +69,7 @@ void		print_str_arr(char **str_arr);
 void		print_str_lst(t_list *str_lst);
 
 // parse
-char		*parse(const char *cmdln, t_list **cmds, int prev_ret);
+char		*parse(const char *cmdln, t_list **cmds, t_list **env, int prev_ret);
 void		create_cmds(t_list **cmds, t_list *cmdln_lst);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 t_list		*get_simplified_cmdln(const char *cmdln);
@@ -98,11 +103,6 @@ t_bool		is_token(const char *s);
 // tkindx
 void		tkindx_del(void *content);
 
-// cmds
-void		cmd_init(t_cmd *cmd, char **args, t_bool is_piped);
-t_cmd		*get_cmd(const char *cmd_string, t_bool is_piped);
-void		add_cmd(t_cmd **a_head, t_cmd *cmd);
-t_cmd		*get_last_cmd(t_cmd *head);
 // compatibility with libx
 void		cmd_del(void *content);
 

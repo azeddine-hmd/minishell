@@ -1,9 +1,9 @@
 #include "execution.h"
 
-int	execute(t_list *cmds)
+int	execute(t_list *cmds, t_list **env)
 {
-	//(void)cmds;
-	//print_all_cmds(cmds);
-	main_function(cmds);
+	(void)cmds;
+	(void)env;
+	print_all_cmds(cmds);
 	return (EXIT_SUCCESS);
 }

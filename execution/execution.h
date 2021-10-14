@@ -78,7 +78,7 @@ int			file_dont_exist(char *file);
 t_list		*pipes(t_list *cmd);
 int			exec_bin(char **cmd);
 int			main_function(t_list *cmds);
-int			execute(t_list *cmds);
+int			execute(t_list *cmds, t_list **env);
 char		**g_env;
 #endif
 
