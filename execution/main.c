@@ -18,20 +18,20 @@ int			cmd_nfound(char *str)
 	return (127);
 }
 
-int			exec_builtin(char **cmd) // ["cd", ...]
+int			exec_builtin(char **cmd, char **env) // ["cd", ...]
 {
 	if (!ft_strcmp(cmd[0], "echo"))
-		return (ft_builtin_echo(cmd + 1));
+		return (ft_builtin_echo(cmd));
 	else if (!ft_strcmp(cmd[0], "cd"))
-		return (ft_builtin_cd(cmd + 1));
+		return (ft_builtin_cd(cmd + 1, env));
 	else if (!ft_strcmp(cmd[0], "pwd"))
 		return (ft_builtin_pwd());
 	else if (!ft_strcmp(cmd[0], "export"))
-		return (ft_builtin_export(cmd + 1));
+		return (ft_builtin_export(cmd + 1, env));
 	else if (!ft_strcmp(cmd[0], "unset"))
-		return (ft_builtin_unset(cmd + 1));
+		return (ft_builtin_unset(cmd + 1, env));
 	else if (!ft_strcmp(cmd[0], "env"))
-		return (ft_builtin_env());
+		return (ft_builtin_env(env));
 	else if (!ft_strcmp(cmd[0], "exit"))
 		return (ft_builtin_exit(10));
 	return (2);
@@ -71,8 +71,9 @@ int			is_exec(char *exec_path, struct stat stats, char **cmd) // check better th
 	return (0);
 }
 
-int			exec_bin(char **cmd)		// equal to check_bin();
+int			exec_bin(char **cmd, char **env)		// equal to check_bin();
 {
+	printf("%s\n", env[1]);
 	char	**path = ft_split(getenv("PATH"), ':');
 	int		i;
 	char	*exec_path;
@@ -97,12 +98,15 @@ int			exec_bin(char **cmd)		// equal to check_bin();
 	return (0);
 }
 
+ int	file_error(char *s)
+{
+	write(2, "minishell: ", 11);
+	write(2, s, strlen(s));
+	write(2, ": No such file or directory\n", 28);
+	return (127);
+}
 
-
-
-
-
-int			check_cmd(t_cmd *cmd)
+int			check_cmd(t_cmd *cmd, char **env)
 {
 	int		ret;
 
@@ -111,20 +115,26 @@ int			check_cmd(t_cmd *cmd)
 		return (0);
 	if (cmd->args[0][0] != '\0')
 	{
-		ret = exec_builtin(cmd->args); // changes this line [04/10/21]
+		ret = exec_builtin(cmd->args, env); // changes this line [04/10/21]
 		if (ret != 2)
 			return (ret);
-		if (find_strenv("PATH")[0] == '\0')
+		if (find_strenv("PATH", env)[0] == '\0')
 			ret = 2;
 		else
-			ret = exec_bin(cmd->args);
+		{
+			ret = exec_bin(cmd->args, env);
+			if (ret != 2 && ret != 127)
+				return (ret);
+		}
+		if (ret == 2)
+			return (file_error(cmd->args[0]));
 	}
 	//if (ret == 127)
 		//return (file_dont_exist(cmd->args[0]));
 	return (cmd_nfound(cmd->args[0]));
 }
 
-int			exec_cmd(t_cmd* cmd)
+int			exec_cmd(t_cmd* cmd, char **env)
 {
 	//int		fd_in;
 	//int		fd_out;
@@ -140,7 +150,7 @@ int			exec_cmd(t_cmd* cmd)
 	//}
 
 	//if (cmd->in_token->content || cmd->out_token->content)
-	ret = check_cmd(cmd);
+	ret = check_cmd(cmd, env);
 	////ret = 
 	//if (cmd->in_token || cmd->out_token)
 	//{	
@@ -152,7 +162,7 @@ int			exec_cmd(t_cmd* cmd)
 	return (ret);
 }
 
-int			main_function(t_list *cmds)
+int			main_function(t_list *cmds, char **env)
 {
 	int		r;
 
@@ -162,9 +172,9 @@ int			main_function(t_list *cmds)
 	while (cmds)
 	{
 		if (cmds->next)
-			cmds = pipes(cmds);
+			cmds = pipes(cmds, env);
 		else
-			r = exec_cmd(((t_cmd*)cmds->content));
+			r = exec_cmd(((t_cmd*)cmds->content), env);
 		cmds = cmds->next;
 	}
 	return (r);
@@ -178,7 +188,7 @@ int			main_function(t_list *cmds)
 //	//char	*red[] =  {"test.c", "test.txt", "test", NULL};
 //	//fill_token(&token, red, "aca");
 //	//output_token(token);
-	init_env(argc, argv, env);
+	//init_env(argc, argv, env);
 //	char	*cmd[] = {"echo","hello", NULL};
 //	//char	*cmd1[] = {"wc",NULL};
 //	//exec_builtin(cmd1);

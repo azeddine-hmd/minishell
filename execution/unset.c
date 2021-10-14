@@ -6,32 +6,32 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:58:45 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/11 21:44:17 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/14 22:41:52 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void		delete_env(int	index)
+void		delete_env(int	index, char **env)
 {
 	int		i;
 	int		j;
 
-	free(g_env[index]);
-	g_env[index] = NULL;
+	free(env[index]);
+	env[index] = NULL;
 	i = index;
 	j = index + 1;
-	while (g_env[i + 1])
+	while (env[i + 1])
 	{
-		g_env[i] = ft_strdup(g_env[i + 1]);
-		free(g_env[i + 1]);
+		env[i] = ft_strdup(env[i + 1]);
+		free(env[i + 1]);
 		i++;
 		j++;
 	}
-	g_env = realloc_env(j - 1);
+	env = realloc_env(j - 1, env);
 }
 
-int			ft_builtin_unset(char **args)
+int			ft_builtin_unset(char **args, char **env)
 {
 	int		i;
 	int		index;
@@ -42,9 +42,9 @@ int			ft_builtin_unset(char **args)
 	i = -1;
 	while (args[++i])
 	{
-		index	= find_env(args[i]);
-		if (g_env[index])
-			delete_env(index);
+		index	= find_env(args[i], env);
+		if (env[index])
+			delete_env(index, env);
 	}
 	return (1);
 }

@@ -6,13 +6,13 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:50:27 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/14 16:31:30 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/15 00:10:48 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-//void		init_env(int argc, char **argv, char **env)
+//	void		init_env(int argc, char **argv, char **env)
 //{
 //	int		i;
 
@@ -28,17 +28,17 @@
 //	}
 //}
 
-int			find_env(char *value)
+int			find_env(char *value, char **env)
 {
 	int		i;
 	char	*tmp;
 
 	i = -1;
 	tmp = safe_malloc(1);
-	while (g_env[++i])
+	while (env[++i])
 	{
 		tmp = ft_strjoinch(value, '=');
-		if (ft_strstartw(g_env[i], tmp))
+		if (ft_strstartw(env[i], tmp))
 		{
 			free(tmp);
 			return(i);
@@ -60,14 +60,14 @@ int			find_env(char *value)
 //	return  (j);
 //}
 
-int			ft_builtin_env(void)
+int			ft_builtin_env(char **env)
 {
 	int			i;
 
 	i = -1;
-	while (g_env[++i])
+	while (env[++i])
 	{
-		write(1, g_env[i], ft_strlen(g_env[i]));
+		write(1, env[i], ft_strlen(env[i]));
 		write(1, "\n", 1);
 	}
 	return (1);

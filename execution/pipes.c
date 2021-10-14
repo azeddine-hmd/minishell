@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:16:10 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/14 10:41:58 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/14 22:37:51 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		dup_fd(t_list *cmds, int fds[2], int input, int fd_zero)
 	return (0);
 }
 
-t_list			*pipes(t_list *cmds)
+t_list			*pipes(t_list *cmds, char **env)
 {
 	t_cmd	*cmd;
 	int		fds[2];
@@ -67,7 +67,7 @@ t_list			*pipes(t_list *cmds)
 			close(fds[1]);
 			close(fds[0]);
 			close(fd_zero);
-			exit(exec_bin(cmd->args)); // remember to change this with exec_cmd (builtin + bin)
+			exit(exec_cmd(cmd, env)); // remember to change this with exec_cmd (builtin + bin)
 		}
 		if (fd_zero)
 			close(fd_zero);
