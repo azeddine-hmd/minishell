@@ -20,6 +20,7 @@ SRC = minishell.c \
 	  input_key_second.c \
 	  heredoc.c \
 	  heredoc_loop.c \
+	  heredoc_entry.c \
 
 OBJ = ${SRC:.c=.o}
 

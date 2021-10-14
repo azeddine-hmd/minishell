@@ -6,6 +6,7 @@
 # include <curses.h>
 # include <termios.h>
 # include <term.h>
+# include <fcntl.h>
 # include "libx/libx.h"
 # include "parser/parser.h"
 # include "execution/execution.h"
@@ -13,6 +14,7 @@
 
 # define MS_PROMPT_COLOR COLORS_BLUE
 # define MS_PROMPT "minishell$ "
+# define MS_HEREDOC_PROMPT "> "
 # define MS_BUFFER_SIZE 2048
 # define MS_INITIAL_RETURN EXIT_SUCCESS
 
@@ -96,6 +98,7 @@ t_bool		left_arrow_triggered(t_termarg *targ);
 
 // heredoc
 t_list		*get_heredoc_lst(t_list	*cmds);
-void		heredoc_loop(t_termarg *targ);
+void		heredoc_entry(t_termarg *targ, t_list *heredoc_lst);
+char		*heredoc_loop(t_termarg *targ, const char *delimiter);
 
 #endif

@@ -7,12 +7,16 @@
 # define TOKENS "<< >> > < |"
 # define IN_TYPE_TOKEN "<< <"
 # define OUT_TYPE_TOKEN ">> >"
+# define HEREDOC_TOKEN "<<"
 # define PIPE "|"
 # define QUOTES "'\""
+# define FILE_PREFIX "/tmp/minishell-heredoc-"
+
 # define NO_SYNTAX_ERROR NULL
 # define PAIR_NOT_FOUND -1
 # define QUOTE_ADDRESS_NOT_FOUND -1
 # define CHAR_PLACEHOLDER -128
+# define FILE_PREMISSION 0666
 
 typedef struct s_token
 {

@@ -27,6 +27,7 @@ void	create_cmds(t_list **cmds, t_list *cmdln_lst)
 		}
 		cmd->args = string_list_to_string_array(args_lst);
 		ft_lstclear(&args_lst, str_del);
+		// TODO: debug whether cmd being added to cmds lst
 		ft_lstadd_back(cmds, ft_lstnew(cmd));
 		if (is_null(iterator))
 			break ;

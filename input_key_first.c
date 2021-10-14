@@ -62,14 +62,19 @@ t_bool	enter_triggered(t_termarg *targ)
 	if (has_previous(targ->cur))
 	{
 		syntax_error = parse(targ->buf->str, &(targ->cur->cmds), targ->cur->previous->ret);
-		heredoc_lst = get_heredoc_lst(targ->cur->cmds);
-		if (is_not_null(heredoc_lst))
-			heredoc_loop(targ);
 	}
 	else
 	{
 		syntax_error = parse(targ->buf->str, &(targ->cur->cmds), EXIT_SUCCESS);
 	}
+
+	// heredoc
+	heredoc_lst = get_heredoc_lst(targ->cur->cmds);
+	if (is_not_empty(heredoc_lst))
+		print_all_tokens(heredoc_lst);
+	if (is_not_null(heredoc_lst))
+		heredoc_entry(targ, heredoc_lst);
+
 	if (syntax_error == NO_SYNTAX_ERROR)
 	{
 		targ->cur->ret = execute(targ->cur->cmds);
