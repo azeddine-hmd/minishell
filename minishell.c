@@ -37,7 +37,7 @@ static void	minishell_loop(t_termarg *targ)
 			targ->pos = 0;
 		else if (targ->input == K_CTRL_D)
 		{
-			if (ctrl_d_triggered(targ))
+			if (ctrl_d_triggered(targ, false))
 				break ;
 		}
 		else if (targ->input == K_CTRL_L)

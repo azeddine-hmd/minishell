@@ -91,7 +91,7 @@ t_bool		backspace_triggered(t_termarg *targ);
 t_bool		enter_triggered(t_termarg *targ);
 t_bool		up_arrow_triggered(t_termarg *targ);
 t_bool		down_arrow_triggered(t_termarg *targ);
-t_bool		ctrl_d_triggered(t_termarg *targ);
+t_bool		ctrl_d_triggered(t_termarg *targ, t_bool on_heredoc);
 t_bool		ctrl_l_triggered(t_termarg *targ);
 t_bool		right_arrow_triggered(t_termarg *targ);
 t_bool		left_arrow_triggered(t_termarg *targ);

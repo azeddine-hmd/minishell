@@ -8,19 +8,6 @@ void	hd_prompt(void)
 	ft_putstr(COLORS_DEFAULT);
 }
 
-t_bool	is_lastline_delimiter(const char *original, const char *delimiter)
-{
-	char	*extracted_delimiter;
-
-	extracted_delimiter = ft_strrchr(original, '\n');
-	printf("extracted_delimiter: %s\n", extracted_delimiter);
-	if (!ft_strcmp(extracted_delimiter + 1, delimiter))
-	{
-		//
-	}
-	return (false);
-}
-
 char		*heredoc_loop(t_termarg *targ, const char *delimiter)
 {
 	t_list	*lines_lst;
@@ -70,7 +57,7 @@ char		*heredoc_loop(t_termarg *targ, const char *delimiter)
 			targ->pos = 0;
 		else if (targ->input == K_CTRL_D)
 		{
-			if (ctrl_d_triggered(targ))
+			if (ctrl_d_triggered(targ, true))
 				break ;
 		}
 		else if (targ->input == K_CTRL_L)
