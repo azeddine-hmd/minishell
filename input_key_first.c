@@ -16,7 +16,8 @@ t_bool	enter_triggered(t_termarg *targ)
 	fprintf(ms_log, "key: ENTER\n");
 	fflush(ms_log);
 #endif
-	char *syntax_error;
+	char	*syntax_error;
+	t_list	*heredoc_lst;
 
 	syntax_error = NULL;
 	ft_putc(targ->input);
@@ -61,6 +62,9 @@ t_bool	enter_triggered(t_termarg *targ)
 	if (has_previous(targ->cur))
 	{
 		syntax_error = parse(targ->buf->str, &(targ->cur->cmds), targ->cur->previous->ret);
+		heredoc_lst = get_heredoc_lst(targ->cur->cmds);
+		if (is_not_null(heredoc_lst))
+			heredoc_loop(targ);
 	}
 	else
 	{
