@@ -1,5 +1,4 @@
 #include "minishell.h"
-#include "libx/libx.h"
 
 FILE *ms_log;
 FILE *ms_buflog;
@@ -7,16 +6,10 @@ FILE *pa_log;
 
 static void	minishell_loop(t_termarg *targ, t_list *env)
 {
-	ms_prompt();
+	ms_prompt(EXIT_SUCCESS);
 	targ->cur = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
 	add_cmdslst(&(targ->head), targ->cur);
 	while (read(STDIN_FILENO, &(targ->input), 1) == 1)
-	// simulating input with sequence of characters
-	/*char inputs[30000];
-	ft_bzero(inputs, 30000);
-	sprintf(inputs, "echo 1\nholder%c%c%c%c%c%c<appended>\n", K_UP_ARROW, K_DOWN_ARROW);
-	int i = -1;
-	while ((input = inputs[++i]))*/
 	{
 		if (targ->input == K_BS)
 			backspace_triggered(targ);

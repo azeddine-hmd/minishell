@@ -4,9 +4,12 @@
 ** formating and printing login prompt
 */
 
-void		ms_prompt(void)
+void		ms_prompt(int ret)
 {
-	ft_putstr(MS_PROMPT_COLOR);
+	if (ret != 0)
+		ft_putstr(COLORS_RED);
+	else
+		ft_putstr(MS_PROMPT_COLOR);
 	ft_putstr(MS_PROMPT);
 	ft_putstr(COLORS_DEFAULT);
 }

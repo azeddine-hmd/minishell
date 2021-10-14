@@ -16,7 +16,6 @@
 # define MS_PROMPT "minishell$ "
 # define MS_HEREDOC_PROMPT "> "
 # define MS_BUFFER_SIZE 2048
-# define MS_INITIAL_RETURN EXIT_SUCCESS
 
 /*
  ** keys
@@ -84,7 +83,7 @@ void		ms_bufrpc(t_buf *buf, const char *s);
 
 // termcap
 void		ms_setup(t_cap **cap, t_buf **a_buf);
-void		ms_prompt(void);
+void		ms_prompt(int ret);
 void		ms_chrdel(t_cap *cap);
 void		ms_lndel(t_cap *cap, size_t n);
 
