@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:16:10 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/13 15:45:20 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/14 10:41:58 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int		dup_fd(t_list *cmds, int fds[2], int input, int fd_zero)
 	t_cmd	*next;
 
 	cmd = (t_cmd*)cmds->content;
-	next = (t_cmd*)cmds->next->content;
+	if (cmds->next)
+		next = (t_cmd*)cmds->next->content;
 	input++;
 	if (cmd->is_piped == 0 && next->is_piped == 1) // id = 1
 		dup2(fds[1], 1);
@@ -46,13 +47,13 @@ int		dup_fd(t_list *cmds, int fds[2], int input, int fd_zero)
 	return (0);
 }
 
-t_cmd			*pipes(t_list *cmds)
+t_list			*pipes(t_list *cmds)
 {
 	t_cmd	*cmd;
 	int		fds[2];
 	int		pid;
 	int		input  = 0;
-	int		pos = 0;
+	//int		pos = 0;
 	int		fd_zero = 0;
 	
 	while (cmds)
@@ -62,11 +63,11 @@ t_cmd			*pipes(t_list *cmds)
 		pid = fork();
 		if (!pid)
 		{
-			pos = dup_fd(cmds, fds, input, fd_zero);
+			dup_fd(cmds, fds, input, fd_zero); // return pos = dup_fd after the check
 			close(fds[1]);
 			close(fds[0]);
 			close(fd_zero);
-			exit(exec_bin(cmd->args));
+			exit(exec_bin(cmd->args)); // remember to change this with exec_cmd (builtin + bin)
 		}
 		if (fd_zero)
 			close(fd_zero);

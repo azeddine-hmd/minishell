@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "execution.h"
 # define true 1
 
 
@@ -101,106 +101,12 @@ int			exec_bin(char **cmd)		// equal to check_bin();
 
 
 
-void		append_lst(t_cmd **cmd, t_cmd *src)
-{
-	t_cmd	*tmp;
-
-	if (*cmd == NULL)
-		*cmd = src;
-	else
-	{
-		tmp = *cmd;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = src;
-	}
-}
-
-t_cmd		*fill_dummy(t_cmd **cmd, char **cmd_0, char **cmd_1)
-{
-	int		i;
-	t_cmd	*dummy;
-	i = 0;
-	while (i < 2)
-	{
-		dummy = (t_cmd *)malloc(sizeof(t_cmd));
-		dummy->pos = i;
-		switch (i)
-		{
-		case 0:
-			dummy->is_piped = 0;
-			dummy->previous = NULL;
-			dummy->next = NULL;
-			dummy->args = cmd_0;
-			break;
-		case 1:
-			dummy->is_piped = 1;
-			dummy->next = NULL;
-			dummy->args = cmd_1;
-		default:
-			break;
-		}
-		append_lst(cmd ,dummy);
-		i++;
-	}
-	return (*cmd);
-}
-
-void		append_lstk(t_token **cmd, t_token *src)
-{
-	t_token	*tmp;
-
-	if (*cmd == NULL)
-		*cmd = src;
-	else
-	{
-		tmp = *cmd;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = src;
-	}
-}
-
-/*
-*
-*	arr ==> ["main.c", "test.c", NULL]
-*	type ==> "aowwwa"  a = append, o = override,  w = write
-*/
-/* 
-====
-*/
-void		fill_token(t_token **head, char **arr, char* type)
-{
-
-	t_token  *token;
-	int			i = -1;
-
-	while (arr[++i])
-	{
-		token = (t_token *)malloc(sizeof(t_token));
-		token->value = ft_strdup(arr[i]);
-		token->type = type[i];
-		token->next = NULL;
-		append_lstk(head, token);
-	}
-}
-
-void		output_token(t_token *token)
-{
-	while(token)
-	{
-		printf("%s====>%c\n", token->value, token->type);
-		token = token->next;
-	}
-}
 
 int			check_cmd(t_cmd *cmd)
 {
 	int		ret;
-	int		i;
 
 	ret = 0;
-	i = -1;
 	if (!cmd) // see the difference between this and the condition below
 		return (0);
 	if (cmd->args[0][0] != '\0')
@@ -218,70 +124,70 @@ int			check_cmd(t_cmd *cmd)
 	return (cmd_nfound(cmd->args[0]));
 }
 
-int			exec_cmd(t_cmd *cmd, t_token *token)
+int			exec_cmd(t_cmd* cmd)
 {
-	int		fd_in;
-	int		fd_out;
+	//int		fd_in;
+	//int		fd_out;
 	int		ret;
 
 	ret = 0;
-	if (cmd->in_token->content || cmd->out_token->content)
-	{
-		fd_in = dup(0);
-		fd_out = dup(1);
-	}
+	//if (cmd->in_token || cmd->out_token) // ToDo: fix redirection
+	//{
+	//	fd_in = dup(0);
+	//	fd_out = dup(1);
+	//	if (redirections(cmd))
+	//		return (1);
+	//}
 
-	if (cmd->in_token->content || cmd->out_token->content)
-		if (redirections(token))
-			return (1);
+	//if (cmd->in_token->content || cmd->out_token->content)
 	ret = check_cmd(cmd);
-	//ret = 
-	if (cmd->in_token->content || cmd->out_token->content)
-	{
-		dup2(fd_in, 0);
-		dup2(fd_out, 1);
-		close(fd_in);
-		close(fd_out);
-	}
+	////ret = 
+	//if (cmd->in_token || cmd->out_token)
+	//{	
+	//	dup2(fd_in, 0);
+	//	dup2(fd_out, 1);
+	//	close(fd_in);
+	//	close(fd_out);
+	//}
 	return (ret);
 }
 
-int			main_function(t_cmd *cmd, t_token *token)
+int			main_function(t_list *cmds)
 {
 	int		r;
 
 	r = 0;
 	// TODO:
 	// check filter_all in the other folder;
-	while (cmd)
+	while (cmds)
 	{
-		if (cmd->is_piped)
-			cmd = pipes(cmd);
+		if (cmds->next)
+			cmds = pipes(cmds);
 		else
-			r = exec_cmd(cmd, token);
-		cmd = cmd->next;
+			r = exec_cmd(((t_cmd*)cmds->content));
+		cmds = cmds->next;
 	}
 	return (r);
 }
 
-int			main(int argc, char **argv, char **env)
-{
-	//printf("\n\n");
-	//t_cmd	*test = NULL;					// testing linked ist
-	t_token *token = NULL; 
-	//char	*red[] =  {"test.c", "test.txt", "test", NULL};
-	//fill_token(&token, red, "aca");
-	//output_token(token);
+//int			main(int argc, char **argv, char **env)
+//{
+//	//printf("\n\n");
+//	//t_cmd	*test = NULL;					// testing linked ist
+//	t_token *token = NULL; 
+//	//char	*red[] =  {"test.c", "test.txt", "test", NULL};
+//	//fill_token(&token, red, "aca");
+//	//output_token(token);
 	init_env(argc, argv, env);
-	char	*cmd[] = {"echo","hello", NULL};
-	//char	*cmd1[] = {"wc",NULL};
-	//exec_builtin(cmd1);
-	//redirections(token); // in the exec_func dup fd_in and fd_out before opening redirections
-	exec_bin(cmd);	
-	//printf("%s\n", getenv("PWD"));
-	//char	*cmd2[] = {"cd",NULL};
-	//exec_builtin(cmd2);
-	//test = fill_dummy(&test, cmd, cmd1);
-	//pipes(test);
-	return (0);
-}
+//	char	*cmd[] = {"echo","hello", NULL};
+//	//char	*cmd1[] = {"wc",NULL};
+//	//exec_builtin(cmd1);
+//	//redirections(token); // in the exec_func dup fd_in and fd_out before opening redirections
+//	exec_bin(cmd);	
+//	//printf("%s\n", getenv("PWD"));
+//	//char	*cmd2[] = {"cd",NULL};
+//	//exec_builtin(cmd2);
+//	//test = fill_dummy(&test, cmd, cmd1);
+//	//pipes(test);
+//	return (0);
+//}

@@ -29,7 +29,7 @@ void	print_cmd(t_cmd *cmd)
 	printf("\n");
 }
 
-void	print_all_cmds(t_list *cmds)
+void	 print_all_cmds(t_list *cmds)
 {
 	t_cmd	*cmd;
 	int		i = 0;
@@ -40,5 +40,6 @@ void	print_all_cmds(t_list *cmds)
 		cmds = cmds->next;
 		i++;
 	}
+	// The below printf was added to know how many commands were printed.
 	printf("%d\n", i);
 }

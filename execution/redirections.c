@@ -6,11 +6,11 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:18:42 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/07 16:05:13 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/14 11:07:30 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "execution.h"
 
 void		ft_create_file(char *file, char type) // check file if doesn't exit. (Manage the error too)
 {
