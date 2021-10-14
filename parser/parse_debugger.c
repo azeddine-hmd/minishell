@@ -4,9 +4,7 @@ void	print_all_cmdslst(t_cmdslst *head)
 {
 	while (head)
 	{
-		fprintf(pa_log, "cmdline: %s\n", head->cmds_str);
-		fprintf(pa_log, "original: %s\n", head->original);
-		print_all_cmds(head->cmds);
+		fprintf(pa_log, "cmdln_str: %s\n", head->cmdln_str);
 		head = head->next;
 	}
 	fprintf(pa_log, "\n");

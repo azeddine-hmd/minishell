@@ -84,7 +84,7 @@ void		ms_bufrpc(t_buf *buf, const char *s);
 void		ms_setup(t_cap **cap, t_buf **a_buf);
 void		ms_prompt(void);
 void		ms_chrdel(t_cap *cap);
-void		ms_lndel(t_cap *cap, t_buf *buf);
+void		ms_lndel(t_cap *cap, size_t n);
 
 // keys events
 t_bool		backspace_triggered(t_termarg *targ);

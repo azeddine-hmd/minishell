@@ -35,15 +35,11 @@ typedef struct s_cmd
 	t_list			*out_token;
 	char			**args;
 	int				ret;
-	struct s_cmd	*next;
-	struct s_cmd	*previous;
 }t_cmd;
 
 typedef struct s_cmdslst
 {
-	t_list			*cmds;
-	char			*cmds_str;
-	char			*original;
+	char			*cmdln_str;
 	int				ret;
 	struct s_cmdslst	*next;
 	struct s_cmdslst	*previous;
@@ -106,11 +102,6 @@ t_bool		is_token(const char *s);
 // tkindx
 void		tkindx_del(void *content);
 
-// cmds
-void		cmd_init(t_cmd *cmd, char **args, t_bool is_piped);
-t_cmd		*get_cmd(const char *cmd_string, t_bool is_piped);
-void		add_cmd(t_cmd **a_head, t_cmd *cmd);
-t_cmd		*get_last_cmd(t_cmd *head);
 // compatibility with libx
 void		cmd_del(void *content);
 

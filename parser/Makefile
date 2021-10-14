@@ -6,7 +6,6 @@ CFLAGS = -Wall -Wextra -Werror \
 CC = gcc
 
 SRC = parse.c \
-	  cmds.c \
 	  cmdslst.c \
 	  parse_debugger.c \
 	  parse_debugger_2.c \
