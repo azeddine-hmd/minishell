@@ -25,7 +25,7 @@ t_bool	enter_triggered(t_termarg *targ, t_list **env)
 	ft_putc(targ->input);
 	if (ft_strlen(targ->buf->str) == 0)
 	{
-		ms_prompt();
+		ms_prompt(targ->cur->ret);
 		return (false);
 	}
 	targ->cur = get_last_cmdslst(targ->head);
@@ -59,7 +59,7 @@ t_bool	enter_triggered(t_termarg *targ, t_list **env)
 	targ->cur = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
 	add_cmdslst(&(targ->head), targ->cur);
 	ms_bufrst(targ->buf);
-	ms_prompt();
+	ms_prompt(targ->cur->ret);
 	return (false);
 }
 
