@@ -84,7 +84,10 @@ char		*heredoc_loop(t_termarg *targ, const char *delimiter)
 	}
 	ms_bufrpc(targ->buf, saved_bufstr);
 	xfree(saved_bufstr);
-	fcontent = join_string_list_with_nl(lines_lst);
+	if (is_not_null(lines_lst))
+		fcontent = join_string_list_with_nl(lines_lst);
+	else
+		fcontent = xstrdup("");
 	ft_lstclear(&lines_lst, str_del);
 	return (fcontent);
 }
