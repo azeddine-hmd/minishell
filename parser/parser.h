@@ -68,7 +68,7 @@ void		print_str_arr(char **str_arr);
 void		print_str_lst(t_list *str_lst);
 
 // parse
-char		*parse(const char *cmdln, t_list **cmds, int prev_ret);
+char		*parse(const char *cmdln, t_list **cmds, t_list **env, int prev_ret);
 void		create_cmds(t_list **cmds, t_list *cmdln_lst);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 t_list		*get_simplified_cmdln(const char *cmdln);

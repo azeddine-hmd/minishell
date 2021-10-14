@@ -1,10 +1,11 @@
 #include "parser.h"
 
-char	*parse(const char *cmdln, t_list **cmds, int prev_ret)
+char	*parse(const char *cmdln, t_list **cmds, t_list **env, int prev_ret)
 {
 	t_list	*cmdln_lst;
 	char	*syntax_err;
 
+	(void)env;
 	(void)prev_ret;
 	if (cmdln == NULL || !cmds || ft_strlen(cmdln) == 0)
 		return (NO_SYNTAX_ERROR);
