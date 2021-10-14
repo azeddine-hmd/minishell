@@ -56,7 +56,7 @@ int			ft_strstartw(char *s1, char *s2);
 int			ft_strendw(char *s1, char *s2);
 void		ft_freestrarr(char **arr);
 char		*ft_strjoincl(char *s1, char *s2, int free_both);
-void		init_env(int argc, char **argv, char **env);
+char		**init_env(char **env);
 int			env_len(char **env);
 int			ft_builtin_env(void);
 int			ft_builtin_pwd(void);
@@ -75,10 +75,10 @@ char		*find_path(char *str);
 int			redirections(t_token *token);
 int			ft_builtin_echo(char **args);
 int			file_dont_exist(char *file);
-t_list		*pipes(t_list *cmd);
-int			exec_bin(char **cmd);
-int			main_function(t_list *cmds);
-int			execute(t_list *cmds, t_list **env);
+t_list		*pipes(t_list *cmds, char **env);
+int			exec_bin(char **cmd, char **env);
+int			main_function(t_list *cmds, char **env);
+int			execute(t_list *cmds, char **env);
 char		**g_env;
 #endif
 

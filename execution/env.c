@@ -6,27 +6,27 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:50:27 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/11 21:43:22 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/14 16:31:30 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void		init_env(int argc, char **argv, char **env)
-{
-	int		i;
+//void		init_env(int argc, char **argv, char **env)
+//{
+//	int		i;
 
-	(void)argc;
-	(void)argv;
+//	(void)argc;
+//	(void)argv;
 
-	g_env = (char**)safe_malloc(sizeof(char *) * (env_len(env) + 1));
-	i = -1;
-	while (env[++i])
-	{
-		if (!(g_env[i] = ft_strdup(env[i])))
-			error_msg("A memory allocation failed!\n", 2, 0);
-	}
-}
+//	g_env = (char**)safe_malloc(sizeof(char *) * (env_len(env) + 1));
+//	i = -1;
+//	while (env[++i])
+//	{
+//		if (!(g_env[i] = ft_strdup(env[i])))
+//			error_msg("A memory allocation failed!\n", 2, 0);
+//	}
+//}
 
 int			find_env(char *value)
 {
@@ -48,17 +48,17 @@ int			find_env(char *value)
 	return (i);
 }
 
-int			env_len(char **env) // to modify later. (No need for J)
-{
-	int		i;
-	int		j;
+//int			env_len(char **env) // to modify later. (No need for J)
+//{
+//	int		i;
+//	int		j;
 	
-	i = -1;
-	j = 0;
-	while(env[++i])
-		j++;
-	return  (j);
-}
+//	i = -1;
+//	j = 0;
+//	while(env[++i])
+//		j++;
+//	return  (j);
+//}
 
 int			ft_builtin_env(void)
 {

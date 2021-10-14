@@ -30,27 +30,16 @@ void	print_cmd(t_cmd *cmd)
 	fflush(NULL);
 }
 
-void	 print_all_cmds(t_list *cmds)
+void	print_all_cmds(t_list *cmds)
 {
 	t_cmd	*cmd;
-	int		i = 0;
+
 	while (cmds)
 	{
 		cmd = (t_cmd*)cmds->content;
 		print_cmd(cmd);
 		cmds = cmds->next;
-		i++;
 	}
-<<<<<<< HEAD
-	// The below printf was added to know how many commands were printed.
-||||||| 39ea894
-=======
-<<<<<<< HEAD
->>>>>>> master
-	printf("%d\n", i);
-||||||| bf09544
-=======
 	fprintf(pa_log, "------end\n");
 	fflush(NULL);
->>>>>>> 661ba8796051b80429c0d5ffbc13ae19d2df4470
 }
