@@ -27,7 +27,7 @@ void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst)
 		int		fd;
 
 		file_suffix_str = ft_itoa(file_suffix);
-		pathname = xstrjoin(FILE_PREFIX, ft_itoa(file_suffix));
+		pathname = xstrjoin(FILE_PREFIX, file_suffix_str);
 		free(file_suffix_str);
 		fcontent = fcontent_lst->content;
 		fd = open(pathname, O_WRONLY | O_CREAT | O_TRUNC, FILE_PREMISSION);
