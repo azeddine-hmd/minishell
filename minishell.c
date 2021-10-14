@@ -64,7 +64,7 @@ static void	minishell_loop(t_termarg *targ)
 	}
 }
 
-int		main(void)
+int		main(int argc, char **argv, char **env)
 {
 	t_termarg	targ;
 
@@ -73,6 +73,11 @@ int		main(void)
 	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
 	pa_log = fopen(PARSE_DEBUG_LOG_PATH, "a");
 
+	if (argc != 1)
+	{
+		usage();
+		return (EXIT_FAILURE);
+	}
 	setbuf(stdout, NULL);
 	ft_bzero(&targ, sizeof(t_termarg));
 	ms_setup(&(targ.cap), &(targ.buf));

@@ -73,6 +73,8 @@ typedef struct s_termarg
 	int			pos;
 }t_termarg;
 
+void		usage(void);
+
 // buffer
 void		ms_bufinit(t_buf **a_buf);
 void		ms_bufdel(t_buf *buf);
