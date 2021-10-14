@@ -77,6 +77,7 @@ SRC = libx.c \
 	  join_string_array_to_string.c \
 	  join_string_list_to_string.c \
 	  join_string_list_with_nl.c \
+	  debug_array_list.c \
 
 OBJ = ${SRC:.c=.o}
 

@@ -38,14 +38,6 @@ typedef struct s_cmd
 	int				ret;
 }t_cmd;
 
-typedef struct s_cmdslst
-{
-	char			*cmdln_str;
-	int				ret;
-	struct s_cmdslst	*next;
-	struct s_cmdslst	*previous;
-}t_cmdslst;
-
 typedef struct s_tkindx
 {
 	int				index;
@@ -59,8 +51,6 @@ typedef struct s_envindx
 }t_envindx;
 
 // debugging
-void		fake_cmdslst(t_cmdslst **a_head);
-void		print_all_cmdslst(t_cmdslst *head);
 void		print_cmd(t_cmd *cmd);
 void		print_all_cmds(t_list *cmds);
 void		print_all_range(t_list *head);
@@ -105,12 +95,6 @@ void		tkindx_del(void *content);
 
 // compatibility with libx
 void		cmd_del(void *content);
-
-// cmdslst
-t_bool		has_previous(t_cmdslst *cmdslst);
-t_cmdslst	*get_last_cmdslst(t_cmdslst *head);
-void		add_cmdslst(t_cmdslst **a_head, t_cmdslst *cmdslst);
-void		delete_cmdslst(t_cmdslst **a_head, t_cmdslst *target);
 
 // envindx
 void		envindx_del(void *content);

@@ -6,9 +6,8 @@ CFLAGS = -Wall -Wextra -Werror \
 CC = gcc
 
 SRC = parse.c \
-	  cmdslst.c \
-	  parse_debugger.c \
-	  parse_debugger_2.c \
+	  debug_cmd.c \
+	  debug_range_token.c \
 	  check_syntax_err.c \
 	  create_cmds.c \
 	  get_quotes_range.c \

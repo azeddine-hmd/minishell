@@ -1,16 +1,5 @@
 #include "parser.h"
 
-void	print_all_cmdslst(t_cmdslst *head)
-{
-	while (head)
-	{
-		fprintf(pa_log, "cmdln_str: %s\n", head->cmdln_str);
-		head = head->next;
-	}
-	fprintf(pa_log, "\n");
-	fflush(NULL);
-}
-
 void	print_cmd(t_cmd *cmd)
 {
 	for (int i = 0; i < length(cmd->args); i++) {
@@ -26,7 +15,6 @@ void	print_cmd(t_cmd *cmd)
 	}
 	print_all_tokens(cmd->in_token);
 	print_all_tokens(cmd->out_token);
-	fprintf(pa_log, "\n");
 	fflush(NULL);
 }
 
@@ -34,12 +22,13 @@ void	print_all_cmds(t_list *cmds)
 {
 	t_cmd	*cmd;
 
+	fprintf(pa_log, "------start------\n");
 	while (cmds)
 	{
 		cmd = (t_cmd*)cmds->content;
 		print_cmd(cmd);
 		cmds = cmds->next;
 	}
-	fprintf(pa_log, "------end\n");
+	fprintf(pa_log, "------end------\n\n");
 	fflush(NULL);
 }

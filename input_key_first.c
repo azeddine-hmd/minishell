@@ -28,7 +28,7 @@ t_bool	enter_triggered(t_termarg *targ, char **env)
 		ms_prompt(targ->cur->ret);
 		return (false);
 	}
-	targ->cur = get_last_cmdslst(targ->head);
+	targ->cur = get_last_history(targ->head);
 	if (is_not_null(targ->cur->cmdln_str))
 		xfree(targ->cur->cmdln_str);
 	targ->cur->cmdln_str = xstrdup(targ->buf->str);
@@ -56,8 +56,8 @@ t_bool	enter_triggered(t_termarg *targ, char **env)
 		xfree(syntax_error);
 	}
 	ft_lstclear(&cmd_lst, cmd_del);
-	targ->cur = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
-	add_cmdslst(&(targ->head), targ->cur);
+	targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
+	add_history(&(targ->head), targ->cur);
 	ms_bufrst(targ->buf);
 	ms_prompt(targ->cur->ret);
 	return (false);

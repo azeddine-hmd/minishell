@@ -1,4 +1,3 @@
-#include "libx/libx.h"
 #include "minishell.h"
 
 t_bool	ctrl_l_triggered(t_termarg *targ)
