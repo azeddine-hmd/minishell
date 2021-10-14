@@ -7,7 +7,7 @@
 void		ms_prompt(int ret)
 {
 	if (ret != 0)
-		ft_putstr(COLORS_RED);
+		ft_putstr(MS_PROMPT_ERROR_COLOR);
 	else
 		ft_putstr(MS_PROMPT_COLOR);
 	ft_putstr(MS_PROMPT);

@@ -3,7 +3,7 @@
 
 void	hd_prompt(void)
 {
-	ft_putstr(COLORS_BLUE);
+	ft_putstr(MS_HEREDOC_COLOR);
 	ft_putstr(MS_HEREDOC_PROMPT);
 	ft_putstr(COLORS_DEFAULT);
 }

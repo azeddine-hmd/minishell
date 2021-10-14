@@ -12,9 +12,11 @@
 # include "execution/execution.h"
 # include "errors.h"
 
-# define MS_PROMPT_COLOR COLORS_BLUE
 # define MS_PROMPT "minishell$ "
+# define MS_PROMPT_COLOR COLORS_CYAN_BOLD
+# define MS_PROMPT_ERROR_COLOR COLORS_RED_BOLD
 # define MS_HEREDOC_PROMPT "> "
+# define MS_HEREDOC_COLOR COLORS_CYAN
 # define MS_BUFFER_SIZE 2048
 
 /*
