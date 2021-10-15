@@ -26,6 +26,7 @@ SRC = parse.c \
 	  envindx.c \
 	  expand.c \
 	  pa_getenv.c \
+	  strip_quotes.c \
 
 OBJ = ${SRC:.c=.o}
 

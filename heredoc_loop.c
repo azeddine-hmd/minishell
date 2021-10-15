@@ -8,7 +8,7 @@ static void		hd_prompt(void)
 	ft_putstr(COLORS_DEFAULT);
 }
 
-static t_bool	surrounded_by_quotes(const char *s)
+/*static t_bool	surrounded_by_quotes(const char *s)
 {
 	int last;
 
@@ -21,7 +21,7 @@ static t_bool	surrounded_by_quotes(const char *s)
 		)
 			return (true);
 	return (false);
-}
+}*/
 
 char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 {
@@ -29,19 +29,24 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 	char	*fcontent;
 	char	*saved_bufstr;
 	t_bool	expand_enabled;
+	char	*stripped_delimiter;
 
 	lines_lst = NULL;
 	saved_bufstr = xstrdup(targ->buf->str);
 	ms_bufrst(targ->buf);
 	hd_prompt();
-	expand_enabled = !surrounded_by_quotes(delimiter);
+	stripped_delimiter = strip_quotes(delimiter);
+	if (ft_strcmp(delimiter, stripped_delimiter))
+		expand_enabled = false;
+	else
+		expand_enabled = true;
 	while (read(STDIN_FILENO, &(targ->input), 1) == 1)
 	{
 		if (targ->input == K_BS)
 			backspace_triggered(targ);
 		else if (targ->input == K_ENTER)
 		{
-			if (!ft_strcmp(targ->buf->str, delimiter))
+			if (!ft_strcmp(targ->buf->str, stripped_delimiter))
 			{
 				ft_putc(targ->input);
 				break ;

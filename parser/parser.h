@@ -75,6 +75,7 @@ char		*check_syntax_err(t_list *cmdln_lst);
 // quotes
 t_bool		inside_quotes(t_list *range, int from, int to, const char *types);
 t_list		*get_quotes_range(const char *s);
+char		*strip_quotes(const char *s);
 
 // range
 void		range_del(void *content);
