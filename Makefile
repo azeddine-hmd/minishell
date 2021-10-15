@@ -22,6 +22,7 @@ SRC = minishell.c \
 	  heredoc_loop.c \
 	  heredoc_entry.c \
 	  usage.c \
+	  history.c \
 
 OBJ = ${SRC:.c=.o}
 

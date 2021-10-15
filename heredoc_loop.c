@@ -82,6 +82,7 @@ char		*heredoc_loop(t_termarg *targ, const char *delimiter)
 			targ->pos = 0;
 		}
 	}
+	ft_lstadd_back(&lines_lst, ft_lstnew("\n"));
 	ms_bufrpc(targ->buf, saved_bufstr);
 	xfree(saved_bufstr);
 	if (is_not_null(lines_lst))

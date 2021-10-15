@@ -1,16 +1,5 @@
 #include "parser.h"
 
-void	print_all_cmdslst(t_cmdslst *head)
-{
-	while (head)
-	{
-		fprintf(pa_log, "cmdln_str: %s\n", head->cmdln_str);
-		head = head->next;
-	}
-	fprintf(pa_log, "\n");
-	fflush(NULL);
-}
-
 void	print_cmd(t_cmd *cmd)
 {
 	for (int i = 0; i < length(cmd->args); i++) {
@@ -26,14 +15,20 @@ void	print_cmd(t_cmd *cmd)
 	}
 	print_all_tokens(cmd->in_token);
 	print_all_tokens(cmd->out_token);
-	fprintf(pa_log, "\n");
 	fflush(NULL);
 }
 
 void	print_all_cmds(t_list *cmds)
 {
 	t_cmd	*cmd;
+<<<<<<< HEAD:parser/parse_debugger.c
 	int		i = 0;
+||||||| 661ba87:parser/parse_debugger.c
+
+=======
+
+	fprintf(pa_log, "------start------\n");
+>>>>>>> 3d75d692d2ff2fd27708c8787a0cf1150d0f32b9:parser/debug_cmd.c
 	while (cmds)
 	{
 		cmd = (t_cmd*)cmds->content;
@@ -41,11 +36,17 @@ void	print_all_cmds(t_list *cmds)
 		cmds = cmds->next;
 		i++;
 	}
+<<<<<<< HEAD:parser/parse_debugger.c
 <<<<<<< HEAD
 	printf("%d\n", i);
 ||||||| bf09544
 =======
 	fprintf(pa_log, "------end\n");
+||||||| 661ba87:parser/parse_debugger.c
+	fprintf(pa_log, "------end\n");
+=======
+	fprintf(pa_log, "------end------\n\n");
+>>>>>>> 3d75d692d2ff2fd27708c8787a0cf1150d0f32b9:parser/debug_cmd.c
 	fflush(NULL);
 >>>>>>> 661ba8796051b80429c0d5ffbc13ae19d2df4470
 }

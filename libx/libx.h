@@ -137,4 +137,8 @@ char	*join_string_array_to_string(char **arr);
 char	*join_string_list_to_string(t_list *lst);
 char	*join_string_list_with_nl(t_list *lst);
 
+// debugging
+void	print_list_str(t_list *str_lst);
+void	print_array_str(char **str_arr);
+
 #endif

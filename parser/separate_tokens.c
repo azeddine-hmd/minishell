@@ -58,7 +58,7 @@ static void	begin(t_list **new_lst, const char *str, t_list *tokens_range)
 	start = 0;
 	end = content->from - 1;
 	len = end - start + 1;
-	if (end > 0)
+	if (end >= start && len >= 1)
 	{
 		new_str = xsubstr(str, start, len);
 		ft_lstadd_back(new_lst, ft_lstnew(new_str));

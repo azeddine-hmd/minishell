@@ -1,6 +1,6 @@
 #include "execution.h"
 
-int	execute(t_list *cmds, t_list **env)
+int	execute(t_list *cmds, char **env)
 {
 	(void)cmds;
 	(void)env;

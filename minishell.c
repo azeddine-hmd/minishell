@@ -7,8 +7,8 @@ FILE *pa_log;
 static void	minishell_loop(t_termarg *targ, char **env)
 {
 	ms_prompt(EXIT_SUCCESS);
-	targ->cur = (t_cmdslst*)xmalloc(sizeof(t_cmdslst));
-	add_cmdslst(&(targ->head), targ->cur);
+	targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
+	add_history(&(targ->head), targ->cur);
 	while (read(STDIN_FILENO, &(targ->input), 1) == 1)
 	{
 		if (targ->input == K_BS)

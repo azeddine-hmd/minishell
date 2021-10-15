@@ -64,16 +64,28 @@ typedef struct s_cap
 	char	*ip;
 }				t_cap;
 
+typedef struct s_hist
+{
+	char			*cmdln_str;
+	int				ret;
+	struct s_hist	*next;
+	struct s_hist	*previous;
+}t_hist;
+
 typedef struct s_termarg
 {
-	t_cmdslst	*head;
-	t_cmdslst	*cur;
+	t_hist	*head;
+	t_hist	*cur;
 	t_buf		*buf;
 	t_cap		*cap;
 	char		input;
 	int			pos;
 }t_termarg;
 
+// debugging
+void		print_all_history(t_hist *history);
+
+// general
 void		usage(void);
 
 // buffer
@@ -88,6 +100,12 @@ void		ms_setup(t_cap **cap, t_buf **a_buf);
 void		ms_prompt(int ret);
 void		ms_chrdel(t_cap *cap);
 void		ms_lndel(t_cap *cap, size_t n);
+
+// history
+t_bool		has_previous(t_hist *history);
+t_hist		*get_last_history(t_hist *head);
+void		add_history(t_hist **head, t_hist *history);
+void		delete_history(t_hist **head, t_hist *history);
 
 // keys events
 t_bool		backspace_triggered(t_termarg *targ);
