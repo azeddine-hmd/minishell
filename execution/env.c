@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:50:27 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/15 00:10:48 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/15 16:55:14 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int			find_env(char *value, char **env)
 	while (env[++i])
 	{
 		tmp = ft_strjoinch(value, '=');
+		//printf("\n%s\n", env[i]);
 		if (ft_strstartw(env[i], tmp))
 		{
 			free(tmp);
