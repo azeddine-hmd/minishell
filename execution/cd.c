@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 19:06:29 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/15 00:04:27 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/15 22:55:34 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ int			home_run(char **env) // changed the current work directory to $–HOME
 
 char		*find_path(char *str, char **env)
 {
-	if (ft_strcmp(str, "-"))
+	if (!ft_strcmp(str, "-"))
 		return (find_strenv("OLDPWD", env));
-	else if (ft_strcmp(str, "~"))
+	else if (!ft_strcmp(str, "~"))
 		return (find_strenv("HOME", env));
-	else if (*str == '~' && ft_strcmp((str + 1), find_strenv("USER", env)))
+	else if (*str == '~' && !ft_strcmp((str + 1), find_strenv("USER", env)))
 		return (find_strenv("HOME", env));
 	return (str);
 }
@@ -59,7 +59,7 @@ int			ft_builtin_cd(char **args, char **env)
 
 	if (!args[0])
 		return (home_run(env));
-	path = find_path(args[1], env);
+	path = find_path(args[0], env);
 	if (chdir(path) == -1)
 		return (path_error(ft_strdup(path)));
 	path = getcwd(NULL, 1024);
