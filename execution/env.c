@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:50:27 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/15 16:55:14 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/15 22:24:05 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			find_env(char *value, char **env)
 	char	*tmp;
 
 	i = -1;
-	tmp = safe_malloc(1);
+	//tmp = safe_malloc(1); // this little mf caused memory leak...
 	while (env[++i])
 	{
 		tmp = ft_strjoinch(value, '=');
