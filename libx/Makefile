@@ -4,6 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra \
 		 -g \
+		 -DDEBUG \
 
 SRC = libx.c \
 	  libx_utils.c \

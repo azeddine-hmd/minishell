@@ -85,7 +85,7 @@ void	separate_tokens(t_list **cmdln_lst)
 	while (iterator)
 	{
 		str = (char *)iterator->content;
-		if (is_not_empty(tokens_range) && have_token(str))
+		if (have_token(str))
 		{
 			tokens_range = get_tokens_range(str);
 			separate(&new_lst, str, tokens_range);
