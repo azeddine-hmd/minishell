@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:58:45 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/14 22:41:52 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/15 18:16:46 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,8 @@ int			ft_builtin_unset(char **args, char **env)
 	int		i;
 	int		index;
 
-	//printf("%s\n\n", args[0]);
 	if (!args[0])
-		return(error_msg("Error!\n too few arguments.", 2, 1));
+		return(error_msg("Error!\n too few arguments.\n", 2, 1));
 	i = -1;
 	while (args[++i])
 	{

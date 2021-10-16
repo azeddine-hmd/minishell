@@ -20,19 +20,19 @@ int			cmd_nfound(char *str)
 
 int			exec_builtin(char **cmd, char **env) // ["cd", ...]
 {
-	if (!ft_strcmp(cmd[0], "echo"))
+	if (!ft_strcmp(cmd[0], "echo")) // no memleak
 		return (ft_builtin_echo(cmd));
-	else if (!ft_strcmp(cmd[0], "cd"))
+	else if (!ft_strcmp(cmd[0], "cd")) // memleak
 		return (ft_builtin_cd(cmd + 1, env));
-	else if (!ft_strcmp(cmd[0], "pwd"))
+	else if (!ft_strcmp(cmd[0], "pwd")) // no memleak
 		return (ft_builtin_pwd());
-	else if (!ft_strcmp(cmd[0], "export"))
+	else if (!ft_strcmp(cmd[0], "export")) // not working
 		return (ft_builtin_export(cmd + 1, env));
-	else if (!ft_strcmp(cmd[0], "unset"))
+	else if (!ft_strcmp(cmd[0], "unset")) // not working
 		return (ft_builtin_unset(cmd + 1, env));
-	else if (!ft_strcmp(cmd[0], "env"))
+	else if (!ft_strcmp(cmd[0], "env")) // no memleak
 		return (ft_builtin_env(env));
-	else if (!ft_strcmp(cmd[0], "exit"))
+	else if (!ft_strcmp(cmd[0], "exit")) // not working
 		return (ft_builtin_exit(10));
 	return (2);
 }
@@ -73,12 +73,15 @@ int			is_exec(char *exec_path, struct stat stats, char **cmd) // check better th
 
 int			exec_bin(char **cmd, char **env)		// equal to check_bin();
 {
-	printf("%s\n", env[1]);
-	char	**path = ft_split(getenv("PATH"), ':');
+	//printf("%s\n", env[1]);
+	(void)env;
+	char 	*pvar = ft_substr(find_strenv("PATH", env), 5, ft_strlen(find_strenv("PATH", env)));
+	char	**path = ft_split(pvar, ':');
 	int		i;
 	char	*exec_path;
 	struct stat stats;
 
+	free(pvar);
 	i = -1;
 	while (path && path[++i])
 	{
@@ -111,11 +114,11 @@ int			check_cmd(t_cmd *cmd, char **env)
 	int		ret;
 
 	ret = 0;
-	if (!cmd) // see the difference between this and the condition below
+	if (!cmd)
 		return (0);
 	if (cmd->args[0][0] != '\0')
 	{
-		ret = exec_builtin(cmd->args, env); // changes this line [04/10/21]
+		ret = exec_builtin(cmd->args, env); // changes this line [04/10/21] edit1: there's memory leak here
 		if (ret != 2)
 			return (ret);
 		if (find_strenv("PATH", env)[0] == '\0')
@@ -172,7 +175,7 @@ int			main_function(t_list *cmds, char **env)
 	while (cmds)
 	{
 		if (cmds->next)
-			cmds = pipes(cmds, env);
+			cmds = pipes(cmds, env); // done
 		else
 			r = exec_cmd(((t_cmd*)cmds->content), env);
 		cmds = cmds->next;

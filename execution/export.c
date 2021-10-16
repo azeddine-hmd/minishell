@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/14 22:45:18 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/16 01:07:37 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,90 @@ void		export_var(char *var, char *str, char **env)
 	free(tmp);
 }
 
+/******************************
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * *******/
+int			ft_bad_value(char *s1, char *s2)
+{
+	if (!s2)
+		printf("minishell: export: `%s': not a valid identifier\n", s1);
+	else
+		printf("minishell: export: `%s=%s': not a valid identifier\n", \
+		s1, s2);
+	free(s1);
+	if (s2)
+		free(s2);
+	return (1);
+}
+
+int			ft_isvalid(char *key)
+{
+	int		i;
+	
+	i = 0;
+	if (*key == '\0' || (!ft_isalnum(*key) && *key != '_'))
+		return (0);
+	while (key[++i])
+		if (!ft_isalpha(key[i]) && !ft_isdigit(key[i]) && key[i] == '_')
+			return (0);
+	return (1);
+}
+
+int			extract_data(char *str, char **key, char **value)
+{
+	int		j;
+	
+	j = 0;
+	while (str[j] && str[j] != '=')
+		j++;
+	*key = ft_substr(str, 0, j - 1);
+	if (!*key)
+		return (ft_bad_value(ft_strdup(str), NULL));
+	if (str[j] == '=')
+	{
+		*value = ft_substr(str, j + 1, ft_strlen(str) - 1);
+		if (!*value)
+			*value = ft_strdup("");
+	}
+	else
+		*value = NULL;
+	if (!ft_isvalid(*key))
+		return (ft_bad_value(*key, *value));
+	return (0);
+}
 int			ft_builtin_export(char **args, char **env)  // make sure to split w/ ("=") b4 passing the args
 {
-	args = ft_split(args[0], '=');
+	//args = ft_split(args[0], '=');
 	//printf("%s\n%s\n", args[0], args[1]);
+	int		i;
+	char	*key;
+	char	*value;
+	int		ret;
+
+	ret = 0;
+	i = 0;
 	if (!args[0])
+		return (ft_builtin_env(env));
+	while (args[++i])
 	{
-		ft_builtin_env(env);
-		return (1);
+		if (extract_data(args[i], &key, &value))	
+		{
+			ret++;
+			continue;
+		}
+		export_var(key, value, env);
 	}
-	if (args[1] && args[2])
-		return(error_msg("export: Too many arguments.", 2, 1));
-	export_var(args[0], args[1], env);
-	ft_freestrarr(args);
-	return (1);
+	if (ret)
+		return (1)
+	//if (args[1] && args[2])
+	//	return(error_msg("export: Too many arguments.", 2, 1));
+	//export_var(args[0], args[1], env);
+	//ft_freestrarr(args);
+	return (0);
 }

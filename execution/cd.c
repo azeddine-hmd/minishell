@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 19:06:29 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/15 22:55:34 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/15 23:23:04 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ int			path_error(char *path)
 
 int			home_run(char **env) // changed the current work directory to $–HOME
 {
-	char	**path;
+	char	*path;
 
-	path = ft_split(find_strenv("HOME", env), '=');
-	if (!path[1])
+	path = ft_substr(find_strenv("HOME", env), 5, ft_strlen(find_strenv("HOME", env)));
+	if (!path)
 		return (error_msg("cd: HOME not set\n", 2, 1));
-	if (*path[1] == '\0')
-		path[1] = getcwd(NULL, 1024);
+	if (*path == '\0')
+		path = getcwd(NULL, 1024);
 	else
-		path[1] = ft_strdup(path[1]);
-	if (chdir(path[1]) == -1)
-		return (path_error(path[1]));
+		path = ft_strdup(path);
+	if (chdir(path) == -1)
+		return (path_error(path));
 	export_var(ft_strdup("OLDPWD"), ft_strdup(find_strenv("PWD", env)), env);
-	export_var(ft_strdup("PATH"), path[1], env);
-	ft_freestrarr(path);
+	export_var(ft_strdup("PATH"), path, env);
+	free(path);
 	return (0);
 }
 
