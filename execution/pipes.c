@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:16:10 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/16 21:40:39 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/17 18:10:41 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ t_list			*pipes(t_list *cmds, char **env)
 		if (!pid)
 		{
 			dup_fd(cmds, fds, input, fd_zero); // return pos = dup_fd after the check
-			//close(fds[1]);
-			//close(fds[0]);
-			//close(fd_zero);
+			close(fds[1]);
+			close(fds[0]);
+			close(input);
 			exit(exec_cmd(cmd, env)); // remember to change this with exec_cmd (builtin + bin)
 		}
 		//if (fd_zero)
@@ -77,7 +77,7 @@ t_list			*pipes(t_list *cmds, char **env)
 		if (!cmds->next || !((t_cmd*)cmds->next->content)->is_piped)
 			break ;
 		cmds = cmds->next;
-		//close(fds[1]);
+		close(fds[1]);
 	}
 	while (wait(&pid) != -1)
 		;

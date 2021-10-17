@@ -14,7 +14,7 @@ int			cmd_nfound(char *str)
 {
 	write(2, "minishell: ", 11);
 	write(2, str, ft_strlen(str));
-	write(2,": command not found\n", 19);
+	write(2,": command not found\n", 20);
 	return (127);
 }
 
@@ -37,68 +37,103 @@ int			exec_builtin(char **cmd, char **env) // ["cd", ...]
 	return (2);
 }
 
-int			run_cmd(char *exec_path, char **args)
+int			run_cmd(char *exec_path, char **args, char **env)
 {
 	pid_t	pid;
 
 	pid = fork();
 	if (pid == 0)
-		execve(exec_path, args, g_env);
+		execve(exec_path, args, env);
 	else if (pid < 0)
 	{
-		free(exec_path);
-		write(1, "Failed to create fork\n", ft_strlen("Failed to create fork\n"));
-		return (-1);
-	}
-	wait(&pid);
-	if (exec_path)
-		free(exec_path);
-	return (1);
-}
-
-int			is_exec(char *exec_path, struct stat stats, char **cmd) // check better this function
-{
-	if (stats.st_mode & S_IFREG)
-	{
-		if (stats.st_mode & S_IXUSR)
-			return (run_cmd(exec_path, cmd));
-		else
-			error_msg("Permission denied!\n", 2, 0);
-		free(exec_path);
+		write(2, "Failed to create fork\n", ft_strlen("Failed to create fork\n"));
 		return (1);
 	}
-	free(exec_path);
+	wait(&pid);
+	//printf("Return value!! %d\n", (unsigned char)pid - 1);
+	return ((unsigned char)pid);
+}
+
+
+int			execute_p(char *p, char **cmd, char **env)
+{
+	int		ret;
+
+	ret = 0;
+	if (open(p, O_RDONLY) <= 0)
+	{
+		free(p);
+		return (127);
+	}
+	else
+	{
+		ret = run_cmd(p, cmd, env);
+		if (ret)
+		{
+			free(p);
+			return (ret);
+		}
+	}
+	free(p);
+	return (ret);
+}
+
+int			exec_path(char **cmd, char **env)
+{
+	char	*tmp;
+	int		ret;
+
+	if (cmd[0][0] == '.')
+	{
+		tmp = ft_strjoin(getcwd(NULL, 0), "/");
+		ret = execute_p(ft_strjoin(tmp, cmd[0]), cmd, env);
+		free(tmp);
+		if (ret == 127)
+			ret = 2;
+		return (ret);
+	}
+	if (cmd[0][0] == '/')
+	{
+		ret = execute_p(ft_strdup(cmd[0]), cmd, env);
+		if (ret == 127)
+			ret = 2;
+		return (ret);
+	}
 	return (0);
+}
+
+char		**split_path(char **env)
+{
+	char	*tmp;
+	char	**path;
+
+	tmp = ft_substr(find_strenv("PATH", env), 5, ft_strlen(find_strenv("PATH", env))); // check if num 5 is good enough
+	path = ft_split(tmp, ':');
+	free(tmp);
+	return (path);
 }
 
 int			exec_bin(char **cmd, char **env)		// equal to check_bin();
 {
-	//printf("%s\n", env[1]);
-	(void)env;
-	char 	*pvar = ft_substr(find_strenv("PATH", env), 5, ft_strlen(find_strenv("PATH", env)));
-	char	**path = ft_split(pvar, ':');
-	int		i;
-	char	*exec_path;
-	struct stat stats;
+	char **path;
+	int	i;
+	int	ret;	
 
-	free(pvar);
 	i = -1;
-	while (path && path[++i])
+	ret = 0;
+	if (cmd[0][0] == '.' || cmd[0][0] == '/')
+			return (exec_path(cmd, env));
+	path = split_path(env);
+	if (!path)
+		return (2);
+	while (path[++i])
 	{
-		if (ft_strstartw(cmd[0], path[i]))
-			exec_path = ft_strdup(cmd[0]);
-		else
-			exec_path = ft_pathjoin(path[i], cmd[0]);
-		if (lstat(exec_path, &stats) == -1)
-			free(exec_path);
-		else
-		{
-			ft_freestrarr(path);
-			return (is_exec(exec_path, stats, cmd));
-		}
+		ret = execute_p(ft_pathjoin(path[i], cmd[0]), cmd, env);
+		if (!ret)
+			break ;
 	}
 	ft_freestrarr(path);
-	return (0);
+	return (ret);
 }
 
  int	file_error(char *s)
@@ -121,7 +156,7 @@ int			check_cmd(t_cmd *cmd, char **env)
 		ret = exec_builtin(cmd->args, env); // changes this line [04/10/21] edit1: there's memory leak here
 		if (ret != 2)
 			return (ret);
-		if (find_strenv("PATH", env)[0] == '\0')
+		if (!find_strenv("PATH", env)[0])
 			ret = 2;
 		else
 		{
@@ -134,6 +169,7 @@ int			check_cmd(t_cmd *cmd, char **env)
 	}
 	//if (ret == 127)
 		//return (file_dont_exist(cmd->args[0]));
+	printf("That's why it breaks!%d\n\n", ret);
 	return (cmd_nfound(cmd->args[0]));
 }
 
@@ -151,7 +187,9 @@ int			exec_cmd(t_cmd* cmd, char **env)
 	//	if (redirections(cmd))
 	//		return (1);
 	//}
-
+	
+	//printf("Reached here!!!!!!!!%s\n", cmd->args[0]);
+	
 	//if (cmd->in_token->content || cmd->out_token->content)
 	ret = check_cmd(cmd, env);
 	////ret = 
