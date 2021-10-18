@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 16:13:22 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/06/09 10:59:50 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/14 22:42:10 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "execution.h"
 
 void		ft_freestrarr(char **arr)
 {
@@ -42,19 +42,19 @@ char	*ft_strjoincl(char *s1, char *s2, int free_both)
 	return (new);
 }
 
-char		**realloc_env(int size)
+char		**realloc_env(int size, char **envv)
 {
 	char	**env;
 	int		i;
 
 	env = (char**)safe_malloc(sizeof(char*) * (size + 1));
 	i = -1;
-	while (g_env[++i] && i < size)
+	while (envv[++i] && i < size)
 	{
-		env[i] = ft_strdup(g_env[i]);
-		free(g_env[i]);
+		env[i] = ft_strdup(envv[i]);
+		free(envv[i]);
 	}
-	free(g_env);
+	free(envv);
 	return(env);
 }
 

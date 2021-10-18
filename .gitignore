@@ -3,3 +3,6 @@ minishell
 **/*.a
 **/tags
 **/*.dSYM
+execution/libft/*
+.vscode
+execution/notes
