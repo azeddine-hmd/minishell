@@ -72,7 +72,7 @@ int			ft_builtin_cd(char **args, char **env);
 int			home_run(char **env);
 int			path_error(char *path);
 char		*find_path(char *str,char **env);
-int			redirections(t_token *token);
+int			redirections(t_cmd *cmd);
 int			ft_builtin_echo(char **args);
 int			file_dont_exist(char *file);
 t_list		*pipes(t_list *cmds, char **env);
