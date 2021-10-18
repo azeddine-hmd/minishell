@@ -29,6 +29,6 @@ void	print_all_cmds(t_list *cmds)
 		print_cmd(cmd);
 		cmds = cmds->next;
 	}
-	fprintf(pa_log, "------end------\n\n");
+	fprintf(pa_log, "------end--------\n\n");
 	fflush(NULL);
 }
