@@ -2,6 +2,7 @@ NAME = libparser.a
 
 CFLAGS = -Wall -Wextra -Werror \
 		 -g \
+		 -DDEBUG \
 
 CC = gcc
 
@@ -25,6 +26,8 @@ SRC = parse.c \
 	  cmd_del.c \
 	  envindx.c \
 	  expand.c \
+	  pa_getenv.c \
+	  strip_quotes.c \
 
 OBJ = ${SRC:.c=.o}
 

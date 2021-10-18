@@ -2,6 +2,7 @@ NAME = libexecution.a
 
 CFLAGS = -Wall -Wextra -Werror \
 		 -g \
+		 -DDEBUG \
 
 CC = gcc
 

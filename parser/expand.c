@@ -1,6 +1,6 @@
 #include "parser.h"
 
-char	*expand(char *str)
+char	*expand(char *str, char **env)
 {
 	char		*expanded;
 	t_envindx	*env_index;
@@ -8,7 +8,7 @@ char	*expand(char *str)
 	t_list		*quotes_range;
 	t_list		*str_lst;
 	t_range		*env_range;
-	char		*env;
+	char		*env_var;
 
 	str_lst = NULL;
 	quotes_range = get_quotes_range(str);
@@ -24,9 +24,9 @@ char	*expand(char *str)
 		if (inside_quotes(quotes_range, env_range->from, env_range->to, "'"))
 			continue ;
 		ft_lstadd_back(&str_lst, ft_lstnew(xsubstr(str, 0, env_range->from)));
-		env = getenv(env_index->name);
+		env_var = pa_getenv(env, env_index->name);
 		if (is_not_null(env))
-			ft_lstadd_back(&str_lst, ft_lstnew(xstrdup(env)));
+			ft_lstadd_back(&str_lst, ft_lstnew(xstrdup(env_var)));
 		else
 			ft_lstadd_back(&str_lst, ft_lstnew(xstrdup("")));
 		ft_lstadd_back(&str_lst, ft_lstnew(xsubstr(str, env_range->to + 1, ft_strlen(str) - 1 - env_range->to + 1 + 1)));

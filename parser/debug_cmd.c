@@ -36,6 +36,7 @@ void	print_all_cmds(t_list *cmds)
 		cmds = cmds->next;
 		i++;
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD:parser/parse_debugger.c
 <<<<<<< HEAD
 	printf("%d\n", i);
@@ -47,6 +48,11 @@ void	print_all_cmds(t_list *cmds)
 =======
 	fprintf(pa_log, "------end------\n\n");
 >>>>>>> 3d75d692d2ff2fd27708c8787a0cf1150d0f32b9:parser/debug_cmd.c
+||||||| 3d75d69
+	fprintf(pa_log, "------end------\n\n");
+=======
+	fprintf(pa_log, "------end--------\n\n");
+>>>>>>> 34c4197e398a63f8fc11a9c9b61e215b688ace83
 	fflush(NULL);
 >>>>>>> 661ba8796051b80429c0d5ffbc13ae19d2df4470
 }

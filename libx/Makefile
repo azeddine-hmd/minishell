@@ -4,6 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra \
 		 -g \
+		 -DDEBUG \
 
 SRC = libx.c \
 	  libx_utils.c \
@@ -78,6 +79,7 @@ SRC = libx.c \
 	  join_string_list_to_string.c \
 	  join_string_list_with_nl.c \
 	  debug_array_list.c \
+	  splitat.c \
 
 OBJ = ${SRC:.c=.o}
 

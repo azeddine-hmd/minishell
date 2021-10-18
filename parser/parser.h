@@ -60,13 +60,14 @@ void		print_str_lst(t_list *str_lst);
 
 // parse
 char		*parse(const char *cmdln, t_list **cmds, char **env, int prev_ret);
-void		create_cmds(t_list **cmds, t_list *cmdln_lst);
+void		create_cmds(t_list **cmds, t_list *cmdln_lst, char **env);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 t_list		*get_simplified_cmdln(const char *cmdln);
 void		separate_quotes(t_list **cmdln_lst);
 void		separate_tokens(t_list **cmdln_lst);
 t_list		*add_token_to_cmd(t_list *cmdln_lst, t_cmd *cmd, t_list *element);
-char		*expand(char *str);
+char		*expand(char *str, char **env);
+char		*pa_getenv(char **env, const char *name);
 
 // syntax error
 char		*check_syntax_err(t_list *cmdln_lst);
@@ -74,6 +75,7 @@ char		*check_syntax_err(t_list *cmdln_lst);
 // quotes
 t_bool		inside_quotes(t_list *range, int from, int to, const char *types);
 t_list		*get_quotes_range(const char *s);
+char		*strip_quotes(const char *s);
 
 // range
 void		range_del(void *content);
@@ -93,7 +95,7 @@ t_bool		is_token(const char *s);
 // tkindx
 void		tkindx_del(void *content);
 
-// compatibility with libx
+// cmd
 void		cmd_del(void *content);
 
 // envindx

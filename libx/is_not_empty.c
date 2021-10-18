@@ -1,9 +1,9 @@
 #include "libx.h"
 
-int	is_not_empty(t_list *lst)
+t_bool	is_not_empty(t_list *lst)
 {
-	if (lst == NULL)
-		return (0);
+	if (lst != NULL)
+		return (true);
 	else
-		return (1);
+		return (false);
 }

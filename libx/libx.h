@@ -113,6 +113,7 @@ char			*xsubstr(char const *s, unsigned int start, size_t len);
 void			*xrealloc(void *ptr, size_t old_size, size_t new_size);
 char			**xsplit(char const *s, char c);
 void			xfree_str_array(char **str_arr);
+char			*splitat(const char *s, int index);
 
 // linkedlist
 t_list	*ft_lstnew(void *content);
@@ -124,13 +125,13 @@ void	ft_lstdelone(t_list *lst, void (*del) (void*));
 void	ft_lstclear(t_list **lst, void (*del) (void*));
 void	ft_lstiter(t_list *lst, void (*f) (void*));
 t_list	*ft_lstmap(t_list *lst, void *(*f) (void*));
-int		is_empty(t_list *lst);
+t_bool	is_empty(t_list *lst);
 t_list	*string_array_to_string_list(char **arr);
 void	str_del(void *content);
 char	**string_list_to_string_array(t_list *lst);
 void	deallocate(void);
 void	replace_node_intolist(t_replace *replace, void (*del) (void*));
-int		is_not_empty(t_list *lst);
+t_bool	is_not_empty(t_list *lst);
 t_bool	ft_lsthas_next(t_list *lst);
 void	ft_lstrem(t_list **head, t_list *target, void (*del) (void*));
 char	*join_string_array_to_string(char **arr);
