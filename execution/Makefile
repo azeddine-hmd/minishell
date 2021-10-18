@@ -34,7 +34,7 @@ CFLAGS = -Wall -Wextra -Werror \
 CC = gcc
 
 SRC = execute.c  main.c utils_0.c utils_1.c env.c pwd.c export.c \
-	  unset.c cd.c echo.c pipes.c \
+	  unset.c cd.c echo.c pipes.c redirections.c \
 
 OBJ = ${SRC:.c=.o}
 
