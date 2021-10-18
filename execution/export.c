@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/16 01:07:37 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/18 20:28:25 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char		*find_strenv(char *str, char **env)
 	return (NULL);
 }
 
-void		export_var(char *var, char *str, char **env)
+char		**export_var(char *var, char *str, char **env)
 {
 	int		index;
 	char	*tmp;
@@ -47,6 +47,7 @@ void		export_var(char *var, char *str, char **env)
 			env[index] = ft_strjoin(var, "=");
 	}
 	free(tmp);
+	return (env);
 }
 
 /******************************
@@ -91,7 +92,7 @@ int			extract_data(char *str, char **key, char **value)
 	j = 0;
 	while (str[j] && str[j] != '=')
 		j++;
-	*key = ft_substr(str, 0, j - 1);
+	*key = ft_substr(str, 0, j);
 	if (!*key)
 		return (ft_bad_value(ft_strdup(str), NULL));
 	if (str[j] == '=')
@@ -106,7 +107,7 @@ int			extract_data(char *str, char **key, char **value)
 		return (ft_bad_value(*key, *value));
 	return (0);
 }
-int			ft_builtin_export(char **args, char **env)  // make sure to split w/ ("=") b4 passing the args
+int			ft_builtin_export(char **args, char ***env)  // make sure to split w/ ("=") b4 passing the args
 {
 	//args = ft_split(args[0], '=');
 	//printf("%s\n%s\n", args[0], args[1]);
@@ -116,9 +117,9 @@ int			ft_builtin_export(char **args, char **env)  // make sure to split w/ ("=")
 	int		ret;
 
 	ret = 0;
-	i = 0;
+	i = -1;
 	if (!args[0])
-		return (ft_builtin_env(env));
+		return (ft_builtin_env(*env));
 	while (args[++i])
 	{
 		if (extract_data(args[i], &key, &value))	
@@ -126,10 +127,12 @@ int			ft_builtin_export(char **args, char **env)  // make sure to split w/ ("=")
 			ret++;
 			continue;
 		}
-		export_var(key, value, env);
+		*env = export_var(key, value, *env);
+		free(key);
+		free(value);
 	}
 	if (ret)
-		return (1)
+		return (1);
 	//if (args[1] && args[2])
 	//	return(error_msg("export: Too many arguments.", 2, 1));
 	//export_var(args[0], args[1], env);

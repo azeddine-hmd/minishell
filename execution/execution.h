@@ -46,8 +46,11 @@
 //	struct s_cmd	*previous;
 //}				t_cmd;
 
-
-
+typedef struct s_env
+{
+	char	*key;
+	char	*value;
+}			t_env;
 
 void		*safe_malloc(size_t size);
 int			error_msg(char *error_msg, int fd, int exit_code);
@@ -62,12 +65,12 @@ int			ft_builtin_env(char **env);
 int			ft_builtin_pwd(void);
 char		*find_strenv(char *str, char **env);
 int			find_env(char *value, char **env);
-void		export_var(char *var, char *str, char **env);
+char		**export_var(char *var, char *str, char **env);
 char		**realloc_env(int size, char **env);
-int			ft_builtin_export(char **args, char **env);
+int			ft_builtin_export(char **args, char ***env);
 char		*ft_pathjoin(char  *s1, char *s2);
-void		delete_env(int	index, char **env);
-int			ft_builtin_unset(char **args, char **env);
+char		**delete_env(int	index, char **env);
+int			ft_builtin_unset(char **args, char ***env);
 int			ft_builtin_cd(char **args, char **env);
 int			home_run(char **env);
 int			path_error(char *path);
@@ -75,11 +78,11 @@ char		*find_path(char *str,char **env);
 int			redirections(t_cmd *cmd);
 int			ft_builtin_echo(char **args);
 int			file_dont_exist(char *file);
-t_list		*pipes(t_list *cmds, char **env);
+t_list		*pipes(t_list *cmds, char ***env);
 int			exec_bin(char **cmd, char **env);
-int			main_function(t_list *cmds, char **env);
-int			execute(t_list *cmds, char **env);
-int			exec_cmd(t_cmd* cmd, char **env);
+int			main_function(t_list *cmds, char ***env);
+int			execute(t_list *cmds, char ***env);
+int			exec_cmd(t_cmd* cmd, char ***env);
 char		**g_env;
 #endif
 

@@ -6,13 +6,13 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:58:45 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/15 18:16:46 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/18 20:44:22 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void		delete_env(int	index, char **env)
+char		**delete_env(int	index, char **env)
 {
 	int		i;
 	int		j;
@@ -29,9 +29,10 @@ void		delete_env(int	index, char **env)
 		j++;
 	}
 	env = realloc_env(j - 1, env);
+	return (env);
 }
 
-int			ft_builtin_unset(char **args, char **env)
+int			ft_builtin_unset(char **args, char ***env)
 {
 	int		i;
 	int		index;
@@ -41,9 +42,9 @@ int			ft_builtin_unset(char **args, char **env)
 	i = -1;
 	while (args[++i])
 	{
-		index	= find_env(args[i], env);
+		index	= find_env(args[i], *env);
 		if (env[index])
-			delete_env(index, env);
+			*env = delete_env(index, *env);
 	}
 	return (1);
 }

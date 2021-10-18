@@ -14,7 +14,7 @@ static void	minishell_loop(t_termarg *targ, char **env)
 		if (targ->input == K_BS)
 			backspace_triggered(targ);
 		else if (targ->input == K_ENTER)
-			enter_triggered(targ, env);
+			enter_triggered(targ, &env);
 		else if (targ->input == K_ESC)
 			targ->pos++;
 		else if (targ->pos == 1 && targ->input == K_OSB)
