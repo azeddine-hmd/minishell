@@ -18,12 +18,12 @@ int			cmd_nfound(char *str)
 	return (127);
 }
 
-int			exec_builtin(char **cmd, char **env) // ["cd", ...]
+int			exec_builtin(char **cmd, char ***env) // ["cd", ...]
 {
 	if (!ft_strcmp(cmd[0], "echo")) // no memleak
 		return (ft_builtin_echo(cmd));
 	else if (!ft_strcmp(cmd[0], "cd")) // memleak
-		return (ft_builtin_cd(cmd + 1, env));
+		return (ft_builtin_cd(cmd + 1, *env));
 	else if (!ft_strcmp(cmd[0], "pwd")) // no memleak
 		return (ft_builtin_pwd());
 	else if (!ft_strcmp(cmd[0], "export")) // not working
@@ -31,7 +31,7 @@ int			exec_builtin(char **cmd, char **env) // ["cd", ...]
 	else if (!ft_strcmp(cmd[0], "unset")) // not working
 		return (ft_builtin_unset(cmd + 1, env));
 	else if (!ft_strcmp(cmd[0], "env")) // no memleak
-		return (ft_builtin_env(env));
+		return (ft_builtin_env(*env));
 	else if (!ft_strcmp(cmd[0], "exit")) // not working
 		return (ft_builtin_exit(10));
 	return (2);
@@ -50,8 +50,7 @@ int			run_cmd(char *exec_path, char **args, char **env)
 		return (1);
 	}
 	wait(&pid);
-	//printf("Return value!! %d\n", (unsigned char)pid - 1);
-	return ((unsigned char)pid);
+		return ((unsigned char)pid);
 }
 
 
@@ -133,7 +132,6 @@ int			exec_bin(char **cmd, char **env)		// equal to check_bin();
 			break ;
 	}
 	ft_freestrarr(path);
-	printf("%d return value\n", ret);
 	return (ret);
 }
 
@@ -145,7 +143,7 @@ int			exec_bin(char **cmd, char **env)		// equal to check_bin();
 	return (127);
 }
 
-int			check_cmd(t_cmd *cmd, char **env)
+int			check_cmd(t_cmd *cmd, char ***env)
 {
 	int		ret;
 	FILE *fd = fopen("/tmp/pipe_debugging", "a+");
@@ -161,11 +159,11 @@ int			check_cmd(t_cmd *cmd, char **env)
 			fflush(fd);
 			return (ret);
 		}
-		if (!find_strenv("PATH", env)[0])
+		if (!find_strenv("PATH", *env)[0])
 			ret = 2;
 		else
 		{
-			ret = exec_bin(cmd->args, env);
+			ret = exec_bin(cmd->args, *env);
 			if (ret != 2 && ret != 127)
 			{
 				fprintf(fd, "Return value of the command: %s is: %d\n", cmd->args[0], ret);
@@ -187,23 +185,21 @@ int			check_cmd(t_cmd *cmd, char **env)
 	return (cmd_nfound(cmd->args[0]));
 }
 
-int			exec_cmd(t_cmd* cmd, char **env)
+int			exec_cmd(t_cmd* cmd, char ***env)
 {
 	int		fd_in;
 	int		fd_out;
 	int		ret;
 
 	ret = 0;
-	if (cmd->in_token || cmd->out_token) // ToDo: fix redirection
+	if (cmd->in_token || cmd->out_token)
 	{
 		fd_in = dup(0);
 		fd_out = dup(1);
 		if (redirections(cmd))
 			return (1);
 	}
-	
-	//printf("Reached here!!!!!!!!%s\n", cmd->args[0]);
-	
+		
 	ret = check_cmd(cmd, env);
 	////ret = 
 	if (cmd->in_token || cmd->out_token)
@@ -216,7 +212,7 @@ int			exec_cmd(t_cmd* cmd, char **env)
 	return (ret);
 }
 
-int			main_function(t_list *cmds, char **env)
+int			main_function(t_list *cmds, char ***env)
 {
 	int		r;
 
