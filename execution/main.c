@@ -133,6 +133,7 @@ int			exec_bin(char **cmd, char **env)		// equal to check_bin();
 			break ;
 	}
 	ft_freestrarr(path);
+	printf("%d return value\n", ret);
 	return (ret);
 }
 
@@ -147,7 +148,7 @@ int			exec_bin(char **cmd, char **env)		// equal to check_bin();
 int			check_cmd(t_cmd *cmd, char **env)
 {
 	int		ret;
-
+	FILE *fd = fopen("/tmp/pipe_debugging", "a+");
 	ret = 0;
 	if (!cmd)
 		return (0);
@@ -155,51 +156,63 @@ int			check_cmd(t_cmd *cmd, char **env)
 	{
 		ret = exec_builtin(cmd->args, env); // changes this line [04/10/21] edit1: there's memory leak here
 		if (ret != 2)
+		{
+			fprintf(fd, "Return value of the command: %s is: %d\n", cmd->args[0], ret);
+			fflush(fd);
 			return (ret);
+		}
 		if (!find_strenv("PATH", env)[0])
 			ret = 2;
 		else
 		{
 			ret = exec_bin(cmd->args, env);
 			if (ret != 2 && ret != 127)
+			{
+				fprintf(fd, "Return value of the command: %s is: %d\n", cmd->args[0], ret);
+				fflush(fd);
 				return (ret);
+			}
 		}
 		if (ret == 2)
+		{
+			fprintf(fd, "Return value of the command: %s is: %d\n", cmd->args[0], ret);
+			fflush(fd);
 			return (file_error(cmd->args[0]));
+		}
 	}
 	//if (ret == 127)
 		//return (file_dont_exist(cmd->args[0]));
-	printf("That's why it breaks!%d\n\n", ret);
+	fprintf(fd, "Return value of the command: %s is: %d\n", cmd->args[0], ret);
+	fflush(fd);
 	return (cmd_nfound(cmd->args[0]));
 }
 
 int			exec_cmd(t_cmd* cmd, char **env)
 {
-	//int		fd_in;
-	//int		fd_out;
+	int		fd_in;
+	int		fd_out;
 	int		ret;
 
 	ret = 0;
-	//if (cmd->in_token || cmd->out_token) // ToDo: fix redirection
-	//{
-	//	fd_in = dup(0);
-	//	fd_out = dup(1);
-	//	if (redirections(cmd))
-	//		return (1);
-	//}
+	if (cmd->in_token || cmd->out_token) // ToDo: fix redirection
+	{
+		fd_in = dup(0);
+		fd_out = dup(1);
+		if (redirections(cmd))
+			return (1);
+	}
 	
 	//printf("Reached here!!!!!!!!%s\n", cmd->args[0]);
 	
-	//if (cmd->in_token->content || cmd->out_token->content)
 	ret = check_cmd(cmd, env);
 	////ret = 
-	//if (cmd->in_token || cmd->out_token)
-	//{	
-	//	dup2(fd_in, 0);
-	//	dup2(fd_out, 1);
-	//	close(fd_in);
-	//	close(fd_out);
-	//}
+	if (cmd->in_token || cmd->out_token)
+	{	
+		dup2(fd_in, 0);
+		dup2(fd_out, 1);
+		close(fd_in);
+		close(fd_out);
+	}
 	return (ret);
 }
 
