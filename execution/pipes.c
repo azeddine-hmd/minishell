@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:16:10 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/17 18:10:41 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/18 20:15:17 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ int			close_all(int input, int fd1, int fd2, t_list *cmd)
 
 // Equal to next->id (minishell_240)
 
-int		dup_fd(t_list *cmds, int fds[2], int input, int fd_zero)
+int		dup_fd(t_list *cmds, int fds[2], int input)
 {
 	t_cmd	*cmd;
 	t_cmd	*next;
 
-	fd_zero++;
 	cmd = (t_cmd*)cmds->content;
 	if (cmds->next)
 		next = (t_cmd*)cmds->next->content;
@@ -48,14 +47,13 @@ int		dup_fd(t_list *cmds, int fds[2], int input, int fd_zero)
 	return (0);
 }
 
-t_list			*pipes(t_list *cmds, char **env)
+t_list			*pipes(t_list *cmds, char ***env)
 {
 	t_cmd	*cmd;
 	int		fds[2];
 	int		pid;
 	int		input; // =0; (how it used to be)
 	//int		pos = 0;
-	int		fd_zero = 0;
 	
 	while (cmds)
 	{
@@ -64,7 +62,7 @@ t_list			*pipes(t_list *cmds, char **env)
 		pid = fork();
 		if (!pid)
 		{
-			dup_fd(cmds, fds, input, fd_zero); // return pos = dup_fd after the check
+			dup_fd(cmds, fds, input); // return pos = dup_fd after the check
 			close(fds[1]);
 			close(fds[0]);
 			close(input);
