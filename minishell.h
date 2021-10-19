@@ -109,7 +109,7 @@ void		delete_history(t_hist **head, t_hist *history);
 
 // keys events
 t_bool		backspace_triggered(t_termarg *targ);
-t_bool		enter_triggered(t_termarg *targ, char **env);
+t_bool		enter_triggered(t_termarg *targ, char ***env);
 t_bool		up_arrow_triggered(t_termarg *targ);
 t_bool		down_arrow_triggered(t_termarg *targ);
 t_bool		ctrl_d_triggered(t_termarg *targ, t_bool on_heredoc);
