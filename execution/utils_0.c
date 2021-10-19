@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   utils_0.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 16:08:59 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/14 16:14:42 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/06/12 14:10:32 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "minishell.h"
 
-//void		*safe_malloc(size_t size)  // equal to ft_memalloc() | To modify later
-//{
-//	void	*ptr;
+void		*safe_malloc(size_t size)  // equal to ft_memalloc() | To modify later
+{
+	void	*ptr;
 
-//	if (!(ptr = malloc(size + 1)))
-//		return (NULL);
-//	ft_bzero(ptr, size + 1);
-//	return (ptr);
-//}
+	if (!(ptr = malloc(size + 1)))
+		return (NULL);
+	ft_bzero(ptr, size + 1);
+	return (ptr);
+}
 
-//int		error_msg(char *error_msg, int fd, int exit_code)
-//{
-//	write(fd, error_msg, ft_strlen(error_msg));
-//	return (exit_code);
-//}
+int		error_msg(char *error_msg, int fd, int exit_code)
+{
+	write(fd, error_msg, ft_strlen(error_msg));
+	return (exit_code);
+}
 
 char	*ft_strjoinch(char const *s1, char c)
 {

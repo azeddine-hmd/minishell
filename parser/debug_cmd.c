@@ -21,7 +21,6 @@ void	print_cmd(t_cmd *cmd)
 void	print_all_cmds(t_list *cmds)
 {
 	t_cmd	*cmd;
-<<<<<<<< HEAD:parser/debug_cmd.c
 <<<<<<< HEAD:parser/parse_debugger.c
 	int		i = 0;
 ||||||| 661ba87:parser/parse_debugger.c
@@ -30,31 +29,19 @@ void	print_all_cmds(t_list *cmds)
 
 	fprintf(pa_log, "------start------\n");
 >>>>>>> 3d75d692d2ff2fd27708c8787a0cf1150d0f32b9:parser/debug_cmd.c
-|||||||| 80d9a0a:parser/parse_debugger.c
-	int		i = 0;
-========
-
->>>>>>>> b_exec:parser/parse_debugger.c
 	while (cmds)
 	{
 		cmd = (t_cmd*)cmds->content;
 		print_cmd(cmd);
 		cmds = cmds->next;
+		i++;
 	}
-<<<<<<<< HEAD:parser/debug_cmd.c
 <<<<<<< HEAD
 <<<<<<< HEAD:parser/parse_debugger.c
 <<<<<<< HEAD
 	printf("%d\n", i);
 ||||||| bf09544
 =======
-|||||||| 80d9a0a:parser/parse_debugger.c
-<<<<<<< HEAD
-	printf("%d\n", i);
-||||||| bf09544
-=======
-========
->>>>>>>> b_exec:parser/parse_debugger.c
 	fprintf(pa_log, "------end\n");
 ||||||| 661ba87:parser/parse_debugger.c
 	fprintf(pa_log, "------end\n");
@@ -67,41 +54,5 @@ void	print_all_cmds(t_list *cmds)
 	fprintf(pa_log, "------end--------\n\n");
 >>>>>>> 34c4197e398a63f8fc11a9c9b61e215b688ace83
 	fflush(NULL);
+>>>>>>> 661ba8796051b80429c0d5ffbc13ae19d2df4470
 }
-||||||| 80d9a0a
-=======
-#include "parser.h"
-
-void	print_cmd(t_cmd *cmd)
-{
-	for (int i = 0; i < length(cmd->args); i++) {
-		fprintf(pa_log, "args[%d]: %s\n", i, (cmd->args)[i]);
-	}
-	if (cmd->is_piped)
-	{
-		fprintf(pa_log, "is_piped: true\n");
-	}
-	else
-	{
-		fprintf(pa_log, "is_piped: false\n");
-	}
-	print_all_tokens(cmd->in_token);
-	print_all_tokens(cmd->out_token);
-	fflush(NULL);
-}
-
-void	print_all_cmds(t_list *cmds)
-{
-	t_cmd	*cmd;
-
-	fprintf(pa_log, "------start------\n");
-	while (cmds)
-	{
-		cmd = (t_cmd*)cmds->content;
-		print_cmd(cmd);
-		cmds = cmds->next;
-	}
-	fprintf(pa_log, "------end------\n\n");
-	fflush(NULL);
-}
->>>>>>> b_exec
