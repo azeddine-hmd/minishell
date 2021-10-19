@@ -12,7 +12,7 @@ t_bool	backspace_triggered(t_termarg *targ)
 	return (false);
 }
 
-t_bool	enter_triggered(t_termarg *targ, char ***env)
+t_bool	enter_triggered(t_termarg *targ, char **env)
 {
 #ifdef DEBUG
 	fprintf(ms_log, "key: ENTER\n");
@@ -40,9 +40,9 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 
 	cmd_lst = NULL;
 	if (has_previous(targ->cur))
-		syntax_error = parse(targ->buf->str, &cmd_lst, *env, targ->cur->previous->ret);
+		syntax_error = parse(targ->buf->str, &cmd_lst, env, targ->cur->previous->ret);
 	else
-		syntax_error = parse(targ->buf->str, &cmd_lst, *env, EXIT_SUCCESS);
+		syntax_error = parse(targ->buf->str, &cmd_lst, env, EXIT_SUCCESS);
 	heredoc_lst = get_heredoc_lst(cmd_lst);
 	if (is_not_null(heredoc_lst))
 		heredoc_entry(targ, heredoc_lst, env);
