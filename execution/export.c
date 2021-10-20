@@ -6,7 +6,7 @@
 /*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/18 20:28:25 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/20 23:10:33 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int			ft_isvalid(char *key)
 	int		i;
 	
 	i = 0;
-	if (*key == '\0' || (!ft_isalnum(*key) && *key != '_'))
+	if (*key == '\0' || (!ft_isalpha(*key) && *key != '_'))
 		return (0);
 	while (key[++i])
 		if (!ft_isalpha(key[i]) && !ft_isdigit(key[i]) && key[i] == '_')
