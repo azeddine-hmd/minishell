@@ -3,48 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:58:45 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/18 20:44:22 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/06/09 10:59:04 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "minishell.h"
 
-char		**delete_env(int	index, char **env)
+void		delete_env(int	index)
 {
 	int		i;
 	int		j;
 
-	free(env[index]);
-	env[index] = NULL;
+	free(g_env[index]);
+	g_env[index] = NULL;
 	i = index;
 	j = index + 1;
-	while (env[i + 1])
+	while (g_env[i + 1])
 	{
-		env[i] = ft_strdup(env[i + 1]);
-		free(env[i + 1]);
+		g_env[i] = ft_strdup(g_env[i + 1]);
+		free(g_env[i + 1]);
 		i++;
 		j++;
 	}
-	env = realloc_env(j - 1, env);
-	return (env);
+	g_env = realloc_env(j - 1);
 }
 
-int			ft_builtin_unset(char **args, char ***env)
+int			ft_builtin_unset(char **args)
 {
 	int		i;
 	int		index;
 
+	//printf("%s\n\n", args[0]);
 	if (!args[0])
-		return(error_msg("Error!\n too few arguments.\n", 2, 1));
+		return(error_msg("Error!\n too few arguments.", 2, 1));
 	i = -1;
 	while (args[++i])
 	{
-		index	= find_env(args[i], *env);
-		if (env[index])
-			*env = delete_env(index, *env);
+		index	= find_env(args[i]);
+		if (g_env[index])
+			delete_env(index);
 	}
 	return (1);
 }
