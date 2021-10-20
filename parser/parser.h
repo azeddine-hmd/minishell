@@ -59,16 +59,8 @@ void		print_str_arr(char **str_arr);
 void		print_str_lst(t_list *str_lst);
 
 // parse
-<<<<<<< HEAD
 char		*parse(const char *cmdln, t_list **cmds, char **env, int prev_ret);
 void		create_cmds(t_list **cmds, t_list *cmdln_lst, char **env);
-||||||| 80d9a0a
-char		*parse(const char *cmdln, t_list **cmds, t_list **env, int prev_ret);
-void		create_cmds(t_list **cmds, t_list *cmdln_lst);
-=======
-char		*parse(const char *cmdln, t_list **cmds, char **env, int prev_ret);
-void		create_cmds(t_list **cmds, t_list *cmdln_lst);
->>>>>>> b_exec
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 t_list		*get_simplified_cmdln(const char *cmdln);
 void		separate_quotes(t_list **cmdln_lst);
