@@ -81,6 +81,5 @@ int			exec_bin(char **cmd, char **env);
 int			main_function(t_list *cmds, char ***env);
 int			execute(t_list *cmds, char ***env);
 int			exec_cmd(t_cmd* cmd, char ***env);
-char		**g_env;
 #endif
 
