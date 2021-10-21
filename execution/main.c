@@ -22,7 +22,7 @@ int			exec_builtin(char **cmd, char ***env) // ["cd", ...]
 {
 	if (!ft_strcmp(cmd[0], "echo")) // no memleak
 		return (ft_builtin_echo(cmd));
-	else if (!ft_strcmp(cmd[0], "cd")) // memleak
+	else if (!ft_strcmp(cmd[0], "cd")) // no memleak
 		return (ft_builtin_cd(cmd + 1, env));
 	else if (!ft_strcmp(cmd[0], "pwd")) // no memleak
 		return (ft_builtin_pwd());
@@ -222,39 +222,22 @@ int			exec_cmd(t_cmd* cmd, char ***env)
 int			main_function(t_list *cmds, char ***env)
 {
 	int		r;
+	t_cmd	*cmd;
 
 	r = 0;
-	// TODO:
-	// check filter_all in the other folder;
 	while (cmds)
 	{
+		cmd = (t_cmd*)cmds->content;
+		if (!length(cmd->args))
+		{
+			cmds = cmds->next;
+			continue ;
+		}
 		if (cmds->next)
-			cmds = pipes(cmds, env); // done
+			r = pipes(cmds, env); // done
 		else
-			r = exec_cmd(((t_cmd*)cmds->content), env);
+			r = exec_cmd(cmd, env);
 		cmds = cmds->next;
 	}
 	return (r);
 }
-
-//int			main(int argc, char **argv, char **env)
-//{
-//	//printf("\n\n");
-//	//t_cmd	*test = NULL;					// testing linked ist
-//	t_token *token = NULL; 
-//	//char	*red[] =  {"test.c", "test.txt", "test", NULL};
-//	//fill_token(&token, red, "aca");
-//	//output_token(token);
-	//init_env(argc, argv, env);
-//	char	*cmd[] = {"echo","hello", NULL};
-//	//char	*cmd1[] = {"wc",NULL};
-//	//exec_builtin(cmd1);
-//	//redirections(token); // in the exec_func dup fd_in and fd_out before opening redirections
-//	exec_bin(cmd);	
-//	//printf("%s\n", getenv("PWD"));
-//	//char	*cmd2[] = {"cd",NULL};
-//	//exec_builtin(cmd2);
-//	//test = fill_dummy(&test, cmd, cmd1);
-//	//pipes(test);
-//	return (0);
-//}
