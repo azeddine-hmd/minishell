@@ -22,7 +22,7 @@ int			exec_builtin(char **cmd, char ***env) // ["cd", ...]
 {
 	if (!ft_strcmp(cmd[0], "echo")) // no memleak
 		return (ft_builtin_echo(cmd));
-	else if (!ft_strcmp(cmd[0], "cd")) // memleak
+	else if (!ft_strcmp(cmd[0], "cd")) // no memleak
 		return (ft_builtin_cd(cmd + 1, env));
 	else if (!ft_strcmp(cmd[0], "pwd")) // no memleak
 		return (ft_builtin_pwd());
@@ -234,7 +234,7 @@ int			main_function(t_list *cmds, char ***env)
 			continue ;
 		}
 		if (cmds->next)
-			cmds = pipes(cmds, env); // done
+			r = pipes(cmds, env); // done
 		else
 			r = exec_cmd(cmd, env);
 		cmds = cmds->next;

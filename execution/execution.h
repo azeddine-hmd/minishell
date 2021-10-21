@@ -76,11 +76,10 @@ char		*find_path(char *str,char **env);
 int			redirections(t_cmd *cmd);
 int			ft_builtin_echo(char **args);
 int			file_dont_exist(char *file);
-t_list		*pipes(t_list *cmds, char ***env);
+int			pipes(t_list *cmds, char ***env);
 int			exec_bin(char **cmd, char **env);
 int			main_function(t_list *cmds, char ***env);
 int			execute(t_list *cmds, char ***env);
 int			exec_cmd(t_cmd* cmd, char ***env);
-char		**g_env;
 #endif
 
