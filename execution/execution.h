@@ -76,7 +76,7 @@ char		*find_path(char *str,char **env);
 int			redirections(t_cmd *cmd);
 int			ft_builtin_echo(char **args);
 int			file_dont_exist(char *file);
-int			pipes(t_list *cmds, char ***env);
+t_list		*pipes(t_list *cmds, char ***env);
 int			exec_bin(char **cmd, char **env);
 int			main_function(t_list *cmds, char ***env);
 int			execute(t_list *cmds, char ***env);
