@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:50:27 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/15 22:24:05 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/22 18:49:39 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ int			ft_builtin_env(char **env)
 		write(1, env[i], ft_strlen(env[i]));
 		write(1, "\n", 1);
 	}
-	return (1);
+	return (0);
 }
