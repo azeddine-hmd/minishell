@@ -27,7 +27,7 @@ int	ft_builtin_exit(char **cmd, int ret)
 		if (!is_str_digit(cmd[1]))
 			bad_exit(cmd[1]);
 		else
-			exit(ft_atoi(cmd[1]));
+			exit((unsigned char)ft_atoi(cmd[1]));
 	else if (length(cmd) > 2)
 	{
 		if (!is_str_digit(cmd[1]))
@@ -35,7 +35,7 @@ int	ft_builtin_exit(char **cmd, int ret)
 		else
 			return(exit_many());
 	}
-	exit(ret);
+	exit((unsigned char)ret);
 	return (0);
 }
 
@@ -264,7 +264,7 @@ int			main_function(t_list *cmds, char ***env)
 			continue ;
 		}
 		if (cmds->next)
-			r = pipes(cmds, env); // done
+			cmds = pipes(cmds, env); // done [must add a head t_list to preserve the head or else pipe breaks]
 		else
 			r = exec_cmd(cmd, env);
 		cmds = cmds->next;
