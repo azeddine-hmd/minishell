@@ -252,7 +252,9 @@ int			main_function(t_list *cmds, char ***env)
 {
 	static int		r;
 	t_cmd	*cmd;
+	t_list	*head;
 
+	head = cmds;
 	r = 0;
 	while (cmds)
 	{
@@ -269,5 +271,6 @@ int			main_function(t_list *cmds, char ***env)
 			r = exec_cmd(cmd, env);
 		cmds = cmds->next;
 	}
+	cmds = head;
 	return (r);
 }
