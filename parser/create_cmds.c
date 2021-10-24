@@ -1,13 +1,13 @@
 #include "parser.h"
 
-void	create_cmds(t_list **cmds, t_list *cmdln_lst, char **env, int prev_ret)
+void	create_cmds(t_list **cmds, t_list **cmdln_lst, char **env, int prev_ret)
 {
 	t_cmd		*cmd;
 	t_list		*iterator;
 	t_list		*args_lst;
 	t_bool		is_piped;
 
-	iterator = cmdln_lst;
+	iterator = *cmdln_lst;
 	args_lst = NULL;
 	is_piped = false;
 	while (iterator)
@@ -25,8 +25,11 @@ void	create_cmds(t_list **cmds, t_list *cmdln_lst, char **env, int prev_ret)
 			iterator = iterator->next;
 			is_piped = true;
 		}
-		cmd->args = string_list_to_string_array(args_lst);
-		ft_lstclear(&args_lst, str_del);
+		if (is_not_null(args_lst))
+		{
+			cmd->args = string_list_to_string_array(args_lst);
+			ft_lstclear(&args_lst, str_del);
+		}
 		ft_lstadd_back(cmds, ft_lstnew(cmd));
 		if (is_null(iterator))
 			break ;

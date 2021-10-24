@@ -111,6 +111,7 @@ int		main(int argc, char **argv, char **env)
 	pa_log = fopen(PARSE_DEBUG_LOG_PATH, "a");
 
 	(void)argv;
+	p_env = init_env(env);
 	if (argc != 1)
 	{
 		usage();
@@ -118,7 +119,6 @@ int		main(int argc, char **argv, char **env)
 	}
 	ft_bzero(&targ, sizeof(t_termarg));
 	ms_setup(&(targ.cap), &(targ.buf));
-	p_env = init_env(env);
 	minishell_loop(&targ, p_env);
 	deallocate();
 	return (0);
