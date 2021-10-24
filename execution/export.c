@@ -3,33 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/20 23:10:33 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/24 17:21:10 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-char		*find_strenv(char *str, char **env)
-{
-	int		index;
-
-	index = find_env(str, env);
-	if (env[index])
-		return (env[index]);
-	return (NULL);
-}
-
-char		**export_var(char *var, char *str, char **env)
+char	**export_var(char *var, char *str, char **env)
 {
 	int		index;
 	char	*tmp;
 
-
 	index = find_env(var, env);
-	tmp   = ft_strjoin("=", str);
+	tmp = ft_strjoin("=", str);
 	if (env[index])
 	{
 		free(env[index]);
@@ -50,16 +39,7 @@ char		**export_var(char *var, char *str, char **env)
 	return (env);
 }
 
-/******************************
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * *******/
-int			ft_bad_value(char *s1, char *s2)
+int	ft_bad_value(char *s1, char *s2)
 {
 	if (!s2)
 		printf("minishell: export: `%s': not a valid identifier\n", s1);
@@ -72,10 +52,10 @@ int			ft_bad_value(char *s1, char *s2)
 	return (1);
 }
 
-int			ft_isvalid(char *key)
+int	ft_isvalid(char *key)
 {
 	int		i;
-	
+
 	i = 0;
 	if (*key == '\0' || (!ft_isalpha(*key) && *key != '_'))
 		return (0);
@@ -85,13 +65,15 @@ int			ft_isvalid(char *key)
 	return (1);
 }
 
-int			extract_data(char *str, char **key, char **value)
+int	extract_data(char *str, char **key, char **value)
 {
 	int		j;
-	
+
 	j = 0;
 	while (str[j] && str[j] != '=')
 		j++;
+	if (j == (int)ft_strlen(str))
+		return (69);
 	*key = ft_substr(str, 0, j);
 	if (!*key)
 		return (ft_bad_value(ft_strdup(str), NULL));
@@ -107,10 +89,9 @@ int			extract_data(char *str, char **key, char **value)
 		return (ft_bad_value(*key, *value));
 	return (0);
 }
-int			ft_builtin_export(char **args, char ***env)  // make sure to split w/ ("=") b4 passing the args
+
+int	ft_builtin_export(char **args, char ***env)
 {
-	//args = ft_split(args[0], '=');
-	//printf("%s\n%s\n", args[0], args[1]);
 	int		i;
 	char	*key;
 	char	*value;
@@ -122,20 +103,18 @@ int			ft_builtin_export(char **args, char ***env)  // make sure to split w/ ("="
 		return (ft_builtin_env(*env));
 	while (args[++i])
 	{
-		if (extract_data(args[i], &key, &value))	
+		if (extract_data(args[i], &key, &value))
 		{
 			ret++;
-			continue;
+			continue ;
 		}
 		*env = export_var(key, value, *env);
 		free(key);
 		free(value);
 	}
-	if (ret)
+	if (ret == 69)
+		return (0);
+	else if (ret)
 		return (1);
-	//if (args[1] && args[2])
-	//	return(error_msg("export: Too many arguments.", 2, 1));
-	//export_var(args[0], args[1], env);
-	//ft_freestrarr(args);
 	return (0);
 }

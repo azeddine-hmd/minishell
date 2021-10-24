@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/24 17:40:43 by hboudhir          #+#    #+#             */
+/*   Updated: 2021/10/24 18:00:28 by hboudhir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef EXECUTION_H
 # define EXECUTION_H
 
@@ -14,36 +26,8 @@
 # include <sys/stat.h>
 # include <sys/wait.h>
 # include <sys/types.h>
-
-/* My libft library */
-
-//# include "libft/libft.h"	
-
-/* 
-	Below is Azeddine's libraries.
-*/
 # include "../libx/libx.h"
 # include "../parser/parser.h"
-
-//typedef struct s_token
-//{
-//	char			type;
-//	char			*value;
-//	struct s_token	*next;
-//}				t_token;
-
-//typedef struct	s_cmd		// PS: This is just a test struct for linked list.
-//{
-//	int				is_piped;
-//	int				err;
-//	int				pos;		// for debugging. (Inserting dummy data)
-//	t_list			*in_token;
-//	t_list			*out_token;
-//	char			**args;     // array of arguments
-//	struct s_cmd	*next;
-//	struct s_cmd	*previous;
-//}				t_cmd;
-
 typedef struct s_env
 {
 	char	*key;
@@ -66,13 +50,13 @@ int			find_env(char *value, char **env);
 char		**export_var(char *var, char *str, char **env);
 char		**realloc_env(int size, char **env);
 int			ft_builtin_export(char **args, char ***env);
-char		*ft_pathjoin(char  *s1, char *s2);
-char		**delete_env(int	index, char **env);
+char		*ft_pathjoin(char *s1, char *s2);
+char		**delete_env(int index, char **env);
 int			ft_builtin_unset(char **args, char ***env);
 int			ft_builtin_cd(char **args, char ***env);
 int			home_run(char ***env);
 int			path_error(char *path);
-char		*find_path(char *str,char **env);
+char		*find_path(char *str, char **env);
 int			redirections(t_cmd *cmd);
 int			ft_builtin_echo(char **args);
 int			file_dont_exist(char *file);
@@ -80,6 +64,12 @@ t_list		*pipes(t_list *cmds, char ***env);
 int			exec_bin(char **cmd, char **env);
 int			main_function(t_list *cmds, char ***env);
 int			execute(t_list *cmds, char ***env);
-int			exec_cmd(t_cmd* cmd, char ***env);
+int			exec_cmd(t_cmd *cmd, char ***env);
+char		**split_path(char **env);
+int			file_error(char *s);
+int			ft_builtin_exit(char **cmd, int ret);
+int			exec_path(char **cmd, char **env);
+int			execute_p(char *p, char **cmd, char **env);
+int			cmd_nfound(char *str);
+int			exec_builtin(char **cmd, char ***env, int ret);
 #endif
-
