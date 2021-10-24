@@ -137,6 +137,7 @@ void	ft_lstrem(t_list **head, t_list *target, void (*del) (void*));
 char	*join_string_array_to_string(char **arr);
 char	*join_string_list_to_string(t_list *lst);
 char	*join_string_list_with_nl(t_list *lst);
+t_bool	is_blank(const char *s);
 
 // debugging
 void	print_list_str(t_list *str_lst);

@@ -7,6 +7,8 @@ char	*parse(const char *cmdln, t_list **cmds, char **env, int prev_ret)
 
 	(void)prev_ret;
 	cmdln_lst = get_simplified_cmdln(cmdln);
+	if (is_blank(cmdln))
+		return (NO_SYNTAX_ERROR);
 	syntax_err = check_syntax_err(cmdln_lst);
 	if (syntax_err == NO_SYNTAX_ERROR)
 	{
