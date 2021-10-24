@@ -33,6 +33,7 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env, int pre
 		{
 			if (!ft_strcmp(targ->buf->str, stripped_delimiter))
 			{
+				ft_lstadd_back(&lines_lst, ft_lstnew("\n"));
 				ft_putc(targ->input);
 				break ;
 			}
