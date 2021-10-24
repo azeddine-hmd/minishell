@@ -31,14 +31,17 @@ t_envindx	*get_env_index(const char *str, int start)
 	}
 	env_range->from = address_to_index(str, found);
 	i = env_range->from + 1;
-	while (i < (int)ft_strlen(str) && str[i] != '\'' && str[i] != '"')
+	while (i < (int)ft_strlen(str) && str[i] != '\'' && str[i] != '"' && str[i] != '?')
 		i++;
-	if (i == env_range->from + 1)
+	if (str[i] != '?' && i == env_range->from + 1)
 	{
 		envindx_del(env_index);
 		return (NULL);
 	}
-	env_index->range->to = i - 1;
+	if (str[i] == '?')
+		env_index->range->to = i;
+	else
+		env_index->range->to = i - 1;
 	env_index->name = xsubstr(str, env_index->range->from + 1, env_range->to - env_range->from);
 	return (env_index);
 }

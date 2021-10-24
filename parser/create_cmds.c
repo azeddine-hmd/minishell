@@ -1,6 +1,6 @@
 #include "parser.h"
 
-void	create_cmds(t_list **cmds, t_list *cmdln_lst, char **env)
+void	create_cmds(t_list **cmds, t_list *cmdln_lst, char **env, int prev_ret)
 {
 	t_cmd		*cmd;
 	t_list		*iterator;
@@ -21,7 +21,7 @@ void	create_cmds(t_list **cmds, t_list *cmdln_lst, char **env)
 				iterator = add_token_to_cmd(cmdln_lst, cmd, iterator);
 			if (is_null(iterator) || !ft_strcmp(iterator->content, PIPE))
 				break ;
-			ft_lstadd_back(&args_lst, ft_lstnew(expand(iterator->content, env)));
+			ft_lstadd_back(&args_lst, ft_lstnew(expand(iterator->content, env, prev_ret)));
 			iterator = iterator->next;
 			is_piped = true;
 		}

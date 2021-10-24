@@ -10,7 +10,7 @@ char	*parse(const char *cmdln, t_list **cmds, char **env, int prev_ret)
 	syntax_err = check_syntax_err(cmdln_lst);
 	if (syntax_err == NO_SYNTAX_ERROR)
 	{
-		create_cmds(cmds, cmdln_lst, env);
+		create_cmds(cmds, cmdln_lst, env, prev_ret);
 		ft_lstclear(&cmdln_lst, str_del);
 		return (NO_SYNTAX_ERROR);
 	}
