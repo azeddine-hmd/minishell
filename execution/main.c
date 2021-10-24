@@ -2,11 +2,40 @@
 # define true 1
 
 
-int	ft_builtin_exit(int ret)
+void	bad_exit(char *str)
+{
+	write(2, "minishell: exit: ", 17);
+	write(2, str, ft_strlen(str));
+	write(2, ": numeric argument required\n", 28);
+	exit(255);
+}
+
+int	exit_many(void)
+{
+	write(2, "minishell: exit: too many arguments\n", 36);
+	return (1);
+}
+
+int	ft_builtin_exit(char **cmd, int ret)
 {
 	//TODO: free everything before exiting.
 	// also check the correction paper +  https://www.gnu.org/software/bash/manual/html_node/Exit-Status
-	exit(ret);
+
+	(void)cmd;
+	write(1, "exit\n", 5);
+	if (length(cmd) == 2)
+		if (!is_str_digit(cmd[1]))
+			bad_exit(cmd[1]);
+		else
+			exit((unsigned char)ft_atoi(cmd[1]));
+	else if (length(cmd) > 2)
+	{
+		if (!is_str_digit(cmd[1]))
+			bad_exit(cmd[1]);
+		else
+			return(exit_many());
+	}
+	exit((unsigned char)ret);
 	return (0);
 }
 
@@ -18,7 +47,7 @@ int			cmd_nfound(char *str)
 	return (127);
 }
 
-int			exec_builtin(char **cmd, char ***env) // ["cd", ...]
+int			exec_builtin(char **cmd, char ***env, int ret) // ["cd", ...]
 {
 	if (!ft_strcmp(cmd[0], "echo")) // no memleak
 		return (ft_builtin_echo(cmd));
@@ -33,7 +62,7 @@ int			exec_builtin(char **cmd, char ***env) // ["cd", ...]
 	else if (!ft_strcmp(cmd[0], "env")) // no memleak
 		return (ft_builtin_env(*env));
 	else if (!ft_strcmp(cmd[0], "exit")) // not working
-		return (ft_builtin_exit(10));
+		return (ft_builtin_exit(cmd, ret));
 	return (2);
 }
 
@@ -153,7 +182,7 @@ int			check_cmd(t_cmd *cmd, char ***env)
 		return (0);
 	if (cmd->args[0][0] != '\0')
 	{
-		ret = exec_builtin(cmd->args, env); // changes this line [04/10/21] edit1: there's memory leak here
+		ret = exec_builtin(cmd->args, env, cmd->ret); // changes this line [04/10/21] edit1: there's memory leak here
 		if (ret != 2)
 		{
 			fprintf(fd, "Return value of the command: %s is: %d\n", cmd->args[0], ret);
@@ -221,23 +250,27 @@ int			exec_cmd(t_cmd* cmd, char ***env)
 
 int			main_function(t_list *cmds, char ***env)
 {
-	int		r;
+	static int		r;
 	t_cmd	*cmd;
+	t_list	*head;
 
+	head = cmds;
 	r = 0;
 	while (cmds)
 	{
 		cmd = (t_cmd*)cmds->content;
+		cmd->ret = r;
 		if (!length(cmd->args))
 		{
 			cmds = cmds->next;
 			continue ;
 		}
 		if (cmds->next)
-			r = pipes(cmds, env); // done
+			cmds = pipes(cmds, env); // done [must add a head t_list to preserve the head or else pipe breaks]
 		else
 			r = exec_cmd(cmd, env);
 		cmds = cmds->next;
 	}
+	cmds = head;
 	return (r);
 }

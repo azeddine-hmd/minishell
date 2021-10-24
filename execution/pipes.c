@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:16:10 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/20 23:24:14 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/22 20:31:48 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		dup_fd(t_list *cmds, int fds[2], int input)
 	return (0);
 }
 
-int	pipes(t_list *cmds, char ***env)
+t_list	*pipes(t_list *cmds, char ***env)
 {
 	t_cmd	*cmd;
 	int		fds[2];
@@ -81,5 +81,5 @@ int	pipes(t_list *cmds, char ***env)
 		;
 	if (WIFEXITED(pid))
 		cmd->ret = WEXITSTATUS(pid);
-	return (cmd->ret);
+	return (cmds);
 }
