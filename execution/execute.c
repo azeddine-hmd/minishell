@@ -2,8 +2,11 @@
 
 int	execute(t_list *cmds, char ***env)
 {
-	(void)cmds;
+	char	*ret;
+
 	print_all_cmds(cmds);
-	main_function(cmds, env);
+	ret = ft_itoa(main_function(cmds, env));
+	*env = export_var("?", ret, *env);
+	free(ret);
 	return (EXIT_SUCCESS);
 }
