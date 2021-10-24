@@ -8,21 +8,6 @@ static void		hd_prompt(void)
 	ft_putstr(COLORS_DEFAULT);
 }
 
-/*static t_bool	surrounded_by_quotes(const char *s)
-{
-	int last;
-
-	last = ft_strlen(s) - 1;
-	if (
-		s[0] != 0 &&
-		(s[0] == '\'' || s[0] == '"') &&
-		(s[last] == '\'' || s[last] == '"') &&
-		s[0] == s[last]
-		)
-			return (true);
-	return (false);
-}*/
-
 char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 {
 	t_list	*lines_lst;

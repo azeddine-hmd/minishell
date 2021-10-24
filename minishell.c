@@ -61,7 +61,7 @@ int			env_len(char **env) // to modify later. (No need for J)
 {
 	int		i;
 	int		j;
-	
+
 	i = -1;
 	j = 0;
 	while(env[++i])
