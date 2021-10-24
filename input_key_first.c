@@ -25,7 +25,10 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	ft_putc(targ->input);
 	if (ft_strlen(targ->buf->str) == 0)
 	{
-		ms_prompt(targ->cur->previous->ret);
+		if (has_previous(targ->cur))
+			ms_prompt(targ->cur->previous->ret);
+		else
+			ms_prompt(EXIT_SUCCESS);
 		return (false);
 	}
 	targ->cur = get_last_history(targ->head);

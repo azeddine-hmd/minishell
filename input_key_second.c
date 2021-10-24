@@ -9,7 +9,10 @@ t_bool	ctrl_l_triggered(t_termarg *targ)
 
 	saved_buf_str = xstrdup(targ->buf->str);
 	ms_bufrst(targ->buf);
-	ms_prompt(targ->cur->previous->ret);
+	if (has_previous(targ->cur))
+		ms_prompt(targ->cur->previous->ret);
+	else
+		ms_prompt(EXIT_SUCCESS);
 	ms_bufrpc(targ->buf, saved_buf_str);
 	ft_putstr(targ->buf->str);
 	xfree(saved_buf_str);
