@@ -17,9 +17,9 @@
 
 /* My libft library */
 
-//# include "libft/libft.h"	
+//# include "libft/libft.h"
 
-/* 
+/*
 	Below is Azeddine's libraries.
 */
 # include "../libx/libx.h"
@@ -82,4 +82,3 @@ int			main_function(t_list *cmds, char ***env);
 int			execute(t_list *cmds, char ***env);
 int			exec_cmd(t_cmd* cmd, char ***env);
 #endif
-

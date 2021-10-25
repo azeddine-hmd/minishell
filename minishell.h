@@ -7,6 +7,7 @@
 # include <termios.h>
 # include <term.h>
 # include <fcntl.h>
+# include <signal.h>
 # include "libx/libx.h"
 # include "parser/parser.h"
 # include "execution/execution.h"
@@ -18,7 +19,6 @@
 # define MS_HEREDOC_PROMPT "> "
 # define MS_HEREDOC_COLOR COLORS_CYAN
 # define MS_BUFFER_SIZE 2048
-# define HEREDOC_ERR "warning: here-document delimited by end-of-file (wanted `"
 
 /*
  ** keys
@@ -45,8 +45,10 @@
 // debugging
 # define DEBUG_LOG_PATH "/tmp/log"
 # define DEBUG_BUFLOG_PATH "/tmp/buflog"
+# define DEBUG_SIGNAL_PATH "/tmp/signal_log"
 FILE *ms_log;
 FILE *ms_buflog;
+FILE *ms_signallog;
 
 typedef struct s_buf
 {
@@ -83,11 +85,21 @@ typedef struct s_termarg
 	int			pos;
 }t_termarg;
 
+typedef struct s_sign
+{
+	t_bool		heredoc_running;
+	t_bool		child_running;
+	t_termarg	*targ;
+}t_sign;
+
 // debugging
 void		print_all_history(t_hist *history);
+void		print_all_signal(void);
 
 // general
+t_sign		g_sign;
 void		usage(void);
+void		signal_interceptor(int sig);
 
 // buffer
 void		ms_bufinit(t_buf **a_buf);

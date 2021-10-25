@@ -105,15 +105,20 @@ int		main(int argc, char **argv, char **env)
 	ms_log = fopen(DEBUG_LOG_PATH, "a");
 	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
 	pa_log = fopen(PARSE_DEBUG_LOG_PATH, "a");
+	ms_signallog = fopen(DEBUG_SIGNAL_PATH, "a");
 
 	(void)argv;
-	p_env = init_env(env);
 	if (argc != 1)
 	{
 		usage();
 		return (EXIT_FAILURE);
 	}
+	signal(SIGINT, signal_interceptor);
+	p_env = init_env(env);
 	ft_bzero(&targ, sizeof(t_termarg));
+	g_sign.heredoc_running = false;
+	g_sign.child_running = false;
+	g_sign.targ = &targ;
 	ms_setup(&(targ.cap), &(targ.buf));
 	minishell_loop(&targ, p_env);
 	deallocate();

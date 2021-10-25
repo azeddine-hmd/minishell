@@ -23,6 +23,8 @@ SRC = minishell.c \
 	  heredoc_entry.c \
 	  usage.c \
 	  history.c \
+	  signal_interceptor.c \
+	  debug_signal.c \
 
 OBJ = ${SRC:.c=.o}
 
