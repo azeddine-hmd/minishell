@@ -146,7 +146,7 @@ int			exec_bin(char **cmd, char **env)		// equal to check_bin();
 {
 	char **path;
 	int	i;
-	int	ret;	
+	int	ret;
 
 	i = -1;
 	ret = 0;
@@ -235,11 +235,11 @@ int			exec_cmd(t_cmd* cmd, char ***env)
 		if (redirections(cmd))
 			return (1);
 	}
-		
+
 	ret = check_cmd(cmd, env);
-	////ret = 
+	////ret =
 	if (cmd->in_token || cmd->out_token)
-	{	
+	{
 		dup2(fd_in, 0);
 		dup2(fd_out, 1);
 		close(fd_in);
