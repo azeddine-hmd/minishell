@@ -7,6 +7,7 @@
 # include <termios.h>
 # include <term.h>
 # include <fcntl.h>
+# include <signal.h>
 # include "libx/libx.h"
 # include "parser/parser.h"
 # include "execution/execution.h"
@@ -44,8 +45,10 @@
 // debugging
 # define DEBUG_LOG_PATH "/tmp/log"
 # define DEBUG_BUFLOG_PATH "/tmp/buflog"
-extern FILE *ms_log;
-extern FILE *ms_buflog;
+# define DEBUG_SIGNAL_PATH "/tmp/signal_log"
+FILE *ms_log;
+FILE *ms_buflog;
+FILE *ms_signallog;
 
 typedef struct s_buf
 {
@@ -82,11 +85,21 @@ typedef struct s_termarg
 	int			pos;
 }t_termarg;
 
+typedef struct s_sign
+{
+	t_bool		heredoc_running;
+	t_bool		child_running;
+	t_termarg	*targ;
+}t_sign;
+
 // debugging
 void		print_all_history(t_hist *history);
+void		print_all_signal(void);
 
 // general
+t_sign		g_sign;
 void		usage(void);
+void		signal_interceptor(int sig);
 
 // buffer
 void		ms_bufinit(t_buf **a_buf);
@@ -112,7 +125,7 @@ t_bool		backspace_triggered(t_termarg *targ);
 t_bool		enter_triggered(t_termarg *targ, char ***env);
 t_bool		up_arrow_triggered(t_termarg *targ);
 t_bool		down_arrow_triggered(t_termarg *targ);
-t_bool		ctrl_d_triggered(t_termarg *targ, t_bool on_heredoc);
+t_bool		ctrl_d_triggered(t_termarg *targ);
 t_bool		ctrl_l_triggered(t_termarg *targ);
 t_bool		right_arrow_triggered(t_termarg *targ);
 t_bool		left_arrow_triggered(t_termarg *targ);

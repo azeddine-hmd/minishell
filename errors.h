@@ -13,6 +13,12 @@
 # define ERR_TERMNOTDEFINED "Terminal type `%s` is not defined."
 
 /*
+** heredoc errors
+*/
+
+# define HEREDOC_ERR "warning: here-document delimited by end-of-file (wanted `"
+
+/*
 ** colors
 */
 

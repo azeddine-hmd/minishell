@@ -1,9 +1,5 @@
 #include "minishell.h"
 
-FILE *ms_log;
-FILE *ms_buflog;
-FILE *pa_log;
-
 static void	minishell_loop(t_termarg *targ, char **env)
 {
 	ms_prompt(EXIT_SUCCESS);
@@ -31,7 +27,7 @@ static void	minishell_loop(t_termarg *targ, char **env)
 			targ->pos = 0;
 		else if (targ->input == K_CTRL_D)
 		{
-			if (ctrl_d_triggered(targ, false))
+			if (ctrl_d_triggered(targ))
 				break ;
 		}
 		else if (targ->input == K_CTRL_L)
@@ -109,6 +105,7 @@ int		main(int argc, char **argv, char **env)
 	ms_log = fopen(DEBUG_LOG_PATH, "a");
 	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
 	pa_log = fopen(PARSE_DEBUG_LOG_PATH, "a");
+	ms_signallog = fopen(DEBUG_SIGNAL_PATH, "a");
 
 	(void)argv;
 	if (argc != 1)
@@ -116,9 +113,13 @@ int		main(int argc, char **argv, char **env)
 		usage();
 		return (EXIT_FAILURE);
 	}
-	ft_bzero(&targ, sizeof(t_termarg));
-	ms_setup(&(targ.cap), &(targ.buf));
+	signal(SIGINT, signal_interceptor);
 	p_env = init_env(env);
+	ft_bzero(&targ, sizeof(t_termarg));
+	g_sign.heredoc_running = false;
+	g_sign.child_running = false;
+	g_sign.targ = &targ;
+	ms_setup(&(targ.cap), &(targ.buf));
 	minishell_loop(&targ, p_env);
 	deallocate();
 	return (0);

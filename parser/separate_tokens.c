@@ -93,7 +93,9 @@ void	separate_tokens(t_list **cmdln_lst)
 			replace.head = cmdln_lst;
 			replace.target = iterator;
 			replace.new_lst = new_lst;
+			iterator = iterator->next;
 			replace_node_intolist(&replace, str_del);
+			continue ;
 		}
 		iterator = iterator->next;
 	}

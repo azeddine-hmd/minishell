@@ -6,7 +6,7 @@
 
 void		ms_prompt(int ret)
 {
-	if (ret != 0)
+	if (ret != EXIT_SUCCESS)
 		ft_putstr(MS_PROMPT_ERROR_COLOR);
 	else
 		ft_putstr(MS_PROMPT_COLOR);

@@ -2,8 +2,11 @@
 
 void	print_cmd(t_cmd *cmd)
 {
-	for (int i = 0; i < length(cmd->args); i++) {
-		fprintf(pa_log, "args[%d]: %s\n", i, (cmd->args)[i]);
+	if (is_not_null(cmd->args))
+	{
+		for (int i = 0; i < length(cmd->args); i++) {
+			fprintf(pa_log, "args[%d]: %s\n", i, (cmd->args)[i]);
+		}
 	}
 	if (cmd->is_piped)
 	{

@@ -25,7 +25,10 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	ft_putc(targ->input);
 	if (ft_strlen(targ->buf->str) == 0)
 	{
-		ms_prompt(targ->cur->ret);
+		if (has_previous(targ->cur))
+			ms_prompt(targ->cur->previous->ret);
+		else
+			ms_prompt(EXIT_SUCCESS);
 		return (false);
 	}
 	targ->cur = get_last_history(targ->head);
@@ -54,9 +57,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 			heredoc_entry(targ, heredoc_lst, *env, EXIT_SUCCESS);
 	}
 	if (syntax_error == NO_SYNTAX_ERROR)
-	{
 		targ->cur->ret = execute(cmd_lst, env);
-	}
 	else
 	{
 		shell_err(syntax_error);
@@ -66,7 +67,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 	add_history(&(targ->head), targ->cur);
 	ms_bufrst(targ->buf);
-	ms_prompt(targ->cur->ret);
+	ms_prompt(targ->cur->previous->ret);
 	return (false);
 }
 
@@ -107,21 +108,9 @@ t_bool		down_arrow_triggered(t_termarg *targ)
 	return (false);
 }
 
-t_bool	ctrl_d_triggered(t_termarg *targ, t_bool on_heredoc)
+t_bool	ctrl_d_triggered(t_termarg *targ)
 {
-	if (on_heredoc)
-	{
-		if (ft_strlen(targ->buf->str) == 0)
-		{
-			ft_putc('\n');
-			shell_err(HEREDOC_ERR);
-			return (true);
-		}
-	}
-	else
-	{
-		if (ft_strlen(targ->buf->str) == 0)
-			return (true);
-	}
+	if (ft_strlen(targ->buf->str) == 0)
+		return (true);
 	return (false);
 }
