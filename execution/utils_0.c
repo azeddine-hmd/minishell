@@ -3,30 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   utils_0.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 16:08:59 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/14 16:14:42 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/24 17:56:52 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-//void		*safe_malloc(size_t size)  // equal to ft_memalloc() | To modify later
-//{
-//	void	*ptr;
+char	**split_path(char **env)
+{
+	char	*tmp;
+	char	**path;
 
-//	if (!(ptr = malloc(size + 1)))
-//		return (NULL);
-//	ft_bzero(ptr, size + 1);
-//	return (ptr);
-//}
+	tmp = ft_substr(find_strenv("PATH", env), 5,
+			ft_strlen(find_strenv("PATH", env)));
+	path = ft_split(tmp, ':');
+	free(tmp);
+	return (path);
+}
 
-//int		error_msg(char *error_msg, int fd, int exit_code)
-//{
-//	write(fd, error_msg, ft_strlen(error_msg));
-//	return (exit_code);
-//}
+int	file_error(char *s)
+{
+	write(2, "minishell: ", 11);
+	write(2, s, strlen(s));
+	write(2, ": No such file or directory\n", 28);
+	return (127);
+}
 
 char	*ft_strjoinch(char const *s1, char c)
 {
@@ -47,7 +51,7 @@ char	*ft_strjoinch(char const *s1, char c)
 	return (new_str);
 }
 
-int			ft_strstartw(char *s1, char *s2)
+int	ft_strstartw(char *s1, char *s2)
 {
 	int		i;
 
@@ -58,10 +62,10 @@ int			ft_strstartw(char *s1, char *s2)
 	return (1);
 }
 
-int			ft_strendw(char *s1, char *s2)
+int	ft_strendw(char *s1, char *s2)
 {
 	int		i;
-	
+
 	i = -1;
 	while (s1[++i])
 		if (s1[i] == s2[0])

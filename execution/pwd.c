@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:53:46 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/11 21:43:44 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/24 17:42:03 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-int			ft_builtin_pwd(void)
+int	ft_builtin_pwd(void)
 {
 	char	buf[1024];
 

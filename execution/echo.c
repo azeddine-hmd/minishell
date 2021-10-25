@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 16:35:19 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/11 21:43:14 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/24 17:16:49 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-int			valid_option(char *str)
+int	valid_option(char *str)
 {
 	int		i;
 
 	i = 0;
-	if(str[i] == '-' && str[++i] == 'n')
+	if (str[i] == '-' && str[++i] == 'n')
 	{
 		while (str[++i] == 'n')
 			continue ;
@@ -28,8 +28,7 @@ int			valid_option(char *str)
 	return (0);
 }
 
-
-void		check_n(char **args, int *i, int *j)
+void	check_n(char **args, int *i, int *j)
 {
 	while (args[++(*i)])
 	{
@@ -39,7 +38,8 @@ void		check_n(char **args, int *i, int *j)
 			break ;
 	}
 }
-void		exec_echo(char **args, int i)
+
+void	exec_echo(char **args, int i)
 {
 	int		c;
 
@@ -55,14 +55,14 @@ void		exec_echo(char **args, int i)
 	}
 }
 
-int			ft_builtin_echo(char **args)
+int	ft_builtin_echo(char **args)
 {
 	int		option;
 	int		index;
 
 	index = 0;
 	option = 0;
-	check_n(args, &index, &option); // modify the return value and give it to the var option
+	check_n(args, &index, &option);
 	exec_echo(args, index - 1);
 	if (!option)
 		write(1, "\n", 1);

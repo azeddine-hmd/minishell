@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 16:13:22 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/14 22:42:10 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/10/24 17:28:18 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void		ft_freestrarr(char **arr)
+void	ft_freestrarr(char **arr)
 {
 	int		i;
 
@@ -30,7 +30,8 @@ char	*ft_strjoincl(char *s1, char *s2, int free_both)
 {
 	char	*new;
 
-	if (!(new = ft_strjoin(s1, s2)))
+	new = ft_strjoin(s1, s2);
+	if (!new)
 		return (NULL);
 	free(s1);
 	s1 = NULL;
@@ -42,12 +43,12 @@ char	*ft_strjoincl(char *s1, char *s2, int free_both)
 	return (new);
 }
 
-char		**realloc_env(int size, char **envv)
+char	**realloc_env(int size, char **envv)
 {
 	char	**env;
 	int		i;
 
-	env = (char**)safe_malloc(sizeof(char*) * (size + 1));
+	env = (char **)safe_malloc(sizeof(char *) * (size + 1));
 	i = -1;
 	while (envv[++i] && i < size)
 	{
@@ -55,12 +56,13 @@ char		**realloc_env(int size, char **envv)
 		free(envv[i]);
 	}
 	free(envv);
-	return(env);
+	return (env);
 }
 
-char		*ft_pathjoin(char  *s1, char *s2)
+char	*ft_pathjoin(char *s1, char *s2)
 {
 	char	*tmp;
+
 	if (!s1 || !s2)
 		return (NULL);
 	if (!ft_strendw(s1, "/"))
@@ -80,4 +82,14 @@ char		*ft_pathjoin(char  *s1, char *s2)
 		else
 			return (ft_strjoin(s1, s2));
 	}
+}
+
+char	*find_strenv(char *str, char **env)
+{
+	int		index;
+
+	index = find_env(str, env);
+	if (env[index])
+		return (env[index]);
+	return (NULL);
 }
