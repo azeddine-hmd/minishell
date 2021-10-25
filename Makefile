@@ -63,7 +63,7 @@ fclean: clean
 	@$(MAKE) libx fclean
 	@$(MAKE) parser fclean
 	@$(MAKE) execution fclean
-	rm -rf $(NAME) $(NAME).dSYM
+	@rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all
 
