@@ -1,8 +1,33 @@
 #include "parser.h"
 
+char	*format_file_error(const char *fname, const char *err)
+{
+	char *joined;
+	char *tmp;
+
+	joined = xstrdup(fname);
+	tmp = joined;
+	joined = xstrjoin(joined, ": ");
+	xfree(tmp);
+	tmp = joined;
+	joined = xstrjoin(joined, err);
+	xfree(tmp);
+	return (joined);
+}
+
 static char	*check(const char *fname)
 {
-	return (NO_SYNTAX_ERROR);
+	char *syntax_err;
+	int fd;
+
+	syntax_err = NO_SYNTAX_ERROR;
+	fd = open(fname, O_RDONLY);
+	if (fd == -1)
+	{
+		syntax_err = format_file_error(fname, strerror(errno));
+	}
+	close(fd);
+	return (syntax_err);
 }
 
 char	*check_valid_files(t_list **cmds)

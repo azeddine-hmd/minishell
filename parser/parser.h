@@ -3,6 +3,9 @@
 # include "../libx/libx.h"
 # include "../errors.h"
 # include <stdio.h>
+# include <fcntl.h>
+# include <string.h>
+# include <sys/errno.h>
 
 # define TOKENS "<< >> > < |"
 # define IN_TYPE_TOKEN "<< <"
