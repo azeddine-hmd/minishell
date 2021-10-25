@@ -57,9 +57,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 			heredoc_entry(targ, heredoc_lst, *env, EXIT_SUCCESS);
 	}
 	if (syntax_error == NO_SYNTAX_ERROR)
-	{
 		targ->cur->ret = execute(cmd_lst, env);
-	}
 	else
 	{
 		shell_err(syntax_error);

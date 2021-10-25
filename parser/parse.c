@@ -16,8 +16,9 @@ char	*parse(const char *cmdln, t_list **cmds, char **env, int prev_ret)
 	{
 		create_cmds(cmds, &cmdln_lst, env, prev_ret);
 		ft_lstclear(&cmdln_lst, str_del);
-		return (NO_SYNTAX_ERROR);
+		syntax_err = check_valid_files(cmds);
 	}
-	ft_lstclear(&cmdln_lst, str_del);
+	else
+		ft_lstclear(&cmdln_lst, str_del);
 	return (syntax_err);
 }

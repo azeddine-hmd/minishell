@@ -44,8 +44,8 @@
 // debugging
 # define DEBUG_LOG_PATH "/tmp/log"
 # define DEBUG_BUFLOG_PATH "/tmp/buflog"
-extern FILE *ms_log;
-extern FILE *ms_buflog;
+FILE *ms_log;
+FILE *ms_buflog;
 
 typedef struct s_buf
 {

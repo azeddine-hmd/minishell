@@ -11,7 +11,7 @@
 # define PIPE "|"
 # define QUOTES "'\""
 # define FILE_PREFIX "/tmp/minishell-heredoc-"
-# define HEREDOC_ERR "warning: here-document at line $LINE delimited by end-of-file (wanted `$DELIMETER')"
+# define HEREDOC_ERR "warning: here-document delimited by end-of-file (wanted `$DELIMETER')"
 
 # define NO_SYNTAX_ERROR NULL
 # define PAIR_NOT_FOUND -1
@@ -21,7 +21,7 @@
 
 // debugging
 # define PARSE_DEBUG_LOG_PATH "/tmp/parse_log"
-extern FILE *pa_log;
+FILE *pa_log;
 
 typedef struct s_token
 {
@@ -71,6 +71,7 @@ char		*pa_getenv(char **env, const char *name);
 
 // syntax error
 char		*check_syntax_err(t_list *cmdln_lst);
+char		*check_valid_files(t_list **cmds);
 
 // quotes
 t_bool		inside_quotes(t_list *range, int from, int to, const char *types);

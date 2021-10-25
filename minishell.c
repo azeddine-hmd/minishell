@@ -1,9 +1,5 @@
 #include "minishell.h"
 
-FILE *ms_log;
-FILE *ms_buflog;
-FILE *pa_log;
-
 static void	minishell_loop(t_termarg *targ, char **env)
 {
 	ms_prompt(EXIT_SUCCESS);
