@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:14:21 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/24 17:56:10 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/25 18:34:59 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	main_function(t_list *cmds, char ***env)
 	{
 		cmd = (t_cmd *)cmds->content;
 		cmd->ret = r;
-		if (!length(cmd->args))
+		if (!cmd->args)
 		{
 			cmds = cmds->next;
 			continue ;
