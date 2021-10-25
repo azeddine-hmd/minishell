@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:47:15 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/24 17:58:46 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/24 18:10:37 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	ft_builtin_exit(char **cmd, int ret)
 		else
 			return (exit_many());
 	}
+	deallocate();
 	exit((unsigned char)ret);
 	return (0);
 }
