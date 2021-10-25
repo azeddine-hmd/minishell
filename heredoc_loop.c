@@ -1,4 +1,3 @@
-#include "libx/libx.h"
 #include "minishell.h"
 
 static void		hd_prompt(void)
@@ -6,6 +5,36 @@ static void		hd_prompt(void)
 	ft_putstr(MS_HEREDOC_COLOR);
 	ft_putstr(MS_HEREDOC_PROMPT);
 	ft_putstr(COLORS_DEFAULT);
+}
+
+char	*format_heredoc_err(const char *delimiter)
+{
+	char *joined;
+	char *tmp;
+
+	joined = xstrdup(HEREDOC_ERR);
+	tmp = joined;
+	joined = xstrjoin(joined, delimiter);
+	xfree(tmp);
+	tmp = joined;
+	joined = xstrjoin(joined, "')");
+	xfree(tmp);
+	return (joined);
+}
+
+static t_bool	hd_ctrl_d_triggered(t_termarg *targ, const char *delimiter)
+{
+	char *heredoc_err_str;
+
+	if (ft_strlen(targ->buf->str) == 0)
+	{
+		ft_putc('\n');
+		heredoc_err_str = format_heredoc_err(delimiter);
+		shell_err(heredoc_err_str);
+		xfree(heredoc_err_str);
+		return (true);
+	}
+	return (false);
 }
 
 char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env, int prev_ret)
@@ -68,7 +97,7 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env, int pre
 			targ->pos = 0;
 		else if (targ->input == K_CTRL_D)
 		{
-			if (ctrl_d_triggered(targ, true))
+			if (hd_ctrl_d_triggered(targ, stripped_delimiter))
 				break ;
 		}
 		else if (targ->input == K_CTRL_L)

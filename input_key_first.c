@@ -108,21 +108,9 @@ t_bool		down_arrow_triggered(t_termarg *targ)
 	return (false);
 }
 
-t_bool	ctrl_d_triggered(t_termarg *targ, t_bool on_heredoc)
+t_bool	ctrl_d_triggered(t_termarg *targ)
 {
-	if (on_heredoc)
-	{
-		if (ft_strlen(targ->buf->str) == 0)
-		{
-			ft_putc('\n');
-			shell_err(HEREDOC_ERR);
-			return (true);
-		}
-	}
-	else
-	{
-		if (ft_strlen(targ->buf->str) == 0)
-			return (true);
-	}
+	if (ft_strlen(targ->buf->str) == 0)
+		return (true);
 	return (false);
 }

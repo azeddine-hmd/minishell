@@ -18,6 +18,7 @@
 # define MS_HEREDOC_PROMPT "> "
 # define MS_HEREDOC_COLOR COLORS_CYAN
 # define MS_BUFFER_SIZE 2048
+# define HEREDOC_ERR "warning: here-document delimited by end-of-file (wanted `"
 
 /*
  ** keys
@@ -112,7 +113,7 @@ t_bool		backspace_triggered(t_termarg *targ);
 t_bool		enter_triggered(t_termarg *targ, char ***env);
 t_bool		up_arrow_triggered(t_termarg *targ);
 t_bool		down_arrow_triggered(t_termarg *targ);
-t_bool		ctrl_d_triggered(t_termarg *targ, t_bool on_heredoc);
+t_bool		ctrl_d_triggered(t_termarg *targ);
 t_bool		ctrl_l_triggered(t_termarg *targ);
 t_bool		right_arrow_triggered(t_termarg *targ);
 t_bool		left_arrow_triggered(t_termarg *targ);

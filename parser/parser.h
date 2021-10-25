@@ -14,7 +14,6 @@
 # define PIPE "|"
 # define QUOTES "'\""
 # define FILE_PREFIX "/tmp/minishell-heredoc-"
-# define HEREDOC_ERR "warning: here-document delimited by end-of-file (wanted `$DELIMETER')"
 
 # define NO_SYNTAX_ERROR NULL
 # define PAIR_NOT_FOUND -1
