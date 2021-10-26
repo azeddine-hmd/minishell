@@ -84,6 +84,14 @@ SRC = libx.c \
 
 OBJ = ${SRC:.c=.o}
 
+UNAME := $(shell uname -s)
+ifeq ($(UNAME),Linux)
+	CFLAGS += -fcommon
+endif
+
+ifeq ($(UNAME),Darwin)
+endif
+
 all: options $(NAME)
 
 options:

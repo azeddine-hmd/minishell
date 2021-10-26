@@ -12,6 +12,14 @@ OBJ = ${SRC:.c=.o}
 
 MAKE = make -C
 
+UNAME := $(shell uname -s)
+ifeq ($(UNAME),Linux)
+	CFLAGS += -fcommon -Wno-nonnull
+endif
+
+ifeq ($(UNAME),Darwin)
+endif
+
 all: options $(NAME)
 
 options:

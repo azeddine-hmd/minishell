@@ -31,8 +31,8 @@ OBJ = ${SRC:.c=.o}
 MAKE = make --no-print-directory -C
 
 UNAME := $(shell uname -s)
-
 ifeq ($(UNAME),Linux)
+	CFLAGS += -fcommon
 	LDFLAGS += -lncurses
 endif
 
