@@ -28,7 +28,7 @@ static void	minishell_loop(t_termarg *targ, char **env)
 		else if (targ->input == K_CTRL_D)
 		{
 			if (ctrl_d_triggered(targ))
-				ft_builtin_exit(NULL, targ->cur->previous->ret);
+				ft_builtin_exit(NULL, getret(env));
 		}
 		else if (targ->input == K_CTRL_L)
 			ctrl_l_triggered(targ);
@@ -121,6 +121,5 @@ int		main(int argc, char **argv, char **env)
 	g_sign.targ = &targ;
 	ms_setup(&(targ.cap), &(targ.buf));
 	minishell_loop(&targ, p_env);
-	deallocate();
 	return (0);
 }
