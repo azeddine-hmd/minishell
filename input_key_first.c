@@ -40,21 +40,23 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 
 	cmd_lst = NULL;
 	if (has_previous(targ->cur))
-		syntax_error = parse(targ->buf->str, &cmd_lst, *env, targ->cur->previous->ret);
+		syntax_error = parse(targ->buf->str, &cmd_lst, *env);
 	else
-		syntax_error = parse(targ->buf->str, &cmd_lst, *env, EXIT_SUCCESS);
+		syntax_error = parse(targ->buf->str, &cmd_lst, *env);
+
 	heredoc_lst = get_heredoc_lst(cmd_lst);
-	// TODO: REFACTOR THIS SHIT
-	// "targ->cur->previous->ret" is redundant and too long
 	if (is_not_null(heredoc_lst))
 	{
 		if (has_previous(targ->cur))
-			heredoc_entry(targ, heredoc_lst, *env, targ->cur->previous->ret);
+			heredoc_entry(targ, heredoc_lst, *env);
 		else
-			heredoc_entry(targ, heredoc_lst, *env, EXIT_SUCCESS);
+			heredoc_entry(targ, heredoc_lst, *env);
 	}
 	if (syntax_error == NO_SYNTAX_ERROR)
-		targ->cur->ret = execute(cmd_lst, env);
+	{
+		execute(cmd_lst, env);
+		targ->cur->ret = ft_atoi(pa_getenv(*env, "?"));
+	}
 	else
 	{
 		shell_err(syntax_error);

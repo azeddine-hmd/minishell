@@ -1,6 +1,6 @@
 #include "parser.h"
 
-char	*expand(char *str, char **env, int prev_ret)
+char	*expand(char *str, char **env)
 {
 	char		*expanded;
 	t_envindx	*env_index;
@@ -10,7 +10,6 @@ char	*expand(char *str, char **env, int prev_ret)
 	t_range		*env_range;
 	char		*env_var;
 
-	(void)prev_ret;
 	str_lst = NULL;
 	quotes_range = get_quotes_range(str);
 	env_index = get_env_index(str, 0);
@@ -25,11 +24,7 @@ char	*expand(char *str, char **env, int prev_ret)
 		if (inside_quotes(quotes_range, env_range->from, env_range->to, "'"))
 			continue ;
 		ft_lstadd_back(&str_lst, ft_lstnew(xsubstr(str, 0, env_range->from)));
-		if (!ft_strcmp(env_index->name, "?"))
-			//TODO: replace ft_itoa into xitoa
-			env_var = ft_itoa(prev_ret);
-		else
-			env_var = pa_getenv(env, env_index->name);
+		env_var = pa_getenv(env, env_index->name);
 		if (is_not_null(env))
 			ft_lstadd_back(&str_lst, ft_lstnew(xstrdup(env_var)));
 		else

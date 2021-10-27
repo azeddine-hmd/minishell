@@ -38,7 +38,7 @@ static t_bool	hd_ctrl_d_triggered(t_termarg *targ, const char *delimiter)
 	return (false);
 }
 
-char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env, int prev_ret)
+char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 {
 	t_list	*lines_lst;
 	char	*fcontent;
@@ -71,7 +71,7 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env, int pre
 			{
 				ft_putc(targ->input);
 				if (expand_enabled)
-					ft_lstadd_back(&lines_lst, ft_lstnew(expand((targ->buf->str), env, prev_ret)));
+					ft_lstadd_back(&lines_lst, ft_lstnew(expand((targ->buf->str), env)));
 				else
 					ft_lstadd_back(&lines_lst, ft_lstnew(xstrdup(targ->buf->str)));
 				ms_bufrst(targ->buf);
