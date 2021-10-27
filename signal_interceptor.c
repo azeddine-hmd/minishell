@@ -13,4 +13,6 @@ void	signal_interceptor(int sig)
 			ms_prompt(g_sign.targ->cur->previous);
 		}
 	}
+	else if (sig == SIGQUIT)
+		return ;
 }
