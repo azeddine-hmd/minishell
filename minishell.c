@@ -93,6 +93,7 @@ char	**init_env(char **env)
 		if (!(p_env[i] = ft_strdup(env[i])))
 			error_msg("A memory allocation failed!\n", 2, 0);
 	}
+	p_env[i] = ft_strdup("?=0");
 	return (p_env);
 }
 
