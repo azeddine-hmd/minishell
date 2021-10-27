@@ -112,6 +112,7 @@ char			*xstrjoin_arr(const char **arglst, size_t n);
 char			*xsubstr(char const *s, unsigned int start, size_t len);
 void			*xrealloc(void *ptr, size_t old_size, size_t new_size);
 char			**xsplit(char const *s, char c);
+char			*xitoa(long n);
 void			xfree_str_array(char **str_arr);
 char			*splitat(const char *s, int index);
 

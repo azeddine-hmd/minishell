@@ -81,6 +81,7 @@ SRC = libx.c \
 	  debug_array_list.c \
 	  splitat.c \
 	  is_blank.c \
+	  xitoa.c \
 
 OBJ = ${SRC:.c=.o}
 
