@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:14:21 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/25 18:34:59 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/27 19:33:13 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,14 @@ int	main_function(t_list *cmds, char ***env)
 	return (r);
 }
 
-int	execute(t_list *cmds, char ***env)
+void	execute(t_list *cmds, char ***env)
 {
 	char	*ret;
 
 	print_all_cmds(cmds);
 	ret = ft_itoa(main_function(cmds, env));
+	g_sign.child_running = false;
 	*env = export_var("?", ret, *env);
 	free(ret);
-	return (EXIT_SUCCESS);
+	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:40:43 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/25 18:18:29 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/27 19:34:00 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <sys/types.h>
 # include "../libx/libx.h"
 # include "../parser/parser.h"
+# include "../minishell.h"
+
 typedef struct s_env
 {
 	char	*key;
@@ -63,7 +65,7 @@ int			file_dont_exist(char *file);
 t_list		*pipes(t_list *cmds, char ***env);
 int			exec_bin(char **cmd, char **env);
 int			main_function(t_list *cmds, char ***env);
-int			execute(t_list *cmds, char ***env);
+void		execute(t_list *cmds, char ***env);
 int			exec_cmd(t_cmd *cmd, char ***env);
 char		**split_path(char **env);
 int			file_error(char *s);
