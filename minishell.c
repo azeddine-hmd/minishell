@@ -28,7 +28,7 @@ static void	minishell_loop(t_termarg *targ, char **env)
 		else if (targ->input == K_CTRL_D)
 		{
 			if (ctrl_d_triggered(targ))
-				break ;
+				ft_builtin_exit(NULL, targ->cur->previous->ret);
 		}
 		else if (targ->input == K_CTRL_L)
 			ctrl_l_triggered(targ);
