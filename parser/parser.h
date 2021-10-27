@@ -101,8 +101,9 @@ void		tkindx_del(void *content);
 // cmd
 void		cmd_del(void *content);
 
-// envindx
+// env
 void		envindx_del(void *content);
 t_envindx	*get_env_index(const char *str, int start);
+int			getret(char **env);
 
 #endif

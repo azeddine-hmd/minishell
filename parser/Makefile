@@ -29,6 +29,7 @@ SRC = parse.c \
 	  pa_getenv.c \
 	  strip_quotes.c \
 	  check_valid_files.c \
+	  getret.c \
 
 OBJ = ${SRC:.c=.o}
 
