@@ -4,14 +4,13 @@ void	signal_interceptor(int sig)
 {
 	if (sig == SIGINT)
 	{
-		print_all_signal();
-		if (g_sign.heredoc_running)
+		if (g_sign.child_running)
+			return ;
+		else
 		{
-			//TODO: implmenet
-		}
-		else if (g_sign.child_running)
-		{
-			//TODO: impelement
+			ft_putc('\n');
+			ms_bufrst(g_sign.targ->buf);
+			ms_prompt(g_sign.targ->cur->previous);
 		}
 	}
 }

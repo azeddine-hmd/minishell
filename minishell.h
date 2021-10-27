@@ -87,9 +87,8 @@ typedef struct s_termarg
 
 typedef struct s_sign
 {
-	t_bool		heredoc_running;
-	t_bool		child_running;
 	t_termarg	*targ;
+	t_bool		child_running;
 }t_sign;
 
 // debugging
@@ -110,7 +109,7 @@ void		ms_bufrpc(t_buf *buf, const char *s);
 
 // termcap
 void		ms_setup(t_cap **cap, t_buf **a_buf);
-void		ms_prompt(int ret);
+void		ms_prompt(t_hist *hist);
 void		ms_chrdel(t_cap *cap);
 void		ms_lndel(t_cap *cap, size_t n);
 

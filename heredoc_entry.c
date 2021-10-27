@@ -14,9 +14,7 @@ void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env, int prev_re
 	while (hd_iterator)
 	{
 		hd_token = (t_token*)hd_iterator->content;
-		g_sign.heredoc_running = true;
 		fcontent = heredoc_loop(targ, hd_token->value, env, prev_ret);
-		g_sign.heredoc_running = false;
 		ft_lstadd_back(&fcontent_lst, ft_lstnew(fcontent));
 		hd_iterator = hd_iterator->next;
 	}

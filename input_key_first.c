@@ -25,10 +25,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	ft_putc(targ->input);
 	if (ft_strlen(targ->buf->str) == 0)
 	{
-		if (has_previous(targ->cur))
-			ms_prompt(targ->cur->previous->ret);
-		else
-			ms_prompt(EXIT_SUCCESS);
+		ms_prompt(targ->cur->previous);
 		return (false);
 	}
 	targ->cur = get_last_history(targ->head);
@@ -67,7 +64,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 	add_history(&(targ->head), targ->cur);
 	ms_bufrst(targ->buf);
-	ms_prompt(targ->cur->previous->ret);
+	ms_prompt(targ->cur->previous);
 	return (false);
 }
 

@@ -116,7 +116,6 @@ int		main(int argc, char **argv, char **env)
 	signal(SIGINT, signal_interceptor);
 	p_env = init_env(env);
 	ft_bzero(&targ, sizeof(t_termarg));
-	g_sign.heredoc_running = false;
 	g_sign.child_running = false;
 	g_sign.targ = &targ;
 	ms_setup(&(targ.cap), &(targ.buf));

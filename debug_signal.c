@@ -3,10 +3,6 @@
 void print_all_signal(void)
 {
 #ifdef DEBUG
-	if (g_sign.heredoc_running == false)
-		fprintf(ms_signallog, "heredoc_running: false\n");
-	else
-		fprintf(ms_signallog, "heredoc_running: true\n");
 	if (g_sign.child_running == false)
 		fprintf(ms_signallog, "child_running: false\n");
 	else

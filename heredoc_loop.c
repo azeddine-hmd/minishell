@@ -24,14 +24,15 @@ char	*format_heredoc_err(const char *delimiter)
 
 static t_bool	hd_ctrl_d_triggered(t_termarg *targ, const char *delimiter)
 {
-	char *heredoc_err_str;
+	//char *heredoc_err_str;
 
+	(void)delimiter;
 	if (ft_strlen(targ->buf->str) == 0)
 	{
 		ft_putc('\n');
-		heredoc_err_str = format_heredoc_err(delimiter);
-		shell_err(heredoc_err_str);
-		xfree(heredoc_err_str);
+		//heredoc_err_str = format_heredoc_err(delimiter);
+		//shell_err(heredoc_err_str);
+		//xfree(heredoc_err_str);
 		return (true);
 	}
 	return (false);
