@@ -114,6 +114,7 @@ int		main(int argc, char **argv, char **env)
 		return (EXIT_FAILURE);
 	}
 	signal(SIGINT, signal_interceptor);
+	signal(SIGQUIT, signal_interceptor);
 	p_env = init_env(env);
 	ft_bzero(&targ, sizeof(t_termarg));
 	g_sign.child_running = false;
