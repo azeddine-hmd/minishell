@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:47:15 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/27 20:38:53 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/27 21:26:02 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	exit_many(void)
 int	ft_builtin_exit(char **cmd, int ret)
 {
 	write(1, "exit\n", 5);
-	if (!cmd)
+	if (cmd)
 	{
 		if (length(cmd) == 2)
 		{
