@@ -17,7 +17,7 @@ void	bad_exit(char *str)
 	write(2, "minishell: exit: ", 17);
 	write(2, str, ft_strlen(str));
 	write(2, ": numeric argument required\n", 28);
-	exit(255);
+	shell_exit(255);
 }
 
 int	exit_many(void)
@@ -34,7 +34,7 @@ int	ft_builtin_exit(char **cmd, int ret)
 		if (!is_str_digit(cmd[1]))
 			bad_exit(cmd[1]);
 		else
-			exit((unsigned char)ft_atoi(cmd[1]));
+			shell_exit((unsigned char)ft_atoi(cmd[1]));
 	}
 	else if (length(cmd) > 2)
 	{
@@ -44,6 +44,6 @@ int	ft_builtin_exit(char **cmd, int ret)
 			return (exit_many());
 	}
 	deallocate();
-	exit((unsigned char)ret);
+	shell_exit((unsigned char)ret);
 	return (0);
 }

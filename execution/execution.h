@@ -74,4 +74,5 @@ int			exec_path(char **cmd, char **env);
 int			execute_p(char *p, char **cmd, char **env);
 int			cmd_nfound(char *str);
 int			exec_builtin(char **cmd, char ***env, int ret);
+void		shell_exit(int ret);
 #endif

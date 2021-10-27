@@ -62,7 +62,7 @@ t_list	*pipes(t_list *cmds, char ***env)
 			close(fds[1]);
 			close(fds[0]);
 			close(input);
-			exit(exec_cmd(cmd, env));
+			shell_exit(exec_cmd(cmd, env));
 		}
 		input = close_all(input, fds[0], fds[1], cmds);
 		if (!cmds->next || !((t_cmd *)cmds->next->content)->is_piped)
