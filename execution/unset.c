@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:58:45 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 17:58:37 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 20:58:33 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_builtin_unset(char **args, char ***env)
 	while (args[++i])
 	{
 		index = find_env(args[i], *env);
-		if (env[index])
+		if (env[0][index])
 			*env = delete_env(index, *env);
 	}
 	return (0);
