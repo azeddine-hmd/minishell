@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:50:27 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 18:06:08 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 19:22:09 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	ft_builtin_env(char **env)
 {
 	int			i;
 
-	i = -1;
-	while (++i < length(env) - 1)
+	i = 0;
+	while (++i < length(env))
 	{
 		write(1, env[i], ft_strlen(env[i]));
 		write(1, "\n", 1);
