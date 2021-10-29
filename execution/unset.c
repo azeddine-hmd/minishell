@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:58:45 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 17:11:23 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:58:37 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ char	**delete_env(int index, char **env)
 	int		i;
 	int		j;
 
-	free(env[index]);
+	xfree(env[index]);
 	env[index] = NULL;
 	i = index;
 	j = index + 1;
 	while (env[i + 1])
 	{
-		env[i] = ft_strdup(env[i + 1]);
-		free(env[i + 1]);
+		env[i] = xstrdup(env[i + 1]);
+		xfree(env[i + 1]);
 		i++;
 		j++;
 	}

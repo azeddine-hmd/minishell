@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:14:21 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 17:13:35 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 18:07:49 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	exec_bin(char **cmd, char **env)
 		if (!ret || ret != 127)
 			break ;
 	}
-	ft_freestrarr(path);
+	xfree_str_array(path);
 	return (ret);
 }
 
@@ -119,9 +119,9 @@ void	execute(t_list *cmds, char ***env)
 	char	*ret;
 
 	print_all_cmds(cmds);
-	ret = ft_itoa(main_function(cmds, env));
+	ret = xitoa(main_function(cmds, env));
 	g_sign.child_running = false;
 	*env = export_var("?", ret, *env);
-	free(ret);
+	xfree(ret);
 	return ;
 }

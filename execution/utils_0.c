@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 16:08:59 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/24 17:56:52 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 18:07:09 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ char	**split_path(char **env)
 	char	*tmp;
 	char	**path;
 
-	tmp = ft_substr(find_strenv("PATH", env), 5,
+	tmp = xsubstr(find_strenv("PATH", env), 5,
 			ft_strlen(find_strenv("PATH", env)));
-	path = ft_split(tmp, ':');
-	free(tmp);
+	path = xsplit(tmp, ':');
+	xfree(tmp);
 	return (path);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 16:13:22 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/24 17:28:18 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 18:09:59 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ char	*ft_strjoincl(char *s1, char *s2, int free_both)
 {
 	char	*new;
 
-	new = ft_strjoin(s1, s2);
+	new = xstrjoin(s1, s2);
 	if (!new)
 		return (NULL);
-	free(s1);
+	xfree(s1);
 	s1 = NULL;
 	if (free_both)
 	{
-		free(s2);
+		xfree(s2);
 		s2 = NULL;
 	}
 	return (new);
@@ -52,10 +52,10 @@ char	**realloc_env(int size, char **envv)
 	i = -1;
 	while (envv[++i] && i < size)
 	{
-		env[i] = ft_strdup(envv[i]);
-		free(envv[i]);
+		env[i] = xstrdup(envv[i]);
+		xfree(envv[i]);
 	}
-	free(envv);
+	xfree(envv);
 	return (env);
 }
 
@@ -68,19 +68,19 @@ char	*ft_pathjoin(char *s1, char *s2)
 	if (!ft_strendw(s1, "/"))
 	{
 		if (s2[0] == '/')
-			return (ft_strjoin(s1, s2));
+			return (xstrjoin(s1, s2));
 		else
 		{
-			tmp = ft_strjoincl(ft_strjoin(s1, "/"), s2, 0);
+			tmp = ft_strjoincl(xstrjoin(s1, "/"), s2, 0);
 			return (tmp);
 		}
 	}
 	else
 	{
 		if (s2[0] == '/')
-			return (ft_strjoin(s1, s2 + 1));
+			return (xstrjoin(s1, s2 + 1));
 		else
-			return (ft_strjoin(s1, s2));
+			return (xstrjoin(s1, s2));
 	}
 }
 
