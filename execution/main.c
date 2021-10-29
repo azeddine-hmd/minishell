@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:48:34 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/27 21:10:34 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 16:39:39 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ int	cmd_nfound(char *str)
 	return (127);
 }
 
-int	exec_builtin(char **cmd, char ***env, int ret)
+int	exec_builtin(char **cmd, char ***env)
 {
+	char	*tmp;
+
+	tmp = ft_substr(find_strenv("?", *env), 2,
+			ft_strlen(find_strenv("?", *env)));
 	if (!ft_strcmp(cmd[0], "echo"))
 		return (ft_builtin_echo(cmd));
 	else if (!ft_strcmp(cmd[0], "cd"))
@@ -35,7 +39,8 @@ int	exec_builtin(char **cmd, char ***env, int ret)
 	else if (!ft_strcmp(cmd[0], "env"))
 		return (ft_builtin_env(*env));
 	else if (!ft_strcmp(cmd[0], "exit"))
-		return (ft_builtin_exit(cmd, ret));
+		return (ft_builtin_exit(cmd, ft_atoi(tmp)));
+	free(tmp);
 	return (2);
 }
 

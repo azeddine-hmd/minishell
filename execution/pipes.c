@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:16:10 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/27 19:32:25 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:13:23 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ t_list	*pipes(t_list *cmds, char ***env)
 	int		pid;
 	int		input;
 
-	g_sign.child_running = true;
 	while (cmds)
 	{
 		cmd = (t_cmd *)cmds->content;

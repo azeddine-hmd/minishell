@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:14:21 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/27 19:33:13 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:13:35 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	exec_bin(char **cmd, char **env)
 
 	i = -1;
 	ret = 0;
+	g_sign.child_running = true;
 	if (cmd[0][0] == '.' || cmd[0][0] == '/')
 		return (exec_path(cmd, env));
 	path = split_path(env);
@@ -44,10 +45,10 @@ int	check_cmd(t_cmd *cmd, char ***env)
 		return (0);
 	if (cmd->args[0][0] != '\0')
 	{
-		ret = exec_builtin(cmd->args, env, cmd->ret);
+		ret = exec_builtin(cmd->args, env);
 		if (ret != 2)
 			return (ret);
-		if (!find_strenv("PATH", *env)[0])
+		if (!find_strenv("PATH", *env))
 			ret = 2;
 		else
 		{
