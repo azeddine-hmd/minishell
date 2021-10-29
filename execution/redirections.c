@@ -5,20 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 14:18:42 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 18:57:50 by hboudhir         ###   ########.fr       */
+/*   Created: 2021/10/29 21:12:47 by hboudhir          #+#    #+#             */
+/*   Updated: 2021/10/29 21:12:52 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
-
-void	ft_create_file(char *file, char *type)
-{
-	if (!ft_strcmp(type, ">"))
-		close(open(file, O_RDWR | O_CREAT | O_TRUNC, 0666));
-	else if (!ft_strcmp(type, ">>"))
-		close(open(file, O_RDWR | O_CREAT | O_APPEND, 0666));
-}
 
 int	file_dont_exist(char *file)
 {

@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:40:43 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 16:39:55 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 21:10:47 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ int			execute_p(char *p, char **cmd, char **env);
 int			cmd_nfound(char *str);
 int			exec_builtin(char **cmd, char ***env);
 void		shell_exit(int ret);
+void		ft_create_file(char *file, char *type);
 #endif
