@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:18:42 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 17:41:05 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 18:57:50 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ int	file_dont_exist(char *file)
 	write(2, file, ft_strlen(file));
 	write(2, ": No such file or directory\n", 28);
 	return (1);
+}
+
+t_token	*out_token(t_list *tmp_out)
+{
+	t_token	*tmp;
+	t_token	*files;
+
+	while (tmp_out)
+	{
+		tmp = tmp_out->content;
+		ft_create_file(tmp->value, tmp->type);
+		if (!ft_strcmp(tmp->type, ">") || !ft_strcmp(tmp->type, ">>"))
+			files = tmp;
+		tmp_out = tmp_out->next;
+	}
+	return (files);
 }
 
 t_token	**check_files(int *ret, t_cmd *cmd)
@@ -51,14 +67,7 @@ t_token	**check_files(int *ret, t_cmd *cmd)
 		files[1] = tmp;
 		tmp_in = tmp_in->next;
 	}
-	while (tmp_out)
-	{
-		tmp = tmp_out->content;
-		ft_create_file(tmp->value, tmp->type);
-		if (!ft_strcmp(tmp->type, ">") || !ft_strcmp(tmp->type, ">>"))
-			files[0] = tmp;
-		tmp_out = tmp_out->next;
-	}
+	files[0] = out_token(tmp_out);
 	return (files);
 }
 
