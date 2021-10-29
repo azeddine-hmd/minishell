@@ -6,13 +6,13 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:58:45 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/24 17:40:25 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:11:23 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-char	**delete_env(int	index, char **env)
+char	**delete_env(int index, char **env)
 {
 	int		i;
 	int		j;
