@@ -88,13 +88,16 @@ void	separate_tokens(t_list **cmdln_lst)
 		if (have_token(str))
 		{
 			tokens_range = get_tokens_range(str);
-			separate(&new_lst, str, tokens_range);
-			ft_lstclear(&tokens_range, range_del);
-			replace.head = cmdln_lst;
-			replace.target = iterator;
-			replace.new_lst = new_lst;
-			iterator = iterator->next;
-			replace_node_intolist(&replace, str_del);
+			if (is_not_null(tokens_range))
+			{
+				separate(&new_lst, str, tokens_range);
+				ft_lstclear(&tokens_range, range_del);
+				replace.head = cmdln_lst;
+				replace.target = iterator;
+				replace.new_lst = new_lst;
+				iterator = iterator->next;
+				replace_node_intolist(&replace, str_del);
+			}
 			continue ;
 		}
 		iterator = iterator->next;

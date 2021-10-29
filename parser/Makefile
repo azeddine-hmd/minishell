@@ -30,6 +30,7 @@ SRC = parse.c \
 	  strip_quotes.c \
 	  check_valid_files.c \
 	  getret.c \
+	  strip_side_quotes.c \
 
 OBJ = ${SRC:.c=.o}
 

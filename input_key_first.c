@@ -52,6 +52,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 		else
 			heredoc_entry(targ, heredoc_lst, *env);
 	}
+	strip_side_quotes(cmd_lst);
 	if (syntax_error == NO_SYNTAX_ERROR)
 	{
 		execute(cmd_lst, env);
