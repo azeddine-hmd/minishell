@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:16:10 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 17:13:23 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 18:36:19 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ int	dup_fd(t_list *cmds, int fds[2], int input)
 	return (0);
 }
 
+void	pipe_helper(t_list *cmds, int fds[2], int input, char ***env)
+{
+	t_cmd	*cmd;
+
+	cmd = (t_cmd *)cmds->content;
+	dup_fd(cmds, fds, input);
+	close(fds[1]);
+	close(fds[0]);
+	close(input);
+	shell_exit(exec_cmd(cmd, env));
+}
+
 t_list	*pipes(t_list *cmds, char ***env)
 {
 	t_cmd	*cmd;
@@ -56,13 +68,7 @@ t_list	*pipes(t_list *cmds, char ***env)
 		pipe(fds);
 		pid = fork();
 		if (!pid)
-		{
-			dup_fd(cmds, fds, input);
-			close(fds[1]);
-			close(fds[0]);
-			close(input);
-			shell_exit(exec_cmd(cmd, env));
-		}
+			pipe_helper(cmds, fds, input, env);
 		input = close_all(input, fds[0], fds[1], cmds);
 		if (!cmds->next || !((t_cmd *)cmds->next->content)->is_piped)
 			break ;
