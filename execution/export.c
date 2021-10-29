@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 18:02:41 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 19:32:19 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ int	ft_builtin_export(char **args, char ***env)
 	if (ret == 69)
 		return (0);
 	else if (ret)
-		return (1);
+		return (0);
 	return (0);
 }
