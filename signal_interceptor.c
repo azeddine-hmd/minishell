@@ -16,13 +16,15 @@ void	signal_interceptor(int sig)
 		{
 			g_sign.stop_heredoc = true;
 			ft_putc('\n');
-			ms_prompt(targ->cur->previous);
+			export_var("?", "1", g_sign.env);
+			ms_prompt(getret(g_sign.env));
 		}
 		else
 		{
 			ft_putc('\n');
 			ms_bufrst(targ->buf);
-			ms_prompt(targ->cur->previous);
+			export_var("?", "1", g_sign.env);
+			ms_prompt(getret(g_sign.env));
 		}
 	}
 	else if (sig == SIGQUIT)

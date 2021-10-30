@@ -2,7 +2,9 @@
 
 static void	minishell_loop(t_termarg *targ, char **env)
 {
-	ms_prompt(EXIT_SUCCESS);
+	t_bool newline_after_heredoc;
+
+	ms_prompt(getret(env));
 	targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 	add_history(&(targ->head), targ->cur);
 	while (read(STDIN_FILENO, &(targ->input), 1) == 1)
@@ -10,7 +12,11 @@ static void	minishell_loop(t_termarg *targ, char **env)
 		if (targ->input == K_BS)
 			backspace_triggered(targ);
 		else if (targ->input == K_ENTER)
-			enter_triggered(targ, &env);
+		{
+			newline_after_heredoc = enter_triggered(targ, &env);
+			while (newline_after_heredoc)
+				newline_after_heredoc = enter_triggered(targ, &env);
+		}
 		else if (targ->input == K_ESC)
 			targ->pos++;
 		else if (targ->pos == 1 && targ->input == K_OSB)
@@ -31,7 +37,7 @@ static void	minishell_loop(t_termarg *targ, char **env)
 				ft_builtin_exit(NULL, getret(env));
 		}
 		else if (targ->input == K_CTRL_L)
-			ctrl_l_triggered(targ);
+			ctrl_l_triggered(targ, env);
 		else if (
 				targ->input == K_CTRL_I ||
 				targ->input == K_CTRL_H ||
@@ -120,7 +126,9 @@ int		main(int argc, char **argv, char **env)
 	ft_bzero(&targ, sizeof(t_termarg));
 	g_sign.child_running = false;
 	g_sign.targ = &targ;
+	g_sign.env = p_env;
 	ms_setup(&(targ.cap), &(targ.buf));
 	minishell_loop(&targ, p_env);
+	shell_exit(getret(p_env));
 	return (0);
 }

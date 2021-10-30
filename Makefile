@@ -40,7 +40,7 @@ ifeq ($(UNAME),Darwin)
 	LDFLAGS += -ltermcap
 endif
 
-all: options $(NAME)
+all: $(NAME) options
 
 options:
 	@echo ${NAME} build options:

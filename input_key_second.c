@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-t_bool	ctrl_l_triggered(t_termarg *targ)
+t_bool	ctrl_l_triggered(t_termarg *targ, char **env)
 {
 	char	*saved_buf_str;
 
@@ -8,7 +8,7 @@ t_bool	ctrl_l_triggered(t_termarg *targ)
 	system("clear");
 	saved_buf_str = xstrdup(targ->buf->str);
 	ms_bufrst(targ->buf);
-	ms_prompt(targ->cur->previous);
+	ms_prompt(getret(env));
 	ms_bufrpc(targ->buf, saved_buf_str);
 	ft_putstr(targ->buf->str);
 	xfree(saved_buf_str);

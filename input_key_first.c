@@ -25,7 +25,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	ft_putc(targ->input);
 	if (ft_strlen(targ->buf->str) == 0)
 	{
-		ms_prompt(targ->cur->previous);
+		ms_prompt(getret(*env));
 		return (false);
 	}
 	targ->cur = get_last_history(targ->head);
@@ -58,14 +58,16 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	{
 		g_sign.stop_heredoc = false;
 		ft_lstclear(&cmd_lst, cmd_del);
-		ft_putc(targ->input);
-		export_var("?", "1", *env);
+		targ->pos = 0;
+		if (targ->input != '\n')
+			ft_putc(targ->input);
 		targ->cur->ret = 1;
 		targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
+		add_history(&(targ->head), targ->cur);
 		ms_bufrst(targ->buf);
-		ms_bufadd(targ->buf, targ->input);
-		targ->pos = 0;
-		return (false);
+		if (targ->input != '\n')
+			ms_bufadd(targ->buf, targ->input);
+		return (true);
 	}
 	strip_side_quotes(cmd_lst);
 	if (syntax_error == NO_SYNTAX_ERROR)
@@ -82,7 +84,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 	add_history(&(targ->head), targ->cur);
 	ms_bufrst(targ->buf);
-	ms_prompt(targ->cur->previous);
+	ms_prompt(getret(*env));
 	return (false);
 }
 

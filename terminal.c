@@ -4,9 +4,9 @@
 ** formating and printing login prompt
 */
 
-void		ms_prompt(t_hist *hist)
+void		ms_prompt(int ret)
 {
-	if (is_null(hist) || hist->ret == EXIT_SUCCESS)
+	if (ret == EXIT_SUCCESS)
 		ft_putstr(MS_PROMPT_COLOR);
 	else
 		ft_putstr(MS_PROMPT_ERROR_COLOR);
