@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 19:06:29 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/24 17:30:53 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:47:00 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	home_run(char ***env)
 		path = getcwd(NULL, 1024);
 	if (chdir(path) == -1)
 		return (path_error(path));
-	tmp = ft_substr(find_strenv("PWD", *env), 4,
+	tmp = xsubstr(find_strenv("PWD", *env), 4,
 			ft_strlen(find_strenv("PWD", *env)));
 	*env = export_var("OLDPWD", tmp, *env);
-	free(tmp);
+	xfree(tmp);
 	*env = export_var("PWD", path, *env);
 	free(path);
 	return (0);
@@ -66,11 +66,11 @@ int	ft_builtin_cd(char **args, char ***env)
 		return (path_error(path));
 	free(path);
 	path = getcwd(NULL, 0);
-	tmp = ft_substr(find_strenv("PWD", *env), 4,
+	tmp = xsubstr(find_strenv("PWD", *env), 4,
 			ft_strlen(find_strenv("PWD", *env)));
 	*env = export_var("OLDPWD", tmp, *env);
 	*env = export_var("PWD", path, *env);
 	free(path);
-	free(tmp);
+	xfree(tmp);
 	return (0);
 }

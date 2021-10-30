@@ -75,7 +75,7 @@ void		*safe_malloc(size_t size)  // equal to ft_memalloc() | To modify later
 {
 	void	*ptr;
 
-	if (!(ptr = malloc(size + 1)))
+	if (!(ptr = xmalloc(size + 1)))
 		return (NULL);
 	ft_bzero(ptr, size + 1);
 	return (ptr);
@@ -93,13 +93,13 @@ char	**init_env(char **env)
 	char	**p_env;
 
 	p_env = (char**)safe_malloc(sizeof(char *) * (env_len(env) + 1));
-	i = -1;
+	i = 0;
+	p_env[i] = xstrdup("?=0");
 	while (env[++i])
 	{
-		if (!(p_env[i] = ft_strdup(env[i])))
+		if (!(p_env[i] = xstrdup(env[i])))
 			error_msg("A memory allocation failed!\n", 2, 0);
 	}
-	p_env[i] = ft_strdup("?=0");
 	return (p_env);
 }
 

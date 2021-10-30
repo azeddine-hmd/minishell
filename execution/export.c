@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/24 17:21:10 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/10/29 19:32:19 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ char	**export_var(char *var, char *str, char **env)
 	char	*tmp;
 
 	index = find_env(var, env);
-	tmp = ft_strjoin("=", str);
+	tmp = xstrjoin("=", str);
 	if (env[index])
 	{
-		free(env[index]);
+		xfree(env[index]);
 		if (str)
-			env[index] = ft_strjoin(var, tmp);
+			env[index] = xstrjoin(var, tmp);
 		else
-			env[index] = ft_strjoin(var, "=");
+			env[index] = xstrjoin(var, "=");
 	}
 	else
 	{
 		env = realloc_env(index + 1, env);
 		if (str)
-			env[index] = ft_strjoin(var, tmp);
+			env[index] = xstrjoin(var, tmp);
 		else
-			env[index] = ft_strjoin(var, "=");
+			env[index] = xstrjoin(var, "=");
 	}
-	free(tmp);
+	xfree(tmp);
 	return (env);
 }
 
@@ -46,9 +46,9 @@ int	ft_bad_value(char *s1, char *s2)
 	else
 		printf("minishell: export: `%s=%s': not a valid identifier\n", \
 		s1, s2);
-	free(s1);
+	xfree(s1);
 	if (s2)
-		free(s2);
+		xfree(s2);
 	return (1);
 }
 
@@ -74,14 +74,14 @@ int	extract_data(char *str, char **key, char **value)
 		j++;
 	if (j == (int)ft_strlen(str))
 		return (69);
-	*key = ft_substr(str, 0, j);
+	*key = xsubstr(str, 0, j);
 	if (!*key)
-		return (ft_bad_value(ft_strdup(str), NULL));
+		return (ft_bad_value(xstrdup(str), NULL));
 	if (str[j] == '=')
 	{
-		*value = ft_substr(str, j + 1, ft_strlen(str) - 1);
+		*value = xsubstr(str, j + 1, ft_strlen(str) - 1);
 		if (!*value)
-			*value = ft_strdup("");
+			*value = xstrdup("");
 	}
 	else
 		*value = NULL;
@@ -109,12 +109,12 @@ int	ft_builtin_export(char **args, char ***env)
 			continue ;
 		}
 		*env = export_var(key, value, *env);
-		free(key);
-		free(value);
+		xfree(key);
+		xfree(value);
 	}
 	if (ret == 69)
 		return (0);
 	else if (ret)
-		return (1);
+		return (0);
 	return (0);
 }

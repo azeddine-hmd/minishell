@@ -27,6 +27,9 @@ void	signal_interceptor(int sig)
 			ms_prompt(getret(g_sign.env));
 		}
 	}
-	else if (sig == SIGQUIT)
+	else if (sig == SIGQUIT && g_sign.child_running)
+	{
+		write(1, "Quit: 3\n", 8);
 		return ;
+	}
 }
