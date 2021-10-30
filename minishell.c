@@ -2,20 +2,19 @@
 
 static void	minishell_loop(t_termarg *targ, char **env)
 {
-	t_bool newline_after_heredoc;
+	t_bool skip;
 
 	ms_prompt(getret(env));
 	targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 	add_history(&(targ->head), targ->cur);
-	while (read(STDIN_FILENO, &(targ->input), 1) == 1)
+	skip = false;
+	while (skip || read(STDIN_FILENO, &(targ->input), 1) == 1)
 	{
 		if (targ->input == K_BS)
 			backspace_triggered(targ);
 		else if (targ->input == K_ENTER)
 		{
-			newline_after_heredoc = enter_triggered(targ, &env);
-			while (newline_after_heredoc)
-				newline_after_heredoc = enter_triggered(targ, &env);
+			skip = enter_triggered(targ, &env);
 		}
 		else if (targ->input == K_ESC)
 			targ->pos++;

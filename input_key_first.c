@@ -59,14 +59,10 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 		g_sign.stop_heredoc = false;
 		ft_lstclear(&cmd_lst, cmd_del);
 		targ->pos = 0;
-		if (targ->input != '\n')
-			ft_putc(targ->input);
 		targ->cur->ret = 1;
 		targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 		add_history(&(targ->head), targ->cur);
 		ms_bufrst(targ->buf);
-		if (targ->input != '\n')
-			ms_bufadd(targ->buf, targ->input);
 		return (true);
 	}
 	strip_side_quotes(cmd_lst);
