@@ -2,9 +2,11 @@
 
 void	signal_interceptor(int sig)
 {
-	t_termarg *targ;
+	t_termarg	*targ;
+	char		**env;
 
 	targ = g_sign.targ;
+	env = *g_sign.env;
 	if (sig == SIGINT)
 	{
 		print_all_signal();
@@ -16,15 +18,15 @@ void	signal_interceptor(int sig)
 		{
 			g_sign.stop_heredoc = true;
 			ft_putc('\n');
-			export_var("?", "1", g_sign.env);
-			ms_prompt(getret(g_sign.env));
+			export_var("?", "1", env);
+			ms_prompt(getret(env));
 		}
 		else
 		{
 			ft_putc('\n');
 			ms_bufrst(targ->buf);
-			export_var("?", "1", g_sign.env);
-			ms_prompt(getret(g_sign.env));
+			export_var("?", "1", env);
+			ms_prompt(getret(env));
 		}
 	}
 	else if (sig == SIGQUIT && g_sign.child_running)

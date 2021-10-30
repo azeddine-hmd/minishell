@@ -4,6 +4,7 @@ static void	minishell_loop(t_termarg *targ, char **env)
 {
 	t_bool skip;
 
+	g_sign.env = &env;
 	ms_prompt(getret(env));
 	targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 	add_history(&(targ->head), targ->cur);
@@ -125,7 +126,6 @@ int		main(int argc, char **argv, char **env)
 	ft_bzero(&targ, sizeof(t_termarg));
 	g_sign.child_running = false;
 	g_sign.targ = &targ;
-	g_sign.env = p_env;
 	ms_setup(&(targ.cap), &(targ.buf));
 	minishell_loop(&targ, p_env);
 	shell_exit(getret(p_env));
