@@ -47,10 +47,25 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	heredoc_lst = get_heredoc_lst(cmd_lst);
 	if (is_not_null(heredoc_lst))
 	{
+		g_sign.heredoc_running = true;
 		if (has_previous(targ->cur))
 			heredoc_entry(targ, heredoc_lst, *env);
 		else
 			heredoc_entry(targ, heredoc_lst, *env);
+		g_sign.heredoc_running = false;
+	}
+	if (g_sign.stop_heredoc)
+	{
+		g_sign.stop_heredoc = false;
+		ft_lstclear(&cmd_lst, cmd_del);
+		ft_putc(targ->input);
+		export_var("?", "1", *env);
+		targ->cur->ret = 1;
+		targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
+		ms_bufrst(targ->buf);
+		ms_bufadd(targ->buf, targ->input);
+		targ->pos = 0;
+		return (false);
 	}
 	strip_side_quotes(cmd_lst);
 	if (syntax_error == NO_SYNTAX_ERROR)

@@ -88,7 +88,10 @@ typedef struct s_termarg
 typedef struct s_sign
 {
 	t_termarg	*targ;
+	char		***env;
 	t_bool		child_running;
+	t_bool		stop_heredoc;
+	t_bool		heredoc_running;
 }t_sign;
 
 // debugging

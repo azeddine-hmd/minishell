@@ -31,8 +31,11 @@ static void	strip_token_lst(t_list *token_lst)
 	{
 		token = (t_token*)token_lst->content;
 		stripped = strip(token->value);
-		xfree(token->value);
-		token->value = stripped;
+		if (is_not_null(stripped))
+		{
+			xfree(token->value);
+			token->value = stripped;
+		}
 		token_lst = token_lst->next;
 	}
 }

@@ -97,8 +97,8 @@ void	separate_tokens(t_list **cmdln_lst)
 				replace.new_lst = new_lst;
 				iterator = iterator->next;
 				replace_node_intolist(&replace, str_del);
+				continue ;
 			}
-			continue ;
 		}
 		iterator = iterator->next;
 	}

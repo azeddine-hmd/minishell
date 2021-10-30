@@ -22,17 +22,11 @@ char	*format_heredoc_err(const char *delimiter)
 	return (joined);
 }
 
-static t_bool	hd_ctrl_d_triggered(t_termarg *targ, const char *delimiter)
+static t_bool	hd_ctrl_d_triggered(t_termarg *targ)
 {
-	//char *heredoc_err_str;
-
-	(void)delimiter;
 	if (ft_strlen(targ->buf->str) == 0)
 	{
 		ft_putc('\n');
-		//heredoc_err_str = format_heredoc_err(delimiter);
-		//shell_err(heredoc_err_str);
-		//xfree(heredoc_err_str);
 		return (true);
 	}
 	return (false);
@@ -57,6 +51,8 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 		expand_enabled = true;
 	while (read(STDIN_FILENO, &(targ->input), 1) == 1)
 	{
+		if (g_sign.stop_heredoc)
+			break ;
 		if (targ->input == K_BS)
 			backspace_triggered(targ);
 		else if (targ->input == K_ENTER)
@@ -98,7 +94,7 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 			targ->pos = 0;
 		else if (targ->input == K_CTRL_D)
 		{
-			if (hd_ctrl_d_triggered(targ, stripped_delimiter))
+			if (hd_ctrl_d_triggered(targ))
 				break ;
 		}
 		else if (targ->input == K_CTRL_L)

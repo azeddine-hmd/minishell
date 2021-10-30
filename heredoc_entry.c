@@ -16,6 +16,12 @@ void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env)
 		hd_token = (t_token*)hd_iterator->content;
 		fcontent = heredoc_loop(targ, hd_token->value, env);
 		ft_lstadd_back(&fcontent_lst, ft_lstnew(fcontent));
+		if (g_sign.stop_heredoc)
+		{
+			if (is_not_null(fcontent_lst))
+				ft_lstclear(&fcontent_lst, str_del);
+			return ;
+		}
 		hd_iterator = hd_iterator->next;
 	}
 
