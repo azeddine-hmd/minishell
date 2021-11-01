@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 19:32:19 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/01 07:58:01 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ int	extract_data(char *str, char **key, char **value)
 	j = 0;
 	while (str[j] && str[j] != '=')
 		j++;
-	if (j == (int)ft_strlen(str))
-		return (69);
 	*key = xsubstr(str, 0, j);
 	if (!*key)
 		return (ft_bad_value(xstrdup(str), NULL));
@@ -90,6 +88,28 @@ int	extract_data(char *str, char **key, char **value)
 	return (0);
 }
 
+int	ft_outputenv(char **env)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	while (env[++i])
+	{
+		j = -1;
+		ft_putstr("declare -x ");
+		while (env[i][++j] != '=')
+			write(1, &env[i][j], 1);
+		write(1, &env[i][j], 1);
+		write(1, "\"", 1);
+		while(env[i][++j])
+			write(1, &env[i][j], 1);
+		write(1, "\"", 1);
+		write(1, "\n", 1);
+	}
+	return (0);
+}
+
 int	ft_builtin_export(char **args, char ***env)
 {
 	int		i;
@@ -100,7 +120,7 @@ int	ft_builtin_export(char **args, char ***env)
 	ret = 0;
 	i = -1;
 	if (!args[0])
-		return (ft_builtin_env(*env));
+		return (ft_outputenv(*env));
 	while (args[++i])
 	{
 		if (extract_data(args[i], &key, &value))
@@ -112,9 +132,7 @@ int	ft_builtin_export(char **args, char ***env)
 		xfree(key);
 		xfree(value);
 	}
-	if (ret == 69)
-		return (0);
-	else if (ret)
+	if (ret)
 		return (0);
 	return (0);
 }
