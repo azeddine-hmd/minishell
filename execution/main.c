@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:48:34 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 17:59:37 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/02 18:10:01 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	exec_builtin(char **cmd, char ***env)
 	else if (!ft_strcmp(cmd[0], "cd"))
 		return (ft_builtin_cd(cmd + 1, env));
 	else if (!ft_strcmp(cmd[0], "pwd"))
-		return (ft_builtin_pwd());
+		return (ft_builtin_pwd(*env));
 	else if (!ft_strcmp(cmd[0], "export"))
 		return (ft_builtin_export(cmd + 1, env));
 	else if (!ft_strcmp(cmd[0], "unset"))
