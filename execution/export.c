@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/01 07:58:01 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/11/02 16:29:11 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	extract_data(char *str, char **key, char **value)
 	}
 	else
 		*value = NULL;
+	*value = strip_quotes(*value);
 	if (!ft_isvalid(*key))
 		return (ft_bad_value(*key, *value));
 	return (0);
@@ -100,6 +101,11 @@ int	ft_outputenv(char **env)
 		ft_putstr("declare -x ");
 		while (env[i][++j] != '=')
 			write(1, &env[i][j], 1);
+		if (j == (int)ft_strlen(env[i]) - 1)
+		{
+			write(1, "\n", 1);
+			continue ;
+		}
 		write(1, &env[i][j], 1);
 		write(1, "\"", 1);
 		while(env[i][++j])
