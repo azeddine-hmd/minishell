@@ -32,6 +32,8 @@ SRC = parse.c \
 	  getret.c \
 	  strip_side_quotes.c \
 	  expand_token_aware.c \
+	  restore_expanded_tokens.c \
+	  token_change.c \
 
 OBJ = ${SRC:.c=.o}
 

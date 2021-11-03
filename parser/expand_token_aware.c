@@ -10,13 +10,6 @@ char	*expand_token_aware(const char *s, char **env)
 	len = ft_strlen(expanded);
 	i = -1;
 	while (++i < len)
-	{
-		if (expanded[i] == '|')
-			expanded[i] = 1;
-		else if (expanded[i] == '<')
-			expanded[i] = 2;
-		else if (expanded[i] == '>')
-			expanded[i] = 3;
-	}
+		apply_token_change(&(expanded[i]));
 	return (expanded);
 }
