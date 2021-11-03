@@ -65,7 +65,7 @@ char		*parse(const char *cmdln, t_list **cmds, char **env);
 
 // cmd
 void		cmd_del(void *content);
-void		create_cmds(t_list **cmds, t_list **cmdln_lst, char **env);
+void		create_cmds(t_list **cmds, t_list **cmdln_lst);
 t_list		*get_simplified_cmdln(const char *cmdln);
 t_list		*add_token_to_cmd(t_list **cmdln_lst, t_cmd *cmd, t_list *element);
 
@@ -97,7 +97,10 @@ t_list		*get_tokens_range(const char *str);
 t_bool		is_token(const char *s);
 void		separate_tokens(t_list **cmdln_lst);
 void		apply_token_change(char *c);
+void		apply_token_change_to_string(char *s);
 void		revert_token_change(char *c);
+void		revert_token_change_to_string(char *s);
+void		restore_expanded_tokens(t_list *cmds);
 
 // tkindx
 void		tkindx_del(void *content);
@@ -107,8 +110,6 @@ void		envindx_del(void *content);
 t_envindx	*get_env_index(const char *str, int start);
 int			getret(char **env);
 char		*pa_getenv(char **env, const char *name);
-char		*expand(const char *str, char **env);
-char		*expand_token_aware(const char *s, char **env);
-void		restore_expanded_tokens(t_list *cmds);
+char		*expand(const char *str, char **env, t_bool apply_tk_change);
 
 #endif

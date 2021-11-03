@@ -31,7 +31,6 @@ SRC = parse.c \
 	  check_valid_files.c \
 	  getret.c \
 	  strip_side_quotes.c \
-	  expand_token_aware.c \
 	  restore_expanded_tokens.c \
 	  token_change.c \
 

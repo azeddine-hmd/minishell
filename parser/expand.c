@@ -1,6 +1,6 @@
 #include "parser.h"
 
-char	*expand(const char *str, char **env)
+char	*expand(const char *str, char **env, t_bool apply_tk_change)
 {
 	char		*expanded;
 	t_envindx	*env_index;
@@ -25,10 +25,13 @@ char	*expand(const char *str, char **env)
 			continue ;
 		ft_lstadd_back(&str_lst, ft_lstnew(xsubstr(str, 0, env_range->from)));
 		env_var = pa_getenv(env, env_index->name);
+		if (apply_tk_change)
+			apply_token_change_to_string(env_var);
 		if (is_not_null(env))
 			ft_lstadd_back(&str_lst, ft_lstnew(xstrdup(env_var)));
 		else
 			ft_lstadd_back(&str_lst, ft_lstnew(xstrdup("")));
+		xfree(env_var);
 		ft_lstadd_back(&str_lst, ft_lstnew(xsubstr(str, env_range->to + 1, ft_strlen(str) - 1 - env_range->to + 1 + 1)));
 		tmp_envindx = env_index;
 		env_index = get_env_index(str, env_range->to + 1);

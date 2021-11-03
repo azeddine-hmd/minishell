@@ -67,7 +67,7 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 			{
 				ft_putc(targ->input);
 				if (expand_enabled)
-					ft_lstadd_back(&lines_lst, ft_lstnew(expand((targ->buf->str), env)));
+					ft_lstadd_back(&lines_lst, ft_lstnew(expand((targ->buf->str), env, false)));
 				else
 					ft_lstadd_back(&lines_lst, ft_lstnew(xstrdup(targ->buf->str)));
 				ms_bufrst(targ->buf);

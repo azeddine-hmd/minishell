@@ -1,14 +1,5 @@
 #include "parser.h"
 
-static void	restore_string(char *s)
-{
-	int i;
-
-	i = -1;
-	while (s[++i])
-		revert_token_change(&(s[i]));
-}
-
 static void	restore_args(char **args)
 {
 	int	i;
@@ -17,7 +8,7 @@ static void	restore_args(char **args)
 		return ;
 	i = -1;
 	while (++i < length(args))
-		restore_string(args[i]);
+		revert_token_change_to_string(args[i]);
 }
 
 static void	restore_tokens(t_list *tokens)
@@ -29,7 +20,7 @@ static void	restore_tokens(t_list *tokens)
 	while (tokens)
 	{
 		token = (t_token*)tokens->content;
-		restore_string(token->value);
+		revert_token_change_to_string(token->value);
 		tokens = tokens->next;
 	}
 }

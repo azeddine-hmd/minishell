@@ -4,8 +4,7 @@ t_bool	ctrl_l_triggered(t_termarg *targ, char **env)
 {
 	char	*saved_buf_str;
 
-	//TODO: execute shell command without system function
-	system("clear");
+	ft_putstr(targ->cap->ip);
 	saved_buf_str = xstrdup(targ->buf->str);
 	ms_bufrst(targ->buf);
 	ms_prompt(getret(env));

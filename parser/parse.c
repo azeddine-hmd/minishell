@@ -6,7 +6,7 @@ char	*parse(const char *cmdln, t_list **cmds, char **env)
 	char	*syntax_err;
 	char	*expanded;
 
-	expanded = expand_token_aware(cmdln, env);
+	expanded = expand(cmdln, env, true);
 	if (is_blank(expanded))
 	{
 		xfree(expanded);
@@ -17,7 +17,7 @@ char	*parse(const char *cmdln, t_list **cmds, char **env)
 	syntax_err = check_syntax_err(cmdln_lst);
 	if (syntax_err == NO_SYNTAX_ERROR)
 	{
-		create_cmds(cmds, &cmdln_lst, env);
+		create_cmds(cmds, &cmdln_lst);
 		ft_lstclear(&cmdln_lst, str_del);
 		restore_expanded_tokens(*cmds);
 		syntax_err = check_valid_files(cmds);
