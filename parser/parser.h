@@ -66,7 +66,7 @@ char		*parse(const char *cmdln, t_list **cmds, char **env);
 // cmd
 void		cmd_del(void *content);
 void		create_cmds(t_list **cmds, t_list **cmdln_lst, char **env);
-t_list		*get_simplified_cmdln(const char *cmdln);
+t_list		*get_simplified_cmdln(const char *cmdln, char **env);
 t_list		*add_token_to_cmd(t_list **cmdln_lst, t_cmd *cmd, t_list *element);
 
 // syntax error
@@ -105,6 +105,7 @@ void		envindx_del(void *content);
 t_envindx	*get_env_index(const char *str, int start);
 int			getret(char **env);
 char		*pa_getenv(char **env, const char *name);
-char		*expand(char *str, char **env);
+char		*expand(const char *str, char **env);
+char		*expand_token_aware(const char *s, char **env);
 
 #endif

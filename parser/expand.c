@@ -1,6 +1,6 @@
 #include "parser.h"
 
-char	*expand(char *str, char **env)
+char	*expand(const char *str, char **env)
 {
 	char		*expanded;
 	t_envindx	*env_index;
