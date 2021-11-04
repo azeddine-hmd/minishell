@@ -59,7 +59,7 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 		{
 			if (!ft_strcmp(targ->buf->str, stripped_delimiter))
 			{
-				ft_lstadd_back(&lines_lst, ft_lstnew("\n"));
+				lstpush(&lines_lst, "\n");
 				ft_putc(targ->input);
 				break ;
 			}
@@ -67,9 +67,9 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 			{
 				ft_putc(targ->input);
 				if (expand_enabled)
-					ft_lstadd_back(&lines_lst, ft_lstnew(expand((targ->buf->str), env, false)));
+					lstpush(&lines_lst, expand((targ->buf->str), env, false));
 				else
-					ft_lstadd_back(&lines_lst, ft_lstnew(xstrdup(targ->buf->str)));
+					lstpush(&lines_lst, xstrdup(targ->buf->str));
 				ms_bufrst(targ->buf);
 				hd_prompt();
 			}

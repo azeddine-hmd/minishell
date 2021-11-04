@@ -16,7 +16,7 @@ t_list	*get_heredoc_lst(t_list	*cmds)
 		{
 			token = (t_token*)in_token->content;
 			if (!ft_strcmp(token->type, HEREDOC_TOKEN))
-				ft_lstadd_back(&heredoc_lst, ft_lstnew(token));
+				lstpush(&heredoc_lst, token);
 			in_token = in_token->next;
 		}
 		cmds = cmds->next;

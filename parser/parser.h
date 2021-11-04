@@ -79,7 +79,6 @@ t_list		*get_quotes_range(const char *s);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 char		*strip_quotes(const char *s);
 void		strip_side_quotes(t_list *cmd_lst);
-void		separate_quotes(t_list **cmdln_lst);
 
 // range
 void		range_del(void *content);

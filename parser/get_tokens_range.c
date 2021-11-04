@@ -33,9 +33,6 @@ char	*token_from_range_type(char range_type)
 		token = "<";
 	else if (!ft_strcmp(range_type_str, "5"))
 		token = "|";
-	else
-		//shell_err("token_from_range_type: IllegalState");
-		printf("whatever this is\n");
 	xfree(range_type_str);
 	return (token);
 }
@@ -59,23 +56,13 @@ t_list	*get_tokens_range(const char *str)
 	{
 		token_index = get_token_index(str, start);
 		if (is_null(token_index))
-		{
 			break ;
-		}
-
-		if (token_index->index == INDEX_NOT_FOUND)
-		{
-			tkindx_del(token_index);
-			//shell_err("get_tokens_range: IllegalState");
-			printf("whatever this is\n");
-			break ;
-		}
 		from = token_index->index;
 		to = from + ft_strlen(token_index->token) - 1;
 		if (!inside_quotes(quotes_range, from, to, QUOTES))
 		{
 			range = get_range(from, to, token_to_range_type(token_index->token));
-			ft_lstadd_back(&tokens_range, ft_lstnew(range));
+			lstpush(&tokens_range, range);
 		}
 		start = to + 1;
 		tkindx_del(token_index);

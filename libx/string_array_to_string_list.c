@@ -16,7 +16,7 @@ t_list	*string_array_to_string_list(char **arr)
 	while (++i < length(arr))
 	{
 		content = xstrdup(arr[i]);
-		ft_lstadd_back(&lst, ft_lstnew(content));
+		lstpush(&lst, content);
 	}
 	return (lst);
 }
