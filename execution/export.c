@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/02 16:29:11 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/04 19:17:04 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ int	extract_data(char *str, char **key, char **value)
 	}
 	else
 		*value = NULL;
-	*value = strip_quotes(*value);
+	if (*value)
+		*value = strip_quotes(*value);
 	if (!ft_isvalid(*key))
 		return (ft_bad_value(*key, *value));
 	return (0);
