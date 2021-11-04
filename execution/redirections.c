@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 21:12:47 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 21:12:52 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/04 18:51:41 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,18 @@ int	file_dont_exist(char *file)
 	return (1);
 }
 
-t_token	*out_token(t_list *tmp_out)
+void	out_token(t_list *tmp_out, t_token **file)
 {
 	t_token	*tmp;
-	t_token	*files;
 
 	while (tmp_out)
 	{
 		tmp = tmp_out->content;
 		ft_create_file(tmp->value, tmp->type);
 		if (!ft_strcmp(tmp->type, ">") || !ft_strcmp(tmp->type, ">>"))
-			files = tmp;
+			*file = tmp;
 		tmp_out = tmp_out->next;
 	}
-	return (files);
 }
 
 t_token	**check_files(int *ret, t_cmd *cmd)
@@ -59,7 +57,7 @@ t_token	**check_files(int *ret, t_cmd *cmd)
 		files[1] = tmp;
 		tmp_in = tmp_in->next;
 	}
-	files[0] = out_token(tmp_out);
+	out_token(tmp_out, &files[0]);
 	return (files);
 }
 

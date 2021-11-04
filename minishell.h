@@ -92,6 +92,7 @@ typedef struct s_sign
 	t_bool		child_running;
 	t_bool		stop_heredoc;
 	t_bool		heredoc_running;
+	t_bool		is_pipe;
 }t_sign;
 
 // debugging
