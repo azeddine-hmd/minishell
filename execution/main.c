@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:48:34 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/03 18:11:10 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/04 16:36:10 by boodeer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	run_cmd(char *exec_path, char **args, char **env)
 	pid_t	pid;
 	int		ret;
 
-	printf("%s\n", exec_path);
 	if (g_sign.is_pipe == true)
 		execve(exec_path, args, env);	
 	pid = fork();
@@ -95,11 +94,14 @@ int	exec_path(char **cmd, char **env)
 {
 	char	*tmp;
 	int		ret;
+	char	*tmp1;
 
 	if (cmd[0][0] == '.')
 	{
-		tmp = xstrjoin(getcwd(NULL, 0), "/");
-		ret = execute_p(xstrjoin(tmp, cmd[0] + 2), cmd, env); // return to cmd[0] + 2 and see why it executesm inishell twice
+		tmp1 = getcwd(NULL, 0);
+		tmp = xstrjoin(tmp1, "/"); // leaks
+		free(tmp1);
+		ret = execute_p(xstrjoin(tmp, cmd[0]), cmd, env); // return to cmd[0] + 2 and see why it executesm inishell twice
 		xfree(tmp);
 		if (ret == 127)
 			ret = 2;
@@ -107,7 +109,7 @@ int	exec_path(char **cmd, char **env)
 	}
 	if (cmd[0][0] == '/')
 	{
-		ret = execute_p(ft_strdup(cmd[0]), cmd, env);
+		ret = execute_p(xstrdup(cmd[0]), cmd, env);
 		if (ret == 127)
 			ret = 2;
 		return (ret);
