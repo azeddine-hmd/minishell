@@ -1,11 +1,22 @@
 #include "parser.h"
 
+static t_bool	is_valid_identifier(char c, int index)
+{
+	if (index == 0 && !ft_isalpha(c) && c != '_')
+		return (false);
+	else if (!ft_isalpha(c) && c != '_' && !ft_isdigit(c))
+		return (false);
+	else if (c == '\'' && c == '"')
+		return (false);
+	else if (c == '?')
+		return (false);
+	return (true);
+}
+
 void		envindx_del(void *content)
 {
 	t_envindx	*casted;
 
-	if (is_null(content))
-		printf("content is null\n");
 	casted = (t_envindx*)content;
 	range_del(casted->range);
 	xfree(casted->name);
@@ -31,7 +42,7 @@ t_envindx	*get_env_index(const char *str, int start)
 	}
 	env_range->from = address_to_index(str, found);
 	i = env_range->from + 1;
-	while (i < (int)ft_strlen(str) && str[i] != '\'' && str[i] != '"' && str[i] != '?')
+	while (str[i] && is_valid_identifier(str[i], i - env_range->from + 1))
 		i++;
 	if (str[i] != '?' && i == env_range->from + 1)
 	{

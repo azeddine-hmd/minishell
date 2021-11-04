@@ -18,3 +18,8 @@ void	ft_lstclear(t_list **lst, void (*del) (void*))
 	}
 	*lst = NULL;
 }
+
+void	lstclear(t_list **lst, void (*del) (void*))
+{
+	ft_lstclear(lst, del);
+}

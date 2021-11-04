@@ -11,7 +11,7 @@ t_bool	is_token_type_of(char *token, char *type)
 	i = -1;
 	while (++i < length(tokens))
 	{
-		if (!ft_strcmp(token, tokens[i]))
+		if (equal(token, tokens[i]))
 		{
 			found = true;
 			break ;
@@ -34,7 +34,7 @@ t_list	*add_token_to_cmd(t_list **cmdln_lst, t_cmd *cmd, t_list *element)
 		lstpush(&(cmd->in_token), token);
 	else if (is_token_type_of(token->type, OUT_TYPE_TOKEN))
 		lstpush(&(cmd->out_token), token);
-	ft_lstrem(cmdln_lst, element->next, str_del);
-	ft_lstrem(cmdln_lst, element, str_del);
+	lstremove(cmdln_lst, element->next, str_del);
+	lstremove(cmdln_lst, element, str_del);
 	return (advanced_iterator);
 }

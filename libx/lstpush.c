@@ -7,3 +7,11 @@ void	lstpush(t_list **lst, void *content)
 	element = ft_lstnew(content);
 	ft_lstadd_back(lst, element);
 }
+
+void	lstpush_front(t_list **lst, void *content)
+{
+	t_list	*element;
+
+	element = ft_lstnew(content);
+	ft_lstadd_front(lst, element);
+}

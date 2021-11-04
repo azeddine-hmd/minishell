@@ -2,15 +2,15 @@
 
 char	token_to_range_type(const char *token)
 {
-	if (!ft_strcmp(token, "<<"))
+	if (equal(token, "<<"))
 		return ('1');
-	else if (!ft_strcmp(token, ">>"))
+	else if (equal(token, ">>"))
 		return ('2');
-	else if (!ft_strcmp(token, ">"))
+	else if (equal(token, ">"))
 		return ('3');
-	else if (!ft_strcmp(token, "<"))
+	else if (equal(token, "<"))
 		return ('4');
-	else if (!ft_strcmp(token, "|"))
+	else if (equal(token, "|"))
 		return ('5');
 	return (0);
 }
@@ -23,15 +23,15 @@ char	*token_from_range_type(char range_type)
 	token = NULL;
 	range_type_str = xstrdup("x");
 	range_type_str[0] = range_type;
-	if (!ft_strcmp(range_type_str, "1"))
+	if (equal(range_type_str, "1"))
 		token = "<<";
-	else if (!ft_strcmp(range_type_str, "2"))
+	else if (equal(range_type_str, "2"))
 		token = ">>";
-	else if (!ft_strcmp(range_type_str, "3"))
+	else if (equal(range_type_str, "3"))
 		token = ">";
-	else if (!ft_strcmp(range_type_str, "4"))
+	else if (equal(range_type_str, "4"))
 		token = "<";
-	else if (!ft_strcmp(range_type_str, "5"))
+	else if (equal(range_type_str, "5"))
 		token = "|";
 	xfree(range_type_str);
 	return (token);
@@ -67,6 +67,6 @@ t_list	*get_tokens_range(const char *str)
 		start = to + 1;
 		tkindx_del(token_index);
 	}
-	ft_lstclear(&quotes_range, range_del);
+	lstclear(&quotes_range, range_del);
 	return (tokens_range);
 }

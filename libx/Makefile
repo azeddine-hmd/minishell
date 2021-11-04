@@ -83,6 +83,7 @@ SRC = libx.c \
 	  is_blank.c \
 	  xitoa.c \
 	  lstpush.c \
+	  equal.c \
 
 OBJ = ${SRC:.c=.o}
 

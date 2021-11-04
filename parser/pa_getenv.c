@@ -13,7 +13,7 @@ char	*pa_getenv(char **env, const char *name)
 		if (is_not_null(equal_sign))
 		{
 			key = xsubstr(env[i], 0, address_to_index(env[i], equal_sign));
-			if (!ft_strcmp(key, name))
+			if (equal(key, name))
 			{
 				xfree(key);
 				return (xstrdup(equal_sign + 1));

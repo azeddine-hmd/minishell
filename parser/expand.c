@@ -15,7 +15,7 @@ char	*expand(const char *str, char **env, t_bool apply_tk_change)
 	env_index = get_env_index(str, 0);
 	if (is_null(env_index) || inside_quotes(quotes_range, env_index->range->from, env_index->range->to, "'"))
 	{
-		ft_lstclear(&quotes_range, range_del);
+		lstclear(&quotes_range, range_del);
 		return (xstrdup(str));
 	}
 	while (is_not_null(env_index))
@@ -37,8 +37,8 @@ char	*expand(const char *str, char **env, t_bool apply_tk_change)
 		env_index = get_env_index(str, env_range->to + 1);
 		envindx_del(tmp_envindx);
 	}
-	ft_lstclear(&quotes_range, range_del);
+	lstclear(&quotes_range, range_del);
 	expanded = join_string_list_to_string(str_lst);
-	ft_lstclear(&str_lst, str_del);
+	lstclear(&str_lst, str_del);
 	return (expanded);
 }

@@ -17,9 +17,9 @@ void	create_cmds(t_list **cmds, t_list **cmdln_lst)
 		while (iterator)
 		{
 			while (is_not_null(iterator) && is_token(iterator->content)
-					&& ft_strcmp(iterator->content, PIPE))
+					&& not_equal(iterator->content, PIPE))
 				iterator = add_token_to_cmd(cmdln_lst, cmd, iterator);
-			if (is_null(iterator) || !ft_strcmp(iterator->content, PIPE))
+			if (is_null(iterator) || equal(iterator->content, PIPE))
 				break ;
 			lstpush(&args_lst, xstrdup(iterator->content));
 			iterator = iterator->next;
@@ -28,7 +28,7 @@ void	create_cmds(t_list **cmds, t_list **cmdln_lst)
 		if (is_not_null(args_lst))
 		{
 			cmd->args = string_list_to_string_array(args_lst);
-			ft_lstclear(&args_lst, str_del);
+			lstclear(&args_lst, str_del);
 		}
 		lstpush(cmds, cmd);
 		if (is_null(iterator))

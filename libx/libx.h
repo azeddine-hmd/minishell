@@ -88,6 +88,10 @@ size_t			ft_max(size_t m1, size_t m2);
 t_bool			is_null(void *ptr);
 t_bool			is_not_null(void *ptr);
 int				address_to_index(const char *s, char *address);
+t_bool			is_blank(const char *s);
+char			*splitat(const char *s, int index);
+t_bool			equal(const char *s1, const char *s2);
+t_bool 			not_equal(const char *s1, const char *s2);
 
 // libx
 t_data			*lst_last(t_data *node);
@@ -114,7 +118,6 @@ void			*xrealloc(void *ptr, size_t old_size, size_t new_size);
 char			**xsplit(char const *s, char c);
 char			*xitoa(long n);
 void			xfree_str_array(char **str_arr);
-char			*splitat(const char *s, int index);
 
 // linkedlist
 t_list	*ft_lstnew(void *content);
@@ -122,7 +125,6 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-void	lstpush(t_list **lst, void *content);
 void	ft_lstdelone(t_list *lst, void (*del) (void*));
 void	ft_lstclear(t_list **lst, void (*del) (void*));
 void	ft_lstiter(t_list *lst, void (*f) (void*));
@@ -135,11 +137,13 @@ void	deallocate(void);
 void	replace_node_intolist(t_replace *replace, void (*del) (void*));
 t_bool	is_not_empty(t_list *lst);
 t_bool	ft_lsthas_next(t_list *lst);
-void	ft_lstrem(t_list **head, t_list *target, void (*del) (void*));
+void	lstremove(t_list **head, t_list *target, void (*del) (void*));
 char	*join_string_array_to_string(char **arr);
 char	*join_string_list_to_string(t_list *lst);
 char	*join_string_list_with_nl(t_list *lst);
-t_bool	is_blank(const char *s);
+void	lstpush(t_list **lst, void *content);
+void	lstpush_front(t_list **lst, void *content);
+void	lstclear(t_list **lst, void (*del) (void*));
 
 // debugging
 void	print_list_str(t_list *str_lst);

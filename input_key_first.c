@@ -57,7 +57,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	if (g_sign.stop_heredoc)
 	{
 		g_sign.stop_heredoc = false;
-		ft_lstclear(&cmd_lst, cmd_del);
+		lstclear(&cmd_lst, cmd_del);
 		targ->pos = 0;
 		targ->cur->ret = 1;
 		targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
@@ -76,7 +76,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 		shell_err(syntax_error);
 		xfree(syntax_error);
 	}
-	ft_lstclear(&cmd_lst, cmd_del);
+	lstclear(&cmd_lst, cmd_del);
 	targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 	add_history(&(targ->head), targ->cur);
 	ms_bufrst(targ->buf);
