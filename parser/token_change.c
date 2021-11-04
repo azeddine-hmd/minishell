@@ -16,6 +16,8 @@ void	apply_token_change_to_string(char *s)
 {
 	int i;
 
+	if (!s)
+		return ;
 	i = -1;
 	while (s[++i])
 		apply_token_change(&(s[i]));
@@ -37,6 +39,8 @@ void	revert_token_change_to_string(char *s)
 {
 	int i;
 
+	if (!s)
+		return ;
 	i = -1;
 	while (s[++i])
 		revert_token_change(&(s[i]));
