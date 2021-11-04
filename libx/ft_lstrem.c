@@ -21,7 +21,7 @@ static void	target_after_head(t_list *rt, t_list *target, void (*del) (void*))
 	}
 }
 
-void	ft_lstrem(t_list **head, t_list *target, void (*del) (void*))
+void	lstremove(t_list **head, t_list *target, void (*del) (void*))
 {
 	t_list	*tmp;
 	t_list	*iterator;

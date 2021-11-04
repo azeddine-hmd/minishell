@@ -19,7 +19,7 @@ void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env)
 		if (g_sign.stop_heredoc)
 		{
 			if (is_not_null(fcontent_lst))
-				ft_lstclear(&fcontent_lst, str_del);
+				lstclear(&fcontent_lst, str_del);
 			return ;
 		}
 		hd_iterator = hd_iterator->next;
@@ -46,5 +46,5 @@ void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env)
 		fcontent_lst = fcontent_lst->next;
 		hd_iterator = hd_iterator->next;
 	}
-	ft_lstclear(&fcontent_lst, str_del);
+	lstclear(&fcontent_lst, str_del);
 }

@@ -91,7 +91,7 @@ void	separate_tokens(t_list **cmdln_lst)
 			if (is_not_null(tokens_range))
 			{
 				separate(&new_lst, str, tokens_range);
-				ft_lstclear(&tokens_range, range_del);
+				lstclear(&tokens_range, range_del);
 				replace.head = cmdln_lst;
 				replace.target = iterator;
 				replace.new_lst = new_lst;

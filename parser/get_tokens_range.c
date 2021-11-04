@@ -67,6 +67,6 @@ t_list	*get_tokens_range(const char *str)
 		start = to + 1;
 		tkindx_del(token_index);
 	}
-	ft_lstclear(&quotes_range, range_del);
+	lstclear(&quotes_range, range_del);
 	return (tokens_range);
 }

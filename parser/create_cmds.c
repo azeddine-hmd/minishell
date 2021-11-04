@@ -28,7 +28,7 @@ void	create_cmds(t_list **cmds, t_list **cmdln_lst)
 		if (is_not_null(args_lst))
 		{
 			cmd->args = string_list_to_string_array(args_lst);
-			ft_lstclear(&args_lst, str_del);
+			lstclear(&args_lst, str_del);
 		}
 		lstpush(cmds, cmd);
 		if (is_null(iterator))

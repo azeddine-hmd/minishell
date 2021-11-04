@@ -125,6 +125,6 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 		fcontent = join_string_list_with_nl(lines_lst);
 	else
 		fcontent = xstrdup("");
-	ft_lstclear(&lines_lst, str_del);
+	lstclear(&lines_lst, str_del);
 	return (fcontent);
 }

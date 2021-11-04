@@ -18,11 +18,11 @@ char	*parse(const char *cmdln, t_list **cmds, char **env)
 	if (syntax_err == NO_SYNTAX_ERROR)
 	{
 		create_cmds(cmds, &cmdln_lst);
-		ft_lstclear(&cmdln_lst, str_del);
+		lstclear(&cmdln_lst, str_del);
 		restore_expanded_tokens(*cmds);
 		syntax_err = check_valid_files(cmds);
 	}
 	else
-		ft_lstclear(&cmdln_lst, str_del);
+		lstclear(&cmdln_lst, str_del);
 	return (syntax_err);
 }
