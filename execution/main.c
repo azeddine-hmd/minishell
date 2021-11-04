@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:48:34 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/02 18:10:01 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/03 18:11:10 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,15 @@ int	run_cmd(char *exec_path, char **args, char **env)
 	pid_t	pid;
 	int		ret;
 
+	printf("%s\n", exec_path);
+	if (g_sign.is_pipe == true)
+		execve(exec_path, args, env);	
 	pid = fork();
 	if (pid == 0)
-		execve(exec_path, args, env);
+	{
+		if (execve(exec_path, args, env) < 0)
+			exit(10);
+	}
 	else if (pid < 0)
 	{
 		write(2, "Failed to create fork\n", ft_strlen("Failed to create fork\n"));
@@ -93,7 +99,7 @@ int	exec_path(char **cmd, char **env)
 	if (cmd[0][0] == '.')
 	{
 		tmp = xstrjoin(getcwd(NULL, 0), "/");
-		ret = execute_p(xstrjoin(tmp, cmd[0]), cmd, env);
+		ret = execute_p(xstrjoin(tmp, cmd[0] + 2), cmd, env); // return to cmd[0] + 2 and see why it executesm inishell twice
 		xfree(tmp);
 		if (ret == 127)
 			ret = 2;
