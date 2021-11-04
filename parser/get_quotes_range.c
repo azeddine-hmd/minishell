@@ -43,7 +43,7 @@ t_list	*get_quotes_range(const char *s)
 			if (pair_index == PAIR_NOT_FOUND)
 				break ;
 			range = get_range(i, pair_index, s[i]);
-			ft_lstadd_back(&head, ft_lstnew(range));
+			lstpush(&head, range);
 			i = pair_index + 1;
 		}
 		else

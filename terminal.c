@@ -23,8 +23,7 @@ static void	ms_capinit(t_cap **cap)
 	*cap = (t_cap*)xmalloc(sizeof(t_cap));
 	(*cap)->dc = xstrdup(tgetstr("dc", NULL));
 	(*cap)->le = xstrdup(tgetstr("le", NULL));
-	(*cap)->nd = xstrdup(tgetstr("nd", NULL));
-	(*cap)->ip = xstrdup(tgetstr("ip", NULL));
+	(*cap)->ip = xstrdup(tgetstr("cl", NULL));
 }
 
 static void	enable_raw_mode(t_bool enable)

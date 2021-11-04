@@ -65,7 +65,7 @@ char		*parse(const char *cmdln, t_list **cmds, char **env);
 
 // cmd
 void		cmd_del(void *content);
-void		create_cmds(t_list **cmds, t_list **cmdln_lst, char **env);
+void		create_cmds(t_list **cmds, t_list **cmdln_lst);
 t_list		*get_simplified_cmdln(const char *cmdln);
 t_list		*add_token_to_cmd(t_list **cmdln_lst, t_cmd *cmd, t_list *element);
 
@@ -79,7 +79,6 @@ t_list		*get_quotes_range(const char *s);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 char		*strip_quotes(const char *s);
 void		strip_side_quotes(t_list *cmd_lst);
-void		separate_quotes(t_list **cmdln_lst);
 
 // range
 void		range_del(void *content);
@@ -96,6 +95,11 @@ t_tkindx	*get_token_index(const char *str, int start);
 t_list		*get_tokens_range(const char *str);
 t_bool		is_token(const char *s);
 void		separate_tokens(t_list **cmdln_lst);
+void		apply_token_change(char *c);
+void		apply_token_change_to_string(char *s);
+void		revert_token_change(char *c);
+void		revert_token_change_to_string(char *s);
+void		restore_expanded_tokens(t_list *cmds);
 
 // tkindx
 void		tkindx_del(void *content);
@@ -105,6 +109,6 @@ void		envindx_del(void *content);
 t_envindx	*get_env_index(const char *str, int start);
 int			getret(char **env);
 char		*pa_getenv(char **env, const char *name);
-char		*expand(char *str, char **env);
+char		*expand(const char *str, char **env, t_bool apply_tk_change);
 
 #endif

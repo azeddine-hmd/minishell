@@ -17,7 +17,6 @@ SRC = parse.c \
 	  token.c \
 	  split_except_quotes.c \
 	  get_simplified_cmdln.c \
-	  separate_quotes.c \
 	  separate_tokens.c \
 	  tkindx_del.c \
 	  get_tokens_range.c \
@@ -31,6 +30,8 @@ SRC = parse.c \
 	  check_valid_files.c \
 	  getret.c \
 	  strip_side_quotes.c \
+	  restore_expanded_tokens.c \
+	  token_change.c \
 
 OBJ = ${SRC:.c=.o}
 
