@@ -16,7 +16,7 @@ static t_bool	token_errs(t_list *cmdln_lst, char **syntax_error)
 {
 	const char *token_newline = "newline";
 
-	if (is_token(cmdln_lst->content) && !ft_strcmp(cmdln_lst->content, PIPE))
+	if (is_token(cmdln_lst->content) && equal(cmdln_lst->content, PIPE))
 	{
 		format_token(cmdln_lst->content, syntax_error);
 		return (true);

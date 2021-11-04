@@ -90,6 +90,8 @@ t_bool			is_not_null(void *ptr);
 int				address_to_index(const char *s, char *address);
 t_bool			is_blank(const char *s);
 char			*splitat(const char *s, int index);
+t_bool			equal(const char *s1, const char *s2);
+t_bool 			not_equal(const char *s1, const char *s2);
 
 // libx
 t_data			*lst_last(t_data *node);

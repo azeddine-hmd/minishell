@@ -15,7 +15,7 @@ t_list	*get_heredoc_lst(t_list	*cmds)
 		while (in_token)
 		{
 			token = (t_token*)in_token->content;
-			if (!ft_strcmp(token->type, HEREDOC_TOKEN))
+			if (equal(token->type, HEREDOC_TOKEN))
 				lstpush(&heredoc_lst, token);
 			in_token = in_token->next;
 		}

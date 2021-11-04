@@ -11,7 +11,7 @@ t_bool	is_token(const char *s)
 	i = 0;
 	while (i < length(tokens))
 	{
-		if (!ft_strcmp(s, tokens[i]))
+		if (equal(s, tokens[i]))
 			found = true;
 		i++;
 	}

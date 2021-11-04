@@ -126,6 +126,6 @@ int		main(int argc, char **argv, char **env)
 	g_sign.targ = &targ;
 	ms_setup(&(targ.cap), &(targ.buf));
 	minishell_loop(&targ, p_env);
-	shell_exit(getret(p_env));
+	shell_exit(getret(*(g_sign.env)));
 	return (0);
 }

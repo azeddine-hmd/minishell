@@ -11,7 +11,7 @@ t_bool	is_token_type_of(char *token, char *type)
 	i = -1;
 	while (++i < length(tokens))
 	{
-		if (!ft_strcmp(token, tokens[i]))
+		if (equal(token, tokens[i]))
 		{
 			found = true;
 			break ;

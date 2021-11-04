@@ -45,7 +45,7 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 	ms_bufrst(targ->buf);
 	hd_prompt();
 	stripped_delimiter = strip_quotes(delimiter);
-	if (ft_strcmp(delimiter, stripped_delimiter))
+	if (not_equal(delimiter, stripped_delimiter))
 		expand_enabled = false;
 	else
 		expand_enabled = true;
@@ -57,7 +57,7 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 			backspace_triggered(targ);
 		else if (targ->input == K_ENTER)
 		{
-			if (!ft_strcmp(targ->buf->str, stripped_delimiter))
+			if (equal(targ->buf->str, stripped_delimiter))
 			{
 				lstpush(&lines_lst, "\n");
 				ft_putc(targ->input);

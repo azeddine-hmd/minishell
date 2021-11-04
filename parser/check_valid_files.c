@@ -46,7 +46,7 @@ char	*check_valid_files(t_list **cmds)
 		while (tk_iterator)
 		{
 			tk = (t_token*)tk_iterator->content;
-			if (!ft_strcmp(tk->type, "<"))
+			if (equal(tk->type, "<"))
 			{
 				syntax_err = check(tk->value);
 				return (syntax_err);
