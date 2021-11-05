@@ -1,5 +1,5 @@
 #include "minishell.h"
-
+//
 static void	minishell_loop(t_termarg *targ, char **env)
 {
 	t_bool skip;
