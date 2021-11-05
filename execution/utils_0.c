@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 16:08:59 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 18:07:09 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/05 15:46:32 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@ char	**split_path(char **env)
 
 int	file_error(char *s)
 {
-	write(2, "minishell: ", 11);
-	write(2, s, strlen(s));
-	write(2, ": No such file or directory\n", 28);
+	if (errno != 13)
+	{
+		write(2, "minishell: ", 11);
+		write(2, s, strlen(s));
+		write(2, ": No such file or directory\n", 28);
+	}
 	return (127);
 }
 

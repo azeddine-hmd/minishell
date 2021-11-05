@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:40:43 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/29 21:10:47 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/05 15:36:39 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char		*ft_strjoincl(char *s1, char *s2, int free_both);
 char		**init_env(char **env);
 int			env_len(char **env);
 int			ft_builtin_env(char **env);
-int			ft_builtin_pwd(void);
+int			ft_builtin_pwd(char **env);
 char		*find_strenv(char *str, char **env);
 int			find_env(char *value, char **env);
 char		**export_var(char *var, char *str, char **env);
@@ -76,4 +76,6 @@ int			cmd_nfound(char *str);
 int			exec_builtin(char **cmd, char ***env);
 void		shell_exit(int ret);
 void		ft_create_file(char *file, char *type);
+void		check_dir(char *p);
+int		open_failed(char *cmd);
 #endif
