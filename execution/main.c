@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:48:34 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/04 16:36:10 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/11/05 17:23:31 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	run_cmd(char *exec_path, char **args, char **env)
 	if (pid == 0)
 	{
 		if (execve(exec_path, args, env) < 0)
-			exit(10);
+			check_dir(args[0]);
 	}
 	else if (pid < 0)
 	{
@@ -74,6 +74,7 @@ int	execute_p(char *p, char **cmd, char **env)
 	ret = 0;
 	if (open(p, O_RDONLY) <= 0)
 	{
+		open_failed(cmd[0]);
 		xfree(p);
 		return (127);
 	}
