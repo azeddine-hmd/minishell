@@ -16,7 +16,7 @@ int	exec_bin(char **cmd, char **env)
 {
 	char	**path;
 	int		i;
-	int		ret;	
+	int		ret;
 
 	i = -1;
 	ret = 0;
@@ -78,7 +78,7 @@ int	exec_cmd(t_cmd *cmd, char ***env)
 	}
 	ret = check_cmd(cmd, env);
 	if (cmd->in_token || cmd->out_token)
-	{	
+	{
 		dup2(fd_in, 0);
 		dup2(fd_out, 1);
 		close(fd_in);
@@ -118,7 +118,6 @@ void	execute(t_list *cmds, char ***env)
 {
 	char	*ret;
 
-	print_all_cmds(cmds);
 	ret = xitoa(main_function(cmds, env));
 	g_sign.child_running = false;
 	*env = export_var("?", ret, *env);

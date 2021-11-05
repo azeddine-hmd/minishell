@@ -9,7 +9,6 @@ char	*strip_quotes(const char *s)
 	int		removed;
 
 	quotes_lst = get_quotes_range(s);
-	print_all_range(quotes_lst);
 	stripped = xstrdup(s);
 	removed = 0;
 	while (quotes_lst)

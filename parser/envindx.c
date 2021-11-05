@@ -1,6 +1,6 @@
 #include "parser.h"
 
-static t_bool	is_valid_identifier(char c, int index)
+t_bool	is_valid_identifier(char c, int index)
 {
 	if (index == 0 && !ft_isalpha(c) && c != '_')
 		return (false);

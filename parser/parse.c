@@ -12,17 +12,15 @@ char	*parse(const char *cmdln, t_list **cmds, char **env)
 		xfree(expanded);
 		return (NO_SYNTAX_ERROR);
 	}
-	cmdln_lst = get_simplified_cmdln(expanded);
-	xfree(expanded);
-	syntax_err = check_syntax_err(cmdln_lst);
+	syntax_err = check_syntax_err(cmdln);
 	if (syntax_err == NO_SYNTAX_ERROR)
 	{
+		cmdln_lst = get_simplified_cmdln(expanded);
 		create_cmds(cmds, &cmdln_lst);
 		lstclear(&cmdln_lst, str_del);
 		restore_expanded_tokens(*cmds);
 		syntax_err = check_valid_files(cmds);
 	}
-	else
-		lstclear(&cmdln_lst, str_del);
+	xfree(expanded);
 	return (syntax_err);
 }

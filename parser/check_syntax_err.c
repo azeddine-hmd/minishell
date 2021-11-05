@@ -41,11 +41,14 @@ static t_bool	token_errs(t_list *cmdln_lst, char **syntax_error)
 	return (false);
 }
 
-char	*check_syntax_err(t_list *cmdln_lst)
+char	*check_syntax_err(const char *cmdln)
 {
+	t_list	*cmdln_lst;
 	char	*syntax_err;
 
+	cmdln_lst = get_simplified_cmdln(cmdln);
 	if (token_errs(cmdln_lst, &syntax_err))
 		return (syntax_err);
+	lstclear(&cmdln_lst, str_del);
 	return (NO_SYNTAX_ERROR);
 }

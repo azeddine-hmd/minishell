@@ -37,18 +37,6 @@
 # define K_CTRL_I 9
 # define K_CTRL_H 8
 # define K_CTRL_K 11
-# define K_UP_ARROW K_ESC, K_OSB, K_A
-# define K_DOWN_ARROW K_ESC, K_OSB, K_B
-# define K_RIGHT_ARROW K_ESC, K_OSB, K_C
-# define K_LEFT_ARROW K_ESC, K_OSB, K_D
-
-// debugging
-# define DEBUG_LOG_PATH "/tmp/log"
-# define DEBUG_BUFLOG_PATH "/tmp/buflog"
-# define DEBUG_SIGNAL_PATH "/tmp/signal_log"
-FILE *ms_log;
-FILE *ms_buflog;
-FILE *ms_signallog;
 
 typedef struct s_buf
 {
@@ -94,10 +82,6 @@ typedef struct s_sign
 	t_bool		heredoc_running;
 	t_bool		is_pipe;
 }t_sign;
-
-// debugging
-void		print_all_history(t_hist *history);
-void		print_all_signal(void);
 
 // general
 t_sign		g_sign;

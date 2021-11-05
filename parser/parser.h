@@ -21,10 +21,6 @@
 # define CHAR_PLACEHOLDER -128
 # define FILE_PREMISSION 0666
 
-// debugging
-# define PARSE_DEBUG_LOG_PATH "/tmp/parse_log"
-FILE *pa_log;
-
 typedef struct s_token
 {
 	char			*type;
@@ -52,14 +48,6 @@ typedef struct s_envindx
 	char	*name;
 }t_envindx;
 
-// debugging
-void		print_cmd(t_cmd *cmd);
-void		print_all_cmds(t_list *cmds);
-void		print_all_range(t_list *head);
-void		print_all_tokens(t_list *head);
-void		print_str_arr(char **str_arr);
-void		print_str_lst(t_list *str_lst);
-
 // entry
 char		*parse(const char *cmdln, t_list **cmds, char **env);
 
@@ -70,8 +58,9 @@ t_list		*get_simplified_cmdln(const char *cmdln);
 t_list		*add_token_to_cmd(t_list **cmdln_lst, t_cmd *cmd, t_list *element);
 
 // syntax error
-char		*check_syntax_err(t_list *cmdln_lst);
+char		*check_syntax_err(const char *cmdln);
 char		*check_valid_files(t_list **cmds);
+t_bool		is_valid_identifier(char c, int index);
 
 // quotes
 t_bool		inside_quotes(t_list *range, int from, int to, const char *types);
