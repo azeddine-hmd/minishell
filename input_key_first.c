@@ -73,6 +73,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	}
 	else
 	{
+		*env = export_var("?", "1", *env);
 		shell_err(syntax_error);
 		xfree(syntax_error);
 	}
