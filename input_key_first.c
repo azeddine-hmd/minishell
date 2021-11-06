@@ -46,7 +46,6 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 		g_sign.stop_heredoc = false;
 		lstclear(&cmd_lst, cmd_del);
 		targ->pos = 0;
-		targ->cur->ret = 1;
 		targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 		add_history(&(targ->head), targ->cur);
 		ms_bufrst(targ->buf);
@@ -54,12 +53,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	}
 	strip_side_quotes(cmd_lst);
 	if (syntax_error == NO_SYNTAX_ERROR)
-	{
-		set_raw_mode(false);
 		execute(cmd_lst, env);
-		set_raw_mode(true);
-		targ->cur->ret = ft_atoi(pa_getenv(*env, "?"));
-	}
 	else
 	{
 		*env = export_var("?", "1", *env);
