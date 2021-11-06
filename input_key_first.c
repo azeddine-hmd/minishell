@@ -55,7 +55,9 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	strip_side_quotes(cmd_lst);
 	if (syntax_error == NO_SYNTAX_ERROR)
 	{
+		set_raw_mode(false);
 		execute(cmd_lst, env);
+		set_raw_mode(true);
 		targ->cur->ret = ft_atoi(pa_getenv(*env, "?"));
 	}
 	else
