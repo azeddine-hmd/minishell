@@ -1,11 +1,11 @@
 #ifndef PARSER_H
 # define PARSER_H
-# include "../libx/libx.h"
-# include "../errors.h"
 # include <stdio.h>
 # include <fcntl.h>
 # include <string.h>
 # include <sys/errno.h>
+# include "../libx/libx.h"
+# include "../errors.h"
 
 # define TOKENS "<< >> > < |"
 # define IN_TYPE_TOKEN "<< <"

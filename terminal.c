@@ -26,23 +26,6 @@ static void	ms_capinit(t_cap **cap)
 	(*cap)->ip = xstrdup(tgetstr("cl", NULL));
 }
 
-void	set_raw_mode(t_bool enable)
-{
-	struct termios tsettings;
-
-	tcgetattr(STDIN_FILENO, &tsettings);
-	if (enable)
-	{
-		tsettings.c_lflag &= ~(ECHO | ICANON);
-		tcsetattr(STDIN_FILENO, TCSAFLUSH, &tsettings);
-	}
-	else
-	{
-		tsettings.c_lflag |= ECHO;
-		tsettings.c_lflag |= ICANON;
-		tcsetattr(STDIN_FILENO, TCSAFLUSH, &tsettings);
-	}
-}
 
 /*
 ** initialize terminalinfo and handle terminal compatibility

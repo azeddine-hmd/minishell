@@ -4,7 +4,6 @@
 # include <stdio.h>
 # include <termcap.h>
 # include <curses.h>
-# include <termios.h>
 # include <term.h>
 # include <fcntl.h>
 # include <signal.h>
@@ -87,7 +86,6 @@ typedef struct s_sign
 t_sign		g_sign;
 void		usage(void);
 void		signal_interceptor(int sig);
-void		set_raw_mode(t_bool enable);
 
 // buffer
 void		ms_bufinit(t_buf **a_buf);

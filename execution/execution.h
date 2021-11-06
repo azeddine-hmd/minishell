@@ -27,6 +27,7 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include "../libx/libx.h"
+# include "../errors.h"
 # include "../parser/parser.h"
 # include "../minishell.h"
 
@@ -74,7 +75,6 @@ int			exec_path(char **cmd, char **env);
 int			execute_p(char *p, char **cmd, char **env);
 int			cmd_nfound(char *str);
 int			exec_builtin(char **cmd, char ***env);
-void		shell_exit(int ret);
 void		ft_create_file(char *file, char *type);
 void		check_dir(char *p);
 int		open_failed(char *cmd);

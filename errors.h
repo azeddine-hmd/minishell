@@ -3,6 +3,8 @@
 
 # include <stdio.h>
 # include "libx/libx.h"
+# include <termios.h>
+# include <fcntl.h>
 
 /*
 ** terminal errors
@@ -42,9 +44,10 @@
 # define ERR_SHELL_NAME "minishell: "
 # define ERR_PROTOTYPE "syntax error near unexpected token 'x'"
 
-
-void	err(const char *error);
-void	ferr(const char *err_format, const char *arg);
+void	set_raw_mode(t_bool enable);
+void	shell_exit(int ret);
 void	shell_err(const char *error);
+void	ferr(const char *err_format, const char *arg);
+void	err(const char *error);
 
 #endif
