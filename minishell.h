@@ -57,7 +57,6 @@ typedef struct s_cap
 typedef struct s_hist
 {
 	char			*cmdln_str;
-	int				ret;
 	struct s_hist	*next;
 	struct s_hist	*previous;
 }t_hist;
