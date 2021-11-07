@@ -9,6 +9,7 @@ void	signal_interceptor(int sig)
 	env = *g_sign.env;
 	if (sig == SIGINT)
 	{
+		print_all_signal();
 		if (g_sign.child_running)
 		{
 			return ;

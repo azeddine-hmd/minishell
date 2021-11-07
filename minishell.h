@@ -81,6 +81,18 @@ typedef struct s_sign
 	t_bool		is_pipe;
 }t_sign;
 
+// debugging
+# define DEBUG_LOG_PATH "/tmp/log"
+# define DEBUG_BUFLOG_PATH "/tmp/buflog"
+# define DEBUG_SIGNAL_PATH "/tmp/signal_log"
+FILE *ms_log;
+FILE *ms_buflog;
+FILE *ms_signallog;
+void		print_all_history(t_hist *history);
+void		print_all_signal(void);
+void		print_keys(char input);
+void		print_buffer(t_buf *buf);
+
 // general
 t_sign		g_sign;
 void		usage(void);

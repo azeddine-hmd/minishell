@@ -46,6 +46,7 @@ static void	minishell_loop(t_termarg *targ, char **env)
 		}
 		else
 		{
+			print_keys(targ->input);
 			ms_bufadd(targ->buf, targ->input);
 			ft_putc(targ->input);
 			targ->pos = 0;
@@ -101,6 +102,12 @@ int		main(int argc, char **argv, char **env)
 {
 	t_termarg	targ;
 	char		**p_env;
+
+	// debugging
+	ms_log = fopen(DEBUG_LOG_PATH, "a");
+	ms_buflog = fopen(DEBUG_BUFLOG_PATH, "a");
+	pa_log = fopen(PARSE_DEBUG_LOG_PATH, "a");
+	ms_signallog = fopen(DEBUG_SIGNAL_PATH, "a");
 
 	(void)argv;
 	if (argc != 1)

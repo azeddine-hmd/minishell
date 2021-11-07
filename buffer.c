@@ -15,6 +15,7 @@ void	ms_bufrpc(t_buf *buf, const char *s)
 	buf->pos = ft_strlen(s);
 	ft_bzero(buf->str, buf->size);
 	ft_memmove(buf->str, s, ft_strlen(s));
+	print_buffer(buf);
 }
 
 /*
@@ -28,6 +29,7 @@ void	ms_bufrst(t_buf *buf)
 	ft_bzero(buf->str, buf->size);
 	buf->last = 0;
 	buf->pos = 0;
+	print_buffer(buf);
 }
 
 /*
@@ -39,12 +41,16 @@ void	ms_bufrst(t_buf *buf)
 void	ms_bufdel(t_buf *buf)
 {
 	if (!buf || buf->pos == 0)
+	{
+		print_buffer(buf);
 		return ;
+	}
 	else
 	{
 		(buf->pos)--;
 		(buf->last)--;
 		buf->str[buf->pos] = 0;
+		print_buffer(buf);
 	}
 }
 
@@ -62,6 +68,7 @@ void	ms_bufadd(t_buf *buf, char out)
 	buf->str[buf->pos] = out;
 	(buf->pos)++;
 	(buf->last)++;
+	print_buffer(buf);
 }
 
 /*

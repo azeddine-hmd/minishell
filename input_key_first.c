@@ -2,6 +2,7 @@
 
 t_bool	backspace_triggered(t_termarg *targ)
 {
+	print_keys(targ->input);
 	if (targ->buf->pos > 0)
 		ms_chrdel(targ->cap);
 	ms_bufdel(targ->buf);
@@ -15,6 +16,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 
 	syntax_error = NULL;
 	ft_putc(targ->input);
+	print_keys(targ->input);
 	if (ft_strlen(targ->buf->str) == 0)
 	{
 		ms_prompt(getret(*env));
