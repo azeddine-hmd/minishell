@@ -7,6 +7,7 @@ CC = gcc
 
 SRC = execute.c  main.c utils_0.c utils_1.c env.c pwd.c export.c \
 	  unset.c cd.c echo.c pipes.c redirections.c exit.c \
+	  utils_2.c utils_3.c
 
 OBJ = ${SRC:.c=.o}
 
