@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:53:46 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/05 15:48:01 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/08 18:31:16 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_builtin_pwd(char **env)
 void	check_dir(char *p)
 {
 	DIR	*tmp;
-	
+
 	tmp = opendir(p);
 	if (!tmp)
 		return ;
@@ -42,17 +42,19 @@ void	check_dir(char *p)
 		shell_exit(126);
 	}
 }
+
 int	open_failed(char *cmd)
 {
 	if (errno == 13 || errno == 21)
 	{
 		ft_putstr("minishell: ");
 		ft_putstr(cmd);
-		perror(": ");	
-		return(126);	
+		perror(": ");
+		return (126);
 	}
-	return(-1);
+	return (-1);
 }
+
 void	ft_create_file(char *file, char *type)
 {
 	if (!ft_strcmp(type, ">"))

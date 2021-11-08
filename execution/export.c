@@ -6,38 +6,11 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/08 12:50:11 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/08 18:28:53 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
-
-char	**export_var(char *var, char *str, char **env)
-{
-	int		index;
-	char	*tmp;
-
-	index = find_env(var, env);
-	tmp = xstrjoin("=", str);
-	if (env[index])
-	{
-		xfree(env[index]);
-		if (str)
-			env[index] = xstrjoin(var, tmp);
-		else
-			env[index] = xstrjoin(var, "=");
-	}
-	else
-	{
-		env = realloc_env(index + 1, env);
-		if (str)
-			env[index] = xstrjoin(var, tmp);
-		else
-			env[index] = xstrjoin(var, "=");
-	}
-	xfree(tmp);
-	return (env);
-}
 
 int	ft_bad_value(char *s1, char *s2)
 {
@@ -94,7 +67,7 @@ int	ft_outputenv(char **env)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (env[++i])
 	{
@@ -109,7 +82,7 @@ int	ft_outputenv(char **env)
 		}
 		write(1, &env[i][j], 1);
 		write(1, "\"", 1);
-		while(env[i][++j])
+		while (env[i][++j])
 			write(1, &env[i][j], 1);
 		write(1, "\"", 1);
 		write(1, "\n", 1);

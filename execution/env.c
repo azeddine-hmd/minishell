@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:50:27 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/01 08:03:02 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/11/08 18:27:40 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	find_env(char *value, char **env)
 	return (i);
 }
 
-int ft_valid_env(char *s)
+int	ft_valid_env(char *s)
 {
 	int	i;
 
