@@ -16,22 +16,12 @@ t_bool	ctrl_l_triggered(t_termarg *targ, char **env)
 
 t_bool	right_arrow_triggered(t_termarg *targ)
 {
-#ifdef DEBUG
-	fprintf(ms_log, "key: RIGHT_ARROW\n");
-	fflush(ms_log);
-#endif
 	targ->pos = 0;
-	//ignore
 	return (false);
 }
 
 t_bool	left_arrow_triggered(t_termarg *targ)
 {
-#ifdef DEBUG
-	fprintf(ms_log, "key: LEFT_ARROW\n");
-	fflush(ms_log);
-#endif
 	targ->pos = 0;
-	// ignore
 	return (false);
 }

@@ -2,13 +2,10 @@ NAME = libparser.a
 
 CFLAGS = -Wall -Wextra -Werror \
 		 -g \
-		 -DDEBUG \
 
 CC = gcc
 
 SRC = parse.c \
-	  debug_cmd.c \
-	  debug_range_token.c \
 	  check_syntax_err.c \
 	  create_cmds.c \
 	  get_quotes_range.c \

@@ -26,17 +26,6 @@ static void	ms_capinit(t_cap **cap)
 	(*cap)->ip = xstrdup(tgetstr("cl", NULL));
 }
 
-static void	enable_raw_mode(t_bool enable)
-{
-	struct termios raw;
-
-	if (enable)
-	{
-		tcgetattr(STDIN_FILENO, &raw);
-		raw.c_lflag &= ~(ECHO | ICANON);
-		tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
-	}
-}
 
 /*
 ** initialize terminalinfo and handle terminal compatibility
@@ -60,7 +49,7 @@ static void	ms_init_terminal_data(void)
 void		ms_setup(t_cap **cap, t_buf **a_input)
 {
 	ms_init_terminal_data();
-	enable_raw_mode(true);
+	set_raw_mode(true);
 	ms_capinit(cap);
 	ms_bufinit(a_input);
 }

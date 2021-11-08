@@ -110,10 +110,6 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 		}
 		else
 		{
-#ifdef DEBUG
-			fprintf(ms_log, "key: %d\n", targ->input);
-			fflush(ms_log);
-#endif
 			ms_bufadd(targ->buf, targ->input);
 			ft_putc(targ->input);
 			targ->pos = 0;

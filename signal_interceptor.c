@@ -9,7 +9,6 @@ void	signal_interceptor(int sig)
 	env = *g_sign.env;
 	if (sig == SIGINT)
 	{
-		print_all_signal();
 		if (g_sign.child_running)
 		{
 			return ;
@@ -18,14 +17,14 @@ void	signal_interceptor(int sig)
 		{
 			g_sign.stop_heredoc = true;
 			ft_putc('\n');
-			export_var("?", "1", env);
+			*g_sign.env = export_var("?", "1", env);
 			ms_prompt(getret(env));
 		}
 		else
 		{
 			ft_putc('\n');
 			ms_bufrst(targ->buf);
-			export_var("?", "1", env);
+			*g_sign.env = export_var("?", "1", env);
 			ms_prompt(getret(env));
 		}
 	}

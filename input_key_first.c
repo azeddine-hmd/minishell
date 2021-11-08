@@ -2,10 +2,6 @@
 
 t_bool	backspace_triggered(t_termarg *targ)
 {
-#ifdef DEBUG
-	fprintf(ms_log, "key: BACKSPACE\n");
-	fflush(ms_log);
-#endif
 	if (targ->buf->pos > 0)
 		ms_chrdel(targ->cap);
 	ms_bufdel(targ->buf);
@@ -14,10 +10,6 @@ t_bool	backspace_triggered(t_termarg *targ)
 
 t_bool	enter_triggered(t_termarg *targ, char ***env)
 {
-#ifdef DEBUG
-	fprintf(ms_log, "key: ENTER\n");
-	fflush(ms_log);
-#endif
 	char	*syntax_error;
 	t_list	*heredoc_lst;
 
@@ -32,12 +24,7 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	if (is_not_null(targ->cur->cmdln_str))
 		xfree(targ->cur->cmdln_str);
 	targ->cur->cmdln_str = xstrdup(targ->buf->str);
-#ifdef DEBUG
-	fprintf(ms_buflog, "cmdln: %s\n\n", targ->buf->str);
-	fflush(ms_log);
-#endif
 	t_list	*cmd_lst;
-
 	cmd_lst = NULL;
 	if (has_previous(targ->cur))
 		syntax_error = parse(targ->buf->str, &cmd_lst, *env);
@@ -59,7 +46,6 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 		g_sign.stop_heredoc = false;
 		lstclear(&cmd_lst, cmd_del);
 		targ->pos = 0;
-		targ->cur->ret = 1;
 		targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 		add_history(&(targ->head), targ->cur);
 		ms_bufrst(targ->buf);
@@ -67,12 +53,10 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	}
 	strip_side_quotes(cmd_lst);
 	if (syntax_error == NO_SYNTAX_ERROR)
-	{
 		execute(cmd_lst, env);
-		targ->cur->ret = ft_atoi(pa_getenv(*env, "?"));
-	}
 	else
 	{
+		*env = export_var("?", "1", *env);
 		shell_err(syntax_error);
 		xfree(syntax_error);
 	}
@@ -86,10 +70,6 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 
 t_bool	up_arrow_triggered(t_termarg *targ)
 {
-#ifdef DEBUG
-	fprintf(ms_log, "key: UP_ARROW\n");
-	fflush(ms_log);
-#endif
 	targ->pos = 0;
 	if (!has_previous(targ->cur))
 		return (false) ;
@@ -104,10 +84,6 @@ t_bool	up_arrow_triggered(t_termarg *targ)
 
 t_bool		down_arrow_triggered(t_termarg *targ)
 {
-#ifdef DEBUG
-	fprintf(ms_log, "key: DOWN_ARROW\n");
-	fflush(ms_log);
-#endif
 	targ->pos = 0;
 	if (targ->cur->next == NULL)
 		return (false);

@@ -16,11 +16,10 @@ int	exec_bin(char **cmd, char **env)
 {
 	char	**path;
 	int		i;
-	int		ret;	
+	int		ret;
 
 	i = -1;
 	ret = 0;
-	g_sign.child_running = true;
 	if (cmd[0][0] == '.' || cmd[0][0] == '/')
 		return (exec_path(cmd, env));
 	path = split_path(env);
@@ -78,7 +77,7 @@ int	exec_cmd(t_cmd *cmd, char ***env)
 	}
 	ret = check_cmd(cmd, env);
 	if (cmd->in_token || cmd->out_token)
-	{	
+	{
 		dup2(fd_in, 0);
 		dup2(fd_out, 1);
 		close(fd_in);
@@ -118,10 +117,12 @@ void	execute(t_list *cmds, char ***env)
 {
 	char	*ret;
 
-	print_all_cmds(cmds);
+	set_raw_mode(false);
+	g_sign.child_running = true;
 	ret = xitoa(main_function(cmds, env));
-	g_sign.child_running = false;
 	*env = export_var("?", ret, *env);
 	xfree(ret);
+	g_sign.child_running = false;
+	set_raw_mode(true);
 	return ;
 }
