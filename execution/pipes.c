@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:16:10 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/03 18:02:26 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/08 21:24:31 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ void	pipe_helper(t_list *cmds, int fds[2], int input, char ***env)
 	shell_exit(exec_cmd(cmd, env));
 }
 
+int	sig_return(int ret)
+{
+	if (WIFEXITED(ret))
+		return (WEXITSTATUS(ret));
+	else if (WIFSIGNALED(ret))
+		return (128 + WTERMSIG(ret));
+	return (ret);
+}
+
 t_list	*pipes(t_list *cmds, char ***env)
 {
 	t_cmd	*cmd;
@@ -78,8 +87,7 @@ t_list	*pipes(t_list *cmds, char ***env)
 	}
 	while (wait(&pid) != -1)
 		;
-	if (WIFEXITED(pid))
-		cmd->ret = WEXITSTATUS(pid);
+	cmd->ret = sig_return(pid);
 	g_sign.is_pipe = false;
 	return (cmds);
 }
