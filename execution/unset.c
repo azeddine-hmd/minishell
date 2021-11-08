@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:58:45 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/10/30 21:58:35 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/11/08 12:46:51 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,42 @@ char	**delete_env(int index, char **env)
 	return (env);
 }
 
+int	is_valid(char *str)
+{
+	int	i;
+
+	if (str[0] != '_' && !ft_isalpha(str[0]))
+		return (1);
+	i = 0;
+	while (str[++i] && str[i] != '=')
+	{
+		if (str[i] != '_' && !ft_isalnum(str[i]))
+			return (1);
+	}
+	return (0);
+}
+
 int	ft_builtin_unset(char **args, char ***env)
 {
 	int		i;
 	int		index;
+	int		ret;
 
+	ret = 0;
 	if (!args[0])
 		return (error_msg("unset: not enough arguments\n", 2, 1));
 	i = -1;
 	while (args[++i])
 	{
 		index = find_env(args[i], *env);
+		if (is_valid(args[i]))
+		{
+			ft_bad_value(args[i], NULL);
+			ret = 1;
+			continue ;
+		}
 		if (env[0][index])
 			*env = delete_env(index, *env);
 	}
-	return (0);
+	return (ret);
 }
