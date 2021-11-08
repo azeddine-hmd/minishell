@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:40:43 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/08 12:44:59 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/08 18:29:14 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,6 @@ void		ft_create_file(char *file, char *type);
 void		check_dir(char *p);
 int			open_failed(char *cmd);
 int			ft_bad_value(char *s1, char *s2);
+char		**init_env(char **env);
+char		**export_var(char *var, char *str, char **env);
 #endif

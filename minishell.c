@@ -56,49 +56,7 @@ static void	minishell_loop(t_termarg *targ, char **env)
 	}
 }
 
-int			env_len(char **env) // to modify later. (No need for J)
-{
-	int		i;
-	int		j;
 
-	i = -1;
-	j = 0;
-	while(env[++i])
-		j++;
-	return  (j);
-}
-
-void		*safe_malloc(size_t size)  // equal to ft_memalloc() | To modify later
-{
-	void	*ptr;
-
-	if (!(ptr = xmalloc(size + 1)))
-		return (NULL);
-	ft_bzero(ptr, size + 1);
-	return (ptr);
-}
-
-int		error_msg(char *error_msg, int fd, int exit_code)
-{
-	write(fd, error_msg, ft_strlen(error_msg));
-	return (exit_code);
-}
-
-char	**init_env(char **env)
-{
-	int		i;
-	char	**p_env;
-
-	p_env = (char**)safe_malloc(sizeof(char *) * (env_len(env) + 1));
-	i = 0;
-	p_env[i] = xstrdup("?=0");
-	while (env[++i])
-	{
-		if (!(p_env[i] = xstrdup(env[i])))
-			error_msg("A memory allocation failed!\n", 2, 0);
-	}
-	return (p_env);
-}
 
 int		main(int argc, char **argv, char **env)
 {
