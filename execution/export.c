@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/04 19:17:04 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/08 12:50:11 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_isvalid(char *key)
 	if (*key == '\0' || (!ft_isalpha(*key) && *key != '_'))
 		return (0);
 	while (key[++i])
-		if (!ft_isalpha(key[i]) && !ft_isdigit(key[i]) && key[i] == '_')
+		if (!ft_isalpha(key[i]) && !ft_isdigit(key[i]) && key[i] != '_')
 			return (0);
 	return (1);
 }
