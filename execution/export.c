@@ -6,19 +6,19 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/08 18:28:53 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/08 20:46:23 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-int	ft_bad_value(char *s1, char *s2)
+int	ft_bad_value(char *s1, char *s2, char *s3)
 {
 	if (!s2)
-		printf("minishell: export: `%s': not a valid identifier\n", s1);
+		printf("minishell: %s: `%s': not a valid identifier\n", s3, s1);
 	else
-		printf("minishell: export: `%s=%s': not a valid identifier\n", \
-		s1, s2);
+		printf("minishell: %s: `%s=%s': not a valid identifier\n", \
+		s3, s1, s2);
 	xfree(s1);
 	if (s2)
 		xfree(s2);
@@ -47,7 +47,7 @@ int	extract_data(char *str, char **key, char **value)
 		j++;
 	*key = xsubstr(str, 0, j);
 	if (!*key)
-		return (ft_bad_value(xstrdup(str), NULL));
+		return (ft_bad_value(xstrdup(str), NULL, "export"));
 	if (str[j] == '=')
 	{
 		*value = xsubstr(str, j + 1, ft_strlen(str) - 1);
@@ -59,7 +59,7 @@ int	extract_data(char *str, char **key, char **value)
 	if (*value)
 		*value = strip_quotes(*value);
 	if (!ft_isvalid(*key))
-		return (ft_bad_value(*key, *value));
+		return (ft_bad_value(*key, *value, "export"));
 	return (0);
 }
 
