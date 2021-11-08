@@ -57,7 +57,6 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 			backspace_triggered(targ);
 		else if (targ->input == K_ENTER)
 		{
-			print_keys(targ->input);
 			if (equal(targ->buf->str, stripped_delimiter))
 			{
 				lstpush(&lines_lst, "\n");
@@ -111,7 +110,6 @@ char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
 		}
 		else
 		{
-			print_keys(targ->input);
 			ms_bufadd(targ->buf, targ->input);
 			ft_putc(targ->input);
 			targ->pos = 0;

@@ -1,8 +1,6 @@
 NAME = minishell
 
 CFLAGS = -Wall -Werror -Wextra \
-		 -g \
-		 -DDEBUG \
 
 CC = gcc
 
@@ -23,9 +21,6 @@ SRC = minishell.c \
 	  usage.c \
 	  history.c \
 	  signal_interceptor.c \
-	  debug_history.c \
-	  debug_signal.c \
-	  debug_keys_buffer.c \
 
 OBJ = ${SRC:.c=.o}
 
