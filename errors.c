@@ -8,13 +8,13 @@ void	set_raw_mode(t_bool enable)
 	if (enable)
 	{
 		tsettings.c_lflag &= ~(ECHO | ICANON);
-		tcsetattr(STDIN_FILENO, TCSAFLUSH, &tsettings);
+		tcsetattr(STDIN_FILENO, TCSANOW, &tsettings);
 	}
 	else
 	{
 		tsettings.c_lflag |= ECHO;
 		tsettings.c_lflag |= ICANON;
-		tcsetattr(STDIN_FILENO, TCSAFLUSH, &tsettings);
+		tcsetattr(STDIN_FILENO, TCSANOW, &tsettings);
 	}
 }
 
