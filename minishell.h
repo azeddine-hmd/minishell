@@ -65,10 +65,10 @@ typedef struct s_termarg
 {
 	t_hist	*head;
 	t_hist	*cur;
-	t_buf		*buf;
-	t_cap		*cap;
-	char		input;
-	int			pos;
+	t_buf	*buf;
+	t_cap	*cap;
+	char	input;
+	int		pos;
 }t_termarg;
 
 typedef struct s_sign
@@ -80,6 +80,15 @@ typedef struct s_sign
 	t_bool		heredoc_running;
 	t_bool		is_pipe;
 }t_sign;
+
+typedef struct	s_hd
+{
+	t_list	*lines_lst;
+	char	*fcontent;
+	char	*saved_bufstr;
+	t_bool	expand_enabled;
+	char	*stripped_delimiter;
+}t_hd;
 
 // general
 t_sign		g_sign;
@@ -119,5 +128,9 @@ t_bool		left_arrow_triggered(t_termarg *targ);
 t_list		*get_heredoc_lst(t_list	*cmds);
 void		heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env);
 char		*heredoc_loop(t_termarg *targ, const char *delimiter, char **env);
+t_bool		hd_ctrl_d_triggered(t_termarg *targ);
+char		*format_heredoc_err(const char *delimiter);
+void		hd_prompt(void);
+t_bool		hd_enter_triggered(t_termarg *targ, char **env, t_hd *heredoc);
 
 #endif

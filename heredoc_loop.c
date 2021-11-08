@@ -1,126 +1,91 @@
 #include "minishell.h"
 
-static void		hd_prompt(void)
+static void	heredoc_bloop(t_termarg *targ, t_hd *heredoc, const char *delimiter)
 {
-	ft_putstr(MS_HEREDOC_COLOR);
-	ft_putstr(MS_HEREDOC_PROMPT);
-	ft_putstr(COLORS_DEFAULT);
+	heredoc->lines_lst = NULL;
+	heredoc->saved_bufstr = xstrdup(targ->buf->str);
+	ms_bufrst(targ->buf);
+	hd_prompt();
+	heredoc->stripped_delimiter = strip_quotes(delimiter);
+	if (not_equal(delimiter, heredoc->stripped_delimiter))
+		heredoc->expand_enabled = false;
+	else
+		heredoc->expand_enabled = true;
 }
 
-char	*format_heredoc_err(const char *delimiter)
+static void	heredoc_aloop(t_termarg *targ, t_hd *heredoc)
 {
-	char *joined;
-	char *tmp;
-
-	joined = xstrdup(HEREDOC_ERR);
-	tmp = joined;
-	joined = xstrjoin(joined, delimiter);
-	xfree(tmp);
-	tmp = joined;
-	joined = xstrjoin(joined, "')");
-	xfree(tmp);
-	return (joined);
+	ms_bufrpc(targ->buf, heredoc->saved_bufstr);
+	xfree(heredoc->saved_bufstr);
+	if (is_not_null(heredoc->lines_lst))
+		heredoc->fcontent = join_string_list_with_nl(heredoc->lines_lst);
+	else
+		heredoc->fcontent = xstrdup("");
+	lstclear(&(heredoc->lines_lst), str_del);
 }
 
-static t_bool	hd_ctrl_d_triggered(t_termarg *targ)
+static t_bool	keys_cases_extanded(t_termarg *targ)
 {
-	if (ft_strlen(targ->buf->str) == 0)
+	if (targ->pos == 2)
+		targ->pos = 0;
+	else if (targ->input == K_CTRL_D)
 	{
-		ft_putc('\n');
-		return (true);
+		if (hd_ctrl_d_triggered(targ))
+			return (true);
+	}
+	else if (targ->input == K_CTRL_L)
+		(void)NULL;
+	else if (targ->input == K_CTRL_I || targ->input == K_CTRL_H
+		|| targ->input == K_CTRL_K)
+		(void)NULL;
+	else
+	{
+		ms_bufadd(targ->buf, targ->input);
+		ft_putc(targ->input);
+		targ->pos = 0;
 	}
 	return (false);
 }
 
-char			*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
+static t_bool	keys_cases(t_termarg *targ, char **env, t_hd *heredoc)
 {
-	t_list	*lines_lst;
-	char	*fcontent;
-	char	*saved_bufstr;
-	t_bool	expand_enabled;
-	char	*stripped_delimiter;
-
-	lines_lst = NULL;
-	saved_bufstr = xstrdup(targ->buf->str);
-	ms_bufrst(targ->buf);
-	hd_prompt();
-	stripped_delimiter = strip_quotes(delimiter);
-	if (not_equal(delimiter, stripped_delimiter))
-		expand_enabled = false;
+	if (targ->input == K_BS)
+		backspace_triggered(targ);
+	else if (targ->input == K_ENTER)
+	{
+		if (hd_enter_triggered(targ, env, heredoc))
+			return (true);
+	}
+	else if (targ->input == K_ESC)
+		targ->pos++;
+	else if (targ->pos == 1 && targ->input == K_OSB)
+		targ->pos++;
+	else if (targ->pos == 2 && targ->input == K_A)
+		(void)NULL;
+	else if (targ->pos == 2 && targ->input == K_B)
+		(void)NULL;
+	else if (targ->pos == 2 && targ->input == K_C)
+		(void)NULL;
+	else if (targ->pos == 2 && targ->input == K_D)
+		(void)NULL;
 	else
-		expand_enabled = true;
+		if (keys_cases_extanded(targ))
+			return (true);
+	return (false);
+}
+
+char	*heredoc_loop(t_termarg *targ, const char *delimiter, char **env)
+{
+	t_hd	heredoc;
+
+	heredoc_bloop(targ, &heredoc, delimiter);
 	while (read(STDIN_FILENO, &(targ->input), 1) == 1)
 	{
 		if (g_sign.stop_heredoc)
 			break ;
-		if (targ->input == K_BS)
-			backspace_triggered(targ);
-		else if (targ->input == K_ENTER)
-		{
-			if (equal(targ->buf->str, stripped_delimiter))
-			{
-				lstpush(&lines_lst, "\n");
-				ft_putc(targ->input);
-				break ;
-			}
-			else
-			{
-				ft_putc(targ->input);
-				if (expand_enabled)
-					lstpush(&lines_lst, expand((targ->buf->str), env, false));
-				else
-					lstpush(&lines_lst, xstrdup(targ->buf->str));
-				ms_bufrst(targ->buf);
-				hd_prompt();
-			}
-		}
-		else if (targ->input == K_ESC)
-			targ->pos++;
-		else if (targ->pos == 1 && targ->input == K_OSB)
-			targ->pos++;
-		else if (targ->pos == 2 && targ->input == K_A)
-			// ignore
-			;
-		else if (targ->pos == 2 && targ->input == K_B)
-			// ignore
-			;
-		else if (targ->pos == 2 && targ->input == K_C)
-			// ignore
-			;
-		else if (targ->pos == 2 && targ->input == K_D)
-			// ignore
-			;
-		else if (targ->pos == 2)
-			targ->pos = 0;
-		else if (targ->input == K_CTRL_D)
-		{
-			if (hd_ctrl_d_triggered(targ))
-				break ;
-		}
-		else if (targ->input == K_CTRL_L)
-			// ignore
-			;
-		else if (
-				targ->input == K_CTRL_I ||
-				targ->input == K_CTRL_H ||
-				targ->input == K_CTRL_K
-				)
-		{
-			// ignore
-		}
-		else
-		{
-			ms_bufadd(targ->buf, targ->input);
-			ft_putc(targ->input);
-			targ->pos = 0;
-		}
+		if (keys_cases(targ, env, &heredoc))
+			break ;
 	}
-	ms_bufrpc(targ->buf, saved_bufstr);
-	xfree(saved_bufstr);
-	if (is_not_null(lines_lst))
-		fcontent = join_string_list_with_nl(lines_lst);
-	else
-		fcontent = xstrdup("");
-	lstclear(&lines_lst, str_del);
-	return (fcontent);
+	heredoc_aloop(targ, &heredoc);
+	return (heredoc.fcontent);
 }

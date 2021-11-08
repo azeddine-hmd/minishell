@@ -21,6 +21,11 @@ SRC = minishell.c \
 	  usage.c \
 	  history.c \
 	  signal_interceptor.c \
+	  heredoc_extra.c \
+	  hd_enter_triggered.c \
+	  backspace_triggered.c \
+	  arrows_triggered.c \
+	  ctrl_d_triggered.c \
 
 OBJ = ${SRC:.c=.o}
 

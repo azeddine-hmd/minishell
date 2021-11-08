@@ -1,30 +1,28 @@
 #include "minishell.h"
 
-t_bool	backspace_triggered(t_termarg *targ)
-{
-	if (targ->buf->pos > 0)
-		ms_chrdel(targ->cap);
-	ms_bufdel(targ->buf);
-	return (false);
-}
+void	//TODO: add prepare history function static signature
 
 t_bool	enter_triggered(t_termarg *targ, char ***env)
 {
 	char	*syntax_error;
 	t_list	*heredoc_lst;
+	t_list	*cmd_lst;
+	t_bool	bre;
 
+	bre = false
 	syntax_error = NULL;
 	ft_putc(targ->input);
 	if (ft_strlen(targ->buf->str) == 0)
 	{
 		ms_prompt(getret(*env));
-		return (false);
+		return (bre);
 	}
 	targ->cur = get_last_history(targ->head);
 	if (is_not_null(targ->cur->cmdln_str))
 		xfree(targ->cur->cmdln_str);
 	targ->cur->cmdln_str = xstrdup(targ->buf->str);
-	t_list	*cmd_lst;
+	// TODO: slice this shit
+
 	cmd_lst = NULL;
 	if (has_previous(targ->cur))
 		syntax_error = parse(targ->buf->str, &cmd_lst, *env);
@@ -49,7 +47,8 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 		targ->cur = (t_hist*)xmalloc(sizeof(t_hist));
 		add_history(&(targ->head), targ->cur);
 		ms_bufrst(targ->buf);
-		return (true);
+		bre = true
+		return (bre);
 	}
 	strip_side_quotes(cmd_lst);
 	if (syntax_error == NO_SYNTAX_ERROR)
@@ -65,41 +64,5 @@ t_bool	enter_triggered(t_termarg *targ, char ***env)
 	add_history(&(targ->head), targ->cur);
 	ms_bufrst(targ->buf);
 	ms_prompt(getret(*env));
-	return (false);
-}
-
-t_bool	up_arrow_triggered(t_termarg *targ)
-{
-	targ->pos = 0;
-	if (!has_previous(targ->cur))
-		return (false) ;
-	if (is_null(targ->cur->cmdln_str))
-		targ->cur->cmdln_str = xstrdup(targ->buf->str);
-	targ->cur = targ->cur->previous;
-	ms_lndel(targ->cap, targ->buf->last);
-	ms_bufrpc(targ->buf, targ->cur->cmdln_str);
-	ft_putstr(targ->cur->cmdln_str);
-	return (false);
-}
-
-t_bool		down_arrow_triggered(t_termarg *targ)
-{
-	targ->pos = 0;
-	if (targ->cur->next == NULL)
-		return (false);
-	targ->cur = targ->cur->next;
-	ms_lndel(targ->cap, targ->buf->last);
-	if (is_null(targ->cur->cmdln_str))
-		ms_bufrst(targ->buf);
-	else
-		ms_bufrpc(targ->buf, targ->cur->cmdln_str);
-	ft_putstr(targ->buf->str);
-	return (false);
-}
-
-t_bool	ctrl_d_triggered(t_termarg *targ)
-{
-	if (ft_strlen(targ->buf->str) == 0)
-		return (true);
-	return (false);
+	return (bre);
 }
