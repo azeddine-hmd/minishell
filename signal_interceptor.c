@@ -12,6 +12,7 @@ void	signal_interceptor(int sig)
 		print_all_signal();
 		if (g_sign.child_running)
 		{
+			ft_putc('\n');
 			return ;
 		}
 		else if (g_sign.heredoc_running)
@@ -26,6 +27,7 @@ void	signal_interceptor(int sig)
 			ft_putc('\n');
 			ms_bufrst(targ->buf);
 			*g_sign.env = export_var("?", "1", env);
+			targ->cur = get_last_history(targ->head);
 			ms_prompt(getret(env));
 		}
 	}

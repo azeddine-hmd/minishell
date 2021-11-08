@@ -4,18 +4,14 @@ void	set_raw_mode(t_bool enable)
 {
 	struct termios tsettings;
 
-	tcgetattr(STDIN_FILENO, &tsettings);
 	if (enable)
 	{
+		tcgetattr(STDIN_FILENO, &tsettings);
 		tsettings.c_lflag &= ~(ECHO | ICANON);
-		tcsetattr(STDIN_FILENO, TCSANOW, &tsettings);
+		tcsetattr(0, 0, &tsettings);
 	}
 	else
-	{
-		tsettings.c_lflag |= ECHO;
-		tsettings.c_lflag |= ICANON;
-		tcsetattr(STDIN_FILENO, TCSANOW, &tsettings);
-	}
+		tcsetattr(0, 0, &saved_tsettings);
 }
 
 void	shell_exit(int ret)

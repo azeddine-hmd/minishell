@@ -44,6 +44,10 @@
 # define ERR_SHELL_NAME "minishell: "
 # define ERR_PROTOTYPE "syntax error near unexpected token 'x'"
 
+// debugging
+struct termios			saved_tsettings;
+typedef struct termios	t_termios;
+
 void	set_raw_mode(t_bool enable);
 void	shell_exit(int ret);
 void	shell_err(const char *error);

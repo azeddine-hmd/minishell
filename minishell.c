@@ -11,6 +11,8 @@ static void	minishell_loop(t_termarg *targ, char **env)
 	skip = false;
 	while (skip || read(STDIN_FILENO, &(targ->input), 1) == 1)
 	{
+		if (skip)
+			skip = false;
 		if (targ->input == K_BS)
 			backspace_triggered(targ);
 		else if (targ->input == K_ENTER)
