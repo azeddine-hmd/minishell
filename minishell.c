@@ -22,12 +22,12 @@ static void	keys_cases_extended(t_termarg *targ, char ***env)
 	}
 }
 
-static void	keys_cases(t_termarg *targ, char ***env, t_bool *skip)
+static void	keys_cases(t_termarg *targ, char ***env, t_bool *skip_input)
 {
 	if (targ->input == K_BS)
 		backspace_triggered(targ);
 	else if (targ->input == K_ENTER)
-		*skip = enter_triggered(targ, env);
+		*skip_input = enter_triggered(targ, env);
 	else if (targ->input == K_ESC)
 		targ->pos++;
 	else if (targ->pos == 1 && targ->input == K_OSB)
@@ -48,18 +48,18 @@ static void	keys_cases(t_termarg *targ, char ***env, t_bool *skip)
 
 static void	minishell_loop(t_termarg *targ, char **env)
 {
-	t_bool	skip;
+	t_bool	skip_input;
 
 	g_sign.env = &env;
 	ms_prompt(getret(env));
 	targ->cur = (t_hist *)xmalloc(sizeof(t_hist));
 	add_history(&(targ->head), targ->cur);
-	skip = false;
-	while (skip || read(STDIN_FILENO, &(targ->input), 1) == 1)
+	skip_input = false;
+	while (skip_input || read(STDIN_FILENO, &(targ->input), 1) == 1)
 	{
-		if (skip)
-			skip = false;
-		keys_cases(targ, &env, &skip);
+		if (skip_input)
+			skip_input = false;
+		keys_cases(targ, &env, &skip_input);
 	}
 }
 
