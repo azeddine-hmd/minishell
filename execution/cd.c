@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boodeer <boodeer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 19:06:29 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/08 23:43:45 by boodeer          ###   ########.fr       */
+/*   Updated: 2021/11/09 19:11:47 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	home_run(char ***env)
 {
 	char	*path;
 	char	*tmp;
-	
+
 	if (!find_strenv("HOME", *env))
 		return (error_msg("minishell: cd: HOME not set\n", 2, 1));
 	path = ft_substr(find_strenv("HOME", *env), 5,
