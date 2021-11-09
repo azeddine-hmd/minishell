@@ -12,20 +12,20 @@ SRC = minishell.c \
 	  buffer.c \
 	  errors.c \
 	  terminal.c \
+	  usage.c \
+	  history.c \
 	  cursor.c \
-	  input_key_first.c \
-	  input_key_second.c \
 	  heredoc.c \
 	  heredoc_loop.c \
 	  heredoc_entry.c \
-	  usage.c \
-	  history.c \
-	  signal_interceptor.c \
 	  heredoc_extra.c \
 	  hd_enter_triggered.c \
+	  signal_interceptor.c \
 	  backspace_triggered.c \
 	  arrows_triggered.c \
 	  ctrl_d_triggered.c \
+	  enter_triggered.c \
+	  ctrl_l_triggered.c \
 
 OBJ = ${SRC:.c=.o}
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   buffer.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/09 21:42:21 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/09 21:42:21 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 /*
@@ -70,10 +82,10 @@ void	ms_bufadd(t_buf *buf, char out)
 
 void	ms_bufinit(t_buf **a_buf)
 {
-	t_buf *buf;
+	t_buf	*buf;
 
-	*a_buf = (t_buf*)xmalloc(sizeof(t_buf));
+	*a_buf = (t_buf *)xmalloc(sizeof(t_buf));
 	buf = *a_buf;
-	buf->str = (char*)xmalloc(MS_BUFFER_SIZE);
+	buf->str = (char *)xmalloc(MS_BUFFER_SIZE);
 	buf->size = MS_BUFFER_SIZE;
 }

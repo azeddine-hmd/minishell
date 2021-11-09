@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   history.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/09 21:43:12 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/09 21:43:12 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 t_bool	has_previous(t_hist *history)
@@ -19,7 +31,7 @@ t_hist	*get_last_history(t_hist *history)
 
 void	add_history(t_hist **head, t_hist *history)
 {
-	t_hist *last_history;
+	t_hist	*last_history;
 
 	if (*head == NULL)
 	{
@@ -31,50 +43,4 @@ void	add_history(t_hist **head, t_hist *history)
 		last_history->next = history;
 		history->previous = last_history;
 	}
-}
-
-static void	xfree_history(t_hist *history)
-{
-
-	xfree(history->cmdln_str);
-	xfree(history->next);
-	xfree(history->previous);
-}
-
-static void xfree_after_head(t_hist *node, t_hist *target)
-{
-	t_hist *tmp;
-	t_hist *node_left;
-
-	while (node->next)
-	{
-		if (node->next == target)
-		{
-			node_left = node;
-			tmp = node->next;
-			node = node->next->next;
-			xfree_history(tmp);
-			node_left->next = node;
-			return ;
-		}
-		node = node->next;
-	}
-}
-
-void	delete_history(t_hist **head, t_hist *target)
-{
-	t_hist *tmp;
-
-	if (!(head) || !(*head) || !target)
-	{
-		return ;
-	}
-	if (*head == target)
-	{
-		tmp = *head;
-		*head = (*head)->next;
-		xfree_history(tmp);
-		return ;
-	}
-	xfree_after_head(*head, target);
 }

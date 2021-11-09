@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/09 21:09:03 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/09 21:09:03 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -81,7 +93,7 @@ typedef struct s_sign
 	t_bool		is_pipe;
 }t_sign;
 
-typedef struct	s_hd
+typedef struct s_hd
 {
 	t_list	*lines_lst;
 	char	*fcontent;
@@ -90,15 +102,29 @@ typedef struct	s_hd
 	char	*stripped_delimiter;
 }t_hd;
 
-typedef struct	s_painfo
+typedef struct s_hdentry
+{
+	t_list	*fcontent_lst;
+	t_list	*hd_iterator;
+	t_token	*hd_token;
+	char	*fcontent;
+	int		file_suffix;
+}t_hdentry;
+
+typedef struct s_painfo
 {
 	t_list	*cmd_lst;
 	char	*syntax_error;
 	t_list	*heredoc_lst;
 }t_painfo;
 
-// general
-t_sign		g_sign;
+// types
+typedef struct termios	t_termios;
+
+// globals
+t_sign					g_sign;
+
+// utils
 void		usage(void);
 void		signal_interceptor(int sig);
 
@@ -119,7 +145,6 @@ void		ms_lndel(t_cap *cap, size_t n);
 t_bool		has_previous(t_hist *history);
 t_hist		*get_last_history(t_hist *head);
 void		add_history(t_hist **head, t_hist *history);
-void		delete_history(t_hist **head, t_hist *history);
 
 // keys events
 t_bool		backspace_triggered(t_termarg *targ);
