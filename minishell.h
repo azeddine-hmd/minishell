@@ -90,6 +90,13 @@ typedef struct	s_hd
 	char	*stripped_delimiter;
 }t_hd;
 
+typedef struct	s_painfo
+{
+	t_list	*cmd_lst;
+	char	*syntax_error;
+	t_list	*heredoc_lst;
+}t_painfo;
+
 // general
 t_sign		g_sign;
 void		usage(void);

@@ -6,6 +6,7 @@
 
 # define INDEX_NOT_FOUND -1
 # define NO_RANGE_TYPE 0
+# define EMPTY_LIST NULL
 # undef false
 # undef true
 
