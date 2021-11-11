@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:06 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/08 20:46:23 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:54:41 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int	ft_outputenv(char **env)
 	{
 		j = -1;
 		ft_putstr("declare -x ");
-		while (env[i][++j] != '=')
+		while (env[i][++j] && env[i][j] != '=')
 			write(1, &env[i][j], 1);
-		if (j == (int)ft_strlen(env[i]) - 1)
+		if (env[i][j] == '\0')
 		{
 			write(1, "\n", 1);
 			continue ;
