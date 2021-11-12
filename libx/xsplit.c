@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   xsplit.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 19:34:36 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 19:34:36 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
-static	int		get_length(char const *s, int c, int start)
+static	int	get_length(char const *s, int c, int start)
 {
 	int	i;
 
@@ -10,7 +22,7 @@ static	int		get_length(char const *s, int c, int start)
 	return (i - start);
 }
 
-static	int		count_words(char const *s, char c)
+static	int	count_words(char const *s, char c)
 {
 	int	i;
 	int	counter;
@@ -39,7 +51,8 @@ static	char	*str_allocation(char const *s, char c, int start)
 	int		j;
 	char	*str;
 
-	if (!(str = (char*)xmalloc(get_length(s, c, start) + 1)))
+	str = (char *)xmalloc(get_length(s, c, start) + 1);
+	if (!str)
 		return (0);
 	i = start - 1;
 	j = -1;
@@ -60,7 +73,8 @@ static	char	**norminette_helper(char const *s, char c, char **str, int j)
 	{
 		if (s[i] != c && is_word_completed)
 		{
-			if (!(str[++j] = str_allocation(s, c, i)))
+			str[++j] = str_allocation(s, c, i);
+			if (!str[j])
 			{
 				while (j > 0)
 					free(str[--j]);
@@ -77,13 +91,14 @@ static	char	**norminette_helper(char const *s, char c, char **str, int j)
 	return (str);
 }
 
-char			**xsplit(char const *s, char c)
+char	**xsplit(char const *s, char c)
 {
-	char		**str;
+	char	**str;
 
 	if (!s)
 		return (NULL);
-	if (!(str = (char**)xmalloc(sizeof(char*) * (count_words(s, c) + 1))))
+	str = (char **)xmalloc(sizeof(char *) * (count_words(s, c) + 1));
+	if (!str)
 		return (NULL);
 	return (norminette_helper(s, c, str, -1));
 }

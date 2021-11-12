@@ -1,12 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   xitoa.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 19:26:14 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 19:26:14 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 static long	numlen(long n)
 {
-	long i;
+	long	i;
 
 	i = 1;
-	while ((n /= 10) != 0)
+	n /= 10;
+	while (n != 0)
+	{
+		n /= 10;
 		i++;
+	}
 	return (i);
 }
 
@@ -14,7 +30,8 @@ static char	*zero_condition(void)
 {
 	char	*n;
 
-	if (!(n = (char*)xmalloc(2)))
+	n = (char *)xmalloc(2);
+	if (!n)
 		return (NULL);
 	*n = '0';
 	*(n + 1) = '\0';
@@ -27,7 +44,8 @@ static char	*negative_condition(long n)
 	long	len;
 
 	len = numlen(n);
-	if (!(strnum = (char*)xmalloc(len + 2)))
+	strnum = (char *)xmalloc(len + 2);
+	if (!strnum)
 		return (NULL);
 	ft_bzero(strnum, len + 2);
 	strnum[0] = '-';
@@ -40,7 +58,7 @@ static char	*negative_condition(long n)
 	return (strnum);
 }
 
-char		*xitoa(long n)
+char	*xitoa(long n)
 {
 	char	*strnum;
 	long	len;
@@ -50,7 +68,8 @@ char		*xitoa(long n)
 	if (n < 0)
 		return (negative_condition((long)(n * -1)));
 	len = numlen(n);
-	if (!(strnum = (char*)xmalloc(len + 1)))
+	strnum = (char *)xmalloc(len + 1);
+	if (!strnum)
 		return (NULL);
 	ft_bzero(strnum, len + 1);
 	while (n)

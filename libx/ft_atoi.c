@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 20:10:31 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 20:10:31 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int		i;
 	int		signe;
@@ -10,8 +22,8 @@ int		ft_atoi(const char *str)
 	signe = 1;
 	result = 0;
 	while (str[i] != '\0' && (str[i] == '\t' || str[i] == '\n'
-				|| str[i] == '\r' || str[i] == '\v'
-				|| str[i] == '\f' || str[i] == ' '))
+			|| str[i] == '\r' || str[i] == '\v'
+			|| str[i] == '\f' || str[i] == ' '))
 		i++;
 	if (str[i] == '-')
 		signe = -1;

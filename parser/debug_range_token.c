@@ -18,7 +18,7 @@ void		print_all_range(t_list *head)
 {
 	t_range	*range;
 
-	while (is_not_null(head))
+	while (not_null(head))
 	{
 		range = (t_range *)head->content;
 		fprintf(pa_log, "range->from: %d\n", range->from);

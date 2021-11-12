@@ -29,7 +29,7 @@ static void	heredoc_aloop(t_termarg *targ, t_hd *heredoc)
 {
 	ms_bufrpc(targ->buf, heredoc->saved_bufstr);
 	xfree(heredoc->saved_bufstr);
-	if (is_not_null(heredoc->lines_lst))
+	if (not_null(heredoc->lines_lst))
 		heredoc->fcontent = join_string_list_with_nl(heredoc->lines_lst);
 	else
 		heredoc->fcontent = xstrdup("");

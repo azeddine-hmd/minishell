@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   strip_side_quotes.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/12 10:58:45 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/12 10:58:45 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
 
 static char	*strip(const char *s)
@@ -10,7 +22,7 @@ static char	*strip(const char *s)
 	quotes_lst = get_quotes_range(s);
 	if (is_null(quotes_lst))
 		return (NULL);
-	quotes_range = (t_range*)quotes_lst->content;
+	quotes_range = (t_range *)quotes_lst->content;
 	stripped = NULL;
 	if (quotes_range->from == 0 && quotes_range->to == (int)(ft_strlen(s) - 1))
 	{
@@ -29,9 +41,9 @@ static void	strip_token_lst(t_list *token_lst)
 
 	while (token_lst)
 	{
-		token = (t_token*)token_lst->content;
+		token = (t_token *)token_lst->content;
 		stripped = strip(token->value);
-		if (is_not_null(stripped))
+		if (not_null(stripped))
 		{
 			xfree(token->value);
 			token->value = stripped;
@@ -58,13 +70,13 @@ static void	strip_array(char **args)
 	}
 }
 
-static void strip_cmd(t_cmd *cmd)
+static void	strip_cmd(t_cmd *cmd)
 {
-	if (is_not_null(cmd->args))
+	if (not_null(cmd->args))
 		strip_array(cmd->args);
-	if (is_not_null(cmd->in_token))
+	if (not_null(cmd->in_token))
 		strip_token_lst(cmd->in_token);
-	if (is_not_null(cmd->out_token))
+	if (not_null(cmd->out_token))
 		strip_token_lst(cmd->out_token);
 }
 
@@ -74,7 +86,7 @@ void	strip_side_quotes(t_list *cmd_lst)
 
 	while (cmd_lst)
 	{
-		cmd = (t_cmd*)cmd_lst->content;
+		cmd = (t_cmd *)cmd_lst->content;
 		strip_cmd(cmd);
 		cmd_lst = cmd_lst->next;
 	}

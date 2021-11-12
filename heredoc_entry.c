@@ -12,48 +12,51 @@
 
 #include "minishell.h"
 
-void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env)
+static void	set_content_lst(t_termarg *targ, t_hdentry *hdentry, char **env)
 {
-	t_hdentry hdentry;
-
-	//TODO: norm this shit
-	hdentry.hd_iterator = heredoc_lst;
-	fcontent_lst = EMPTY_LIST;
-	file_suffix = 0;
-	while (hd_iterator)
+	hdentry->hd_iterator = hdentry->heredoc_lst;
+	hdentry->fcontent_lst = EMPTY_LIST;
+	hdentry->file_suffix = 0;
+	while (hdentry->hd_iterator)
 	{
-		hd_token = (t_token *)hd_iterator->content;
-		fcontent = heredoc_loop(targ, hd_token->value, env);
-		lstpush(&fcontent_lst, fcontent);
+		hdentry->hd_token = (t_token *)hdentry->hd_iterator->content;
+		hdentry->fcontent = heredoc_loop(targ, hdentry->hd_token->value, env);
+		lstpush(&(hdentry->fcontent_lst), hdentry->fcontent);
 		if (g_sign.stop_heredoc)
 		{
-			if (is_not_null(fcontent_lst))
-				lstclear(&fcontent_lst, str_del);
+			if (not_null(hdentry->fcontent_lst))
+				lstclear(&(hdentry->fcontent_lst), str_del);
 			return ;
 		}
-		hd_iterator = hd_iterator->next;
+		hdentry->hd_iterator = (hdentry->hd_iterator)->next;
 	}
+}
 
-	hd_iterator = heredoc_lst;
-	while (hd_iterator || fcontent_lst)
+void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env)
+{
+	t_hdentry	hdentry;
+	char		*file_suffix_str;
+	char		*pathname;
+	int			fd;
+
+	hdentry.heredoc_lst = heredoc_lst;
+	set_content_lst(targ, &hdentry, env);
+	hdentry.hd_iterator = hdentry.heredoc_lst;
+	while (hdentry.hd_iterator || hdentry.fcontent_lst)
 	{
-		char	*file_suffix_str;
-		char	*pathname;
-		int		fd;
-
-		file_suffix_str = xitoa(file_suffix);
+		file_suffix_str = xitoa(hdentry.file_suffix);
 		pathname = xstrjoin(FILE_PREFIX, file_suffix_str);
 		xfree(file_suffix_str);
-		fcontent = fcontent_lst->content;
+		hdentry.fcontent = hdentry.fcontent_lst->content;
 		fd = open(pathname, O_WRONLY | O_CREAT | O_TRUNC, FILE_PREMISSION);
-		write(fd, fcontent, ft_strlen(fcontent));
-		hd_token = (t_token *)hd_iterator->content;
-		xfree(hd_token->value);
-		hd_token->value = pathname;
+		write(fd, hdentry.fcontent, ft_strlen(hdentry.fcontent));
+		hdentry.hd_token = (t_token *)hdentry.hd_iterator->content;
+		xfree(hdentry.hd_token->value);
+		hdentry.hd_token->value = pathname;
 		close(fd);
-		file_suffix++;
-		fcontent_lst = fcontent_lst->next;
-		hd_iterator = hd_iterator->next;
+		hdentry.file_suffix++;
+		hdentry.fcontent_lst = hdentry.fcontent_lst->next;
+		hdentry.hd_iterator = hdentry.hd_iterator->next;
 	}
-	lstclear(&fcontent_lst, str_del);
+	lstclear(&hdentry.fcontent_lst, str_del);
 }

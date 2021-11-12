@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 20:56:25 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 20:56:25 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 static int	is_set(char const *set, char c)
@@ -21,7 +33,8 @@ static char	*ft_strtrim_helper(char const *s1, int start, int end)
 	int		str_trimmed_length;
 
 	str_trimmed_length = end - start + 1;
-	if (!(str_trimmed = (char *)malloc(str_trimmed_length + 1)))
+	str_trimmed = (char *)malloc(str_trimmed_length + 1);
+	if (!str_trimmed)
 		return (NULL);
 	i = start;
 	j = 0;
@@ -35,7 +48,7 @@ static char	*ft_strtrim_helper(char const *s1, int start, int end)
 	return (str_trimmed);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
 	int		s1_length;

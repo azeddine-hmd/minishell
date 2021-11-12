@@ -14,16 +14,16 @@
 
 void	set_raw_mode(t_bool enable)
 {
-	t_termios	tsettings;
+	struct termios	tsettings;
 
 	if (enable)
 	{
-		tcgetattr(STDIN_FILENO, &tsettings);
+		tcgetattr(0, &tsettings);
 		tsettings.c_lflag &= ~(ECHO | ICANON);
 		tcsetattr(0, 0, &tsettings);
 	}
 	else
-		tcsetattr(0, 0, &saved_tsettings);
+		tcsetattr(0, 0, get_saved_tsettings());
 }
 
 void	shell_exit(int ret)

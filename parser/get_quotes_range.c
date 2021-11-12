@@ -1,18 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_quotes_range.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/12 08:46:17 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/12 08:46:17 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
-
-static int	quote_address_to_index(const char *s, char *quote_address)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (&(s[i]) == quote_address)
-			return (i);
-		i++;
-	}
-	return (QUOTE_ADDRESS_NOT_FOUND);
-}
 
 static int	get_quote_pair_index(const char *s, char quote, int start_index)
 {
@@ -22,7 +20,7 @@ static int	get_quote_pair_index(const char *s, char quote, int start_index)
 	quote_address = ft_strchr(s + start_index, quote);
 	if (is_null(quote_address))
 		return (PAIR_NOT_FOUND);
-	index = quote_address_to_index(s, quote_address);
+	index = address_to_index(s, quote_address);
 	return (index);
 }
 

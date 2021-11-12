@@ -80,6 +80,9 @@ int	main(int argc, char **argv, char **env)
 	t_termarg	targ;
 	char		**p_env;
 
+	// debugging
+	pa_log = fopen(PARSE_DEBUG_LOG_PATH, "a");
+
 	(void)argv;
 	if (argc != 1)
 	{

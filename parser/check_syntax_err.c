@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_syntax_err.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 22:25:22 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 22:25:22 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
 
-static void		format_token(const char *token, char **syntax_error)
+static void	format_token(const char *token, char **syntax_error)
 {
 	const char	*left = "syntax error near unexpected token `";
 	const char	*right = "'";
@@ -14,7 +26,7 @@ static void		format_token(const char *token, char **syntax_error)
 
 static t_bool	token_errs(t_list *cmdln_lst, char **syntax_error)
 {
-	const char *token_newline = "newline";
+	const char	*token_newline = "newline";
 
 	if (is_token(cmdln_lst->content) && equal(cmdln_lst->content, PIPE))
 	{

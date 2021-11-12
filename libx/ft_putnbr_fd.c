@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 20:51:54 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 20:51:54 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 static int	integer_length(int nb)
 {
-	int length;
+	int	length;
 
 	length = 1;
-	while (nb / 10 != 0)
+	nb /= 10;
+	while (nb != 0)
 	{
 		nb /= 10;
 		length++;
@@ -15,7 +28,7 @@ static int	integer_length(int nb)
 
 static int	power_ten(int power)
 {
-	int result;
+	int	result;
 
 	result = 1;
 	while (power > 0)
@@ -26,11 +39,11 @@ static int	power_ten(int power)
 	return (result);
 }
 
-void		ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned	unb;
-	int			length;
-	int			tens;
+	unsigned int	unb;
+	int				length;
+	int				tens;
 
 	if (n < 0)
 	{

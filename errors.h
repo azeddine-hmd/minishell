@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 21:57:22 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 21:57:22 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ERRORS_H
 # define ERRORS_H
 
@@ -44,14 +56,11 @@
 # define ERR_SHELL_NAME "minishell: "
 # define ERR_PROTOTYPE "syntax error near unexpected token 'x'"
 
-// debugging
-struct termios			saved_tsettings;
-typedef struct termios	t_termios;
-
-void	set_raw_mode(t_bool enable);
-void	shell_exit(int ret);
-void	shell_err(const char *error);
-void	ferr(const char *err_format, const char *arg);
-void	err(const char *error);
+struct termios	*get_saved_tsettings(void);
+void			set_raw_mode(t_bool enable);
+void			shell_exit(int ret);
+void			shell_err(const char *error);
+void			ferr(const char *err_format, const char *arg);
+void			err(const char *error);
 
 #endif

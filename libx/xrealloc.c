@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   xrealloc.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 19:49:49 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 19:49:49 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 /*
@@ -5,7 +17,7 @@
 ** this function is totally different in implementation and behaviour
 */
 
-void	 *xrealloc(void *ptr, size_t old_size, size_t new_size)
+void	*xrealloc(void *ptr, size_t old_size, size_t new_size)
 {
 	void	*ptr_new;
 
@@ -15,13 +27,9 @@ void	 *xrealloc(void *ptr, size_t old_size, size_t new_size)
 		return (NULL);
 	}
 	if (!ptr)
-	{
-		return xmalloc(new_size);
-	}
+		return (xmalloc(new_size));
 	else if (new_size <= old_size)
-	{
 		return (ptr);
-	}
 	else
 	{
 		if (!(ptr && new_size > old_size))

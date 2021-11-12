@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libx_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 20:20:48 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 20:20:48 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 /*
@@ -15,7 +27,8 @@ t_data	*new_node(void *data)
 
 	if (!data)
 		return (NULL);
-	if (!(node = (t_data*)malloc(sizeof(t_data))))
+	node = (t_data *)malloc(sizeof(t_data));
+	if (!node)
 		return (NULL);
 	node->data = data;
 	node->next = NULL;
@@ -34,7 +47,8 @@ void	add(t_data **head, void *data)
 
 	if (!data || !head)
 		alloc_fail();
-	if (!(node = new_node(data)))
+	node = new_node(data);
+	if (!node)
 		alloc_fail();
 	lst_add_back(head, node);
 }
@@ -61,7 +75,7 @@ void	add_double_pointer(char **ptr)
 
 void	xfree_double_pointer(char **ptr)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (ptr[++i])
@@ -77,7 +91,7 @@ void	xfree_double_pointer(char **ptr)
 ** int: size of list.
 */
 
-int		lst_size(t_data *head)
+int	lst_size(t_data *head)
 {
 	int	size;
 

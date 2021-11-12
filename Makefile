@@ -1,6 +1,8 @@
 NAME = minishell
 
 CFLAGS = -Wall -Werror -Wextra \
+		 -g \
+		 -fsanitize=address \
 
 CC = gcc
 
@@ -26,6 +28,7 @@ SRC = minishell.c \
 	  ctrl_d_triggered.c \
 	  enter_triggered.c \
 	  ctrl_l_triggered.c \
+	  tsettings.c \
 
 OBJ = ${SRC:.c=.o}
 

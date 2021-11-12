@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   separate_tokens.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/12 10:24:26 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/12 10:24:26 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
 
 static void	end(t_list **new_lst, const char *str, t_list *tokens_range)
@@ -75,31 +87,29 @@ static void	separate(t_list **new_lst, const char *str, t_list *tokens_range)
 
 void	separate_tokens(t_list **cmdln_lst)
 {
-	t_list		*iterator;
-	t_list		*new_lst;
-	t_list		*tokens_range;
+	t_tkinfo	tkinfo;
 	t_replace	replace;
 	char		*str;
 
-	iterator = *cmdln_lst;
-	while (iterator)
+	tkinfo.iterator = *cmdln_lst;
+	while (tkinfo.iterator)
 	{
-		str = (char *)iterator->content;
+		str = (char *)tkinfo.iterator->content;
 		if (have_token(str))
 		{
-			tokens_range = get_tokens_range(str);
-			if (is_not_null(tokens_range))
+			tkinfo.tokens_range = get_tokens_range(str);
+			if (not_null(tkinfo.tokens_range))
 			{
-				separate(&new_lst, str, tokens_range);
-				lstclear(&tokens_range, range_del);
+				separate(&(tkinfo.new_lst), str, tkinfo.tokens_range);
+				lstclear(&(tkinfo.tokens_range), range_del);
 				replace.head = cmdln_lst;
-				replace.target = iterator;
-				replace.new_lst = new_lst;
-				iterator = iterator->next;
+				replace.target = tkinfo.iterator;
+				replace.new_lst = tkinfo.new_lst;
+				tkinfo.iterator = tkinfo.iterator->next;
 				replace_node_intolist(&replace, str_del);
 				continue ;
 			}
 		}
-		iterator = iterator->next;
+		tkinfo.iterator = tkinfo.iterator->next;
 	}
 }

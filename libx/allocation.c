@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   allocation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 20:27:05 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 20:27:05 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 /*
@@ -8,7 +20,7 @@
 ** void** (static): the list's head;
 */
 
-t_data		**xmalloc_head(void)
+t_data	**xmalloc_head(void)
 {
 	static t_data	*head;
 
@@ -23,7 +35,7 @@ t_data		**xmalloc_head(void)
 ** void*: address of the first byte in allocated bytes.
 */
 
-void		*xmalloc(size_t size)
+void	*xmalloc(size_t size)
 {
 	void	*data;
 
@@ -47,8 +59,8 @@ void		*xmalloc(size_t size)
 
 static int	xfree_after_head(t_data *node, void *data)
 {
-	t_data *tmp;
-	t_data *node_left;
+	t_data	*tmp;
+	t_data	*node_left;
 
 	while (node->next)
 	{
@@ -72,14 +84,14 @@ static int	xfree_after_head(t_data *node, void *data)
 ** if data is NULL crash prgram.
 */
 
-void		xfree(void *data)
+void	xfree(void *data)
 {
 	t_data	*tmp;
 	t_data	**head;
 
 	if (!data)
 		return ;
-	head = (t_data**)xmalloc_head();
+	head = (t_data **)xmalloc_head();
 	if ((*head)->data == data)
 	{
 		tmp = (*head);

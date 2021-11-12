@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   token_change.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/12 11:49:52 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/12 11:49:52 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
 
 void	apply_token_change(char *c)
@@ -14,7 +26,7 @@ void	apply_token_change(char *c)
 
 void	apply_token_change_to_string(char *s)
 {
-	int i;
+	int	i;
 
 	if (!s)
 		return ;
@@ -37,7 +49,7 @@ void	revert_token_change(char *c)
 
 void	revert_token_change_to_string(char *s)
 {
-	int i;
+	int	i;
 
 	if (!s)
 		return ;

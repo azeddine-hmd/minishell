@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug_array_list.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 20:30:35 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 20:30:35 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 void	print_list_str(t_list *str_lst)
 {
 	char	*str;
 	int		i;
-	char 	*i_str;
+	char	*i_str;
 
 	i = 0;
 	while (str_lst)
 	{
-		str = (char*)str_lst->content;
+		str = (char *)str_lst->content;
 		ft_putstr("str_lst[");
 		i_str = ft_itoa(i);
 		ft_putstr(i_str);
@@ -41,5 +53,4 @@ void	print_array_str(char **str_arr)
 		ft_putstr("\n");
 		i++;
 	}
-
 }

@@ -116,6 +116,8 @@ void	execute(t_list *cmds, char ***env)
 
 	set_raw_mode(false);
 	g_sign.child_running = true;
+	// debugging
+	print_all_cmds(cmds);
 	ret = xitoa(main_function(cmds, env));
 	*env = export_var("?", ret, *env);
 	xfree(ret);

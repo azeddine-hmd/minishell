@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libx.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 21:03:30 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 21:03:30 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBX_H
 # define LIBX_H
 
@@ -17,16 +29,16 @@ typedef enum e_bool {
 
 typedef struct s_range
 {
-	int		from;
-	int		to;
-	char	type;
+	int				from;
+	int				to;
+	char			type;
 }t_range;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void			*data;
 	struct s_data	*next;
-}				t_data;
+}t_data;
 
 typedef struct s_list
 {
@@ -87,12 +99,12 @@ void			free_str_array(char **str_arr);
 int				ft_putc(int c);
 size_t			ft_max(size_t m1, size_t m2);
 t_bool			is_null(void *ptr);
-t_bool			is_not_null(void *ptr);
+t_bool			not_null(void *ptr);
 int				address_to_index(const char *s, char *address);
 t_bool			is_blank(const char *s);
 char			*splitat(const char *s, int index);
 t_bool			equal(const char *s1, const char *s2);
-t_bool 			not_equal(const char *s1, const char *s2);
+t_bool			not_equal(const char *s1, const char *s2);
 
 // libx
 t_data			*lst_last(t_data *node);
@@ -115,39 +127,41 @@ char			*xstrdup(const char *s);
 char			*xstrjoin(const char *s1, const char *s2);
 char			*xstrjoin_arr(const char **arglst, size_t n);
 char			*xsubstr(char const *s, unsigned int start, size_t len);
+char			*xstrsub(char const *s, unsigned int start, unsigned int end);
+char			*xsubrange(const char *s, t_range *range);
 void			*xrealloc(void *ptr, size_t old_size, size_t new_size);
 char			**xsplit(char const *s, char c);
 char			*xitoa(long n);
 void			xfree_str_array(char **str_arr);
 
 // linkedlist
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del) (void*));
-void	ft_lstclear(t_list **lst, void (*del) (void*));
-void	ft_lstiter(t_list *lst, void (*f) (void*));
-t_list	*ft_lstmap(t_list *lst, void *(*f) (void*));
-t_bool	is_empty(t_list *lst);
-t_list	*string_array_to_string_list(char **arr);
-void	str_del(void *content);
-char	**string_list_to_string_array(t_list *lst);
-void	deallocate(void);
-void	replace_node_intolist(t_replace *replace, void (*del) (void*));
-t_bool	is_not_empty(t_list *lst);
-t_bool	ft_lsthas_next(t_list *lst);
-void	lstremove(t_list **head, t_list *target, void (*del) (void*));
-char	*join_string_array_to_string(char **arr);
-char	*join_string_list_to_string(t_list *lst);
-char	*join_string_list_with_nl(t_list *lst);
-void	lstpush(t_list **lst, void *content);
-void	lstpush_front(t_list **lst, void *content);
-void	lstclear(t_list **lst, void (*del) (void*));
+t_list			*ft_lstnew(void *content);
+void			ft_lstadd_front(t_list **lst, t_list *new);
+int				ft_lstsize(t_list *lst);
+t_list			*ft_lstlast(t_list *lst);
+void			ft_lstadd_back(t_list **lst, t_list *new);
+void			ft_lstdelone(t_list *lst, void (*del) (void*));
+void			ft_lstclear(t_list **lst, void (*del) (void*));
+void			ft_lstiter(t_list *lst, void (*f) (void*));
+t_list			*ft_lstmap(t_list *lst, void *(*f) (void*));
+t_bool			is_empty(t_list *lst);
+t_list			*string_array_to_string_list(char **arr);
+void			str_del(void *content);
+char			**string_list_to_string_array(t_list *lst);
+void			deallocate(void);
+void			replace_node_intolist(t_replace *replace, void (*del) (void*));
+t_bool			is_not_empty(t_list *lst);
+t_bool			ft_lsthas_next(t_list *lst);
+void			lstremove(t_list **head, t_list *target, void (*del) (void*));
+char			*join_string_array_to_string(char **arr);
+char			*join_string_list_to_string(t_list *lst);
+char			*join_string_list_with_nl(t_list *lst);
+void			lstpush(t_list **lst, void *content);
+void			lstpush_front(t_list **lst, void *content);
+void			lstclear(t_list **lst, void (*del) (void*));
 
 // debugging
-void	print_list_str(t_list *str_lst);
-void	print_array_str(char **str_arr);
+void			print_list_str(t_list *str_lst);
+void			print_array_str(char **str_arr);
 
 #endif

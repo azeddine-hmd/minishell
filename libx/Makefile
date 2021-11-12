@@ -59,7 +59,7 @@ SRC = libx.c \
 	  ft_putc.c \
 	  ft_max.c \
 	  is_null.c \
-	  is_not_null.c \
+	  not_null.c \
 	  address_to_index.c \
 	  setters.c \
 	  getters.c \

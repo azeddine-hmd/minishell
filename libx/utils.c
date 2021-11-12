@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 19:31:53 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 19:31:53 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 /*
 ** duplicate string in heap with xmalloc.
 */
 
-char		*xstrdup(const char *s)
+char	*xstrdup(const char *s)
 {
 	char	*strdup;
 	int		i;
 
 	if (!s)
 		return (NULL);
-	strdup = (char*)xmalloc(ft_strlen(s) + 1);
+	strdup = (char *)xmalloc(ft_strlen(s) + 1);
 	i = -1;
 	while (s[++i])
 		strdup[i] = s[i];
@@ -23,7 +35,7 @@ char		*xstrdup(const char *s)
 ** join two strings and make a new one with xmalloc.
 */
 
-char		*xstrjoin(const char *s1, const char *s2)
+char	*xstrjoin(const char *s1, const char *s2)
 {
 	char	*joined;
 	int		i;
@@ -48,7 +60,7 @@ char		*xstrjoin(const char *s1, const char *s2)
 ** join list strings with xmalloc.
 */
 
-char		*xstrjoin_arr(const char **arglst, size_t n)
+char	*xstrjoin_arr(const char **arglst, size_t n)
 {
 	char	*joined;
 	char	*tmp;

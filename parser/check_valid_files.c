@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_valid_files.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 22:26:00 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 22:26:00 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
 
 char	*format_file_error(const char *fname, const char *err)
 {
-	char *joined;
-	char *tmp;
+	char	*joined;
+	char	*tmp;
 
 	joined = xstrdup(fname);
 	tmp = joined;
@@ -17,8 +29,8 @@ char	*format_file_error(const char *fname, const char *err)
 
 static char	*check(const char *fname)
 {
-	char *syntax_err;
-	int fd;
+	char	*syntax_err;
+	int		fd;
 
 	syntax_err = NO_SYNTAX_ERROR;
 	fd = open(fname, O_RDONLY);
@@ -41,11 +53,11 @@ char	*check_valid_files(t_list **cmds)
 	cmds_iterator = *cmds;
 	while (cmds_iterator)
 	{
-		cmd = (t_cmd*)cmds_iterator->content;
+		cmd = (t_cmd *)cmds_iterator->content;
 		tk_iterator = cmd->in_token;
 		while (tk_iterator)
 		{
-			tk = (t_token*)tk_iterator->content;
+			tk = (t_token *)tk_iterator->content;
 			if (equal(tk->type, "<"))
 			{
 				syntax_err = check(tk->value);

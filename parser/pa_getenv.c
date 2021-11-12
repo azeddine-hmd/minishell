@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pa_getenv.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/12 10:22:03 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/12 10:22:03 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
 
 char	*pa_getenv(char **env, const char *name)
@@ -10,7 +22,7 @@ char	*pa_getenv(char **env, const char *name)
 	while (env[++i])
 	{
 		equal_sign = ft_strchr(env[i], '=');
-		if (is_not_null(equal_sign))
+		if (not_null(equal_sign))
 		{
 			key = xsubstr(env[i], 0, address_to_index(env[i], equal_sign));
 			if (equal(key, name))

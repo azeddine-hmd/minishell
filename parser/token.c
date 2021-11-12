@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   token.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/12 11:49:43 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/12 11:49:43 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
 
 t_tkindx	*get_token_index(const char *str, int start)
@@ -16,7 +28,7 @@ t_tkindx	*get_token_index(const char *str, int start)
 	while (++i < length(tokens))
 	{
 		address = ft_strstr(str + start, tokens[i]);
-		if (is_not_null(address))
+		if (not_null(address))
 		{
 			token_index->index = address_to_index(str, address);
 			token_index->token = xstrdup(tokens[i]);
@@ -43,7 +55,7 @@ t_bool	have_token(const char *str)
 	while (i < tokens_len)
 	{
 		sub_token = ft_strstr(str, tokens[i]);
-		if (is_not_null(sub_token))
+		if (not_null(sub_token))
 		{
 			xfree_str_array(tokens);
 			return (true);

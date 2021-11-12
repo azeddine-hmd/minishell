@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 19:59:25 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 19:59:25 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 static long	numlen(long n)
 {
-	long i;
+	long	i;
 
 	i = 1;
-	while ((n /= 10) != 0)
+	n /= 10;
+	while (n != 0)
 		i++;
 	return (i);
 }
@@ -14,7 +27,8 @@ static char	*zero_condition(void)
 {
 	char	*n;
 
-	if (!(n = (char*)malloc(2)))
+	n = (char *)malloc(2);
+	if (!n)
 		return (NULL);
 	*n = '0';
 	*(n + 1) = '\0';
@@ -27,7 +41,11 @@ static char	*negative_condition(long n)
 	long	len;
 
 	len = numlen(n);
-	if (!(strnum = (char*)malloc(len + 2)))
+	strnum = (char *)malloc(len + 2);
+	if (!strnum)
+		return (NULL);
+	strnum = (char *)malloc(len + 2);
+	if (!strnum)
 		return (NULL);
 	ft_bzero(strnum, len + 2);
 	strnum[0] = '-';
@@ -40,7 +58,7 @@ static char	*negative_condition(long n)
 	return (strnum);
 }
 
-char		*ft_itoa(long n)
+char	*ft_itoa(long n)
 {
 	char	*strnum;
 	long	len;
@@ -50,7 +68,8 @@ char		*ft_itoa(long n)
 	if (n < 0)
 		return (negative_condition((long)(n * -1)));
 	len = numlen(n);
-	if (!(strnum = (char*)malloc(len + 1)))
+	strnum = (char *)malloc(len + 1);
+	if (!strnum)
 		return (NULL);
 	ft_bzero(strnum, len + 1);
 	while (n)

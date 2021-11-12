@@ -106,8 +106,10 @@ typedef struct s_hdentry
 {
 	t_list	*fcontent_lst;
 	t_list	*hd_iterator;
+	t_list	*heredoc_lst;
 	t_token	*hd_token;
 	char	*fcontent;
+	char	**env;
 	int		file_suffix;
 }t_hdentry;
 

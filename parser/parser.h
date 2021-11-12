@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/12 08:11:48 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/12 08:11:48 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSER_H
 # define PARSER_H
 # include <stdio.h>
@@ -29,17 +41,17 @@ typedef struct s_token
 
 typedef struct s_cmd
 {
-	t_bool			is_piped;
-	t_list			*in_token;
-	t_list			*out_token;
-	char			**args;
-	int				ret;
+	t_bool	is_piped;
+	t_list	*in_token;
+	t_list	*out_token;
+	char	**args;
+	int		ret;
 }t_cmd;
 
 typedef struct s_tkindx
 {
-	int				index;
-	char			*token;
+	int		index;
+	char	*token;
 }t_tkindx;
 
 typedef struct s_envindx
@@ -47,6 +59,41 @@ typedef struct s_envindx
 	t_range	*range;
 	char	*name;
 }t_envindx;
+
+typedef struct s_pcmd
+{
+	t_cmd	*cmd;
+	t_list	*iterator;
+	t_list	*args_lst;
+	t_bool	is_piped;
+}t_pcmd;
+
+typedef struct s_expinfo
+{
+	const char	*str;
+	int			str_len;
+	char		**env;
+	t_list		*qts_rg;
+	t_bool		apply;
+}t_exinfo;
+
+typedef struct s_tkinfo
+{
+	t_list	*iterator;
+	t_list	*new_lst;
+	t_list	*tokens_range;
+}t_tkinfo;
+
+// debugging
+# define PARSE_DEBUG_LOG_PATH "/tmp/parse_log"
+
+FILE		*pa_log;
+void		print_cmd(t_cmd *cmd);
+void		print_all_cmds(t_list *cmds);
+void		print_all_range(t_list *head);
+void		print_all_tokens(t_list *head);
+void		print_str_arr(char **str_arr);
+void		print_str_lst(t_list *str_lst);
 
 // entry
 char		*parse(const char *cmdln, t_list **cmds, char **env);
@@ -64,6 +111,7 @@ t_bool		is_valid_identifier(char c, int index);
 
 // quotes
 t_bool		inside_quotes(t_list *range, int from, int to, const char *types);
+t_bool		inside_qts(t_list *range, t_range *target, const char *types);
 t_list		*get_quotes_range(const char *s);
 char		**split_except_quotes(const char *s, char c, t_list *quotes_range);
 char		*strip_quotes(const char *s);
@@ -98,6 +146,6 @@ void		envindx_del(void *content);
 t_envindx	*get_env_index(const char *str, int start);
 int			getret(char **env);
 char		*pa_getenv(char **env, const char *name);
-char		*expand(const char *str, char **env, t_bool apply_tk_change);
+char		*expand(const char *str, char **env, t_bool apply);
 
 #endif

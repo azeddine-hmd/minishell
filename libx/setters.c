@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   setters.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 19:50:50 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 19:50:50 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list *element;
+	t_list	*element;
 
-	element = (t_list*)xmalloc(sizeof(t_list));
+	element = (t_list *)xmalloc(sizeof(t_list));
 	element->content = content;
 	element->next = NULL;
 	return (element);

@@ -60,7 +60,7 @@ static void	ms_init_terminal_data(void)
 void	ms_setup(t_cap **cap, t_buf **a_input)
 {
 	ms_init_terminal_data();
-	tcgetattr(STDIN_FILENO, &saved_tsettings);
+	get_saved_tsettings();
 	set_raw_mode(true);
 	ms_capinit(cap);
 	ms_bufinit(a_input);

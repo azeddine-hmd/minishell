@@ -29,7 +29,7 @@ static void	while_child_running(void)
 	ft_putc('\n');
 }
 
-static void	while_heredoc_running_logic(void)
+static void	while_heredoc_running(void)
 {
 	t_termarg	*targ;
 
@@ -52,8 +52,7 @@ void	signal_interceptor(int sig)
 		else if (g_sign.heredoc_running)
 			while_heredoc_running();
 		else
-		{
-		}
+			child_heredoc_notrunning();
 	}
 	else if (sig == SIGQUIT && g_sign.child_running)
 	{

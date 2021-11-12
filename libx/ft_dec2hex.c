@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_dec2hex.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 20:31:47 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/10 20:31:47 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libx.h"
 
 static void	ft_strrev(char *str)
@@ -37,7 +49,7 @@ static char	*hexer(int l)
 		return (ft_itoa(l));
 }
 
-char		*ft_dec2hex(size_t decimal)
+char	*ft_dec2hex(size_t decimal)
 {
 	int		r;
 	char	*final;
@@ -46,19 +58,17 @@ char		*ft_dec2hex(size_t decimal)
 
 	if (decimal < 16)
 		return (hexer(decimal));
-	final = ft_strdup("");
 	r = decimal % 16;
-	tmp = final;
-	tmp2 = hexer(r);
-	final = ft_strjoin(final, tmp2);
+	tmp = hexer(r);
+	final = ft_strjoin("", tmp);
 	free(tmp);
-	free(tmp2);
-	while (decimal /= 16)
+	decimal /= 16;
+	while (decimal)
 	{
 		r = decimal % 16;
-		tmp = final;
-		tmp2 = hexer(r);
-		final = ft_strjoin(final, tmp2);
+		tmp = hexer(r);
+		tmp2 = final;
+		final = ft_strjoin(final, tmp);
 		free(tmp);
 		free(tmp2);
 	}
