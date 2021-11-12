@@ -72,7 +72,7 @@ SRC = libx.c \
 	  replace_node_intolist.c \
 	  is_not_empty.c \
 	  deallocate.c \
-	  ft_lsthas_next.c \
+	  lsthas_next.c \
 	  ft_lstrem.c \
 	  join_string_array_to_string.c \
 	  join_string_list_to_string.c \

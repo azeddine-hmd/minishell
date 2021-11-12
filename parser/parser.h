@@ -25,6 +25,7 @@
 # define HEREDOC_TOKEN "<<"
 # define PIPE "|"
 # define QUOTES "'\""
+# define NEWLINE "newline"
 # define FILE_PREFIX "/tmp/minishell-heredoc-"
 
 # define NO_SYNTAX_ERROR NULL

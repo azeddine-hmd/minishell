@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lsthas_next.c                                   :+:      :+:    :+:   */
+/*   lsthas_next.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 20:50:13 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/11/10 20:50:13 by ahamdaou         ###   ########.fr       */
+/*   Created: 2021/11/12 13:03:11 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/11/12 13:03:11 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libx.h"
 
-t_bool	ft_lsthas_next(t_list *lst)
+t_bool	lsthas_next(t_list *lst)
 {
 	if (lst->next != NULL)
 		return (true);

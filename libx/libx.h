@@ -151,7 +151,7 @@ char			**string_list_to_string_array(t_list *lst);
 void			deallocate(void);
 void			replace_node_intolist(t_replace *replace, void (*del) (void*));
 t_bool			is_not_empty(t_list *lst);
-t_bool			ft_lsthas_next(t_list *lst);
+t_bool			lsthas_next(t_list *lst);
 void			lstremove(t_list **head, t_list *target, void (*del) (void*));
 char			*join_string_array_to_string(char **arr);
 char			*join_string_list_to_string(t_list *lst);

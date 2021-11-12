@@ -24,10 +24,51 @@ static void	format_token(const char *token, char **syntax_error)
 	xfree(tmp);
 }
 
+static t_bool	tokens_clash_nopipe(t_list *cmdln_lst, char **syntax_error)
+{
+	if (is_token(cmdln_lst->content))
+	{
+		if (lsthas_next(cmdln_lst)
+			&& not_equal(cmdln_lst->content, PIPE)
+			&& is_token(cmdln_lst->next->content))
+		{
+			format_token(cmdln_lst->next->content, syntax_error);
+			return (true);
+		}
+		if (!lsthas_next(cmdln_lst)
+			&& not_equal(cmdln_lst->content, PIPE)
+			&& is_token(cmdln_lst->content))
+		{
+			format_token(NEWLINE, syntax_error);
+			return (true);
+		}
+	}
+	return (false);
+}
+
+static t_bool	pipe_clash(t_list *cmdln_lst, char **syntax_error)
+{
+	if (is_token(cmdln_lst->content))
+	{
+		if (lsthas_next(cmdln_lst)
+			&& is_token(cmdln_lst->next->content)
+			&& equal(cmdln_lst->next->content, PIPE))
+		{
+			format_token(cmdln_lst->next->content, syntax_error);
+			return (true);
+		}
+		if (!lsthas_next(cmdln_lst)
+			&& is_token(cmdln_lst->content))
+		{
+			format_token(NEWLINE, syntax_error);
+			return (true);
+		}
+	}
+	return (false);
+}
+
 static t_bool	token_errs(t_list *cmdln_lst, char **syntax_error)
 {
-	const char	*token_newline = "newline";
-
 	if (is_token(cmdln_lst->content) && equal(cmdln_lst->content, PIPE))
 	{
 		format_token(cmdln_lst->content, syntax_error);
@@ -35,19 +76,10 @@ static t_bool	token_errs(t_list *cmdln_lst, char **syntax_error)
 	}
 	while (cmdln_lst)
 	{
-		if (is_token(cmdln_lst->content))
-		{
-			if (ft_lsthas_next(cmdln_lst) && is_token(cmdln_lst->next->content))
-			{
-				format_token(cmdln_lst->next->content, syntax_error);
-				return (true);
-			}
-			if (!ft_lsthas_next(cmdln_lst) && is_token(cmdln_lst->content))
-			{
-				format_token(token_newline, syntax_error);
-				return (true);
-			}
-		}
+		if (tokens_clash_nopipe(cmdln_lst, syntax_error))
+			return (true);
+		if (pipe_clash(cmdln_lst, syntax_error))
+			return (true);
 		cmdln_lst = cmdln_lst->next;
 	}
 	return (false);
