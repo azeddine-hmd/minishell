@@ -34,11 +34,17 @@ char	*format_heredoc_err(const char *delimiter)
 	return (joined);
 }
 
-t_bool	hd_ctrl_d_triggered(t_termarg *targ)
+t_bool	hd_ctrl_d_triggered(t_termarg *targ, char **env, t_hd *heredoc)
 {
+	t_buf	*buf;
+
+	buf = targ->buf;
 	if (ft_strlen(targ->buf->str) == 0)
 	{
-		ft_putc('\n');
+		if (heredoc->expand_enabled)
+			lstpush(&(heredoc->lines_lst), expand((buf->str), env, false));
+		else
+			lstpush(&(heredoc->lines_lst), xstrdup(buf->str));
 		return (true);
 	}
 	return (false);

@@ -162,7 +162,7 @@ t_bool		left_arrow_triggered(t_termarg *targ);
 t_list		*get_heredoc_lst(t_list	*cmds);
 void		heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env);
 char		*heredoc_loop(t_termarg *targ, const char *delimiter, char **env);
-t_bool		hd_ctrl_d_triggered(t_termarg *targ);
+t_bool		hd_ctrl_d_triggered(t_termarg *targ, char **env, t_hd *heredoc);
 char		*format_heredoc_err(const char *delimiter);
 void		hd_prompt(void);
 t_bool		hd_enter_triggered(t_termarg *targ, char **env, t_hd *heredoc);

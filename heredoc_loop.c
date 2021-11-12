@@ -36,13 +36,13 @@ static void	heredoc_aloop(t_termarg *targ, t_hd *heredoc)
 	lstclear(&(heredoc->lines_lst), str_del);
 }
 
-static t_bool	keys_cases_extanded(t_termarg *targ)
+static t_bool	keys_cases_extanded(t_termarg *targ, char **env, t_hd *heredoc)
 {
 	if (targ->pos == 2)
 		targ->pos = 0;
 	else if (targ->input == K_CTRL_D)
 	{
-		if (hd_ctrl_d_triggered(targ))
+		if (hd_ctrl_d_triggered(targ, env, heredoc))
 			return (true);
 	}
 	else if (targ->input == K_CTRL_L)
@@ -81,7 +81,7 @@ static t_bool	keys_cases(t_termarg *targ, char **env, t_hd *heredoc)
 	else if (targ->pos == 2 && targ->input == K_D)
 		(void)NULL;
 	else
-		if (keys_cases_extanded(targ))
+		if (keys_cases_extanded(targ, env, heredoc))
 			return (true);
 	return (false);
 }
