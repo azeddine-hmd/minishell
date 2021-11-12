@@ -12,28 +12,6 @@
 
 #include "parser.h"
 
-static char	*strip(const char *s)
-{
-	char	*stripped;
-	char	*tmp;
-	t_list	*quotes_lst;
-	t_range	*quotes_range;
-
-	quotes_lst = get_quotes_range(s);
-	if (is_null(quotes_lst))
-		return (NULL);
-	quotes_range = (t_range *)quotes_lst->content;
-	stripped = NULL;
-	if (quotes_range->from == 0 && quotes_range->to == (int)(ft_strlen(s) - 1))
-	{
-		stripped = splitat(s, 0);
-		tmp = stripped;
-		stripped = splitat(stripped, (int)(ft_strlen(stripped) - 1));
-		xfree(tmp);
-	}
-	return (stripped);
-}
-
 static void	strip_token_lst(t_list *token_lst)
 {
 	char	*stripped;
@@ -42,7 +20,7 @@ static void	strip_token_lst(t_list *token_lst)
 	while (token_lst)
 	{
 		token = (t_token *)token_lst->content;
-		stripped = strip(token->value);
+		stripped = strip_quotes(token->value);
 		if (not_null(stripped))
 		{
 			xfree(token->value);
@@ -62,7 +40,7 @@ static void	strip_array(char **args)
 	i = -1;
 	while (++i < length(args))
 	{
-		stripped = strip(args[i]);
+		stripped = strip_quotes(args[i]);
 		if (is_null(stripped))
 			continue ;
 		xfree(args[i]);

@@ -42,7 +42,7 @@ void	heredoc_entry(t_termarg *targ, t_list *heredoc_lst, char **env)
 	hdentry.heredoc_lst = heredoc_lst;
 	set_content_lst(targ, &hdentry, env);
 	hdentry.hd_iterator = hdentry.heredoc_lst;
-	while (hdentry.hd_iterator || hdentry.fcontent_lst)
+	while (hdentry.hd_iterator && hdentry.fcontent_lst)
 	{
 		file_suffix_str = xitoa(hdentry.file_suffix);
 		pathname = xstrjoin(FILE_PREFIX, file_suffix_str);
