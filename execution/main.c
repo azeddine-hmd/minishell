@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:48:34 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/08 18:30:13 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/08 21:17:38 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ int	run_cmd(char *exec_path, char **args, char **env)
 		return (1);
 	}
 	waitpid(pid, &ret, 0);
-	ret = WEXITSTATUS(ret);
-	return (ret);
+	return (sig_return(ret));
 }
 
 int	execute_p(char *p, char **cmd, char **env)

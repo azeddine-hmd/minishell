@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:40:43 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/08 20:44:53 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/08 21:15:35 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void		check_dir(char *p);
 int			open_failed(char *cmd);
 int			ft_bad_value(char *s1, char *s2, char *s3);
 char		**init_env(char **env);
+int			sig_return(int ret);
 char		**export_var(char *var, char *str, char **env);
 #endif

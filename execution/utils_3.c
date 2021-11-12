@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:28:54 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/08 18:34:27 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:22:18 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ char	**export_var(char *var, char *str, char **env)
 	char	*tmp;
 
 	index = find_env(var, env);
-	tmp = xstrjoin("=", str);
+	if (str != NULL)
+		tmp = xstrjoin("=", str);
+	else
+		tmp = xstrdup("");
 	if (env[index])
 	{
-		xfree(env[index]);
 		if (str)
+		{
+			xfree(env[index]);
 			env[index] = xstrjoin(var, tmp);
-		else
-			env[index] = xstrjoin(var, "=");
+		}
 	}
 	else
 	{
 		env = realloc_env(index + 1, env);
-		if (str)
-			env[index] = xstrjoin(var, tmp);
-		else
-			env[index] = xstrjoin(var, "=");
+		env[index] = xstrjoin(var, tmp);
 	}
 	xfree(tmp);
 	return (env);

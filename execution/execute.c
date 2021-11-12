@@ -6,7 +6,7 @@
 /*   By: hboudhir <hboudhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:14:21 by hboudhir          #+#    #+#             */
-/*   Updated: 2021/11/08 20:42:29 by hboudhir         ###   ########.fr       */
+/*   Updated: 2021/11/10 19:27:55 by hboudhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	exec_bin(char **cmd, char **env)
 	ret = 0;
 	if (cmd[0][0] == '.' || cmd[0][0] == '/')
 		return (exec_path(cmd, env));
-	if (!find_strenv("PATH", env))
+	if (!find_strenv("PATH", env) || ft_strlen(find_strenv("PATH", env)) == 5)
 		return (2);
 	path = split_path(env);
 	if (!path)
