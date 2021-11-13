@@ -46,6 +46,7 @@ void	signal_interceptor(int sig)
 {
 	t_termarg	*targ;
 
+	(void)targ;
 	targ = g_sign.targ;
 	if (sig == SIGINT)
 	{
