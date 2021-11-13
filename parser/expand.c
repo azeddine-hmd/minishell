@@ -58,10 +58,11 @@ static void	push_array(t_list **expanded_lst, char **env_arr)
 {
 	lstpush(expanded_lst, strdup(env_arr[0]));
 	lstpush(expanded_lst, strdup(env_arr[1]));
+	lstpush(expanded_lst, strdup(env_arr[2]));
 }
 
 // expand all environment variable into list
-static t_list	*expand_to_lst(t_exinfo *exinfo)
+static char	*expand_to_lst(t_exinfo *exinfo)
 {
 	t_list		*expanded_lst;
 	t_envindx	*envi;
@@ -81,18 +82,19 @@ static t_list	*expand_to_lst(t_exinfo *exinfo)
 			envindx_del(envi);
 			continue ;
 		}
-		env_arr = expand_once_array(exinfo, envi, start);
+		start = 0;
+		env_arr = expand_once_array(exinfo, envi, 0);
 		push_array(&expanded_lst, env_arr);
-		exinfo->str = xstrdup(env_arr[2]);
+		exinfo->str = join_string_list_to_string(expanded_lst);
 		xfree_str_array(env_arr);
+		lstclear(&expanded_lst, str_del);
 	}
-	return (expanded_lst);
+	return (exinfo->str);
 }
 
 char	*expand(const char *str, char **env, t_bool apply)
 {
 	t_exinfo	exinfo;
-	t_list		*expanded_lst;
 	char		*expanded;
 
 	if (!str)
@@ -102,14 +104,9 @@ char	*expand(const char *str, char **env, t_bool apply)
 	exinfo.env = env;
 	exinfo.apply = apply;
 	exinfo.qts_rg = get_quotes_range(str);
-	expanded_lst = expand_to_lst(&exinfo);
-	lstclear(&(exinfo.qts_rg), range_del);
-	if (is_null(expanded_lst))
+	expanded = expand_to_lst(&exinfo);
+	if (is_null(expanded))
 		expanded = xstrdup(str);
-	else
-	{
-		expanded = join_string_list_to_string(expanded_lst);
-		lstclear(&expanded_lst, str_del);
-	}
+	lstclear(&(exinfo.qts_rg), range_del);
 	return (expanded);
 }
