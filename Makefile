@@ -1,6 +1,7 @@
 NAME = minishell
 
 CFLAGS = -Wall -Werror -Wextra \
+		 -g \
 
 CC = gcc
 

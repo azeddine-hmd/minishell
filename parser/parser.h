@@ -71,11 +71,11 @@ typedef struct s_pcmd
 
 typedef struct s_expinfo
 {
-	const char	*str;
-	int			str_len;
-	char		**env;
-	t_list		*qts_rg;
-	t_bool		apply;
+	char	*str;
+	int		str_len;
+	char	**env;
+	t_list	*qts_rg;
+	t_bool	apply;
 }t_exinfo;
 
 typedef struct s_tkinfo
