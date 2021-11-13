@@ -3,7 +3,6 @@ NAME = libx.a
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra \
-		 -g \
 
 SRC = libx.c \
 	  libx_utils.c \
@@ -94,7 +93,7 @@ endif
 ifeq ($(UNAME),Darwin)
 endif
 
-all: options $(NAME)
+all: $(NAME)
 
 options:
 	@echo ${NAME} build options:

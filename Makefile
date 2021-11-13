@@ -1,8 +1,6 @@
 NAME = minishell
 
 CFLAGS = -Wall -Werror -Wextra \
-		 -g \
-		 #-fsanitize=address \
 
 CC = gcc
 
@@ -44,7 +42,7 @@ ifeq ($(UNAME),Darwin)
 	LDFLAGS += -ltermcap
 endif
 
-all: $(NAME) options
+all: $(NAME)
 
 options:
 	@echo ${NAME} build options:

@@ -1,7 +1,6 @@
 NAME = libparser.a
 
 CFLAGS = -Wall -Wextra -Werror \
-		 -g \
 
 CC = gcc
 
@@ -29,8 +28,6 @@ SRC = parse.c \
 	  strip_side_quotes.c \
 	  restore_expanded_tokens.c \
 	  token_change.c \
-	  debug_cmd.c \
-	  debug_range_token.c \
 
 OBJ = ${SRC:.c=.o}
 
@@ -44,7 +41,7 @@ endif
 ifeq ($(UNAME),Darwin)
 endif
 
-all: options $(NAME)
+all: $(NAME)
 
 options:
 	@echo ${NAME} build options:

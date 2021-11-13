@@ -21,7 +21,7 @@ endif
 ifeq ($(UNAME),Darwin)
 endif
 
-all: options $(NAME)
+all: $(NAME)
 
 options:
 	@echo ${NAME} build options:

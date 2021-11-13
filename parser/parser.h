@@ -85,17 +85,6 @@ typedef struct s_tkinfo
 	t_list	*tokens_range;
 }t_tkinfo;
 
-// debugging
-# define PARSE_DEBUG_LOG_PATH "/tmp/parse_log"
-
-FILE		*pa_log;
-void		print_cmd(t_cmd *cmd);
-void		print_all_cmds(t_list *cmds);
-void		print_all_range(t_list *head);
-void		print_all_tokens(t_list *head);
-void		print_str_arr(char **str_arr);
-void		print_str_lst(t_list *str_lst);
-
 // entry
 char		*parse(const char *cmdln, t_list **cmds, char **env);
 
