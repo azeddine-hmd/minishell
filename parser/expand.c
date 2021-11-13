@@ -59,6 +59,7 @@ static void	push_array(t_list **expanded_lst, char **env_arr)
 	lstpush(expanded_lst, strdup(env_arr[0]));
 	lstpush(expanded_lst, strdup(env_arr[1]));
 	lstpush(expanded_lst, strdup(env_arr[2]));
+	xfree_str_array(env_arr);
 }
 
 // expand all environment variable into list
@@ -84,7 +85,6 @@ static char	*expand_to_lst(t_exinfo *exinfo)
 		start = 0;
 		push_array(&expanded_lst, expand_once_array(exinfo, envi, 0));
 		exinfo->str = join_string_list_to_string(expanded_lst);
-		xfree_str_array(env_arr);
 		lstclear(&expanded_lst, str_del);
 	}
 	return (exinfo->str);
