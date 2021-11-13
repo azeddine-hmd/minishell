@@ -16,6 +16,7 @@ static void	child_heredoc_notrunning(void)
 {
 	t_termarg	*targ;
 
+	(void)targ;
 	targ = g_sign.targ;
 	ft_putc('\n');
 	ms_bufrst(targ->buf);
@@ -33,6 +34,7 @@ static void	while_heredoc_running(void)
 {
 	t_termarg	*targ;
 
+	(void)targ;
 	targ = g_sign.targ;
 	g_sign.stop_heredoc = true;
 	ft_putc('\n');
