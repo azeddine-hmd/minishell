@@ -67,7 +67,6 @@ static char	*expand_to_lst(t_exinfo *exinfo)
 	t_list		*expanded_lst;
 	t_envindx	*envi;
 	int			start;
-	char		**env_arr;
 
 	expanded_lst = EMPTY_LIST;
 	start = 0;
@@ -83,8 +82,7 @@ static char	*expand_to_lst(t_exinfo *exinfo)
 			continue ;
 		}
 		start = 0;
-		env_arr = expand_once_array(exinfo, envi, 0);
-		push_array(&expanded_lst, env_arr);
+		push_array(&expanded_lst, expand_once_array(exinfo, envi, 0));
 		exinfo->str = join_string_list_to_string(expanded_lst);
 		xfree_str_array(env_arr);
 		lstclear(&expanded_lst, str_del);
