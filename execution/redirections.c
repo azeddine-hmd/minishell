@@ -20,7 +20,7 @@ int	file_dont_exist(char *file)
 	return (1);
 }
 
-void	out_token(t_list *tmp_out, t_token **file, int *ret)
+void	out_token(t_list *tmp_out, t_token **file)
 {
 	t_token	*tmp;
 	int		fd;
@@ -29,13 +29,6 @@ void	out_token(t_list *tmp_out, t_token **file, int *ret)
 	{
 		tmp = tmp_out->content;
 		fd = open(tmp->value, O_WRONLY, 0666);
-		if (fd == -1)
-		{
-			*ret = 1;
-			ft_putstr("minishell: ");
-			perror(tmp->value);
-			break ;
-		}
 		ft_create_file(tmp->value, tmp->type);
 		if (!ft_strcmp(tmp->type, ">") || !ft_strcmp(tmp->type, ">>"))
 			*file = tmp;
@@ -67,7 +60,7 @@ t_token	**check_files(int *ret, t_cmd *cmd)
 		files[1] = tmp;
 		tmp_in = tmp_in->next;
 	}
-	out_token(tmp_out, &files[0], ret);
+	out_token(tmp_out, &files[0]);
 	return (files);
 }
 
