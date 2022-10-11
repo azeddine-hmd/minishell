@@ -35,7 +35,7 @@ void	check_dir(char *p)
 		return ;
 	else if (tmp)
 	{
-		free(tmp);
+		closedir(tmp);
 		ft_putstr("minishell: ");
 		ft_putstr(p);
 		ft_putstr(": is a directory\n");
